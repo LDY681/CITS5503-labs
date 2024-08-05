@@ -182,6 +182,7 @@ Use the stored pem key to connect to the public IP `16.171.151.20` of the instan
 ```
 ssh -i 24188516-key.pem ubuntu@16.171.151.20
 ```
+Now that the server is connected, we can see system information on the console:
 
 ### [8] List the created instance using the AWS console
 
@@ -287,6 +288,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4NjM4MjI3OSw1NjA4NTk0MTYsMTQzNj
+eyJoaXN0b3J5IjpbMjAwODk0MjU1MCw1NjA4NTk0MTYsMTQzNj
 M4NDM2NiwtOTExNjQwNjIwLC0yMDg4NzQ2NjEyXX0=
 -->
