@@ -160,7 +160,8 @@ Because my student number is `24188516`, create an ec2 instance in `eu-north-1` 
  aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 24188516-sg --count 1 --instance-type t3.micro --key-name 24188516-key --query 'Instances[0].InstanceId'
  ```
 
-For some reason, du
+For some reason, at the moment I was working on the lab, t2.micro container is not supporso I switched to t3.micro.
+![enter image description here](http://127.0.0.1/assets/lab2-6.png)
 ![enter image description here](http://127.0.0.1/assets/lab2-5.png)
 
 ### [5] Add a tag to your Instance
@@ -285,6 +286,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNjI1OTU4NTYsNTYwODU5NDE2LDE0Mz
+eyJoaXN0b3J5IjpbLTE2MjA0NTE5NjIsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
