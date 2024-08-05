@@ -14,12 +14,15 @@
 <img src="http://127.0.0.1/assets/lab1-3.png" alt="enter image description here"></p>
 <h2 id="set-up-recent-linux-oses">Set up recent Linux OSes</h2>
 <p>
-</p><p>I am running a windows machine, I decided to go with <code>ubuntus on windows</code> because it offers an isolated environment and separated file directory, which sets ease with file management.<br><br>
+</p><p>
+I am running a windows machine, I decided to go with <code>ubuntus on windows</code>` because it offers an isolated environment and separated file directory, which sets ease with file management.<br><br>
 <img src="http://127.0.0.1/assets/lab1-4.png" alt="enter image description here"></p>
 <h2 id="install-linux-packages">Install Linux packages</h2>
 <h3 id="install-python-3.10.x">[1] Install Python 3.10.x</h3>
-<p>Because my ubuntu version is already <code>22.04</code>, I will get the lastest python version which is <code>3.10.12</code>.</p>
-<p>To update apt to latest version:</p>
+<p>Because my ubuntu version is already <code>22.04</code>, I will get the lastest python version which is <code>`3.10.12</code>.</p>
+<p>`.
+
+To update apt to latest version:</p>
 <pre><code>sudo apt update
 sudo apt -y upgrade
 </code></pre>
@@ -37,7 +40,8 @@ sudo apt -y upgrade
 <pre><code>sudo apt install awscli
 pip3 install awscli --upgrade
 </code></pre>
-<p><img src="http://127.0.0.1/assets/lab1-8.png" alt="enter image description here"></p>
+<p><img src="http://127.0.0.1/assets/lab1-8.png" alt="enter image description here"></p>)
+
 <h3 id="configure-aws">[3] Configure AWS</h3>
 To configure and connect to Amazon EC2
 <pre><code>aws configure
@@ -47,18 +51,21 @@ The region to be selected is <code>eu-north-1</code> because my student number f
 <p><img src="http://127.0.0.1/assets/lab1-9.png" alt="enter image description here"></p>
 <h3 id="install-boto3">[4] Install boto3</h3>
 I find this step redundant as <code>botocore</code> is already inluded in AWS Cli package, but just for the spirit:
-<pre><code>pip3 install boto3
+<pre><code>
+    pip3 install boto3
 </code></pre>
-<p><img src="http://127.0.0.1/assets/lab1-10.png" alt="enter image description here"></p>
+<p><img src="http://127.0.0.1/assets/lab1-10.png" alt="enter image description here"></p>   
+ ![enter image description here](http://127.0.0.1/assets/lab1-10.png)
+
 <h2 id="test-the-installed-environment">Test the installed environment</h2>
-<h3 id="test-the-aws-environment">[1] Test the AWS environment</h3>
-<p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
+e ar<h3 id="test-the-aws-environment">[1] Test the AWS environment</h3>
+<p>[Refer to thTo see if we marking rubrics for sufficient step-by-step description.]</p>e connected to AWS environment
 <h3 id="test-the-python-environment">[2] Test the Python environment</h3>
 <p>
-</p><p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
+</p>f toth an brcs r uicet stte sripin
 <h3 id="write-a-python-script">[3] Write a Python script</h3>
 <p>
-</p><p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
+</p>
 <div></div>
 <h1 id="lab-2">Lab 2</h1>
 <div></div>
@@ -69,3 +76,6 @@ I find this step redundant as <code>botocore</code> is already inluded in AWS Cl
 <h1 id="lab-5">Lab 5</h1> style="page-break-after: always;"&gt;
 <h1 id="lab-2">Lab 2</h1>
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTQ4MTM3NzY3XX0=
+-->
