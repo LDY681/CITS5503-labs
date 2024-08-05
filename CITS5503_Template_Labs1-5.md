@@ -3,7 +3,7 @@
   <h2>Labs 1-5</h2>
   
   <p>Student ID: 24188515</p>
-  <p>Student Name: Dayu Liu/p>
+  <p>Student Name: Dayu Liu</p>
 
 </div>
 
@@ -76,5 +76,5 @@ After receiving the email with original login cridentials, I logged-in and reset
 # Lab 5
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTA4MzYyMTc5XX0=
+eyJoaXN0b3J5IjpbNjgzOTYyOTQ5XX0=
 -->
