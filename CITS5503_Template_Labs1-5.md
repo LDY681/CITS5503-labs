@@ -141,16 +141,17 @@ aws ec2 authorize-security-group-ingress --group-name 24188516-sg --protocol tcp
 The response will return the newly created rule along with specific rulesets.
 
 ### [3] Create a key pair
-Now we need to create a `private key` and `public key` pair for encrypted connection. The generated output is then s
+Now we need to create a `private key` and `public key` pair for encrypted connection. The generated output is then saved as plain-text into `24188516-key.pem` file.
 ```
 aws ec2 create-key-pair --key-name 24188516-key --query 'KeyMaterial' --output text > 24188516-key.pem
 ```
 
 To use this key on Linux, copy the file to a directory ~/.ssh and change the permissions to:
+```
+chmod 400 24188516-key.pem
+```
+This grants the owner of the file read permission.
 
-```
-chmod 400 <student number>-key.pem
-```
 ### [4] Create the instance 
 
 | Student Number | Region | Region Name | ami id |
@@ -296,6 +297,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjcwNTU1NiwxNDM2Mzg0MzY2LC05MT
+eyJoaXN0b3J5IjpbLTEyOTM3MzM2OCwxNDM2Mzg0MzY2LC05MT
 E2NDA2MjAsLTIwODg3NDY2MTJdfQ==
 -->
