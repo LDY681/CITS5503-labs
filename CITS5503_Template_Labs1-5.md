@@ -78,22 +78,17 @@ The python script is located in ~\cits5503\lab1 in the Ubuntu environment
 Run the following code to land in the right lab directory
 `cd ./cits5503/lab1`
 
-  
-
-## [2] install dependencies
-
-The pandas library is used here to convert un-tabulated data into structured table
-
-run the following code to install the extra dependency
-
+#### (1) install dependencies
+The pandas library is used here to convert un-tabulated data into structured table.
+Run the following code to install the extra dependency
 `pip install pandas`
 
-  
+#### (2) explain the
+run the following code to execute the python script:
+`python3 lab1.py`
 
-## [3] run the script
-
-run the following code to execute the python script
-
+#### (2) run the script
+run the following code to execute the python script:
 `python3 lab1.py`
 
   
@@ -152,5 +147,5 @@ After the script is executed, results are printed in a table structure
 <h1 id="lab-2">Lab 2</h1>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3ODY0Mjg1OF19
+eyJoaXN0b3J5IjpbMTI3MDI1MDcwNV19
 -->
