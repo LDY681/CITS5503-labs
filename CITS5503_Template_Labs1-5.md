@@ -100,3 +100,6 @@ print(regions_df)<br>
 <h1 id="lab-5">Lab 5</h1> style="page-break-after: always;"&gt;
 <h1 id="lab-2">Lab 2</h1>
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTE3NjI3MDA5MjRdfQ==
+-->
