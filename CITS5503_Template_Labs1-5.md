@@ -160,14 +160,14 @@ Because my student number is `24188516`, create an ec2 instance in `eu-north-1` 
  aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 24188516-sg --count 1 --instance-type t3.micro --key-name 24188516-key --query 'Instances[0].InstanceId'
  ```
 
-For some reason, at the moment I was working on the lab, t2.micro container is not supported so I switched to t3.micro. The instance is created with id `i-0553e2ea0492e1c73`
+For some reason, at the moment I was working on the lab, t2.micro container is not supported so I switched to t3.micro. The instance is created with instance id `i-0553e2ea0492e1c73`
 ![enter image description here](http://127.0.0.1/assets/lab2-6.png)
 ![enter image description here](http://127.0.0.1/assets/lab2-5.png)
 
 ### [5] Add a tag to your Instance
 
  ```
-  aws ec2 create-tags --resources <Instance Id from above> --tags Key=Name,Value=<student number>
+  aws ec2 create-tags --resources i-0553e2ea0492e1c73 --tags Key=Name,Value=24188516
  ```
 **NOTE**: If you need to create a single instance, follow the naming format of `<student number>-vm` (e.g., 24242424-vm). If you need to create multiple ones, follow the naming format of `<student number>-vm1` and `<student number>-vm2` (e.g., 24242424-vm1, 24242424-vm2).
 
@@ -286,6 +286,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzOTc3NTQ4NCw1NjA4NTk0MTYsMTQzNj
-M4NDM2NiwtOTExNjQwNjIwLC0yMDg4NzQ2NjEyXX0=
+eyJoaXN0b3J5IjpbMjY0MDExNDM5LDU2MDg1OTQxNiwxNDM2Mz
+g0MzY2LC05MTE2NDA2MjAsLTIwODg3NDY2MTJdfQ==
 -->
