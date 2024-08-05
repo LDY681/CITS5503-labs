@@ -121,34 +121,20 @@ After the script is executed, results are printed in a table structure:
 
 <div  style="page-break-after: always;"></div>
 
-  
-
 # Lab 2
 
-  
-
 <div  style="page-break-after: always;"></div>
-
-  
 
 # Lab 3
 
-  
-
 <div  style="page-break-after: always;"></div>
-
-  
 
 # Lab 4
 
-  
-
 <div  style="page-break-after: always;"></div>
-
-  
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzNjM4NDM2NiwtOTExNjQwNjIwLC0yMD
-g4NzQ2NjEyXX0=
+eyJoaXN0b3J5IjpbMjQ3ODg1NzcwLDE0MzYzODQzNjYsLTkxMT
+Y0MDYyMCwtMjA4ODc0NjYxMl19
 -->
