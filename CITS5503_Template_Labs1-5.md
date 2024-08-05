@@ -5,64 +5,32 @@
 </div>
 
 # Lab 1
-
 ## AWS Account and Log in
-
 ### [1] Log into an IAM user account created for you on AWS.
-
 After receiving the email with original login cridentials, I logged-in and reseted my password accordingly.
-
 ![enter image description here](http://127.0.0.1/assets/lab1-1.png)
+
 ### [2] Search and open Identity Access Management
 Clicked on the top-right panel to access `security cridentials`
 ![enter image description here](http://127.0.0.1/assets/lab1-2.png)
-<p>Under the `access key` tab, create new access key and secret. Store the key and secret into somewhere private and secure.
 
-
-
-  
-
+Under the `access key` tab, create new access key and secret. Store the key and secret into somewhere private and secure.
+![enter image description here](http://127.0.0.1/assets/lab1-3.png)
 ## Set up recent Linux OSes
 
 I am running a windows machine, I decided to go with `ubuntus on windows` because it offers an isolated environment and separated file directory, which sets ease with file management.
-
-http://127.0.0.1/assets/lab1-4.png
-
-  
-
+![enter image description here](http://127.0.0.1/assets/lab1-4.png)
 ## Install Linux packages
-
-  
-
 ### [1] Install Python 3.10.x
-
-Because my ubuntu version is already `22.04`, I will get the lastest python version which is `3.10.12`.</p>
-
-  
-
+Because my ubuntu version is already `22.04`, I will get the lastest python version which is `3.10.12`.
 To update apt to latest version:
-
 ```
-
 sudo apt update
-
 sudo apt -y upgrade
-
 ```
-
-http://127.0.0.1/assets/lab1-5.png
-
-  
-
+![enter image description here](http://127.0.0.1/assets/lab1-5.png)
 To check the latest version of python:
-
 `python3 -V`
-
-  
-
-http://127.0.0.1/assets/lab1-6.png
-
-  
 
 To install pip3:
 
@@ -280,5 +248,5 @@ After the script is executed, results are printed in a table structure:
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDE3NTY0MDcxLC0yMDg4NzQ2NjEyXX0=
+eyJoaXN0b3J5IjpbMTc0MDMwNDI3OCwtMjA4ODc0NjYxMl19
 -->
