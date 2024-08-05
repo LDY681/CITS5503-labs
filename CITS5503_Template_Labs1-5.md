@@ -50,7 +50,13 @@ To install AWS CLI and upgrade to latest version
 ![enter image description here](http://127.0.0.1/assets/lab1-8.png)
 
 <h3 id="configure-aws">[3] Configure AWS</h3>
-To o
+To configure and connect to Amazon EC2
+
+    aws configure
+   
+  Here we type in the
+  ![enter image description here](http://127.0.0.1/assets/lab1-9.png)
+
 <h3 id="install-boto3">[4] Install boto3</h3>
 <p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
 <h2 id="test-the-installed-environment">Test the installed environment</h2>
@@ -78,5 +84,5 @@ To o
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MDcyMzc5NjNdfQ==
+eyJoaXN0b3J5IjpbNzc0OTY4NTQ1XX0=
 -->
