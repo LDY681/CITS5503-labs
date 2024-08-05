@@ -27,6 +27,7 @@ I am running a windows machine, I decided to go with `ubuntus on windows` becaus
 ## Install Linux packages
 
 ### [1] Install Python 3.10.x
+Because I am running 
 To update apt to latest version:
 
     sudo apt update
@@ -73,5 +74,5 @@ To install pip3
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4NDYzMzU5Ml19
+eyJoaXN0b3J5IjpbMTYyMzY4MzUwNF19
 -->
