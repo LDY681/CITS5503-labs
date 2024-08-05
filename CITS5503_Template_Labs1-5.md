@@ -58,8 +58,14 @@ I find this step redundant as <code>botocore</code> is already inluded in AWS Cl
  ![enter image description here](http://127.0.0.1/assets/lab1-10.png)
 
 <h2 id="test-the-installed-environment">Test the installed environment</h2>
-e ar<h3 id="test-the-aws-environment">[1] Test the AWS environment</h3>
-<p>[Refer to thTo see if we marking rubrics for sufficient step-by-step description.]</p>e connected to AWS environment
+<h3 id="test-the-aws-environment">[1] Test the AWS environment</h3>
+<p>[Refer to thTo see if we marking rubrics for sufficient step-by-step description.]</p>
+To confirm that we are connected to the AWS environment, run a simple command which prints out the region table.
+
+    aws ec2 describe-regions --output table
+  
+  
+
 <h3 id="test-the-python-environment">[2] Test the Python environment</h3>
 <p>
 </p>f toth an brcs r uicet stte sripin
@@ -77,5 +83,5 @@ e ar<h3 id="test-the-aws-environment">[1] Test the AWS environment</h3>
 <h1 id="lab-2">Lab 2</h1>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4MTM3NzY3XX0=
+eyJoaXN0b3J5IjpbLTExNjU2MjA4MTNdfQ==
 -->
