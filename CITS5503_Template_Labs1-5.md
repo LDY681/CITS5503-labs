@@ -15,14 +15,12 @@
 <h2 id="set-up-recent-linux-oses">Set up recent Linux OSes</h2>
 <p>
 </p><p>
-I am running a windows machine, I decided to go with <code>ubuntus on windows</code>` because it offers an isolated environment and separated file directory, which sets ease with file management.<br><br>
+I am running a windows machine, I decided to go with <code>ubuntus on windows</code> because it offers an isolated environment and separated file directory, which sets ease with file management.<br><br>
 <img src="http://127.0.0.1/assets/lab1-4.png" alt="enter image description here"></p>
 <h2 id="install-linux-packages">Install Linux packages</h2>
 <h3 id="install-python-3.10.x">[1] Install Python 3.10.x</h3>
-<p>Because my ubuntu version is already <code>22.04</code>, I will get the lastest python version which is <code>`3.10.12</code>.</p>
-<p>`.
-
-To update apt to latest version:</p>
+<p>Because my ubuntu version is already <code>22.04</code>, I will get the lastest python version which is <code>3.10.12</code>.</p>
+<p>To update apt to latest version:</p>
 <pre><code>sudo apt update
 sudo apt -y upgrade
 </code></pre>
@@ -51,15 +49,13 @@ The region to be selected is <code>eu-north-1</code> because my student number f
 <p><img src="http://127.0.0.1/assets/lab1-9.png" alt="enter image description here"></p>
 <h3 id="install-boto3">[4] Install boto3</h3>
 I find this step redundant as <code>botocore</code> is already inluded in AWS Cli package, but just for the spirit:
-<pre><code>
-    pip3 install boto3
+<pre><code>pip3 install boto3
 </code></pre>
-<p><img src="http://127.0.0.1/assets/lab1-10.png" alt="enter image description here"></p>   
+
  ![enter image description here](http://127.0.0.1/assets/lab1-10.png)
 
 <h2 id="test-the-installed-environment">Test the installed environment</h2>
 <h3 id="test-the-aws-environment">[1] Test the AWS environment</h3>
-<p>[Refer to thTo see if we marking rubrics for sufficient step-by-step description.]</p>
 To confirm that we are connected to the AWS environment, run a simple command which prints out the region table.
 
     aws ec2 describe-regions --output table
@@ -83,5 +79,5 @@ To confirm that we are connected to the AWS environment, run a simple command wh
 <h1 id="lab-2">Lab 2</h1>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNjU2MjA4MTNdfQ==
+eyJoaXN0b3J5IjpbLTI1OTkzODI4MF19
 -->
