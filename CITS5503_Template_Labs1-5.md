@@ -17,8 +17,6 @@
 <p>
 
 I am running a windows machine, I decided to go with `ubuntus on windows` because it offers an isolated environment and separated file directory, which sets ease with file management.<br>
-<img src="
-![enter image description]http://127.0.0.1/assets/lab1-4.png" alt="enter image description here"></p>
 
 
 ## Install Linux packages
@@ -74,5 +72,5 @@ To install pip3
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA4OTU5ODI5Nl19
+eyJoaXN0b3J5IjpbLTkyNjU2OTkzOF19
 -->
