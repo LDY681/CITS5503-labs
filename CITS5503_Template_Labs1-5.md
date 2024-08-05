@@ -23,7 +23,8 @@ After receiving the email with original login cridentials, I logged-in and reset
 Clicked on the top-right panel to access `security cridentials`
 ![enter image description here](http://127.0.0.1/assets/lab1-2.png)
 
-Under the `access key` tab, create new access key and secret. The region to be selected is eu-north-1 because mys
+Under the `access key` tab, create new access key and secret. The region to be selected is `eu-north-1` because my student number falls into this region selection.
+![enter image description here](http://127.0.0.1/assets/lab1-3.png)
 
 ## Set up recent Linux OSes
 
@@ -78,6 +79,6 @@ Under the `access key` tab, create new access key and secret. The region to be s
 # Lab 5
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3MDMxMTE4NiwtOTc0ODg0MzcyLDY4Mz
+eyJoaXN0b3J5IjpbMTQ1NDc2NTIyNywtOTc0ODg0MzcyLDY4Mz
 k2Mjk0OV19
 -->
