@@ -16,10 +16,12 @@ Clicked on the top-right panel to access `security cridentials`
 
 Under the `access key` tab, create new access key and secret. Store the key and secret into somewhere private and secure.
 ![enter image description here](http://127.0.0.1/assets/lab1-3.png)
+
 ## Set up recent Linux OSes
 
 I am running a windows machine, I decided to go with `ubuntus on windows` because it offers an isolated environment and separated file directory, which sets ease with file management.
 ![enter image description here](http://127.0.0.1/assets/lab1-4.png)
+
 ## Install Linux packages
 ### [1] Install Python 3.10.x
 Because my ubuntu version is already `22.04`, I will get the lastest python version which is `3.10.12`.
@@ -31,90 +33,41 @@ sudo apt -y upgrade
 ![enter image description here](http://127.0.0.1/assets/lab1-5.png)
 To check the latest version of python:
 `python3 -V`
-
+![enter image description here](http://127.0.0.1/assets/lab1-6.png)
 To install pip3:
-
-  
-
 `sudo apt install -y python3-pip`
-
-  
-
-http://127.0.0.1/assets/lab1-7.png
-
-  
+![enter image description here](http://127.0.0.1/assets/lab1-7.png)
 
 ### [2] Install awscli
-
 To install AWS CLI and upgrade to latest version:
-
 `pip3 install awscli --upgrade`
-
-http://127.0.0.1/assets/lab1-8.png
-
-  
-  
+![enter image description here](http://127.0.0.1/assets/lab1-8.png)
 
 ### [3] Configure AWS
-
 To configure and connect to Amazon EC2:
-
 `aws configure`
-
-  
-
-http://127.0.0.1/assets/lab1-9.png
-
-  
-  
+![enter image description here](http://127.0.0.1/assets/lab1-9.png)
 
 ### [4] Install boto3
-
 I find this step redundant as `botocore` is already inluded in AWS Cli package, but just for the spirit:
-
 `pip3 install boto3`
-
-  
-
-http://127.0.0.1/assets/lab1-10.png
-
-  
+![enter image description here](http://127.0.0.1/assets/lab1-10.png)
 
 ## Test the installed environment
-
-  
-
 ### [1] Test the AWS environment
-
 To confirm that we are connected to the `AWS environment`, run a simple command which prints out the region table.
-
 `aws ec2 describe-regions --output table`
-
-  
-
-http://127.0.0.1/assets/lab1-11.png
-
-  
+![enter image description here](http://127.0.0.1/assets/lab1-11.png)
 
 ### [2] Test the Python environment
-
 We executed a command offered by AWS-Cli in the terminal, now we want to test on the python environment to achive a similar goal:
-
 ```
-
 python3
-
 >>> import boto3
-
 >>> ec2 = boto3.client('ec2')
-
 >>> response = ec2.describe_regions()
-
 >>> print(response)
-
 ```
-
-  
 
 ### [3] Write a Python script
 
@@ -248,5 +201,5 @@ After the script is executed, results are printed in a table structure:
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc0MDMwNDI3OCwtMjA4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
