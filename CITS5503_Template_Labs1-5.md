@@ -36,7 +36,10 @@ To update apt:
 To check the latest version of python:
 
     python3 -v
-    
+ 
+ To install pip3
+
+     sudo apt install -y python3-pip
 
 ### [2] Install awscli</h3>
 <p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
@@ -69,5 +72,5 @@ To check the latest version of python:
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4MzY5Mjg5M119
+eyJoaXN0b3J5IjpbMTU3OTYyODcxM119
 -->
