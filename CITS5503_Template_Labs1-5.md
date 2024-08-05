@@ -63,25 +63,16 @@ To confirm that we are connected to the AWS environment, run a simple command wh
   ![enter image description here](http://127.0.0.1/assets/lab1-11.png)
 
 <h3 id="test-the-python-environment">[2] Test the Python environment</h3>
-We executed a command in the terminal offered by AWS-Cli, what if we want to run a python script to achive 
-```
+We executed a command offered by AWS-Cli in the terminal, now we want to test on the python environment to achive a similar goal:
 
-python3
-
->>> import boto3
-
->>> ec2 = boto3.client('ec2')
-
->>> response = ec2.describe_regions()
-
->>> print(response)
-
-```
+    python3
+    >>> import boto3
+    >>> ec2 = boto3.client('ec2')
+    >>> response = ec2.describe_regions()
+    >>> print(response)
 
 <h3 id="write-a-python-script">[3] Write a Python script</h3>
-<p>
-</p>
-<div></div>
+Now we create a python script to wrap these commands in 
 <h1 id="lab-2">Lab 2</h1>
 <div></div>
 <h1 id="lab-3">Lab 3</h1>
@@ -92,5 +83,5 @@ python3
 <h1 id="lab-2">Lab 2</h1>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk2MTYxNDU5NV19
+eyJoaXN0b3J5IjpbLTE3MjM5NTkxODZdfQ==
 -->
