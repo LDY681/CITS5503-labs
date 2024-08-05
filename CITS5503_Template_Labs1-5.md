@@ -14,10 +14,9 @@
 ### [1] Log into an IAM user account created for you on AWS.
 
 After receiving the email with original login cridentials, I logged-in and reseted my password accordingly.
+![enter image description here](http://127.0.0.1/assets/lab1-1.png)
 
 
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
 
 ### [2] Search and open Identity Access Management
 
@@ -76,5 +75,5 @@ After receiving the email with original login cridentials, I logged-in and reset
 # Lab 5
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjgzOTYyOTQ5XX0=
+eyJoaXN0b3J5IjpbLTk3NDg4NDM3Miw2ODM5NjI5NDldfQ==
 -->
