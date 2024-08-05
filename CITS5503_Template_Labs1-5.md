@@ -27,7 +27,6 @@ I am running a windows machine, I decided to go with `ubuntus on windows` becaus
 ## Install Linux packages
 
 ### [1] Install Python 3.8.x
-
 To update apt:
 
     sudo apt update
@@ -36,10 +35,12 @@ To update apt:
 To check the latest version of python:
 
     python3 -v
- 
- To install pip3
 
-     sudo apt install -y python3-pip
+ 
+To install pip3
+
+    sudo apt install -y python3-pip
+   
 
 ### [2] Install awscli</h3>
 <p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
@@ -72,5 +73,5 @@ To check the latest version of python:
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3OTYyODcxM119
+eyJoaXN0b3J5IjpbMTg0NDAyNDM1NV19
 -->
