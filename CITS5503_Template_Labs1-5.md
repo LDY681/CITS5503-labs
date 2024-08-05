@@ -11,7 +11,7 @@
 <h3 id="search-and-open-identity-access-management">[2] Search and open Identity Access Management</h3>
 <p>Clicked on the top-right panel to access <code>security cridentials</code><br>
 <img src="http://127.0.0.1/assets/lab1-2.png" alt="enter image description here"></p>
-<p>Under the <code>`access key</code> tab, create new access key and secret. The region to be selected is <code>eu-north-1</code>` because my student number falls into this region selection.<br>
+<p>Under the <code>access key</code> tab, create new access key and secret. Store the key and secret into somewhere private and secure.<br>
 <img src="http://127.0.0.1/assets/lab1-3.png" alt="enter image description here"></p>
 <h2 id="set-up-recent-linux-oses">Set up recent Linux OSes</h2>
 <p>
@@ -54,7 +54,7 @@ To configure and connect to Amazon EC2
 
     aws configure
    
-  Here we type in the
+  In the prompt, input the `access key and secret key` we generatedThe region to be selected is <code>eu-north-1</code> because my student number falls into this region selection
   ![enter image description here](http://127.0.0.1/assets/lab1-9.png)
 
 <h3 id="install-boto3">[4] Install boto3</h3>
@@ -84,5 +84,5 @@ To configure and connect to Amazon EC2
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzc0OTY4NTQ1XX0=
+eyJoaXN0b3J5IjpbLTE2NjcwNDQ3MzZdfQ==
 -->
