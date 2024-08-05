@@ -28,15 +28,15 @@ I am running a windows machine, I decided to go with `ubuntus on windows` becaus
 
 ### [1] Install Python 3.8.x
 
-sudo apt update
+To update apt:
 
-sudo apt -y upgrade
+    sudo apt update
+    sudo apt -y upgrade
 
-```
-To check the latest version:
-```
+To check the latest version of python:
 
-python3 -V
+    python3 -v
+    
 
 ### [2] Install awscli</h3>
 <p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
@@ -69,5 +69,5 @@ python3 -V
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ1NjY4ODQ5XX0=
+eyJoaXN0b3J5IjpbMTc4MzY5Mjg5M119
 -->
