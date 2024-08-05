@@ -97,7 +97,7 @@ print(regions_df)
 run the following code to execute the python script:
 `python3 lab1.py`
 
-## [4] get the results
+#### [4] get the results
 After the script is executed, results are printed in a table structure:
 | --- | Endpoint | RegionName | OptInStatus |
 | --- | --- | --- | --- |
@@ -149,6 +149,6 @@ After the script is executed, results are printed in a table structure:
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzAxOTEwNTQsLTkxMTY0MDYyMCwtMjA4OD
-c0NjYxMl19
+eyJoaXN0b3J5IjpbMTQzNjM4NDM2NiwtOTExNjQwNjIwLC0yMD
+g4NzQ2NjEyXX0=
 -->
