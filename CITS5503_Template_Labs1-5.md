@@ -20,8 +20,14 @@ After receiving the email with original login cridentials, I logged-in and reset
 
 ### [2] Search and open Identity Access Management
 
-[Refer to the marking rubrics for sufficient step-by-step description.]
+Clicked on the top-right panel to access security cridentials
+![enter image description here](http://127.0.0.1/assets/lab1-2.png)
 
+Under the 
+
+access key
+
+ tab
 ## Set up recent Linux OSes
 
 [Refer to the marking rubrics for sufficient step-by-step description.]
@@ -75,5 +81,6 @@ After receiving the email with original login cridentials, I logged-in and reset
 # Lab 5
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3NDg4NDM3Miw2ODM5NjI5NDldfQ==
+eyJoaXN0b3J5IjpbMTM0NzcyMDY4OSwtOTc0ODg0MzcyLDY4Mz
+k2Mjk0OV19
 -->
