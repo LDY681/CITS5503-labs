@@ -50,33 +50,37 @@ The region to be selected is <code>eu-north-1</code> because my student number f
 I find this step redundant as <code>botocore</code> is already inluded in AWS Cli package, but just for the spirit:
 <pre><code>pip3 install boto3
 </code></pre>
-<p><img src="http://127.0.0.1/assets/lab1-10.png" alt="enter image description here"></p>
+<p><img src="http://127.0.0.1/assets/lab1-10.png" alt="enter image description here"></p>)
+
 <h2 id="test-the-installed-environment">Test the installed environment</h2>
 <h3 id="test-the-aws-environment">[1] Test the AWS environment</h3>
 To confirm that we are connected to the <code>AWS environment</code>, run a simple command which prints out the region table.
 <pre><code>aws ec2 describe-regions --output table
 </code></pre>
-<p><img src="http://127.0.0.1/assets/lab1-11.png" alt="enter image description here"></p>
+<p><img src="http://127.0.0.1/assets/lab1-11.png" alt="enter image description here"
 <h3 id="test-the-python-environment">[2] Test the Python environment</h3>
-We executed a command offered by AWS-Cli in the terminal, now we want to test on the python environment to achive a similar goal:
+We executed a command offered by AWS-Cli in the terminal, now we want to test on  pythoineto achive a similar goal:
 <pre><code>python3
 &gt;&gt;&gt; import boto3
 &gt;&gt;&gt; ec2 = boto3.client('ec2')
-&gt;&gt;&gt; response = ec2.describe_regions()
+&gt;&gt;&gt;    >>> response = ec2.describe_regions()
 &gt;&gt;&gt; print(response)
 </code></pre>
 <h3 id="write-a-python-script">[3] Write a Python script</h3>
 Now we create a python script to wrap these lines in one file and also format the reponse into table structure.
 The python script is located in <code>~\cits5503\lab1</code> in my Ubuntu machine.
-<p>Run the following code to land in the right lab directory<br>
+<p>
+Run the following code to land in the right lab directory<br>
 <code>cd ./cits5503/lab1</code></p>
 <h4 id="install-dependencies">(1) install dependencies</h4>
-<p>The pandas library is used here to convert un-tabulated data into structured table.<br>
+<p>
+The pandas library is used here to convert un-tabulated data into structured table.<br>
 Run the following code to install the extra dependency<br>
 <code>pip install pandas</code></p>
 <h4 id="explain-the-code">(2) explain the code</h4>
 <p>The code in the script adds an extra step, the reponse data is sent as a parameter into pandas dataframe and then gets printed.</p>
-<pre><code>import boto3 as bt
+<pre><code>
+import boto3 as bt
 import pandas as pd
 
 ec2 = bt.client('ec2')
@@ -85,30 +89,58 @@ regions = response['Regions']
 regions_df = pd.DataFrame(regions)
 print(regions_df)
 </code></pre>
-<h4 id="run-the-script">(3) run the script</h4>
-<p>run the following code to execute the python script:<br>
+<h4 id="run-the-scriptrun the script</h4>
+<p>
+run the following code to execute the python script:<br>
 <code>python3 lab1.py</code></p>
-<h4 id="get-the-results">[4] get the results</h4>
-<p>After the script is executed, results are printed in a table structure</p>
-<p>| — | Endpoint | RegionName | OptInStatus |</p>
+<h4 id="get-the-results">[4] get the results</h4>After the script is executed, results are printed in a table structure</p | Endpoint | RegionName | OptInStatus |</p>
 <p>| — | — | — | — |</p>
-<p>0| ec2.ap-south-1.amazonaws.com| ap-south-1| opt-in-not-required</p>
-<p>1| ec2.eu-north-1.amazonaws.com| eu-north-1| opt-in-not-required</p>
-<p>2| ec2.eu-west-3.amazonaws.com| eu-west-3| opt-in-not-required</p>
-<p>3| ec2.eu-west-2.amazonaws.com| eu-west-2| opt-in-not-required</p>
-<p>4| ec2.eu-west-1.amazonaws.com| eu-west-1| opt-in-not-required</p>
-<p>5| ec2.ap-northeast-3.amazonaws.com| ap-northeast-3| opt-in-not-required</p>
-<p>6| ec2.ap-northeast-2.amazonaws.com| ap-northeast-2| opt-in-not-required</p>
-<p>7| ec2.ap-northeast-1.amazonaws.com| ap-northeast-1| opt-in-not-required</p>
-<p>8| ec2.ca-central-1.amazonaws.com| ca-central-1| opt-in-not-required</p>
-<p>9| ec2.sa-east-1.amazonaws.com| sa-east-1| opt-in-not-required</p>
-<p>10| ec2.ap-southeast-1.amazonaws.com| ap-southeast-1| opt-in-not-required</p>
-<p>11| ec2.ap-southeast-2.amazonaws.com| ap-southeast-2| opt-in-not-required</p>
-<p>12| ec2.eu-central-1.amazonaws.com| eu-central-1| opt-in-not-required</p>
-<p>13| ec2.us-east-1.amazonaws.com| us-east-1| opt-in-not-required</p>
-<p>14| ec2.us-east-2.amazonaws.com| us-east-2| opt-in-not-required</p>
-<p>15| ec2.us-west-1.amazonaws.com| us-west-1| opt-in-not-required</p>
-<p>16| ec2.us-west-2.amazonaws.com| us-west-2| opt-in-not-required</p>
+<p>0| ec2.ap-south-1.amazonaws.com| ap-south-1| opt-in-not-required1| ec2.eu-north-1.amazonaws.com| eu-north-1| opt-in-not-required</p>
+<p>
+
+2| ec2.eu-west-3.amazonaws.com| eu-west-3| opt-in-not-required</p>
+<p>
+
+3| ec2.eu-west-2.amazonaws.com| eu-west-2| opt-in-not-required</p>
+<p>
+
+4| ec2.eu-west-1.amazonaws.com| eu-west-1| opt-in-not-required</p>
+<p>
+
+5| ec2.ap-northeast-3.amazonaws.com| ap-northeast-3| opt-in-not-required</p>
+<p>
+
+6| ec2.ap-northeast-2.amazonaws.com| ap-northeast-2| opt-in-not-required</p>
+<p>
+
+7| ec2.ap-northeast-1.amazonaws.com| ap-northeast-1| opt-in-not-required</p>
+<p>
+
+8| ec2.ca-central-1.amazonaws.com| ca-central-1| opt-in-not-required</p>
+<p>
+
+9| ec2.sa-east-1.amazonaws.com| sa-east-1| opt-in-not-required</p>
+<p>
+
+10| ec2.ap-southeast-1.amazonaws.com| ap-southeast-1| opt-in-not-required</p>
+<p>
+
+11| ec2.ap-southeast-2.amazonaws.com| ap-southeast-2| opt-in-not-required</p>
+<p>
+
+12| ec2.eu-central-1.amazonaws.com| eu-central-1| opt-in-not-required</p>
+<p>
+
+13| ec2.us-east-1.amazonaws.com| us-east-1| opt-in-not-required</p>
+<p>
+
+14| ec2.us-east-2.amazonaws.com| us-east-2| opt-in-not-required</p>
+<p>
+
+15| ec2.us-west-1.amazonaws.com| us-west-1| opt-in-not-required</p>
+<p>
+
+16| ec2.us-west-2.amazonaws.com| us-west-2| opt-in-not-required</p>
 <h1 id="lab-2">Lab 2</h1>
 <div></div>
 <h1 id="lab-3">Lab 3</h1>
@@ -118,3 +150,6 @@ print(regions_df)
 <h1 id="lab-5">Lab 5</h1> style="page-break-after: always;"&gt;
 <h1 id="lab-2">Lab 2</h1>
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTk5NjQ2NzYzOF19
+-->
