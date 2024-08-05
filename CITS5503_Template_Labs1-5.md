@@ -27,12 +27,14 @@ I am running a windows machine, I decided to go with `ubuntus on windows` becaus
 ## Install Linux packages
 
 ### [1] Install Python 3.10.x
-Because I am running 
+Because my ubuntu version is already `22.04`, I will get the lastest python version which is `3.10.12`.
+
 To update apt to latest version:
 
     sudo apt update
     sudo apt -y upgrade
 ![enter image description here](http://127.0.0.1/assets/lab1-5.png)
+
 To check the latest version of python:
 
     python3 -v
@@ -74,5 +76,5 @@ To install pip3
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyMzY4MzUwNF19
+eyJoaXN0b3J5IjpbLTEwNDIyMjM5MTVdfQ==
 -->
