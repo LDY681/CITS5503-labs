@@ -1,7 +1,5 @@
 <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
-
   <h2>Labs 1-5</h2>
-  
   <p>Student ID: 24188515</p>
   <p>Student Name: Dayu Liu</p>
 
@@ -97,20 +95,15 @@ Run the following code to install the extra dependency
 
 #### (2) explain the code
 The code in the script adds an extra step, the reponse data is sent as a parameter into pandas dataframe and then gets printed.
+
 ```
 import boto3 as bt
 import pandas as pd
 
-  
-
 ec2 = bt.client('ec2')
-
 response = ec2.describe_regions()
-
 regions = response['Regions']
-
 regions_df = pd.DataFrame(regions)
-
 print(regions_df)
 ```
 #### (3) run the script
@@ -121,9 +114,7 @@ run the following code to execute the python script:
 
 ## [4] get the results
 
-After the script is executed, results are printed in a table structure
-
-  
+After the script is executed, results are printed in a table structure:
 
 | --- | Endpoint | RegionName | OptInStatus |
 | --- | --- | --- | --- |
@@ -144,8 +135,6 @@ After the script is executed, results are printed in a table structure
 14| ec2.us-east-2.amazonaws.com| us-east-2| opt-in-not-required
 15| ec2.us-west-1.amazonaws.com| us-west-1| opt-in-not-required
 16| ec2.us-west-2.amazonaws.com| us-west-2| opt-in-not-required
-
-
 
 <div style="page-break-after: always;"></div>
 
