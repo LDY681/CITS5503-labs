@@ -125,7 +125,7 @@ After the script is executed, results are printed in a table structure:
 
 ## Create an EC2 instance using awscli
 ### [1] Create a security group
-
+We create a security group with the name same as my student number 24188516, --group-name specifies the group name and --description adds a description.
 ```
 aws ec2 create-security-group --group-name <student number>-sg --description "security group for development environment"
 ```
@@ -294,6 +294,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjA2MTIyODg2NywxNDM2Mzg0MzY2LC05MT
-E2NDA2MjAsLTIwODg3NDY2MTJdfQ==
+eyJoaXN0b3J5IjpbLTIwNTQ5NjIwMjEsMTQzNjM4NDM2NiwtOT
+ExNjQwNjIwLC0yMDg4NzQ2NjEyXX0=
 -->
