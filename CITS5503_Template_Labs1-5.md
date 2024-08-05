@@ -68,108 +68,56 @@ python3
 >>> response = ec2.describe_regions()
 >>> print(response)
 ```
+![enter image description here](http://127.0.0.1/assets/lab1-12.png)
 
 ### [3] Write a Python script
-
 Now we create a python script to wrap these lines in one file and also format the reponse into table structure.
-
 The python script is located in `~\cits5503\lab1` in my Ubuntu machine.
 
-  
-
 #### (1) install dependencies
-
 The pandas library is used here to convert un-tabulated data into structured table.
-
 Run the following code to install the extra dependency
-
 `pip install pandas`
 
-  
-
 #### (2) explain the code
-
 The code in the script adds an extra step, the reponse data is sent as a parameter into pandas dataframe and then gets printed.
-
-  
-
 ```
-
 import boto3 as bt
-
 import pandas as pd
 
-  
-
 ec2 = bt.client('ec2')
-
 response = ec2.describe_regions()
-
 regions = response['Regions']
-
 regions_df = pd.DataFrame(regions)
-
 print(regions_df)
-
 ```
 
 #### (3) run the script
 
 run the following code to execute the python script:
-
 `python3 lab1.py`
 
-  
-
-  
-
 ## [4] get the results
-
-  
-
 After the script is executed, results are printed in a table structure:
-
-  
-
 | --- | Endpoint | RegionName | OptInStatus |
-
 | --- | --- | --- | --- |
-
 0| ec2.ap-south-1.amazonaws.com| ap-south-1| opt-in-not-required
-
 1| ec2.eu-north-1.amazonaws.com| eu-north-1| opt-in-not-required
-
 2| ec2.eu-west-3.amazonaws.com| eu-west-3| opt-in-not-required
-
 3| ec2.eu-west-2.amazonaws.com| eu-west-2| opt-in-not-required
-
 4| ec2.eu-west-1.amazonaws.com| eu-west-1| opt-in-not-required
-
 5| ec2.ap-northeast-3.amazonaws.com| ap-northeast-3| opt-in-not-required
-
 6| ec2.ap-northeast-2.amazonaws.com| ap-northeast-2| opt-in-not-required
-
 7| ec2.ap-northeast-1.amazonaws.com| ap-northeast-1| opt-in-not-required
-
 8| ec2.ca-central-1.amazonaws.com| ca-central-1| opt-in-not-required
-
 9| ec2.sa-east-1.amazonaws.com| sa-east-1| opt-in-not-required
-
 10| ec2.ap-southeast-1.amazonaws.com| ap-southeast-1| opt-in-not-required
-
 11| ec2.ap-southeast-2.amazonaws.com| ap-southeast-2| opt-in-not-required
-
 12| ec2.eu-central-1.amazonaws.com| eu-central-1| opt-in-not-required
-
 13| ec2.us-east-1.amazonaws.com| us-east-1| opt-in-not-required
-
 14| ec2.us-east-2.amazonaws.com| us-east-2| opt-in-not-required
-
 15| ec2.us-west-1.amazonaws.com| us-west-1| opt-in-not-required
-
 16| ec2.us-west-2.amazonaws.com| us-west-2| opt-in-not-required
-
-  
 
 <div  style="page-break-after: always;"></div>
 
@@ -201,5 +149,6 @@ After the script is executed, results are printed in a table structure:
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbMzAxOTEwNTQsLTkxMTY0MDYyMCwtMjA4OD
+c0NjYxMl19
 -->
