@@ -176,9 +176,11 @@ describe-instances returns available information to the instance with `--instanc
 aws ec2 describe-instances --instance-ids i-0553e2ea0492e1c73 --query 'Reservations[0].Instances[0].PublicIpAddress'
 ```
 ![enter image description here](http://127.0.0.1/assets/lab2-7.png)
+
 ### [7] Connect to the instance via ssh
+Use the stored pem key to connect to the public IP `16.171.151.20` of the instance via SSH
 ```
-ssh -i <student number>-key.pem ubuntu@<IP Address from above>
+ssh -i 24188516-key.pem ubuntu@16.171.151.20
 ```
 
 ### [8] List the created instance using the AWS console
@@ -285,6 +287,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzEzNzU0MjcyLDU2MDg1OTQxNiwxNDM2Mz
-g0MzY2LC05MTE2NDA2MjAsLTIwODg3NDY2MTJdfQ==
+eyJoaXN0b3J5IjpbMTk4NjM4MjI3OSw1NjA4NTk0MTYsMTQzNj
+M4NDM2NiwtOTExNjQwNjIwLC0yMDg4NzQ2NjEyXX0=
 -->
