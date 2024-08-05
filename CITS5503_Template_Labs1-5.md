@@ -138,9 +138,10 @@ aws ec2 authorize-security-group-ingress --group-name 24188516-sg --protocol tcp
 ```
 ![enter image description here](http://127.0.0.1/assets/lab2-2.png)
 
-The response will return the newly 
-### [3] Create a key pair
+The response will return the newly created rule along with specific rulesets.
 
+### [3] Create a key pair
+Now we need to create a `private key and public key pair for encrypted connection.
 ```
 aws ec2 create-key-pair --key-name <student number>-key --query 'KeyMaterial' --output text > <student number>-key.pem
 ```
@@ -295,6 +296,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzU2MzM5ODkwLDE0MzYzODQzNjYsLTkxMT
-Y0MDYyMCwtMjA4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbMTc1NDE0MjYzNCwxNDM2Mzg0MzY2LC05MT
+E2NDA2MjAsLTIwODg3NDY2MTJdfQ==
 -->
