@@ -54,8 +54,10 @@ To configure and connect to Amazon EC2
 
     aws configure
    
-  In the prompt, input the `access key and secret key` we generatedThe region to be selected is <code>eu-north-1</code> because my student number falls into this region selection
-  ![enter image description here](http://127.0.0.1/assets/lab1-9.png)
+  In the prompt, input the `access key and secret key` we generated.
+  The region to be selected is <code>eu-north-1</code> because my student number falls into this region range.
+
+![enter image description here](http://127.0.0.1/assets/lab1-9.png)
 
 <h3 id="install-boto3">[4] Install boto3</h3>
 <p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
@@ -84,5 +86,5 @@ To configure and connect to Amazon EC2
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjcwNDQ3MzZdfQ==
+eyJoaXN0b3J5IjpbLTQ0MTgyNzY3M119
 -->
