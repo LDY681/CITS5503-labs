@@ -42,14 +42,15 @@ To install pip3
   ![enter image description here](http://127.0.0.1/assets/lab1-7.png)
 
 ### [2] Install awscli</h3>
-Install AWS CLI and upgrade to latest version
+To install AWS CLI and upgrade to latest version
 
     sudo apt install awscli
     pip3 install awscli --upgrade
 
+![enter image description here](http://127.0.0.1/assets/lab1-8.png)
 
 <h3 id="configure-aws">[3] Configure AWS</h3>
-<p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
+To o
 <h3 id="install-boto3">[4] Install boto3</h3>
 <p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
 <h2 id="test-the-installed-environment">Test the installed environment</h2>
@@ -77,5 +78,5 @@ Install AWS CLI and upgrade to latest version
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzAxNjkyMDVdfQ==
+eyJoaXN0b3J5IjpbLTE0MDcyMzc5NjNdfQ==
 -->
