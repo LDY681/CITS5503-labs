@@ -165,11 +165,10 @@ For some reason, at the moment I was working on the lab, t2.micro container is n
 ![enter image description here](http://127.0.0.1/assets/lab2-5.png)
 
 ### [5] Add a tag to your Instance
-
+Now we have the instance id `i-0553e2ea0492e1c73`, add a tag that specifies the name, the value should be my student number with -vm `24188516-vm` for using single instance.
  ```
-  aws ec2 create-tags --resources i-0553e2ea0492e1c73 --tags Key=Name,Value=24188516
+  aws ec2 create-tags --resources i-0553e2ea0492e1c73 --tags Key=Name,Value=24188516-vm
  ```
-**NOTE**: If you need to create a single instance, follow the naming format of `<student number>-vm` (e.g., 24242424-vm). If you need to create multiple ones, follow the naming format of `<student number>-vm1` and `<student number>-vm2` (e.g., 24242424-vm1, 24242424-vm2).
 
 ### [6] Get the public IP address
 
@@ -286,6 +285,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjY0MDExNDM5LDU2MDg1OTQxNiwxNDM2Mz
-g0MzY2LC05MTE2NDA2MjAsLTIwODg3NDY2MTJdfQ==
+eyJoaXN0b3J5IjpbMTE3NzgzNzA5Nyw1NjA4NTk0MTYsMTQzNj
+M4NDM2NiwtOTExNjQwNjIwLC0yMDg4NzQ2NjEyXX0=
 -->
