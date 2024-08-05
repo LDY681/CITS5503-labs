@@ -60,7 +60,12 @@ To configure and connect to Amazon EC2
 ![enter image description here](http://127.0.0.1/assets/lab1-9.png)
 
 <h3 id="install-boto3">[4] Install boto3</h3>
-<p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
+I find this step redundant as `botocore` is inluded in AWS Cli package, but just to make sure:
+
+    pip3 install boto3
+   
+ ![enter image description here](http://127.0.0.1/assets/lab1-10.png)
+
 <h2 id="test-the-installed-environment">Test the installed environment</h2>
 <h3 id="test-the-aws-environment">[1] Test the AWS environment</h3>
 <p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
@@ -86,5 +91,5 @@ To configure and connect to Amazon EC2
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0MTgyNzY3M119
+eyJoaXN0b3J5IjpbODUwNTgzNTc3XX0=
 -->
