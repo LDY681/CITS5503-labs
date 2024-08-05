@@ -38,7 +38,7 @@ sudo apt -y upgrade
 <pre><code>sudo apt install awscli
 pip3 install awscli --upgrade
 </code></pre>
-<p><img src="http://127.0.0.1/assets/lab1-8.png" alt="enter image description here"></p>)
+<p><img src="http://127.0.0.1/assets/lab1-8.png" alt="enter image description here"></p>
 
 <h3 id="configure-aws">[3] Configure AWS</h3>
 To configure and connect to Amazon EC2
@@ -60,11 +60,11 @@ To confirm that we are connected to the AWS environment, run a simple command wh
 
     aws ec2 describe-regions --output table
   
-  
+  ![enter image description here](http://127.0.0.1/assets/lab1-11.png)
 
 <h3 id="test-the-python-environment">[2] Test the Python environment</h3>
-<p>
-</p>f toth an brcs r uicet stte sripin
+
+
 <h3 id="write-a-python-script">[3] Write a Python script</h3>
 <p>
 </p>
@@ -79,5 +79,5 @@ To confirm that we are connected to the AWS environment, run a simple command wh
 <h1 id="lab-2">Lab 2</h1>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1OTkzODI4MF19
+eyJoaXN0b3J5IjpbLTMyODMyMTI1NF19
 -->
