@@ -155,7 +155,7 @@ This grants the owner of the file read permission, the output is as follow:
 ![enter image description here](http://127.0.0.1/assets/lab2-4.png)
 
 ### [4] Create the instance 
-Because my student number is `24188516`, create an ec2 instance in `eu-north-1` region. `--image-id` specifies ami id, `--instance-type` is set to t2.micro, and we are using the private key `24188516-key`
+Because my student number is `24188516`, create an ec2 instance in `eu-north-1` region. `--image-id` specifies ami id with preset configurations, `--instance-type` is set to t2.micro, and we are using the private key `24188516-key`
 ```
  aws ec2 run-instances --image-id <ami id> --security-group-ids <student number>-sg --count 1 --instance-type t2.micro --key-name <student number>-key --query 'Instances[0].InstanceId'
  ```
@@ -282,6 +282,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU4MzMxNTczMywxNDM2Mzg0MzY2LC05MT
+eyJoaXN0b3J5IjpbLTEyMDEyNTc2OSwxNDM2Mzg0MzY2LC05MT
 E2NDA2MjAsLTIwODg3NDY2MTJdfQ==
 -->
