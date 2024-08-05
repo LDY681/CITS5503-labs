@@ -72,7 +72,76 @@ We executed a command offered by AWS-Cli in the terminal, now we want to test on
     >>> print(response)
 
 <h3 id="write-a-python-script">[3] Write a Python script</h3>
-Now we create a python script to wrap these commands in 
+Now we create a python script to wrap these lines in one file and also format the reponse into table structure.
+The python script is located in ~\cits5503\lab1 in the Ubuntu environment
+
+Run the following code to land in the right lab directory
+`cd ./cits5503/lab1`
+
+  
+
+## [2] install dependencies
+
+The pandas library is used here to convert un-tabulated data into structured table
+
+run the following code to install the extra dependency
+
+`pip install pandas`
+
+  
+
+## [3] run the script
+
+run the following code to execute the python script
+
+`python3 lab1.py`
+
+  
+
+## [4] get the results
+
+After the script is executed, results are printed in a table structure
+
+  
+
+| --- | Endpoint | RegionName | OptInStatus |
+
+| --- | --- | --- | --- |
+
+0| ec2.ap-south-1.amazonaws.com| ap-south-1| opt-in-not-required
+
+1| ec2.eu-north-1.amazonaws.com| eu-north-1| opt-in-not-required
+
+2| ec2.eu-west-3.amazonaws.com| eu-west-3| opt-in-not-required
+
+3| ec2.eu-west-2.amazonaws.com| eu-west-2| opt-in-not-required
+
+4| ec2.eu-west-1.amazonaws.com| eu-west-1| opt-in-not-required
+
+5| ec2.ap-northeast-3.amazonaws.com| ap-northeast-3| opt-in-not-required
+
+6| ec2.ap-northeast-2.amazonaws.com| ap-northeast-2| opt-in-not-required
+
+7| ec2.ap-northeast-1.amazonaws.com| ap-northeast-1| opt-in-not-required
+
+8| ec2.ca-central-1.amazonaws.com| ca-central-1| opt-in-not-required
+
+9| ec2.sa-east-1.amazonaws.com| sa-east-1| opt-in-not-required
+
+10| ec2.ap-southeast-1.amazonaws.com| ap-southeast-1| opt-in-not-required
+
+11| ec2.ap-southeast-2.amazonaws.com| ap-southeast-2| opt-in-not-required
+
+12| ec2.eu-central-1.amazonaws.com| eu-central-1| opt-in-not-required
+
+13| ec2.us-east-1.amazonaws.com| us-east-1| opt-in-not-required
+
+14| ec2.us-east-2.amazonaws.com| us-east-2| opt-in-not-required
+
+15| ec2.us-west-1.amazonaws.com| us-west-1| opt-in-not-required
+
+16| ec2.us-west-2.amazonaws.com| us-west-2| opt-in-not-required
+
 <h1 id="lab-2">Lab 2</h1>
 <div></div>
 <h1 id="lab-3">Lab 3</h1>
@@ -83,5 +152,5 @@ Now we create a python script to wrap these commands in
 <h1 id="lab-2">Lab 2</h1>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3MjM5NTkxODZdfQ==
+eyJoaXN0b3J5IjpbLTg3ODY0Mjg1OF19
 -->
