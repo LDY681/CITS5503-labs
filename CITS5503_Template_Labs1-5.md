@@ -129,7 +129,8 @@ Create a security group with the name of my student number `24188516-sg`, `--gro
 ```
 aws ec2 create-security-group --group-name <student number>-sg --description "security group for development environment"
 ```
-
+![enter image description here](http://127.0.0.1/assets/lab2-1.png)
+The response will return the GroupId being created.
 ### [2] Authorise inbound traffic for ssh
 
 ```
@@ -292,6 +293,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2NjMzMzQ0MywxNDM2Mzg0MzY2LC05MT
+eyJoaXN0b3J5IjpbLTM1NTgxMDc1NCwxNDM2Mzg0MzY2LC05MT
 E2NDA2MjAsLTIwODg3NDY2MTJdfQ==
 -->
