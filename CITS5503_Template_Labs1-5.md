@@ -18,11 +18,8 @@
 
 I am running a windows machine, I decided to go with `ubuntus on windows` because it offers an isolated environment and separated file directory, which sets ease with file management.<br>
 <img src="
-![enter image descriptihttp://127.0.0.1/assets/lab1-4.png" alt="enter image description here"></p>
-<h2 id="install-linux-packages">Install Linux packages</h2>
-<h3 id="install-python-3.8.x">[1] Install Python 3.8.x</h3>
-<p>[Refer to the marking rubrics for sufficient step-by-step description.]</p>
-<h3 id="install-awscli">)
+![enter image description]http://127.0.0.1/assets/lab1-4.png" alt="enter image description here"></p>
+
 
 ## Install Linux packages
 
@@ -77,5 +74,5 @@ To install pip3
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjc3MjU0NDhdfQ==
+eyJoaXN0b3J5IjpbMjA4OTU5ODI5Nl19
 -->
