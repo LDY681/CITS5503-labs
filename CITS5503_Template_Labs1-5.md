@@ -132,9 +132,9 @@ aws ec2 create-security-group --group-name <student number>-sg --description "se
 ![enter image description here](http://127.0.0.1/assets/lab2-1.png)
 The response will return the GroupId being created.
 ### [2] Authorise inbound traffic for ssh
-
+Add tcp permission to this security group, `--protocol` specifies which internet protocol, `--port` specifies which port used for connection and 
 ```
-aws ec2 authorize-security-group-ingress --group-name <student number>-sg --protocol tcp --port 22 --cidr 0.0.0.0/0
+aws ec2 authorize-security-group-ingress --group-name 24188516-sg --protocol tcp --port 22 --cidr 0.0.0.0/0
 ```
 
 ### [3] Create a key pair
@@ -293,6 +293,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1NTgxMDc1NCwxNDM2Mzg0MzY2LC05MT
+eyJoaXN0b3J5IjpbLTcwNDg0NTAwMiwxNDM2Mzg0MzY2LC05MT
 E2NDA2MjAsLTIwODg3NDY2MTJdfQ==
 -->
