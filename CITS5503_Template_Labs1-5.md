@@ -125,12 +125,10 @@ After the script is executed, results are printed in a table structure:
 
 ## Create an EC2 instance using awscli
 ### [1] Create a security group
-We create a security group with the name same as my student number 24188516, --group-name specifies the group name and --description adds a description.
+Create a security group with the name of my student number `24188516-sg`, `--group-name` specifies the group name and `--description` adds a description.
 ```
 aws ec2 create-security-group --group-name <student number>-sg --description "security group for development environment"
 ```
-
-This will use the default VPC (if you want to specify a VPC, use --vpc-id vpc-xxxxxxxx). Take a note of the security group id that is created. 
 
 ### [2] Authorise inbound traffic for ssh
 
@@ -294,6 +292,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTQ5NjIwMjEsMTQzNjM4NDM2NiwtOT
-ExNjQwNjIwLC0yMDg4NzQ2NjEyXX0=
+eyJoaXN0b3J5IjpbMTA2NjMzMzQ0MywxNDM2Mzg0MzY2LC05MT
+E2NDA2MjAsLTIwODg3NDY2MTJdfQ==
 -->
