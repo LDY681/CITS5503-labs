@@ -83,9 +83,16 @@ The pandas library is used here to convert un-tabulated data into structured tab
 Run the following code to install the extra dependency
 `pip install pandas`
 
-#### (2) explain the
-run the following code to execute the python script:
-`python3 lab1.py`
+#### (2) explain the code
+The code in the script adds an extra step, the reponse data is sent as a parameter into pandas dataframe and then gets p
+    import boto3 as bt
+    import pandas as pd
+    
+    ec2 = bt.client('ec2')
+    response = ec2.describe_regions()
+    regions = response['Regions']
+    regions_df = pd.DataFrame(regions)
+    print(regions_df)
 
 #### (2) run the script
 run the following code to execute the python script:
@@ -147,5 +154,5 @@ After the script is executed, results are printed in a table structure
 <h1 id="lab-2">Lab 2</h1>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI3MDI1MDcwNV19
+eyJoaXN0b3J5IjpbLTE1NTkxMTIzNzVdfQ==
 -->
