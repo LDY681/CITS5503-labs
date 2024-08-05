@@ -28,7 +28,8 @@ Under the `access key` tab, create new access key and secret. The region to be s
 
 ## Set up recent Linux OSes
 
-I am running a windows machine, I decided to go with ubuntus on windows because it offers isolated environment and separated 
+I am running a windows machine, I decided to go with ubuntus on windows because it offers an isolated environment and separated file directory, which sets ease with file management.
+![enter image description here](http://127.0.0.1/assets/lab1-4.png)
 
 ## Install Linux packages
 
@@ -79,6 +80,6 @@ I am running a windows machine, I decided to go with ubuntus on windows because 
 # Lab 5
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0NTI1MDg4MSwtOTc0ODg0MzcyLDY4Mz
+eyJoaXN0b3J5IjpbLTM3MDAyMDAyMSwtOTc0ODg0MzcyLDY4Mz
 k2Mjk0OV19
 -->
