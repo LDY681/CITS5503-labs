@@ -171,11 +171,11 @@ Now we have the instance id `i-0553e2ea0492e1c73`, add a tag that specifies the 
  ```
 
 ### [6] Get the public IP address
-
+describe-instances returns available information to the instance with `--instance-ids`, since we only want the IP address for ssh purpose, the query limits the output to only `Reservations[0].Instances[0].PublicIpAddress`
 ```
-aws ec2 describe-instances --instance-ids <Instance Id from above> --query 'Reservations[0].Instances[0].PublicIpAddress'
+aws ec2 describe-instances --instance-ids i-0553e2ea0492e1c73 --query 'Reservations[0].Instances[0].PublicIpAddress'
 ```
-
+![enter image description here](http://127.0.0.1/assets/lab2-7.png)
 ### [7] Connect to the instance via ssh
 ```
 ssh -i <student number>-key.pem ubuntu@<IP Address from above>
@@ -285,6 +285,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE3NzgzNzA5Nyw1NjA4NTk0MTYsMTQzNj
-M4NDM2NiwtOTExNjQwNjIwLC0yMDg4NzQ2NjEyXX0=
+eyJoaXN0b3J5IjpbMzEzNzU0MjcyLDU2MDg1OTQxNiwxNDM2Mz
+g0MzY2LC05MTE2NDA2MjAsLTIwODg3NDY2MTJdfQ==
 -->
