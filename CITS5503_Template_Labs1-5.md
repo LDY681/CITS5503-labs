@@ -127,7 +127,7 @@ After the script is executed, results are printed in a table structure:
 ### [1] Create a security group
 Create a security group with the name of my student number `24188516-sg`, `--group-name` specifies the group name and `--description` adds a description.
 ```
-aws ec2 create-security-group --group-name <student number>-sg --description "security group for development environment"
+aws ec2 create-security-group --group-name 24188516-sg --description "security group for development environment"
 ```
 ![enter image description here](http://127.0.0.1/assets/lab2-1.png)
 The response will return the GroupId being created.
@@ -141,9 +141,9 @@ aws ec2 authorize-security-group-ingress --group-name 24188516-sg --protocol tcp
 The response will return the newly created rule along with specific rulesets.
 
 ### [3] Create a key pair
-Now we need to create a `private key and public key pair for encrypted connection.
+Now we need to create a `private key` and `public key` pair for encrypted connection. The generated output is then s
 ```
-aws ec2 create-key-pair --key-name <student number>-key --query 'KeyMaterial' --output text > <student number>-key.pem
+aws ec2 create-key-pair --key-name 24188516-key --query 'KeyMaterial' --output text > 24188516-key.pem
 ```
 
 To use this key on Linux, copy the file to a directory ~/.ssh and change the permissions to:
@@ -296,6 +296,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1NDE0MjYzNCwxNDM2Mzg0MzY2LC05MT
+eyJoaXN0b3J5IjpbLTE0NjcwNTU1NiwxNDM2Mzg0MzY2LC05MT
 E2NDA2MjAsLTIwODg3NDY2MTJdfQ==
 -->
