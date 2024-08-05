@@ -294,6 +294,6 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjQ3ODg1NzcwLDE0MzYzODQzNjYsLTkxMT
-Y0MDYyMCwtMjA4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbMjA2MTIyODg2NywxNDM2Mzg0MzY2LC05MT
+E2NDA2MjAsLTIwODg3NDY2MTJdfQ==
 -->
