@@ -56,7 +56,7 @@ I find this step redundant as <code>botocore</code> is already inluded in AWS Cl
 
 <h2 id="test-the-installed-environment">Test the installed environment</h2>
 <h3 id="test-the-aws-environment">[1] Test the AWS environment</h3>
-To confirm that we are connected to the AWS environment, run a simple command which prints out the region table.
+To confirm that we are connected to the <code>AWS environment</code>, run a simple command which prints out the region table.
 
     aws ec2 describe-regions --output table
   
@@ -73,7 +73,7 @@ We executed a command offered by AWS-Cli in the terminal, now we want to test on
 
 <h3 id="write-a-python-script">[3] Write a Python script</h3>
 Now we create a python script to wrap these lines in one file and also format the reponse into table structure.
-The python script is located in ~\cits5503\lab1 in the Ubuntu environment
+The python script is located in <code>~\cits5503\lab1</code> in my Ubuntu machine.
 
 Run the following code to land in the right lab directory
 `cd ./cits5503/lab1`
@@ -84,7 +84,8 @@ Run the following code to install the extra dependency
 `pip install pandas`
 
 #### (2) explain the code
-The code in the script adds an extra step, the reponse data is sent as a parameter into pandas dataframe and then gets p
+The code in the script adds an extra step, the reponse data is sent as a parameter into pandas dataframe and then gets printed.
+
     import boto3 as bt
     import pandas as pd
     
@@ -154,5 +155,5 @@ After the script is executed, results are printed in a table structure
 <h1 id="lab-2">Lab 2</h1>
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NTkxMTIzNzVdfQ==
+eyJoaXN0b3J5IjpbOTU5ODAzNzA0XX0=
 -->
