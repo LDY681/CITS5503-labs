@@ -28,7 +28,7 @@ Under the `access key` tab, create new access key and secret. The region to be s
 
 ## Set up recent Linux OSes
 
-[Refer to the marking rubrics for sufficient step-by-step description.]
+I am running a windows machine, I decided to go with ubuntus on windows because it offers isolated environment and separated 
 
 ## Install Linux packages
 
@@ -79,6 +79,6 @@ Under the `access key` tab, create new access key and secret. The region to be s
 # Lab 5
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1NDc2NTIyNywtOTc0ODg0MzcyLDY4Mz
+eyJoaXN0b3J5IjpbMTA0NTI1MDg4MSwtOTc0ODg0MzcyLDY4Mz
 k2Mjk0OV19
 -->
