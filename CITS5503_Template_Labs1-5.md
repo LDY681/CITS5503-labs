@@ -7,7 +7,7 @@
 <h2 id="aws-account-and-log-in">AWS Account and Log in</h2>
 <h3 id="log-into-an-iam-user-account-created-for-you-on-aws.">[1] Log into an IAM user account created for you on AWS.</h3>
 <p>After receiving the email with original login cridentials, I logged-in and reseted my password accordingly.<br>
-<img src="http://127.0.0.1/assets/lab1-1.png" alton here"></p>
+<img src="http://127.0.0.1/assets/lab1-1.png" alt="enter image description here"></p>
 <h3 id="search-and-open-identity-access-management">[2] Search and open Identity Access Management</h3>
 <p>Clicked on the top-right panel to access <code>security cridentials</code><br>
 <img src="http://127.0.0.1/assets/lab1-2.png" alt="enter image description here"></p>
@@ -17,7 +17,7 @@
 <p>
 
 I am running a windows machine, I decided to go with `ubuntus on windows` because it offers an isolated environment and separated file directory, which sets ease with file management.<br>
-
+![enter image description here](http://127.0.0.1/assets/lab1-4.png)
 
 ## Install Linux packages
 
@@ -72,5 +72,5 @@ To install pip3
 <div
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkyNjU2OTkzOF19
+eyJoaXN0b3J5IjpbNTM3NzYxODY4XX0=
 -->
