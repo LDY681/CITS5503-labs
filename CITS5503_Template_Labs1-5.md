@@ -273,7 +273,7 @@ Go to the AWS console to check the created instance;
 ## Use Docker inside a Linux OS
 
 ### [1][2][3] Install and run Docker
-This command
+This command is used to install necessary packages for the Docker service.
 ```
 sudo apt install docker.io -y
 ```
@@ -281,18 +281,18 @@ This command is used to start the Docker service immediately.
 ```
 sudo systemctl start docker
 ```
-
+This command is used to enable the Docker service to start automatically at boot time.
 ```
 sudo systemctl enable docker
 ```
-This command is used to enable the Docker service to start automatically at boot time.
+
 
 ### [4] Check the version
-
+After the Docker service is installed and enabled, run this command to check version and make sure it's working properly
 ```
 docker --version
 ```
-
+## 
 ### [5] Build and run an httpd container
 
 Create a directory called html
@@ -365,7 +365,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMwNjU5NzU5MywzNzM4OTQzNTAsLTIwNT
-AwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0MzYzODQzNjYs
-LTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbMzUxNTEwMTM1LDM3Mzg5NDM1MCwtMjA1MD
+AxMjEzMiwtOTQ4MTg3NCw1NjA4NTk0MTYsMTQzNjM4NDM2Niwt
+OTExNjQwNjIwLC0yMDg4NzQ2NjEyXX0=
 -->
