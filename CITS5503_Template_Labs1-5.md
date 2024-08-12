@@ -323,7 +323,7 @@ Build a docker image. This command tells docker to build the image under the cur
 docker build -t my-apache2 .
 ```
 
-Run the image
+Run the image. 
 
 ```
 docker run -p 80:80 -dit --name my-app my-apache2
@@ -359,8 +359,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTg0NTM1MDAsLTE0MjIzNDcxODAsMz
-czODk0MzUwLC0yMDUwMDEyMTMyLC05NDgxODc0LDU2MDg1OTQx
-NiwxNDM2Mzg0MzY2LC05MTE2NDA2MjAsLTIwODg3NDY2MTJdfQ
-==
+eyJoaXN0b3J5IjpbMjA3MTAzNzI2NiwtMTQyMjM0NzE4MCwzNz
+M4OTQzNTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2
+LDE0MzYzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
