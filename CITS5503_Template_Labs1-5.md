@@ -334,13 +334,14 @@ Open a browser and access address: http://localhost or http://127.0.0.1. The htm
 
 ### [6] Other docker commands
 
-To check what is running
-
+To check what is running.
 ```
 docker ps -a
 ```
-To stop and remove the container
+![enter image description here](http://127.0.0.1/assets/lab2-17.png)
 
+This prints out some propertihe running container has the properties 
+To stop and remove the container
 ```
 docker stop my-app
 docker rm my-app
@@ -358,7 +359,8 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMjQyMDU0NCwtMTQyMjM0NzE4MCwzNz
-M4OTQzNTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2
-LDE0MzYzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbLTE5NDE2MjYyMjgsLTEwMjQyMDU0NCwtMT
+QyMjM0NzE4MCwzNzM4OTQzNTAsLTIwNTAwMTIxMzIsLTk0ODE4
+NzQsNTYwODU5NDE2LDE0MzYzODQzNjYsLTkxMTY0MDYyMCwtMj
+A4ODc0NjYxMl19
 -->
