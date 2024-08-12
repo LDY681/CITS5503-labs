@@ -317,7 +317,7 @@ Build a docker image. This command tells docker to build the image under the cur
 docker build -t my-apache2 .
 ```
 
-If you run into permission errors, you may need add your user to the docker group:
+Add my current user liudayubto the docker group:
 
 ```
 sudo usermod -a -G docker <username>
@@ -361,7 +361,8 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjIzNDcxODAsMzczODk0MzUwLC0yMD
-UwMDEyMTMyLC05NDgxODc0LDU2MDg1OTQxNiwxNDM2Mzg0MzY2
-LC05MTE2NDA2MjAsLTIwODg3NDY2MTJdfQ==
+eyJoaXN0b3J5IjpbLTE4NTIwOTE0MzgsLTE0MjIzNDcxODAsMz
+czODk0MzUwLC0yMDUwMDEyMTMyLC05NDgxODc0LDU2MDg1OTQx
+NiwxNDM2Mzg0MzY2LC05MTE2NDA2MjAsLTIwODg3NDY2MTJdfQ
+==
 -->
