@@ -191,8 +191,7 @@ The original instance from step 1-7 was destoyed over night so you might see the
 
 ## Create an EC2 instance with Python Boto3
 
-Use a Python script to implement the steps above (steps 1-6 and 8 are required, step 7 is optional). Refer to [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html) for details.
-The script uses boto3 package instead of cli commands. The code is as follows:
+The script uses boto3 package instead of cli commands. Names of methods and parameters varyThe code is as follows:
 ```
 import  boto3  as  bt
 import  os
@@ -359,7 +358,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjcxMjcxMzExLC0yMDUwMDEyMTMyLC05ND
-gxODc0LDU2MDg1OTQxNiwxNDM2Mzg0MzY2LC05MTE2NDA2MjAs
-LTIwODg3NDY2MTJdfQ==
+eyJoaXN0b3J5IjpbMTIyNzkyNTgzOSwtMjA1MDAxMjEzMiwtOT
+Q4MTg3NCw1NjA4NTk0MTYsMTQzNjM4NDM2NiwtOTExNjQwNjIw
+LC0yMDg4NzQ2NjEyXX0=
 -->
