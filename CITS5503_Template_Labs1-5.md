@@ -312,7 +312,7 @@ FROM httpd:2.4
 COPY ./html/ /usr/local/apache2/htdocs/
 ```
 
-Build a docker image. This command tells docker to build the image and add a tag called **my-apache2**
+Build a docker image. This command tells docker to build the image under the current **/html** directory and add a tag called **my-apache2**
 ```
 docker build -t my-apache2 .
 ```
@@ -361,7 +361,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzODE5MTQ0NSwzNzM4OTQzNTAsLTIwNT
-AwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0MzYzODQzNjYs
-LTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbLTE0MjIzNDcxODAsMzczODk0MzUwLC0yMD
+UwMDEyMTMyLC05NDgxODc0LDU2MDg1OTQxNiwxNDM2Mzg0MzY2
+LC05MTE2NDA2MjAsLTIwODg3NDY2MTJdfQ==
 -->
