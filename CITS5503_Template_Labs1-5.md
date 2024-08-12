@@ -191,13 +191,14 @@ The original instance from step 1-7 was destoyed over night so you might see the
 
 ## Create an EC2 instance with Python Boto3
 
-The script uses boto3 package instead of cli commands. Names of some of the methods and parameters can vary but they achived the same goal. The Group name, key name and instance name have an appendix **'-2'** to differentiate from the previous instance.
+The script uses boto3 package instead of cli commands. Names of some of the methods and parameters can vary but they achived the same goal. The Group name, key name and instance name all have an appendix **'-2'** to differentiate from the previous practice.
 
 The code is as follows:
 ```
 import  boto3  as  bt
 import  os
 
+# constants
 GroupName  =  '24188516-sg-2'
 KeyName  =  '24188516-key-2'
 InstanceName=  '24188516-vm-2'
@@ -266,7 +267,9 @@ print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_r
 After the script is executed, the repsonses of each step is printed as follows:
 ![enter image description here](http://127.0.0.1/assets/lab2-10.png)
 
-Check the 
+Go to the AWS console to check the created instance;
+![enter image description here](http://127.0.0.1/assets/lab2-11.png)
+
 ## Use Docker inside a Linux OS
 
 ### [1] Install Docker
@@ -362,7 +365,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzNTk3NDY0MiwtMjA1MDAxMjEzMiwtOT
-Q4MTg3NCw1NjA4NTk0MTYsMTQzNjM4NDM2NiwtOTExNjQwNjIw
-LC0yMDg4NzQ2NjEyXX0=
+eyJoaXN0b3J5IjpbMzczODk0MzUwLC0yMDUwMDEyMTMyLC05ND
+gxODc0LDU2MDg1OTQxNiwxNDM2Mzg0MzY2LC05MTE2NDA2MjAs
+LTIwODg3NDY2MTJdfQ==
 -->
