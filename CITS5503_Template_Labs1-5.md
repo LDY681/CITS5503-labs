@@ -285,14 +285,16 @@ This command is used to enable the Docker service to start automatically at boot
 ```
 sudo systemctl enable docker
 ```
-
+![enter image description here](http://127.0.0.1/assets/lab2-12.png)
 
 ### [4] Check the version
 After the Docker service is installed and enabled, run this command to check version and make sure it's working properly
 ```
 docker --version
 ```
-## 
+![enter image description here](http://127.0.0.1/assets/lab2-13.png)
+
+
 ### [5] Build and run an httpd container
 
 Create a directory called html
@@ -365,7 +367,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzUxNTEwMTM1LDM3Mzg5NDM1MCwtMjA1MD
-AxMjEzMiwtOTQ4MTg3NCw1NjA4NTk0MTYsMTQzNjM4NDM2Niwt
-OTExNjQwNjIwLC0yMDg4NzQ2NjEyXX0=
+eyJoaXN0b3J5IjpbLTc5NDAwNjQwMCwzNzM4OTQzNTAsLTIwNT
+AwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0MzYzODQzNjYs
+LTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
