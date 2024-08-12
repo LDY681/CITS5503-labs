@@ -312,18 +312,16 @@ FROM httpd:2.4
 COPY ./html/ /usr/local/apache2/htdocs/
 ```
 
-Build a docker image. This command tells docker to build the image under the current **/html** directory and add a tag called **my-apache2**
-```
-docker build -t my-apache2 .
-```
-
-Add my current user liudayubto the docker group:
-
+Add my current user **liudayubob** to the docker group to grant permission, reboot uBuntus console and build the docker image 
 ```
 sudo usermod -a -G docker <username>
 ```
 
-Be sure to log out and log back in for this change to take effect.
+
+Build a docker image. This command tells docker to build the image under the current **/html** directory and add a tag called **my-apache2**
+```
+docker build -t my-apache2 .
+```
 
 Run the image
 
@@ -361,7 +359,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTIwOTE0MzgsLTE0MjIzNDcxODAsMz
+eyJoaXN0b3J5IjpbLTIwMTg0NTM1MDAsLTE0MjIzNDcxODAsMz
 czODk0MzUwLC0yMDUwMDEyMTMyLC05NDgxODc0LDU2MDg1OTQx
 NiwxNDM2Mzg0MzY2LC05MTE2NDA2MjAsLTIwODg3NDY2MTJdfQ
 ==
