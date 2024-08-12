@@ -323,7 +323,7 @@ Build a docker image. This command tells docker to build the image under the cur
 docker build -t my-apache2 .
 ```
 
-Run the image. First parameter maps ports between the host machine and the Docker container to port 80, seconf paramater runs the container in detached mode, keeps STDIN open and allocates a pseudo-TTY for 
+Run the image. First parameter maps ports between the host machine and the Docker container to **port 80**, second paramater **'-dit'** runs the container in detached mode, keeps STDIN open and allocates a pseudo-TTY to let docker image run in background and enables interaction with the container. The container is named as my-app and uses my-apache2 image built earlier.
 
 ```
 docker run -p 80:80 -dit --name my-app my-apache2
@@ -359,7 +359,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyODMyMDkxMywtMTQyMjM0NzE4MCwzNz
+eyJoaXN0b3J5IjpbMTcxMTYyNTc2NiwtMTQyMjM0NzE4MCwzNz
 M4OTQzNTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2
 LDE0MzYzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
