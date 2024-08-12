@@ -307,13 +307,12 @@ The file index.html is located inside the html directory and add the following c
 ```
 
 Create a file called Dockerfile outside the html directory with the following content. This specifies Docker to use Apache HTTP Server version 2.4 and copy whatever inside **/html** folder to the destination directory inside the Docker container, which is **/usr/local/apache2/htdocs/**
-
 ```
 FROM httpd:2.4
 COPY ./html/ /usr/local/apache2/htdocs/
 ```
 
-Build a docker image
+Build a docker image. This command tells docker to build the image and add a tag called **my-apache2**
 ```
 docker build -t my-apache2 .
 ```
@@ -362,7 +361,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4MzE1NTk1MCwzNzM4OTQzNTAsLTIwNT
+eyJoaXN0b3J5IjpbLTgzODE5MTQ0NSwzNzM4OTQzNTAsLTIwNT
 AwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0MzYzODQzNjYs
 LTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
