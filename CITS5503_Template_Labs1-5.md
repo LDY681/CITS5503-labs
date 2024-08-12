@@ -340,7 +340,8 @@ docker ps -a
 ```
 ![enter image description here](http://127.0.0.1/assets/lab2-17.png)
 
-This prints out some propertihe running container has the properties 
+This prints out some properties of he running container, with the corresponding container name and image name that we assigned.
+
 To stop and remove the container
 ```
 docker stop my-app
@@ -359,8 +360,8 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDE2MjYyMjgsLTEwMjQyMDU0NCwtMT
-QyMjM0NzE4MCwzNzM4OTQzNTAsLTIwNTAwMTIxMzIsLTk0ODE4
-NzQsNTYwODU5NDE2LDE0MzYzODQzNjYsLTkxMTY0MDYyMCwtMj
-A4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbNzM1MjA2OTI5LC0xMDI0MjA1NDQsLTE0Mj
+IzNDcxODAsMzczODk0MzUwLC0yMDUwMDEyMTMyLC05NDgxODc0
+LDU2MDg1OTQxNiwxNDM2Mzg0MzY2LC05MTE2NDA2MjAsLTIwOD
+g3NDY2MTJdfQ==
 -->
