@@ -191,7 +191,7 @@ The original instance from step 1-7 was destoyed over night so you might see the
 
 ## Create an EC2 instance with Python Boto3
 
-The script uses boto3 package instead of cli commands. Names of some of the methods and parameters can vary but they achived the same goal. Group name, key name and instance name have an appendix **'-2'**
+The script uses boto3 package instead of cli commands. Names of some of the methods and parameters can vary but they achived the same goal. The Group name, key name and instance name have an appendix **'-2'** to differentiate from the previous instance.
 
 The code is as follows:
 ```
@@ -263,8 +263,10 @@ public_ip_address  =  step6_response['Reservations'][0]['Instances'][0]['PublicI
 print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_repsonse}\n{public_ip_address}\n")
 ```
 
-**NOTE**: When you are done, log into the EC2 console and terminate the instances you created.
+After the script is executed, the repsonses of each step is printed as follows:
+![enter image description here](http://127.0.0.1/assets/lab2-10.png)
 
+Check the 
 ## Use Docker inside a Linux OS
 
 ### [1] Install Docker
@@ -360,7 +362,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1MDIyOTQyMCwtMjA1MDAxMjEzMiwtOT
+eyJoaXN0b3J5IjpbLTgzNTk3NDY0MiwtMjA1MDAxMjEzMiwtOT
 Q4MTg3NCw1NjA4NTk0MTYsMTQzNjM4NDM2NiwtOTExNjQwNjIw
 LC0yMDg4NzQ2NjEyXX0=
 -->
