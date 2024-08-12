@@ -211,93 +211,54 @@ step1_response  =  ec2.create_security_group(
 
 # 2 authorise ssh inbound rule
 step2_response  =  ec2.authorize_security_group_ingress(
-GroupName=GroupName,
-IpPermissions=[
-{
-'IpProtocol': 'tcp',
-'FromPort': 22,
-'ToPort': 22,
-'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
-}
-]
+	GroupName=GroupName,
+	IpPermissions=[
+		{
+			'IpProtocol': 'tcp',
+			'FromPort': 22,
+			'ToPort': 22,
+			'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+		}
+	]
 )
-
-  
 
 # 3 create key-pair
-
 step3_response  =  ec2.create_key_pair(KeyName=KeyName)
-
 PrivateKey  =  step3_response['KeyMaterial']
-
 ## save key-pair
-
 with  open(f'{KeyName}.pem', 'w') as  file:
-
 file.write(PrivateKey)
-
 ## grant file permission
-
 os.chmod(f'{KeyName}.pem', 0o400)
 
-  
-
 # 4 create instance
-
 step4_response  =  ec2.run_instances(
-
-ImageId='ami-07a0715df72e58928',
-
-SecurityGroupIds=[GroupName],
-
-MinCount=1,
-
-MaxCount=1,
-
-InstanceType='t3.micro',
-
-KeyName=KeyName
-
+	ImageId='ami-07a0715df72e58928',
+	SecurityGroupIds=[GroupName],
+	MinCount=1,
+	MaxCount=1,
+	InstanceType='t3.micro',
+	KeyName=KeyName
 )
-
 InstanceId  =  step4_response['Instances'][0]['InstanceId']
 
-  
-
 # 5 create tag
-
 step5_repsonse  =  ec2.create_tags(
-
-Resources=[InstanceId],
-
-Tags=[
-
-{
-
-'Key': 'Name',
-
-'Value': InstanceName
-
-}
-
-]
-
+	Resources=[InstanceId],
+	Tags=[
+		{
+		'Key': 'Name',
+		'Value': InstanceName
+		}
+	]
 )
 
-  
-
 # 6 get IP address
-
 step6_response  =  ec2.describe_instances(InstanceIds=[InstanceId])
-
-  
-
 # Extract the public IP address
-
 public_ip_address  =  step6_response['Reservations'][0]['Instances'][0]['PublicIpAddress']
 
-  
-
+# print all responses
 print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_repsonse}\n{public_ip_address}\n")
 ```
 
@@ -398,7 +359,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4NTc1Mjk2LC0yMDUwMDEyMTMyLC05ND
+eyJoaXN0b3J5IjpbMjcxMjcxMzExLC0yMDUwMDEyMTMyLC05ND
 gxODc0LDU2MDg1OTQxNiwxNDM2Mzg0MzY2LC05MTE2NDA2MjAs
 LTIwODg3NDY2MTJdfQ==
 -->
