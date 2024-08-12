@@ -299,7 +299,7 @@ docker --version
 
 Create a directory called html
 
-Edit a file index.html inside the html directory and add the following content
+The file index.html is locateinside the html directory and add the following content
 
 ```
   <html>
@@ -367,7 +367,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5NDAwNjQwMCwzNzM4OTQzNTAsLTIwNT
-AwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0MzYzODQzNjYs
-LTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbMzkyNDE3MjU0LDM3Mzg5NDM1MCwtMjA1MD
+AxMjEzMiwtOTQ4MTg3NCw1NjA4NTk0MTYsMTQzNjM4NDM2Niwt
+OTExNjQwNjIwLC0yMDg4NzQ2NjEyXX0=
 -->
