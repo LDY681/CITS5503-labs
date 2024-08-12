@@ -272,20 +272,20 @@ Go to the AWS console to check the created instance;
 
 ## Use Docker inside a Linux OS
 
-### [1] Install Docker
+### [1][2][3] Install and run Docker
+This command
 ```
 sudo apt install docker.io -y
 ```
-
-### [2] Start Docker
+This command is used to start the Docker service immediately.
 ```
 sudo systemctl start docker
 ```
 
-### [3] Enable Docker
 ```
 sudo systemctl enable docker
 ```
+This command is used to enable the Docker service to start automatically at boot time.
 
 ### [4] Check the version
 
@@ -365,7 +365,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzczODk0MzUwLC0yMDUwMDEyMTMyLC05ND
-gxODc0LDU2MDg1OTQxNiwxNDM2Mzg0MzY2LC05MTE2NDA2MjAs
-LTIwODg3NDY2MTJdfQ==
+eyJoaXN0b3J5IjpbLTMwNjU5NzU5MywzNzM4OTQzNTAsLTIwNT
+AwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0MzYzODQzNjYs
+LTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
