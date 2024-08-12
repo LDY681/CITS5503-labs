@@ -186,7 +186,7 @@ Now that the server is connected, we can see system information on the console:
 ![enter image description here](http://127.0.0.1/assets/lab2-8.png)
 
 ### [8] List the created instance using the AWS console
-
+The original instance was destoyed over night so you might see the instance id has changed
 
 ## Create an EC2 instance with Python Boto3
 
@@ -289,6 +289,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0ODE4NzQsNTYwODU5NDE2LDE0MzYzOD
-QzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbLTE1OTg3Njc0OTUsLTk0ODE4NzQsNTYwOD
+U5NDE2LDE0MzYzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYx
+Ml19
 -->
