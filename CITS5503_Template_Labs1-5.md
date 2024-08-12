@@ -191,7 +191,9 @@ The original instance from step 1-7 was destoyed over night so you might see the
 
 ## Create an EC2 instance with Python Boto3
 
-The script uses boto3 package instead of cli commands. Names of methods and parameters varyThe code is as follows:
+The script uses boto3 package instead of cli commands. Names of some of the methods and parameters can vary but they achived the same goal. Group name, key name and instance name have an appendix **'-2'**
+
+The code is as follows:
 ```
 import  boto3  as  bt
 import  os
@@ -358,7 +360,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyNzkyNTgzOSwtMjA1MDAxMjEzMiwtOT
+eyJoaXN0b3J5IjpbLTI1MDIyOTQyMCwtMjA1MDAxMjEzMiwtOT
 Q4MTg3NCw1NjA4NTk0MTYsMTQzNjM4NDM2NiwtOTExNjQwNjIw
 LC0yMDg4NzQ2NjEyXX0=
 -->
