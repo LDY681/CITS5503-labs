@@ -192,7 +192,114 @@ The original instance from step 1-7 was destoyed over night so you might see the
 ## Create an EC2 instance with Python Boto3
 
 Use a Python script to implement the steps above (steps 1-6 and 8 are required, step 7 is optional). Refer to [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html) for details.
-The script use
+The script uses boto3 package instead of cli commands. The code is as follows:
+```
+import  boto3  as  bt
+import  os
+
+GroupName  =  '24188516-sg-2'
+KeyName  =  '24188516-key-2'
+InstanceName=  '24188516-vm-2'
+
+ec2  =  bt.client('ec2')
+
+# 1 create security group
+step1_response  =  ec2.create_security_group(
+	Description="security group for development environment",
+	GroupName=GroupName
+)
+
+# 2 authorise ssh inbound rule
+step2_response  =  ec2.authorize_security_group_ingress(
+GroupName=GroupName,
+IpPermissions=[
+{
+'IpProtocol': 'tcp',
+'FromPort': 22,
+'ToPort': 22,
+'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+}
+]
+)
+
+  
+
+# 3 create key-pair
+
+step3_response  =  ec2.create_key_pair(KeyName=KeyName)
+
+PrivateKey  =  step3_response['KeyMaterial']
+
+## save key-pair
+
+with  open(f'{KeyName}.pem', 'w') as  file:
+
+file.write(PrivateKey)
+
+## grant file permission
+
+os.chmod(f'{KeyName}.pem', 0o400)
+
+  
+
+# 4 create instance
+
+step4_response  =  ec2.run_instances(
+
+ImageId='ami-07a0715df72e58928',
+
+SecurityGroupIds=[GroupName],
+
+MinCount=1,
+
+MaxCount=1,
+
+InstanceType='t3.micro',
+
+KeyName=KeyName
+
+)
+
+InstanceId  =  step4_response['Instances'][0]['InstanceId']
+
+  
+
+# 5 create tag
+
+step5_repsonse  =  ec2.create_tags(
+
+Resources=[InstanceId],
+
+Tags=[
+
+{
+
+'Key': 'Name',
+
+'Value': InstanceName
+
+}
+
+]
+
+)
+
+  
+
+# 6 get IP address
+
+step6_response  =  ec2.describe_instances(InstanceIds=[InstanceId])
+
+  
+
+# Extract the public IP address
+
+public_ip_address  =  step6_response['Reservations'][0]['Instances'][0]['PublicIpAddress']
+
+  
+
+print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_repsonse}\n{public_ip_address}\n")
+```
 
 **NOTE**: When you are done, log into the EC2 console and terminate the instances you created.
 
@@ -291,7 +398,7 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3ODIyMjQ3MywtMjA1MDAxMjEzMiwtOT
-Q4MTg3NCw1NjA4NTk0MTYsMTQzNjM4NDM2NiwtOTExNjQwNjIw
-LC0yMDg4NzQ2NjEyXX0=
+eyJoaXN0b3J5IjpbMTM4NTc1Mjk2LC0yMDUwMDEyMTMyLC05ND
+gxODc0LDU2MDg1OTQxNiwxNDM2Mzg0MzY2LC05MTE2NDA2MjAs
+LTIwODg3NDY2MTJdfQ==
 -->
