@@ -354,11 +354,11 @@ docker rm my-app
 
 ### [1] Preparation
 
-Download the python code `cloudstorage.py` from the directory of [src](https://github.com/zhangzhics/CITS5503_Sem2/blob/master/Labs/src/cloudstorage.py) \
+Download the python code `cloudstorage.py` from the directory of [src](https://github.com/zhangzhics/CITS5503_Sem2/blob/master/Labs/src/cloudstorage.py) 
 
-Create a directory `rootdir` \
+Create a directory `rootdir` 
 
-Create a file in `rootdir` called `rootfile.txt` and write some content in it `1\n2\n3\n4\n5\n` \
+Create a file in `rootdir` called `rootfile.txt` and write some content in it `1\n2\n3\n4\n5\n` 
 
 Create a second directory in rootdir called `subdir`, and in the `subdir` directory create another file `subfile.txt` with the same content as `rootfile.txt`.
 
@@ -563,8 +563,8 @@ A structured presentation (15%). A clear step-by-step with detailed descriptions
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYyNDM0Mzg3Nyw3MzUyMDY5MjksLTEwMj
-QyMDU0NCwtMTQyMjM0NzE4MCwzNzM4OTQzNTAsLTIwNTAwMTIx
-MzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0MzYzODQzNjYsLTkxMT
-Y0MDYyMCwtMjA4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbLTExNjQ1NTY0MjEsLTYyNDM0Mzg3Nyw3Mz
+UyMDY5MjksLTEwMjQyMDU0NCwtMTQyMjM0NzE4MCwzNzM4OTQz
+NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
+YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
