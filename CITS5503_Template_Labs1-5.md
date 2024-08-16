@@ -357,7 +357,7 @@ Files and directories are created as required, this is the following file struct
 ![enter image description here](http://127.0.0.1/assets/lab2-18.png)
 
 ### [2] Save to S3 by updating `cloudstorage.py`
-The modified  `cloudstorage.py` is as followed, it will create an S3 bucket named `24188516-cloudstorage` if not existed, then traverse through all the directories and subdirectories in the root directory, and submit any discovered files to the `24188516-cloudstorage` bucket. The `s3.upload_file` methods takes in three parameters: **file path, bucket name, key**. We will concat both the *folder_name* and *file_name* as the file key, this way the file will be uploaded to the same file structure as our local machine.
+The modified  `cloudstorage.py` is as followed, it will create an S3 bucket named `24188516-cloudstorage` if not existed, then traverse through all the directories and subdirectories in the root directory, and submit any discovered files to the `24188516-cloudstorage` bucket. 
 
 ```
 import os
@@ -393,9 +393,11 @@ for dir_name, subdir_list, file_list in os.walk(ROOT_DIR, topdown=True):
 			upload_file("%s/"  % dir_name[2:], "%s/%s"  % (dir_name, fname), fname)
 print("done")
 ```
+![enter image description here](http://localhost/assets/lab2-19.png)
 
 ### [3] Restore from S3
 Create a new program called `restorefromcloud.py` that reads the S3 bucket and writes the contents of the bucket within the appropriate directories.
+
 ```
 import  os
 import  boto3
@@ -431,8 +433,10 @@ else:
 	
 print("done")
 ```
+
 `s3.list_objects_v2` will print all the files in the bucket along with their attributes such as **Key, Name**, etc. Join the local **ROOT_TARGET_DIR** with **Key** to form the local **local_file_path **. Check if local directory exists with `os.path.exists()`, if not create is with `os.makedirs()`, after that we can call `s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)` with 3 parameters **Bucket, Key, Filename** to download the remote copy to corresponding local directory.
 
+![enter image description here](http://localhost/assets/lab2-20.png)
 
 ### [4] Write information about files to DynamoDB
 Install DynamoDB on your Linux environment
@@ -523,8 +527,8 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMT
-kwMjIwODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4
-NzY2MjQsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNi
-wtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbNjgyMjg3NzYxLC0yMDU0MDg3MTQ1LC0xOT
+I1OTgzMzIyLDE5MDIyMDg0MjgsMTAzMzM3ODEzNiwxNjA5MjU3
+MTkzLC0xNjY1ODc2NjI0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLD
+EzOTk5NTUxMTYsLTMzMjQ1NTM2M119
 -->
