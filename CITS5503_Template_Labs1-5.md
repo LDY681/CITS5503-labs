@@ -404,92 +404,53 @@ Create a new program called `restorefromcloud.py` that reads the S3 bucket and w
 
 ### [4] Write information about files to DynamoDB
 
-  
-
 Install DynamoDB on your Linux environment
 
   
-
 ```
-
 mkdir dynamodb
-
 cd dynamodb
-
 ```
 
   
 
 Install jre if not done
 
-  
-
 ```
-
 sudo apt-get install default-jre
-
 wget https://s3-ap-northeast-1.amazonaws.com/dynamodb-local-tokyo/dynamodb_local_latest.tar.gz
-
 ```
-
-  
 
 You can use the following command to extract files from dynamodb_local_latest.tar.gz
 
-  
-
 ```
-
 tar -zxvf dynamodb_local_latest.tar.gz
-
 ```
-
-  
 
 After the extraction, run the command below
 
-  
-
 ```
-
 java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb
-
 ```
-
-  
 
 Alternatively, you can use docker:
 
 ```
-
 docker run -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -inMemory -sharedDb
-
 ```
 
 **Note**: Do not close the current window, open a new window to run the following Python script.
 
-  
-
 Write a Python script to create a table called `CloudFiles` on your local DynamoDB and the attributes for the table are:
 
-  
-
 ```
-
 CloudFiles = {
-
-'userId',
-
-'fileName',
-
-'path',
-
-'lastUpdated',
-
-'owner',
-
-'permissions'
-
+	'userId',
+	'fileName',
+	'path',
+	'lastUpdated',
+	'owner',
+	'permissions'
 }
 
 )
@@ -571,6 +532,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjU4NzY2MjQsMTQwMzE3OTgzOSw5ND
-g5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbLTQ2Njg2ODk1OCwtMTY2NTg3NjYyNCwxND
+AzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0NTUz
+NjNdfQ==
 -->
