@@ -1,3 +1,4 @@
+
 <div  style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
 <h2>Labs 1-5</h2>
 <p>Student ID: 24188515</p>
@@ -186,43 +187,117 @@ Now that the server is connected, we can see system information on the console:
 ![enter image description here](http://127.0.0.1/assets/lab2-8.png)
 
 ### [8] List the created instance using the AWS console
-
+The original instance from step 1-7 was destoyed over night so you might see the instance id has changed because I had to create a new one. This is the screenshot:
+![enter image description here](http://127.0.0.1/assets/lab2-9.png)
 
 ## Create an EC2 instance with Python Boto3
 
-Use a Python script to implement the steps above (steps 1-6 and 8 are required, step 7 is optional). Refer to [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/ec2.html) for details.
+The script uses boto3 package instead of cli commands. Names of some of the methods and parameters can vary but they achived the same goal. The Group name, key name and instance name all have an appendix **'-2'** to differentiate from the previous practice.
 
-**NOTE**: When you are done, log into the EC2 console and terminate the instances you created.
+The code is as follows:
+```
+import  boto3  as  bt
+import  os
+
+# constants
+GroupName  =  '24188516-sg-2'
+KeyName  =  '24188516-key-2'
+InstanceName=  '24188516-vm-2'
+
+ec2  =  bt.client('ec2')
+
+# 1 create security group
+step1_response  =  ec2.create_security_group(
+	Description="security group for development environment",
+	GroupName=GroupName
+)
+
+# 2 authorise ssh inbound rule
+step2_response  =  ec2.authorize_security_group_ingress(
+	GroupName=GroupName,
+	IpPermissions=[
+		{
+			'IpProtocol': 'tcp',
+			'FromPort': 22,
+			'ToPort': 22,
+			'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+		}
+	]
+)
+
+# 3 create key-pair
+step3_response  =  ec2.create_key_pair(KeyName=KeyName)
+PrivateKey  =  step3_response['KeyMaterial']
+## save key-pair
+with  open(f'{KeyName}.pem', 'w') as  file:
+file.write(PrivateKey)
+## grant file permission
+os.chmod(f'{KeyName}.pem', 0o400)
+
+# 4 create instance
+step4_response  =  ec2.run_instances(
+	ImageId='ami-07a0715df72e58928',
+	SecurityGroupIds=[GroupName],
+	MinCount=1,
+	MaxCount=1,
+	InstanceType='t3.micro',
+	KeyName=KeyName
+)
+InstanceId  =  step4_response['Instances'][0]['InstanceId']
+
+# 5 create tag
+step5_repsonse  =  ec2.create_tags(
+	Resources=[InstanceId],
+	Tags=[
+		{
+		'Key': 'Name',
+		'Value': InstanceName
+		}
+	]
+)
+
+# 6 get IP address
+step6_response  =  ec2.describe_instances(InstanceIds=[InstanceId])
+# Extract the public IP address
+public_ip_address  =  step6_response['Reservations'][0]['Instances'][0]['PublicIpAddress']
+
+# print all responses
+print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_repsonse}\n{public_ip_address}\n")
+```
+
+After the script is executed, the repsonses of each step is printed as follows:
+![enter image description here](http://127.0.0.1/assets/lab2-10.png)
+
+Go to the AWS console to check the created instance;
+![enter image description here](http://127.0.0.1/assets/lab2-11.png)
 
 ## Use Docker inside a Linux OS
 
-### [1] Install Docker
+### [1][2][3] Install and run Docker
+This command is used to install necessary packages for the Docker service.
 ```
 sudo apt install docker.io -y
 ```
-
-### [2] Start Docker
+This command is used to start the Docker service immediately.
 ```
 sudo systemctl start docker
 ```
-
-### [3] Enable Docker
+This command is used to enable the Docker service to start automatically at boot time.
 ```
 sudo systemctl enable docker
 ```
+![enter image description here](http://127.0.0.1/assets/lab2-12.png)
 
 ### [4] Check the version
-
+After the Docker service is installed and enabled, run this command to check version and make sure it's working properly
 ```
 docker --version
 ```
+![enter image description here](http://127.0.0.1/assets/lab2-13.png)
+
 
 ### [5] Build and run an httpd container
-
-Create a directory called html
-
-Edit a file index.html inside the html directory and add the following content
-
+The file index.html is located inside the html directory and add the following content, which does a single thing to display a paragraph with text **"Hello, World!"**.
 ```
   <html>
     <head> </head>
@@ -232,46 +307,43 @@ Edit a file index.html inside the html directory and add the following content
   </html>
 ```
 
-Create a file called Dockerfile outside the html directory with the following content:
-
+Create a file called Dockerfile outside the html directory with the following content. This specifies Docker to use Apache HTTP Server version 2.4 and copy whatever inside **/html** folder to the destination directory inside the Docker container, which is **/usr/local/apache2/htdocs/**
 ```
 FROM httpd:2.4
 COPY ./html/ /usr/local/apache2/htdocs/
 ```
 
-Build a docker image
-
-```
-docker build -t my-apache2 .
-```
-
-If you run into permission errors, you may need add your user to the docker group:
-
+Add my current user **liudayubob** to the docker group to grant permission, reboot uBuntus console and build the docker image 
 ```
 sudo usermod -a -G docker <username>
 ```
 
-Be sure to log out and log back in for this change to take effect.
 
-Run the image
-
+Build a docker image. This command tells docker to build the image under the current **/html** directory and add a tag called **my-apache2**
+```
+docker build -t my-apache2 .
+```
+![enter image description here](http://127.0.0.1/assets/lab2-14.png)
+Run the image. First parameter maps ports between the host machine and the Docker container to **port 80**, second paramater **'-dit'** runs the container in detached mode, keeps STDIN open and allocates a pseudo-TTY to let docker image run in background and enables interaction with the container. The container is named as **my-app** and uses **my-apache2** image built earlier.
 ```
 docker run -p 80:80 -dit --name my-app my-apache2
 ```
+![enter image description here](http://127.0.0.1/assets/lab2-15.png)
 
-Open a browser and access address: http://localhost or http://127.0.0.1. 
-
-Confirm you get "Hello World!"
+Open a browser and access address: http://localhost or http://127.0.0.1. The html page is hosted and prints out "Hello World!"
+![enter image description here](http://127.0.0.1/assets/lab2-16.png)
 
 ### [6] Other docker commands
 
-To check what is running
-
+To check what is running.
 ```
 docker ps -a
 ```
-To stop and remove the container
+![enter image description here](http://127.0.0.1/assets/lab2-17.png)
 
+This prints out some properties of he running container, with the corresponding container name and image name that we assigned.
+
+To stop and remove the container
 ```
 docker stop my-app
 docker rm my-app
@@ -281,6 +353,209 @@ docker rm my-app
 
 # Lab 3
 
+### [1] Preparation
+
+Download the python code `cloudstorage.py` from the directory of [src](https://github.com/zhangzhics/CITS5503_Sem2/blob/master/Labs/src/cloudstorage.py) 
+
+Create a directory `rootdir` 
+
+Create a file in `rootdir` called `rootfile.txt` and write some content in it `1\n2\n3\n4\n5\n` 
+
+Create a second directory in rootdir called `subdir`, and in the `subdir` directory create another file `subfile.txt` with the same content as `rootfile.txt`.
+
+  
+
+### [2] Save to S3 by updating `cloudstorage.py`
+
+  
+
+Modify the downloaded Python script, `cloudstorage.py`, to create an S3 bucket named `<student ID>-cloudstorage`.
+
+  
+
+When the program traverses the directory starting at the root directory `rootdir`, upload each file onto the S3 bucket. An easy way to upload files is to use the command below:
+
+  
+
+```
+
+s3.upload_file()
+
+```
+
+  
+
+**NOTE**: Make sure your S3 bucket has the same file structure as shown in `[1] Preparation`.
+
+  
+
+### [3] Restore from S3
+
+  
+
+Create a new program called `restorefromcloud.py` that reads the S3 bucket and writes the contents of the bucket within the appropriate directories.
+
+  
+
+**NOTE**: Your local Linux environment should see a copy of the files and the directories from the S3 bucket.
+
+  
+
+### [4] Write information about files to DynamoDB
+
+  
+
+Install DynamoDB on your Linux environment
+
+  
+
+```
+
+mkdir dynamodb
+
+cd dynamodb
+
+```
+
+  
+
+Install jre if not done
+
+  
+
+```
+
+sudo apt-get install default-jre
+
+wget https://s3-ap-northeast-1.amazonaws.com/dynamodb-local-tokyo/dynamodb_local_latest.tar.gz
+
+```
+
+  
+
+You can use the following command to extract files from dynamodb_local_latest.tar.gz
+
+  
+
+```
+
+tar -zxvf dynamodb_local_latest.tar.gz
+
+```
+
+  
+
+After the extraction, run the command below
+
+  
+
+```
+
+java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb
+
+```
+
+  
+
+Alternatively, you can use docker:
+
+```
+
+docker run -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -inMemory -sharedDb
+
+```
+
+**Note**: Do not close the current window, open a new window to run the following Python script.
+
+  
+
+Write a Python script to create a table called `CloudFiles` on your local DynamoDB and the attributes for the table are:
+
+  
+
+```
+
+CloudFiles = {
+
+'userId',
+
+'fileName',
+
+'path',
+
+'lastUpdated',
+
+'owner',
+
+'permissions'
+
+}
+
+)
+
+```
+
+`userId` is the partition key and `fileName` is the sort key. Regarding the creation, refer to this [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html)
+
+  
+
+Then, you need to get the attributes above for each file of the S3 bucket and then write the attributes of each file into the created DynamoDB table. Regarding how to get the attributes for a file, refer to this [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/get_bucket_acl.html)
+
+  
+
+**NOTE**:
+
+  
+
+1) The table should have 2 items. One item corresponds to one file in the bucket and consists of the attributes above and their values.
+
+  
+
+2) Regarding the attribute `owner`, if you use a region in the table below, its value should be **owner's name**. Otherwise, its value should be **owner's ID**.
+
+  
+
+| Region | Region Name |
+
+| --- | --- |
+
+| US East (N. Virginia) | us-east-1 |
+
+| Asia Pacific (Tokyo) | ap-northeast-1 |
+
+| Asia Pacific (Singapore) | ap-southeast-1 |
+
+| Asia Pacific (Sydney) | ap-southeast-2 |
+
+  
+  
+
+### [5] Scan the table
+
+  
+
+Use AWS CLI command to scan the created DynamoDB table, and output what you've got.
+
+  
+
+### [6] Delete the table
+
+  
+
+Use AWS CLI command to delete the table.
+
+  
+
+**NOTE**: Delete the created S3 bucket from AWS console after the lab is done.
+
+  
+
+Lab Assessment:
+
+  
+
+A structured presentation (15%). A clear step-by-step with detailed descriptions (85%).
+
 <div  style="page-break-after: always;"></div>
 
 # Lab 4
@@ -289,6 +564,12 @@ docker rm my-app
 
 # Lab 5
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0ODE4NzQsNTYwODU5NDE2LDE0MzYzOD
-QzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
+eyJoaXN0b3J5IjpbLTExNjQ1NTY0MjEsLTYyNDM0Mzg3Nyw3Mz
+UyMDY5MjksLTEwMjQyMDU0NCwtMTQyMjM0NzE4MCwzNzM4OTQz
+NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
+YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
+-->
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMzMj
+Q1NTM2M119
 -->
