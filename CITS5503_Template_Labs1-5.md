@@ -397,53 +397,39 @@ print("done")
 ### [3] Restore from S3
 Create a new program called `restorefromcloud.py` that reads the S3 bucket and writes the contents of the bucket within the appropriate directories.
 
-  
-
 **NOTE**: Your local Linux environment should see a copy of the files and the directories from the S3 bucket.
 
-  
-
 ### [4] Write information about files to DynamoDB
-
 Install DynamoDB on your Linux environment
 
-  
 ```
 mkdir dynamodb
 cd dynamodb
 ```
 
-  
-
 Install jre if not done
-
 ```
 sudo apt-get install default-jre
 wget https://s3-ap-northeast-1.amazonaws.com/dynamodb-local-tokyo/dynamodb_local_latest.tar.gz
 ```
 
 You can use the following command to extract files from dynamodb_local_latest.tar.gz
-
 ```
 tar -zxvf dynamodb_local_latest.tar.gz
 ```
 
 After the extraction, run the command below
-
 ```
 java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb
 ```
 
 Alternatively, you can use docker:
-
 ```
 docker run -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -inMemory -sharedDb
 ```
 
 **Note**: Do not close the current window, open a new window to run the following Python script.
-
 Write a Python script to create a table called `CloudFiles` on your local DynamoDB and the attributes for the table are:
-
 ```
 CloudFiles = {
 	'userId',
@@ -453,8 +439,8 @@ CloudFiles = {
 	'owner',
 	'permissions'
 }
-
 ```
+
 `userId` is the partition key and `fileName` is the sort key. Regarding the creation, refer to this [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html)
 
 Then, you need to get the attributes above for each file of the S3 bucket and then write the attributes of each file into the created DynamoDB table. Regarding how to get the attributes for a file, refer to this [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/get_bucket_acl.html)
@@ -502,7 +488,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNj
-Y1ODc2NjI0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUx
-MTYsLTMzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbMTkwMjIwODQyOCwxMDMzMzc4MTM2LDE2MD
+kyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3OTgzOSw5NDg5ODI5
+MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX0=
 -->
