@@ -370,7 +370,8 @@ s3 = boto3.client("s3")
 
 bucket_config = {'LocationConstraint': 'eu-north-1'}
 def upload_file(folder_name, file, file_name):
-	s3.upload_file(file, ROOT_S3_DIR, file_name) # file path, bucket name, key (file_name)
+	file_key = os.path.join(folder_name, file_name).replace("\\", "/")
+	s3.upload_file(file, ROOT_S3_DIR, file_name) # file path, bucket name, key ()
 	print("Uploading %s"  %  file)
 
 # Main program
@@ -501,7 +502,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYwOTI1NzE5MywtMTY2NTg3NjYyNCwxND
-AzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0NTUz
-NjNdfQ==
+eyJoaXN0b3J5IjpbMTAzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNj
+Y1ODc2NjI0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUx
+MTYsLTMzMjQ1NTM2M119
 -->
