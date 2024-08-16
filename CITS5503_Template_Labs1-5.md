@@ -353,29 +353,15 @@ docker rm my-app
 
 # Lab 3
 ### [1] Preparation
-Files and directories are created as required, this is the following file structure with `cloudstorage.py`, `rootfile.txt` and `subfile.txt`
+Files and directories are created as required, this is the following file structure with three files `cloudstorage.py`, `rootfile.txt` and `subfile.txt`
 ![enter image description here](http://127.0.0.1/assets/lab2-18.png)
+
 ### [2] Save to S3 by updating `cloudstorage.py`
-
-  
-
-Modify the downloaded Python script, `cloudstorage.py`, to create an S3 bucket named `<student ID>-cloudstorage`.
-
-  
+The modified  `cloudstorage.py` is as followed, it will create an S3 bucket named `24188516-cloudstorage` if not exist, then traverse through all the directories and subdirectories in the root directory, and submit any discovered files to the 
 
 When the program traverses the directory starting at the root directory `rootdir`, upload each file onto the S3 bucket. An easy way to upload files is to use the command below:
 
-  
 
-```
-
-s3.upload_file()
-
-```
-
-  
-
-**NOTE**: Make sure your S3 bucket has the same file structure as shown in `[1] Preparation`.
 
   
 
@@ -560,6 +546,6 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTUwMTU4OTQ1LDk0ODk4MjkyMiwxMzk5OT
+eyJoaXN0b3J5IjpbNDcwMDg1MzgyLDk0ODk4MjkyMiwxMzk5OT
 U1MTE2LC0zMzI0NTUzNjNdfQ==
 -->
