@@ -357,7 +357,7 @@ Files and directories are created as required, this is the following file struct
 ![enter image description here](http://127.0.0.1/assets/lab2-18.png)
 
 ### [2] Save to S3 by updating `cloudstorage.py`
-The modified  `cloudstorage.py` is as followed, it will create an S3 bucket named `24188516-cloudstorage` if not existed, then traverse through all the directories and subdirectories in the root directory, and submit any discovered files to the `24188516-cloudstorage` bucket. The `s3.upload_file` methods takes in three parameters: **file path, bucket name, key**. We will use the **file_name** as our key this time.
+The modified  `cloudstorage.py` is as followed, it will create an S3 bucket named `24188516-cloudstorage` if not existed, then traverse through all the directories and subdirectories in the root directory, and submit any discovered files to the `24188516-cloudstorage` bucket. The `s3.upload_file` methods takes in three parameters: **file path, bucket name, key**. We will concat both the *folder_name* and *file_name* as the file key, this way the fi.
 
 ```
 import os
@@ -371,7 +371,7 @@ s3 = boto3.client("s3")
 bucket_config = {'LocationConstraint': 'eu-north-1'}
 def upload_file(folder_name, file, file_name):
 	file_key = os.path.join(folder_name, file_name).replace("\\", "/")
-	s3.upload_file(file, ROOT_S3_DIR, file_name) # file path, bucket name, key ()
+	s3.upload_file(file, ROOT_S3_DIR, file_name) # file path, bucket name, key
 	print("Uploading %s"  %  file)
 
 # Main program
@@ -488,7 +488,8 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwMjIwODQyOCwxMDMzMzc4MTM2LDE2MD
-kyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3OTgzOSw5NDg5ODI5
-MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbLTExMjI4NzAxOTUsMTkwMjIwODQyOCwxMD
+MzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3
+OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX
+0=
 -->
