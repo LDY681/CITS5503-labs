@@ -353,11 +353,8 @@ docker rm my-app
 
 # Lab 3
 ### [1] Preparation
-Download the python code `cloudstorage.py` from the directory of [src](https://github.com/zhangzhics/CITS5503_Sem2/blob/master/Labs/src/cloudstorage.py) 
-Create a directory `rootdir` 
-Create a file in `rootdir` called `rootfile.txt` and write some content in it `1\n2\n3\n4\n5\n` 
-Create a second directory in rootdir called `subdir`, and in the `subdir` directory create another file `subfile.txt` with the same content as `rootfile.txt`.
-
+Files and directories are created as required, this is the following file structure with `cloudstorage.py`, `rootfile.txt` and `subfile.txt`
+![enter image description here](http://127.0.0.1/assets/lab2-18.png)
 ### [2] Save to S3 by updating `cloudstorage.py`
 
   
@@ -563,6 +560,6 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDg3MDMzNjAsOTQ4OTgyOTIyLDEzOT
-k5NTUxMTYsLTMzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbNTUwMTU4OTQ1LDk0ODk4MjkyMiwxMzk5OT
+U1MTE2LC0zMzI0NTUzNjNdfQ==
 -->
