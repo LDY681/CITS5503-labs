@@ -408,6 +408,7 @@ def  download_file(s3_key, local_file_path):
 	local_dir  =  os.path.dirname(local_file_path)
 	# Ensure the local directory exists
 	if  not  os.path.exists(local_dir):
+		print(f"Create directory {local_dir}")
 		os.makedirs(local_dir)
 
 	# Download the file
@@ -522,8 +523,8 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTY3MzQxNjk5LC0xOTI1OTgzMzIyLDE5MD
-IyMDg0MjgsMTAzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2
-NjI0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLT
-MzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbLTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMT
+kwMjIwODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4
+NzY2MjQsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNi
+wtMzMyNDU1MzYzXX0=
 -->
