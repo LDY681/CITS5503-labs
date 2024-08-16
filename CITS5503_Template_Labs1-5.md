@@ -453,65 +453,34 @@ CloudFiles = {
 	'permissions'
 }
 
-)
-
 ```
-
 `userId` is the partition key and `fileName` is the sort key. Regarding the creation, refer to this [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html)
-
-  
 
 Then, you need to get the attributes above for each file of the S3 bucket and then write the attributes of each file into the created DynamoDB table. Regarding how to get the attributes for a file, refer to this [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/get_bucket_acl.html)
 
-  
-
 **NOTE**:
-
-  
-
 1) The table should have 2 items. One item corresponds to one file in the bucket and consists of the attributes above and their values.
-
-  
 
 2) Regarding the attribute `owner`, if you use a region in the table below, its value should be **owner's name**. Otherwise, its value should be **owner's ID**.
 
   
 
 | Region | Region Name |
-
 | --- | --- |
-
 | US East (N. Virginia) | us-east-1 |
-
 | Asia Pacific (Tokyo) | ap-northeast-1 |
-
 | Asia Pacific (Singapore) | ap-southeast-1 |
-
 | Asia Pacific (Sydney) | ap-southeast-2 |
 
-  
-  
-
 ### [5] Scan the table
-
-  
-
 Use AWS CLI command to scan the created DynamoDB table, and output what you've got.
-
-  
 
 ### [6] Delete the table
 
-  
-
 Use AWS CLI command to delete the table.
-
-  
-
 **NOTE**: Delete the created S3 bucket from AWS console after the lab is done.
 
-  
-
+ 
 Lab Assessment:
 
   
@@ -532,7 +501,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2Njg2ODk1OCwtMTY2NTg3NjYyNCwxND
+eyJoaXN0b3J5IjpbMTYwOTI1NzE5MywtMTY2NTg3NjYyNCwxND
 AzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0NTUz
 NjNdfQ==
 -->
