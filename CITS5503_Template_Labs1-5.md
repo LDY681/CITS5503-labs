@@ -357,7 +357,7 @@ Files and directories are created as required, this is the following file struct
 ![enter image description here](http://127.0.0.1/assets/lab2-18.png)
 
 ### [2] Save to S3 by updating `cloudstorage.py`
-The modified  `cloudstorage.py` is as followed, it will create an S3 bucket named `24188516-cloudstorage` if not exist, then traverse through all the directories and subdirectories in the root directory, and submit any discovered files to the `24188516-cloudstorage` bucket. The `s3.upload_file` methods takes in three parameters: file path, bucket name, key. We will use the file_name as our key this time.
+The modified  `cloudstorage.py` is as followed, it will create an S3 bucket named `24188516-cloudstorage` if not existed, then traverse through all the directories and subdirectories in the root directory, and submit any discovered files to the `24188516-cloudstorage` bucket. The `s3.upload_file` methods takes in three parameters: **file path, bucket name, key**. We will use the **file_name** as our key this time.
 
 ```
 import os
@@ -578,6 +578,6 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OT
-k1NTExNiwtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbOTU4NDg0NjM4LDE0MDMxNzk4MzksOTQ4OT
+gyOTIyLDEzOTk5NTUxMTYsLTMzMjQ1NTM2M119
 -->
