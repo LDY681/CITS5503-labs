@@ -357,9 +357,47 @@ Files and directories are created as required, this is the following file struct
 ![enter image description here](http://127.0.0.1/assets/lab2-18.png)
 
 ### [2] Save to S3 by updating `cloudstorage.py`
-The modified  `cloudstorage.py` is as followed, it will create an S3 bucket named `24188516-cloudstorage` if not exist, then traverse through all the directories and subdirectories in the root directory, and submit any discovered files to the 
+The modified  `cloudstorage.py` is as followed, it will create an S3 bucket named `24188516-cloudstorage` if not exist, then traverse through all the directories and subdirectories in the root directory, and submit any discovered files to the `24188516-cloudstorage` bucket.
+```
+import os
+import boto3
+import base64
 
-When the program traverses the directory starting at the root directory `rootdir`, upload each file onto the S3 bucket. An easy way to upload files is to use the command below:
+ROOT_DIR =  '.'
+ROOT_S3_DIR =  '24188516-cloudstorage'
+s3 = boto3.client("s3")
+
+bucket_config = {'LocationConstraint': 'eu-north-1'}
+def upload_file(folder_name, file, file_name):
+	s3.upload_file(file, ROOT_S3_DIR, file_name) # file path, bucket name, key (file_name)
+	print("Uploading %s"  %  file)
+
+# Main program
+# Insert code to create bucket if not there
+try:
+	response = s3.create_bucket(
+		Bucket=ROOT_S3_DIR,
+		CreateBucketConfiguration=bucket_config
+	)
+	print("Bucket created: $s"  % response)
+except  Exception  as error:
+	print("Bucket creation failed: %s"  % error)
+	pass
+
+# parse directory and upload files
+for dir_name, subdir_list, file_list in os.walk(ROOT_DIR, topdown=True):
+
+if dir_name != ROOT_DIR:
+
+for fname in file_list:
+
+upload_file("%s/"  % dir_name[2:], "%s/%s"  % (dir_name, fname), fname)
+
+  
+  
+
+print("done")
+```
 
 
 
@@ -546,6 +584,6 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDcwMDg1MzgyLDk0ODk4MjkyMiwxMzk5OT
-U1MTE2LC0zMzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbMTAxMzYzNzQwMCw5NDg5ODI5MjIsMTM5OT
+k1NTExNiwtMzMyNDU1MzYzXX0=
 -->
