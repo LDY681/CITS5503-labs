@@ -410,9 +410,9 @@ def  download_file(s3_key, local_file_path):
 	if  not  os.path.exists(local_dir):
 		os.makedirs(local_dir)
 
-# Download the file
-s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)
-print(f"Downloading {s3_key} to {local_file_path}")
+	# Download the file
+	s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)
+	print(f"Downloading {s3_key} to {local_file_path}")
 
 # Main program
 # List all objects in the S3 bucket
@@ -430,7 +430,7 @@ else:
 	
 print("done")
 ```
-`s3.list_objects_v2` will print all the files in the bucket along with their attributes such as Key, Name, etc. Join
+`s3.list_objects_v2` will print all the files in the bucket along with their attributes such as **Key, Name**, etc. Join the local **ROOT_TARGET_DIR** with **Key** to form the local **file_path**, then we shall download the 
 
 
 ### [4] Write information about files to DynamoDB
@@ -522,7 +522,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMDcxNDQwNzUsLTE5MjU5ODMzMjIsMT
+eyJoaXN0b3J5IjpbLTE3OTQwOTE3NjksLTE5MjU5ODMzMjIsMT
 kwMjIwODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4
 NzY2MjQsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNi
 wtMzMyNDU1MzYzXX0=
