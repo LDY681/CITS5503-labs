@@ -416,32 +416,22 @@ print(f"Downloading {s3_key} to {local_file_path}")
 
 # Main program
 # List all objects in the S3 bucket
-
 objects  =  s3.list_objects_v2(Bucket=ROOT_S3_DIR)
 
-  
-
 if  'Contents'  in  objects:
-
-for  obj  in  objects['Contents']:
-
-s3_key  =  obj['Key']
-
-local_file_path  =  os.path.join(ROOT_TARGET_DIR, s3_key).replace("/", os.path.sep)
-
-# Download the file from S3 to the corresponding local path
-
-download_file(s3_key, local_file_path)
-
+	for  obj  in  objects['Contents']:
+		s3_key  =  obj['Key']
+		local_file_path  =  os.path.join(ROOT_TARGET_DIR, s3_key).replace("/", os.path.sep)
+		# Download the file from S3 to the corresponding local path
+		download_file(s3_key, local_file_path)
 else:
-
-print("No objects found in the bucket.")
-
-  
-
+	print("No objects found in the bucket.")
+	pass
+	
 print("done")
 ```
-**NOTE**: Your local Linux environment should see a copy of the files and the directories from the S3 bucket.
+`s3.list_objects` will print all the files in the bucket along with their 
+
 
 ### [4] Write information about files to DynamoDB
 Install DynamoDB on your Linux environment
@@ -532,8 +522,8 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzMyOTAzNjM5LC0xOTI1OTgzMzIyLDE5MD
-IyMDg0MjgsMTAzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2
-NjI0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLT
-MzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbLTExNDcxODE1MDAsLTE5MjU5ODMzMjIsMT
+kwMjIwODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4
+NzY2MjQsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNi
+wtMzMyNDU1MzYzXX0=
 -->
