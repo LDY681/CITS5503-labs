@@ -393,14 +393,7 @@ for dir_name, subdir_list, file_list in os.walk(ROOT_DIR, topdown=True):
 print("done")
 ```
 
-
-
-  
-
 ### [3] Restore from S3
-
-  
-
 Create a new program called `restorefromcloud.py` that reads the S3 bucket and writes the contents of the bucket within the appropriate directories.
 
   
@@ -578,6 +571,6 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTU4NDg0NjM4LDE0MDMxNzk4MzksOTQ4OT
-gyOTIyLDEzOTk5NTUxMTYsLTMzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbLTE2NjU4NzY2MjQsMTQwMzE3OTgzOSw5ND
+g5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX0=
 -->
