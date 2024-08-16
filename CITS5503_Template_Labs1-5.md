@@ -430,7 +430,7 @@ else:
 	
 print("done")
 ```
-`s3.list_objects` will print all the files in the bucket along with their 
+`s3.list_objects` will print all the files in the bucket along with their attributes such as content, 
 
 
 ### [4] Write information about files to DynamoDB
@@ -522,7 +522,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDcxODE1MDAsLTE5MjU5ODMzMjIsMT
+eyJoaXN0b3J5IjpbLTE1ODYyNDk2MTEsLTE5MjU5ODMzMjIsMT
 kwMjIwODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4
 NzY2MjQsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNi
 wtMzMyNDU1MzYzXX0=
