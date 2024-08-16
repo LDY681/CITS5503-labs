@@ -396,7 +396,51 @@ print("done")
 
 ### [3] Restore from S3
 Create a new program called `restorefromcloud.py` that reads the S3 bucket and writes the contents of the bucket within the appropriate directories.
+```
+import  os
+import  boto3
 
+ROOT_TARGET_DIR  =  '.'  # Root directory where files will be restored to
+ROOT_S3_DIR  =  '24188516-cloudstorage'
+s3  =  boto3.client("s3")
+
+def  download_file(s3_key, local_file_path):
+	local_dir  =  os.path.dirname(local_file_path)
+	# Ensure the local directory exists
+	if  not  os.path.exists(local_dir):
+		os.makedirs(local_dir)
+
+# Download the file
+s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)
+print(f"Downloading {s3_key} to {local_file_path}")
+
+# Main program
+# List all objects in the S3 bucket
+
+objects  =  s3.list_objects_v2(Bucket=ROOT_S3_DIR)
+
+  
+
+if  'Contents'  in  objects:
+
+for  obj  in  objects['Contents']:
+
+s3_key  =  obj['Key']
+
+local_file_path  =  os.path.join(ROOT_TARGET_DIR, s3_key).replace("/", os.path.sep)
+
+# Download the file from S3 to the corresponding local path
+
+download_file(s3_key, local_file_path)
+
+else:
+
+print("No objects found in the bucket.")
+
+  
+
+print("done")
+```
 **NOTE**: Your local Linux environment should see a copy of the files and the directories from the S3 bucket.
 
 ### [4] Write information about files to DynamoDB
@@ -488,8 +532,8 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMD
-MzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3
-OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX
-0=
+eyJoaXN0b3J5IjpbNzMyOTAzNjM5LC0xOTI1OTgzMzIyLDE5MD
+IyMDg0MjgsMTAzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2
+NjI0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLT
+MzMjQ1NTM2M119
 -->
