@@ -430,7 +430,7 @@ else:
 	
 print("done")
 ```
-`s3.list_objects_v2` will print all the files in the bucket along with their attributes such as **Key, Name**, etc. Join the local **ROOT_TARGET_DIR** with **Key** to form the local **local_file_path **. Check if local directory exists with `os.path.exists()`, if not create is with `os.makedirs()`, after that we can call `s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)` with 3 parameters, 
+`s3.list_objects_v2` will print all the files in the bucket along with their attributes such as **Key, Name**, etc. Join the local **ROOT_TARGET_DIR** with **Key** to form the local **local_file_path **. Check if local directory exists with `os.path.exists()`, if not create is with `os.makedirs()`, after that we can call `s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)` with 3 parameters **Bucket, Key, Filename** to download the remote copy to corresponding local directory.
 
 
 ### [4] Write information about files to DynamoDB
@@ -522,8 +522,8 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2NjU5MDQwMCwtMTkyNTk4MzMyMiwxOT
-AyMjA4NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3
-NjYyNCwxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC
-0zMzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbOTY3MzQxNjk5LC0xOTI1OTgzMzIyLDE5MD
+IyMDg0MjgsMTAzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2
+NjI0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLT
+MzMjQ1NTM2M119
 -->
