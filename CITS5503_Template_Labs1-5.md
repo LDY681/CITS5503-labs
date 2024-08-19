@@ -523,7 +523,7 @@ if  __name__  ==  '__main__':
 	create_db_table()
 ```
 3. Write data into the `CloudFiles` table
-In this case, we will first use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket, the content in `s3.list_objects_v2()` contains **Key** and **LastModified**
+In this case, we will first use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket, the object in `s3.list_objects_v2()` contains **Key** and **LastModified**, to get extra metadatas on **owner, permission**, we would do an extra call on `s3.get_object_acl` where these information can be found under **Grants** and **owner**
 ```
 # writetable.py
 import  boto3
@@ -617,10 +617,10 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjIwMjc4NDcyLC03NjEwNTUxMTQsMzgzOT
-Q1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0MDE4MzUxMSwt
-MjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEwMz
-MzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNCwxNDAzMTc5
-ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0NTUzNjNdfQ
-==
+eyJoaXN0b3J5IjpbLTg3NjE2MjQ1MywtNzYxMDU1MTE0LDM4Mz
+k0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEs
+LTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMD
+MzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3
+OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX
+0=
 -->
