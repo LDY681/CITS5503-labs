@@ -542,18 +542,10 @@ Then, you need to get the attributes above for each file of the S3 bucket and th
 
 ### [5] Scan the table
 Use AWS CLI command to scan the created DynamoDB table, and output what you've got.
-
+`aws dynamodb scan --table-name CloudFiles --endpoint-url http://localhost:8001`
 ### [6] Delete the table
 
 Use AWS CLI command to delete the table.
-**NOTE**: Delete the created S3 bucket from AWS console after the lab is done.
-
- 
-Lab Assessment:
-
-  
-
-A structured presentation (15%). A clear step-by-step with detailed descriptions (85%).
 
 <div  style="page-break-after: always;"></div>
 
@@ -569,9 +561,10 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNz
-k0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTExLC0yMDU0MDg3MTQ1
-LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMTAzMzM3ODEzNiwxNj
-A5MjU3MTkzLC0xNjY1ODc2NjI0LDE0MDMxNzk4MzksOTQ4OTgy
-OTIyLDEzOTk5NTUxMTYsLTMzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbNzQ1NjM4NTIzLC03NjEwNTUxMTQsMzgzOT
+Q1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0MDE4MzUxMSwt
+MjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEwMz
+MzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNCwxNDAzMTc5
+ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0NTUzNjNdfQ
+==
 -->
