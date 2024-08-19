@@ -467,7 +467,7 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb 
 ![enter image description here](http://localhost/assets/lab2-22.png)
 
 2. Create table on DynamoDB
- Create a `databaseoperation.py` script to create the table on DynamoDB, with the following attributes, where `userId` is the partition key and `fileName` is the sort key
+ Create a `databaseoperation.py` script to create the table on DynamoDB, with the following attributes, where `userId` is the partition key and `fileName` is the sort key. `KeyType` indicates `HASH` for Partition key and `RANGE` for sort key. `AttributeName ` and `AttributeType`
 ```
 # database schema
 CloudFiles = {
@@ -529,7 +529,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMzk1NDU5MiwxODA4MTQyMTUyLDg0MD
+eyJoaXN0b3J5IjpbLTgyOTYyOTE3NywxODA4MTQyMTUyLDg0MD
 E4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4
 NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNC
 wxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0
