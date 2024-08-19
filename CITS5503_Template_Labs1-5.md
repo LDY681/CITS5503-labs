@@ -604,8 +604,6 @@ Use AWS CLI command to delete the created DynamoDB table. In this case, only the
 # Lab 4
 ## Apply a policy to restrict permissions on bucket
 
-  
-
 ### [1] Write a Python script
 Apply the following policy to the S3 bucket you created in the last lab to allow only your username to access the bucket. Make appropriate changes (e.g., `Resource`, `Condition`, etc) to the policy as necessary.
 
@@ -715,68 +713,39 @@ Update the script to attach the following policy to the key.
 			],
 			"Resource": "*",
 			"Condition": {
-			"Bool": {
-				"kms:GrantIsForAWSResource": "true"
+				"Bool": {
+					"kms:GrantIsForAWSResource": "true"
+				}
 			}
-		}
 		}
 	]
 }
 ```
 
-  
-
 ### [3] Check whether the script works
-
-  
 
 Use the AWS KMS console to test whether your username is the key administrator and key user.
 
 **NOTE**: After you log into the console, you perform the test by showing the policy you create, i.e., which ARN is the key administrator and which ARN is the key user.
 
-  
-
 ### [4] Use the created KMS key for encryption/decryption
-
-  
 
 Write a Python script where each file from the S3 bucket is encrypted and then decrypted via the created KMS key. Both encrypted and decrypted files will be in the same folder as the original file.
 
-  
-
 ### [5] Apply `pycryptodome` for encryption/decryption
-
-  
 
 Write another Python script that uses the python library `pycryptodome` to encrypt and decrypt each file in the S3 bucket. Both encrypted and decrypted files will be in the same folder as the original file.
 
-  
-
 For encryption/decryption, refer to the example code from [fileencrypt.py](https://github.com/zhangzhics/CITS5503_Sem2/blob/master/Labs/src/fileencrypt.py)
-
-  
 
 **NOTE**: Delete the created S3 bucket and KMS key from AWS console after the lab is done.
 
-  
-
 ## Answer the following question (Marked)
 
-  
-
 ```
-
 What is the performance difference between using KMS and using the custom solution?
-
 ```
 
-  
-
-Lab Assessment:
-
-  
-
-A structured presentation (15%). A clear step-by-step with detailed descriptions (85%).
 <div  style="page-break-after: always;"></div>
 
 # Lab 5
@@ -787,10 +756,10 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODY5NTQ2OTg1LC0xNzUwMDgwOTYzLDIxMT
-Q4Mzc5ODgsLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNzk0Nzgy
-LDE4MDgxNDIxNTIsODQwMTgzNTExLC0yMDU0MDg3MTQ1LC0xOT
-I1OTgzMzIyLDE5MDIyMDg0MjgsMTAzMzM3ODEzNiwxNjA5MjU3
-MTkzLC0xNjY1ODc2NjI0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLD
-EzOTk5NTUxMTYsLTMzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbLTE2MzI5Mzc4NTksLTE3NTAwODA5NjMsMj
+ExNDgzNzk4OCwtNzYxMDU1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3
+ODIsMTgwODE0MjE1Miw4NDAxODM1MTEsLTIwNTQwODcxNDUsLT
+E5MjU5ODMzMjIsMTkwMjIwODQyOCwxMDMzMzc4MTM2LDE2MDky
+NTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3OTgzOSw5NDg5ODI5Mj
+IsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX0=
 -->
