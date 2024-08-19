@@ -609,6 +609,8 @@ Apply the following policy to the S3 bucket you created in the last lab to allow
 
 **NOTE**: in the policy below, you should replace `<your_s3_bucket>` with the S3 bucket you created and `<studentnumber>` with your own student number. You can use AWS console to create the S3 bucket in this lab that has the same contents as the bucket in the last lab.
 
+The bucket policy as a JSON document.
+
 ```
 {
 	"Version": "2012-10-17",
@@ -756,10 +758,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkxMTEwMDI4MywtMTc1MDA4MDk2MywyMT
-E0ODM3OTg4LC03NjEwNTUxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4
-MiwxODA4MTQyMTUyLDg0MDE4MzUxMSwtMjA1NDA4NzE0NSwtMT
-kyNTk4MzMyMiwxOTAyMjA4NDI4LDEwMzMzNzgxMzYsMTYwOTI1
-NzE5MywtMTY2NTg3NjYyNCwxNDAzMTc5ODM5LDk0ODk4MjkyMi
-wxMzk5OTU1MTE2LC0zMzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbLTE1MzI5NTMzMzIsLTkxMTEwMDI4MywtMT
+c1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEwNTUxMTQsMzgzOTQ1
+MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0MDE4MzUxMSwtMj
+A1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEwMzMz
+NzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNCwxNDAzMTc5OD
+M5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0NTUzNjNdfQ==
+
 -->
