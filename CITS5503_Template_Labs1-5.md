@@ -605,7 +605,7 @@ Use AWS CLI command to delete the created DynamoDB table. In this case, only the
 ## Apply a policy to restrict permissions on bucket
 
 ### [1] Write a Python script
-Apply the following policy to the S3 bucket you created in the last lab to allow only your username to access the bucket. Make appropriate changes (e.g., `Resource`, `Condition`, etc) to the policy as necessary.
+Apply the access permission policy to the S3 bucket `24188516-cloudstorage` in the last lab to allow only your username to access the bucket. Make appropriate changes (e.g., `Resource`, `Condition`, etc) to the policy as necessary.
 
 **NOTE**: in the policy below, you should replace `<your_s3_bucket>` with the S3 bucket you created and `<studentnumber>` with your own student number. You can use AWS console to create the S3 bucket in this lab that has the same contents as the bucket in the last lab.
 
@@ -644,21 +644,14 @@ with  open('bucketpolicy.json', 'r') as policy_file:
 	policy = json.load(policy_file)
 	
 # stringify the policy to JSON document
-
-
 policy_string = json.dumps(policy)
 
 # Apply the policy to the bucket
-
 response = s3_client.put_bucket_policy()
-
 print("Policy applied!", response)
 
-  
-
 if  __name__  ==  '__main__':
-
-apply_bucket_policy()
+	apply_bucket_policy()
 ```
 
   
@@ -790,7 +783,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODY4NjkyODUzLC0xNTMyOTUzMzMyLC05MT
+eyJoaXN0b3J5IjpbOTc3MjI1MzkwLC0xNTMyOTUzMzMyLC05MT
 ExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1
 MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4ND
 AxODM1MTEsLTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIw
