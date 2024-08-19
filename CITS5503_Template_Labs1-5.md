@@ -588,11 +588,15 @@ write_to_table()
 
 
 4. Print and destroy the `CloudFiles` table
-Use AWS CLI command to scan the created DynamoDB table, and output what you've got.
+Use AWS CLI command to scan the created DynamoDB table, the table structure can be shown below.
 `aws dynamodb scan --table-name CloudFiles --endpoint-url http://localhost:8001`
-### [6] Delete the table
 
-Use AWS CLI command to delete the table.
+![enter image description here](http://localhost/assets/lab2-25.png)
+
+
+Use AWS CLI command to delete the created DynamoDB table, the table structure can be shown below.
+`aws dynamodb delete-table --table-name CloudFiles --endpoint-url http://localhost:8001`
+![enter image description here](http://localhost/assets/lab2-26.png)
 
 <div  style="page-break-after: always;"></div>
 
@@ -608,10 +612,10 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MzAwNjg4NjUsLTc2MTA1NTExNCwzOD
-M5NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTEx
-LC0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMT
-AzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2NjI0LDE0MDMx
-Nzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMzMjQ1NTM2M1
-19
+eyJoaXN0b3J5IjpbLTQxMjczMjE5NCwtNzYxMDU1MTE0LDM4Mz
+k0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEs
+LTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMD
+MzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3
+OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX
+0=
 -->
