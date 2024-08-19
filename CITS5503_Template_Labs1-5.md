@@ -469,10 +469,8 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb 
 2. Create table on DynamoDB
  Create a `databaseoperation.py` script to create the table on DynamoDB, with the following attributes, where `userId` is the partition key and `fileName` is the sort key. `KeyType` indicates `HASH` for Partition key and `RANGE` for sort key. `AttributeName ` and `AttributeType` specify the name and the type of each attribute in the table.
  
- **Because DynamoDB is a schema-free database, attributes can be added directly when inserting items into the table, we don't need to specify 'path',
-	'lastUpdated',
-	'owner',
-	'permissions' **
+ **Because DynamoDB is a schema-free database, attributes can be added directly when inserting items into the table, we don't need to specify 'path', 'lastUpdated', 'owner', 'permissions' to comply with AWS's coding standards**
+ 
 ```
 # database schema
 CloudFiles = {
@@ -483,7 +481,8 @@ CloudFiles = {
 	'owner',
 	'permissions'
 }
-
+```
+```
 # createtable.py
 import  boto3
 
@@ -518,17 +517,10 @@ table  =  dynamodb.create_table(
 		'WriteCapacityUnits': 1
 	}
 )
-
-  
-
 print("Table status:", table.table_status)
 
-  
-  
-
 if  __name__  ==  '__main__':
-
-create_db_table()
+	create_db_table()
 ```
 
 
@@ -577,7 +569,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwNTY1NjcxOCwzODM5NDUwMzEsNjQyNz
+eyJoaXN0b3J5IjpbLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNz
 k0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTExLC0yMDU0MDg3MTQ1
 LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMTAzMzM3ODEzNiwxNj
 A5MjU3MTkzLC0xNjY1ODc2NjI0LDE0MDMxNzk4MzksOTQ4OTgy
