@@ -442,7 +442,7 @@ print("done")
 ![enter image description here](http://localhost/assets/lab2-20.png)
 
 ### [4] Write information about files to DynamoDB
-Create and jump into the dynamodb directory. Then install JRE and DynamoDB package and extract the tarball files on our lab3 folder. Once the DynamoDB package is extracted, there will be a java archive DynamoDBLocal.jar and a folder with libraries DynamoDBLocal_lib.
+Create and jump into the dynamodb directory. Then install JRE and DynamoDB package and extract the tarball files on our lab3 folder. Once the DynamoDB package is extracted, there will be a java compiled code DynamoDBLocal.jar and a folder with libraries DynamoDBLocal_lib, which we use to run the DynamoDB instance.
 ```
 mkdir dynamodb
 cd dynamodb
@@ -456,7 +456,7 @@ wget https://s3-ap-northeast-1.amazonaws.com/dynamodb-local-tokyo/dynamodb_local
 tar -zxvf dynamodb_local_latest.tar.gz
 ```
 
-Start DynamoDBLocal.jar instance on JRE environment, I will specify the `-port` number to 8001 since 8000 was already taken for other tasks on my machine. The `-sharedDb` parameter instructs to create a single database file named _shared-local-instance.db_. Every program that connects to DynamoDB accesses this file
+Start DynamoDBLocal instance on JRE environment, I will specify the `-port` number to 8001 since 8000 was already taken for other tasks on my machine. The `-sharedDb` parameter instructs to create a single database file named _shared-local-instance.db_. Every program that connects to DynamoDB accesses this file
 ```
 java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb -port 8001
 ```
@@ -521,8 +521,8 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODMzNDQyMDEsODQwMTgzNTExLC0yMD
-U0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMTAzMzM3
-ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2NjI0LDE0MDMxNzk4Mz
-ksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbMTgwODE0MjE1Miw4NDAxODM1MTEsLTIwNT
+QwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMDMzMzc4
+MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3OTgzOS
+w5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX0=
 -->
