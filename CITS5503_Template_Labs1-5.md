@@ -634,6 +634,8 @@ Because policy parameter only takes in JSON string, our policy is in JSON format
 import boto3
 import json
 
+BUCKET_NAME =  '24188516-cloudstorage'
+
 # Create an S3 instance
 s3 = boto3.client('s3')
 
@@ -646,7 +648,7 @@ with  open('bucketpolicy.json', 'r') as policy_file:
 policy_string = json.dumps(policy)
 
 # Apply the policy to the bucket
-response = s3.put_bucket_policy()
+response = s3.put_bucket_policy(Bucket=BUCKET_NAME, Policy=policy_string)
 print("Policy applied!", response)
 
 if  __name__  ==  '__main__':
@@ -782,11 +784,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTYwMDE4ODQsLTE1MzI5NTMzMzIsLT
-kxMTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEw
-NTUxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLD
-g0MDE4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAy
-MjA4NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3Nj
-YyNCwxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0z
-MzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOT
+ExMTAwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1
+NTExNCwzODM5NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsOD
+QwMTgzNTExLC0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIy
+MDg0MjgsMTAzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2Nj
+I0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMz
+MjQ1NTM2M119
 -->
