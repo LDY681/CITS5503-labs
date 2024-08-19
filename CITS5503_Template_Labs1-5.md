@@ -442,7 +442,7 @@ print("done")
 ![enter image description here](http://localhost/assets/lab2-20.png)
 
 ### [4] Write information about files to DynamoDB
-Create and jump into the dynamodb directory. Then install JRE package and DynamoDB on uBuntus
+Create and jump into the dynamodb directory. Then install JRE package and DynamoDB and extract the tarball files on uBuntus
 ```
 mkdir dynamodb
 cd dynamodb
@@ -451,10 +451,8 @@ cd dynamodb
 sudo apt-get install default-jre
 # install dynamodb
 wget https://s3-ap-northeast-1.amazonaws.com/dynamodb-local-tokyo/dynamodb_local_latest.tar.gz
-```
 
-You can use the following command to extract files from dynamodb_local_latest.tar.gz
-```
+# unzip dynamodb
 tar -zxvf dynamodb_local_latest.tar.gz
 ```
 
@@ -528,8 +526,8 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NjUwNTMyNDQsODQwMTgzNTExLC0yMD
-U0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMTAzMzM3
-ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2NjI0LDE0MDMxNzk4Mz
-ksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMzMjQ1NTM2M119
+eyJoaXN0b3J5IjpbLTcxNzU0NDY3LDg0MDE4MzUxMSwtMjA1ND
+A4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEwMzMzNzgx
+MzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNCwxNDAzMTc5ODM5LD
+k0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0NTUzNjNdfQ==
 -->
