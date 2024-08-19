@@ -594,8 +594,9 @@ Use AWS CLI command to scan the created DynamoDB table, the table structure can 
 ![enter image description here](http://localhost/assets/lab2-25.png)
 
 
-Use AWS CLI command to delete the created DynamoDB table, the table structure can be shown below.
+Use AWS CLI command to delete the created DynamoDB table. In this case, only the defined schema which are **Hash** and **Range** key will be printed.
 `aws dynamodb delete-table --table-name CloudFiles --endpoint-url http://localhost:8001`
+
 ![enter image description here](http://localhost/assets/lab2-26.png)
 
 <div  style="page-break-after: always;"></div>
@@ -612,7 +613,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxMjczMjE5NCwtNzYxMDU1MTE0LDM4Mz
+eyJoaXN0b3J5IjpbMjExNDgzNzk4OCwtNzYxMDU1MTE0LDM4Mz
 k0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEs
 LTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMD
 MzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3
