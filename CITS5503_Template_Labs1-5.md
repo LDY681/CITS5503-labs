@@ -657,10 +657,16 @@ if  __name__  ==  '__main__':
 ![enter image description here](http://localhost/assets/lab4-1.png)
 
 ### [2] Check whether the script works
-Test if the policy is app
+Test if the policy is applied with `aws s3api get-bucket-policy` on bucket `24188516-cloudstorage` and format the output the plain text
 `aws s3api get-bucket-policy --bucket 24188516-cloudstorage --query Policy --output text`
 
-To check if the script works, assume we mess up the username and limit the access to only `12345678@student.uwa.edu.au`, now let's try to access the resources in the current user which is `24188516@student.uwa.edu.au`.
+![enter image description here](http://localhost/assets/lab4-2.png)
+
+Now go to AWS console and see the result visually
+![enter image description here](http://localhost/assets/lab4-3.png)
+
+To check if the script works, assume I mess up the username and limit the access to only `12345678@student.uwa.edu.au`, now let's try to access the resources in the current user which is `24188516@student.uwa.edu.au`.
+![enter image description here](http://localhost/assets/lab4-3.png)
 
 Use AWS CLI command and AWS S3 console to display the policy content applied to the S3 bucket.
 Test the policy by using a username that is not your to access the folder called `rootdir` and output what you've got.
@@ -787,7 +793,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ5NjE3ODAyLC0yMDgwMjU3MDQyLDYwMj
+eyJoaXN0b3J5IjpbMjMzMzU0NDAzLC0yMDgwMjU3MDQyLDYwMj
 MzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05MTExMDAy
 ODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1MTE0LD
 M4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1
