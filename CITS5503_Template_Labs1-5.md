@@ -605,7 +605,7 @@ Use AWS CLI command to delete the created DynamoDB table. In this case, only the
 ## Apply a policy to restrict permissions on bucket
 
 ### [1] Write a Python script
-Apply the access permission policy to the S3 bucket `24188516-cloudstorage` in the last lab to allow only your username to access the bucket. 
+Apply the access permission policy to the S3 bucket `24188516-cloudstorage` in the last lab to allow only your username to access the bucket. The following code ean`Sid` is user defined statement Id, effe
 
 The bucket policy as a JSON document.
 
@@ -781,11 +781,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTIyOTk4NzQsLTE1MzI5NTMzMzIsLT
-kxMTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEw
-NTUxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLD
-g0MDE4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAy
-MjA4NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3Nj
-YyNCwxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0z
-MzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbMjQ0MTQ3MTAxLC0xNTMyOTUzMzMyLC05MT
+ExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1
+MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4ND
+AxODM1MTEsLTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIw
+ODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2Mj
+QsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMy
+NDU1MzYzXX0=
 -->
