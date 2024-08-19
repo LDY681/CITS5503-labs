@@ -630,6 +630,37 @@ The bucket policy as a JSON document.
 }
 ```
 
+```
+# addpolicy.py
+import boto3
+import json
+
+# Create an S3 instance
+s3 = boto3.client('s3')
+
+def  apply_bucket_policy():
+# Import the policy
+with  open('bucketpolicy.json', 'r') as policy_file:
+	policy = json.load(policy_file)
+	
+# stringify the policy to JSON document
+
+
+policy_string = json.dumps(policy)
+
+# Apply the policy to the bucket
+
+response = s3_client.put_bucket_policy()
+
+print("Policy applied!", response)
+
+  
+
+if  __name__  ==  '__main__':
+
+apply_bucket_policy()
+```
+
   
   
 
@@ -759,11 +790,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTg0Njk3NzEsLTE1MzI5NTMzMzIsLT
-kxMTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEw
-NTUxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLD
-g0MDE4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAy
-MjA4NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3Nj
-YyNCwxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0z
-MzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbODY4NjkyODUzLC0xNTMyOTUzMzMyLC05MT
+ExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1
+MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4ND
+AxODM1MTEsLTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIw
+ODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2Mj
+QsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMy
+NDU1MzYzXX0=
 -->
