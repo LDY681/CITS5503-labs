@@ -640,23 +640,20 @@ BUCKET_NAME =  '24188516-cloudstorage'
 s3 = boto3.client('s3')
 
 def  apply_bucket_policy():
-# Import the policy
-with  open('bucketpolicy.json', 'r') as policy_file:
-	policy = json.load(policy_file)
-	
-# stringify the policy to JSON document
-policy_string = json.dumps(policy)
+	# Import the policy
+	with  open('bucketpolicy.json', 'r') as policy_file:
+		policy = json.load(policy_file)
+		
+	# stringify the policy to JSON document
+	policy_string = json.dumps(policy)
 
-# Apply the policy to the bucket
-response = s3.put_bucket_policy(Bucket=BUCKET_NAME, Policy=policy_string)
-print("Policy applied!", response)
+	# Apply the policy to the bucket
+	response = s3.put_bucket_policy(Bucket=BUCKET_NAME, Policy=policy_string)
+	print("Policy applied!", response)
 
 if  __name__  ==  '__main__':
 	apply_bucket_policy()
 ```
-
-  
- 
 
 ### [2] Check whether the script works
 Use AWS CLI command and AWS S3 console to display the policy content applied to the S3 bucket.
@@ -784,11 +781,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTIyODE2MzQzLC03MzUzMjU5MTcsLTE1Mz
-I5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3
-OTg4LC03NjEwNTUxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxOD
-A4MTQyMTUyLDg0MDE4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4
-MzMyMiwxOTAyMjA4NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5My
-wtMTY2NTg3NjYyNCwxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5
-OTU1MTE2XX0=
+eyJoaXN0b3J5IjpbLTE1NzAxMDExMTksLTczNTMyNTkxNywtMT
+UzMjk1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4
+Mzc5ODgsLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNzk0NzgyLD
+E4MDgxNDIxNTIsODQwMTgzNTExLC0yMDU0MDg3MTQ1LC0xOTI1
+OTgzMzIyLDE5MDIyMDg0MjgsMTAzMzM3ODEzNiwxNjA5MjU3MT
+kzLC0xNjY1ODc2NjI0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLDEz
+OTk5NTUxMTZdfQ==
 -->
