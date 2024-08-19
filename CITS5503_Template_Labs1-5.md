@@ -522,7 +522,8 @@ print("Table status:", table.table_status)
 if  __name__  ==  '__main__':
 	create_db_table()
 ```
-3. Write data into `CloudFiles ta`
+3. Write data into the `CloudFiles` table
+In this case, we will use list_objects_v2 to get all files in the ``24188516-cloudstorage** bucket, 
 ```
 # writetable.py
 import  boto3
@@ -616,10 +617,10 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNjYyNDQyOTgsLTc2MTA1NTExNCwzOD
-M5NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTEx
-LC0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMT
-AzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2NjI0LDE0MDMx
-Nzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMzMjQ1NTM2M1
-19
+eyJoaXN0b3J5IjpbLTI2ODAzMTkzMSwtNzYxMDU1MTE0LDM4Mz
+k0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEs
+LTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMD
+MzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3
+OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX
+0=
 -->
