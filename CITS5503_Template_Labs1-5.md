@@ -486,46 +486,32 @@ def  create_db_table():
 # initialize dynamodb service instance
 dynamodb  =  boto3.resource('dynamodb', endpoint_url="http://localhost:8001")
 table  =  dynamodb.create_table(
-TableName='CloudFiles',
-KeySchema=[
-	{
-	'AttributeName': 'userId',
-	'KeyType': 'HASH'  # Partition key
-	},
-	{
-	'AttributeName': 'fileName',
-	'KeyType': 'RANGE'  # Sort key
+	TableName='CloudFiles',
+	KeySchema=[
+		{
+		'AttributeName': 'userId',
+		'KeyType': 'HASH'  # Partition key
+		},
+		{
+		'AttributeName': 'fileName',
+		'KeyType': 'RANGE'  # Sort key
+		}
+	],
+
+	AttributeDefinitions=[
+		{
+		'AttributeName': 'userId',
+		'AttributeType': 'S'
+		},
+		{
+		'AttributeName': 'fileName',
+		'AttributeType': 'S'
+		}
+	],
+	ProvisionedThroughput={
+		'ReadCapacityUnits': 1,
+		'WriteCapacityUnits': 1
 	}
-],
-
-AttributeDefinitions=[
-
-{
-
-'AttributeName': 'userId',
-
-'AttributeType': 'S'
-
-},
-
-{
-
-'AttributeName': 'fileName',
-
-'AttributeType': 'S'
-
-}
-
-],
-
-ProvisionedThroughput={
-
-'ReadCapacityUnits': 5,
-
-'WriteCapacityUnits': 5
-
-}
-
 )
 
   
@@ -586,7 +572,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTk5NTk5NzYzLDY0Mjc5NDc4MiwxODA4MT
+eyJoaXN0b3J5IjpbMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxODA4MT
 QyMTUyLDg0MDE4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMy
 MiwxOTAyMjA4NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5MywtMT
 Y2NTg3NjYyNCwxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1
