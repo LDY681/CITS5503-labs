@@ -665,12 +665,10 @@ Test if the policy is applied with `aws s3api get-bucket-policy` on bucket `2418
 Now go to AWS console and see the result visually
 ![enter image description here](http://localhost/assets/lab4-3.png)
 
-To check if the script works, assume I mess up the username and limit the access to only `12345678@student.uwa.edu.au`, now let's try to access the resources in the current user which is ~~`24188516@student.uwa.edu.au`~~.
+To check if the script works, assume I mess up the username and limit the access to only `12345678@student.uwa.edu.au`, now let's try to access the resources in the current user ~~`24188516@student.uwa.edu.au`~~. As expected, the access is denied.
 ![enter image description here](http://localhost/assets/lab4-4.png)
 
-Use AWS CLI command and AWS S3 console to display the policy content applied to the S3 bucket.
-Test the policy by using a username that is not your to access the folder called `rootdir` and output what you've got.
-
+![enter image description here](http://localhost/assets/lab4-5.png)
 
 ## AES Encryption using KMS
 
@@ -793,11 +791,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2MD
-IzMzk3NzksLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMTAw
-MjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTExNC
-wzODM5NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMTgz
-NTExLC0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0Mj
-gsMTAzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2NjI0LDE0
-MDMxNzk4MzldfQ==
+eyJoaXN0b3J5IjpbMTQxMzUwNDk1MywtMTEyODc1ODA0LC0yMD
+gwMjU3MDQyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOTUz
+MzMyLC05MTExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OC
+wtNzYxMDU1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgwODE0
+MjE1Miw4NDAxODM1MTEsLTIwNTQwODcxNDUsLTE5MjU5ODMzMj
+IsMTkwMjIwODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2
+NjU4NzY2MjRdfQ==
 -->
