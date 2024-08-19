@@ -657,6 +657,9 @@ if  __name__  ==  '__main__':
 ![enter image description here](http://localhost/assets/lab4-1.png)
 
 ### [2] Check whether the script works
+Test if the policy is app
+`aws s3api get-bucket-policy --bucket 24188516-cloudstorage --query Policy --output text`
+
 To check if the script works, assume we mess up the username and limit the access to only `12345678@student.uwa.edu.au`, now let's try to access the resources in the current user which is `24188516@student.uwa.edu.au`.
 
 Use AWS CLI command and AWS S3 console to display the policy content applied to the S3 bucket.
@@ -784,11 +787,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03Mz
-UzMjU5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4
-MDk2MywyMTE0ODM3OTg4LC03NjEwNTUxMTQsMzgzOTQ1MDMxLD
-Y0Mjc5NDc4MiwxODA4MTQyMTUyLDg0MDE4MzUxMSwtMjA1NDA4
-NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEwMzMzNzgxMz
-YsMTYwOTI1NzE5MywtMTY2NTg3NjYyNCwxNDAzMTc5ODM5LDk0
-ODk4MjkyMl19
+eyJoaXN0b3J5IjpbOTQ5NjE3ODAyLC0yMDgwMjU3MDQyLDYwMj
+MzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05MTExMDAy
+ODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1MTE0LD
+M4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1
+MTEsLTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOC
+wxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQw
+MzE3OTgzOV19
 -->
