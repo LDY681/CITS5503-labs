@@ -654,6 +654,7 @@ def  apply_bucket_policy():
 if  __name__  ==  '__main__':
 	apply_bucket_policy()
 ```
+![enter image description here](http://localhost/assets/lab4-1.png)
 
 ### [2] Check whether the script works
 Use AWS CLI command and AWS S3 console to display the policy content applied to the S3 bucket.
@@ -781,11 +782,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NzU3MDUxNzQsLTczNTMyNTkxNywtMT
-UzMjk1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4
-Mzc5ODgsLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNzk0NzgyLD
-E4MDgxNDIxNTIsODQwMTgzNTExLC0yMDU0MDg3MTQ1LC0xOTI1
-OTgzMzIyLDE5MDIyMDg0MjgsMTAzMzM3ODEzNiwxNjA5MjU3MT
-kzLC0xNjY1ODc2NjI0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLDEz
-OTk5NTUxMTZdfQ==
+eyJoaXN0b3J5IjpbNjAyMzM5Nzc5LC03MzUzMjU5MTcsLTE1Mz
+I5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3
+OTg4LC03NjEwNTUxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxOD
+A4MTQyMTUyLDg0MDE4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4
+MzMyMiwxOTAyMjA4NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5My
+wtMTY2NTg3NjYyNCwxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5
+OTU1MTE2XX0=
 -->
