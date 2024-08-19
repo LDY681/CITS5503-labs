@@ -525,7 +525,7 @@ if  __name__  ==  '__main__':
 ![enter image description here](http://localhost/assets/lab2-23.png)
 
 3. Write data into the `CloudFiles` table
-In this case, we will first use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket, the object in `s3.list_objects_v2()` contains **Key** and **LastModified**, to get extra attributes on **Owner, Permission**, we would do an extra call on `s3.get_object_acl` where these information can be found under **Grants** and **Owner** attributes. After we successfully extra all neccessary attributes, call `dynamodb_table.put_item()` to insert each object into the database. Because 
+In this case, we will first use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket, the object in `s3.list_objects_v2()` contains **Key** and **LastModified**, to get extra attributes on **Owner, Permission**, we would do an extra call on `s3.get_object_acl` where these information can be found under **Grants** and **Owner** attributes. After we successfully extra all neccessary attributes, call `dynamodb_table.put_item()` to insert each object into the database. Because my region is in `eu-north-1`, we will fill owner Id into the owner field.
 
 ```
 # writetable.py
@@ -585,21 +585,9 @@ if  __name__  ==  '__main__':
 write_to_table()
 ```
 ![enter image description here](http://localhost/assets/lab2-24.png)
-**NOTE**:
-1) The table should have 2 items. One item corresponds to one file in the bucket and consists of the attributes above and their values.
 
-2) Regarding the attribute `owner`, if you use a region in the table below, its value should be **owner's name**. Otherwise, its value should be **owner's ID**.
 
-  
-
-| Region | Region Name |
-| --- | --- |
-| US East (N. Virginia) | us-east-1 |
-| Asia Pacific (Tokyo) | ap-northeast-1 |
-| Asia Pacific (Singapore) | ap-southeast-1 |
-| Asia Pacific (Sydney) | ap-southeast-2 |
-
-### [5] Scan the table
+4. Print and destroy the `CloudFiles` table
 Use AWS CLI command to scan the created DynamoDB table, and output what you've got.
 `aws dynamodb scan --table-name CloudFiles --endpoint-url http://localhost:8001`
 ### [6] Delete the table
@@ -620,7 +608,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MTM1MDIzNTAsLTc2MTA1NTExNCwzOD
+eyJoaXN0b3J5IjpbLTE1MzAwNjg4NjUsLTc2MTA1NTExNCwzOD
 M5NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTEx
 LC0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMT
 AzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2NjI0LDE0MDMx
