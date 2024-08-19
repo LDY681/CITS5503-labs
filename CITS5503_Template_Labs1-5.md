@@ -466,7 +466,7 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb 
 ```
 ![enter image description here](http://localhost/assets/lab2-22.png)
 
-2. Create table on DynamoDB
+2. Create table in DynamoDB
  Create a `databaseoperation.py` script to create the table on DynamoDB, with the following attributes, where `userId` is the partition key and `fileName` is the sort key. `KeyType` indicates `HASH` for Partition key and `RANGE` for sort key. `AttributeName ` and `AttributeType` specify the name and the type of each attribute in the table.
  
  **Because DynamoDB is a schema-free database, attributes can be added directly when inserting items into the table, we don't need to specify 'path', 'lastUpdated', 'owner', 'permissions' to comply with AWS's coding standards**
@@ -522,7 +522,7 @@ print("Table status:", table.table_status)
 if  __name__  ==  '__main__':
 	create_db_table()
 ```
-
+3. Write data into `CloudFiles ta`
 ```
 # writetable.py
 import  boto3
@@ -549,12 +549,12 @@ def  list_files():
 
 def  extract_file_attributes(file):
 	file_attributes  = {
-	'userId': file['Grants'][0]['Grantee']['ID'],
-	'fileName': os.path.basename(file['Key']),
-	'path': file['Key'],
-	'lastUpdated': file['LastModified'].isoformat(),
-	'owner': file['Owner']['ID'],
-	'permissions': file['Grants'][0]['Permission']
+		'userId': file['Grants'][0]['Grantee']['ID'],
+		'fileName': os.path.basename(file['Key']),
+		'path': file['Key'],
+		'lastUpdated': file['LastModified'].isoformat(),
+		'owner': file['Owner']['ID'],
+		'permissions': file['Grants'][0]['Permission']
 	}
 	return  file_attributes
 
@@ -563,29 +563,21 @@ def  extract_file_attributes(file):
 def  write_to_table():
 # List all files in the bucket
 try:
-files  =  list_files()
-# Iterate through each file
-for  file  in  files:
-# Extract attributes for a file
-file_attributes  =  extract_file_attributes(file)
-# Write the attributes to DynamoDB
-
-db_res  =  dynamodb_table.put_item(Item=file_attributes)
-
-print(f"Inserted {file_attributes['fileName']} into DynamoDB")
-
-  
-
+	files  =  list_files()
+	# Iterate through each file
+	for  file  in  files:
+		# Extract attributes for a file
+		file_attributes  =  extract_file_attributes(file)
+		
+		# Write the attributes to DynamoDB
+		db_res  =  dynamodb_table.put_item(Item=file_attributes)
+		print(f"Inserted {file_attributes['fileName']} into DynamoDB")
+	
 except  Exception  as  error:
-
-print("Database write operation failed: %s"  %  error)
-
-pass
-
-  
+	print("Database write operation failed: %s"  %  error)
+	pass
 
 if  __name__  ==  '__main__':
-
 write_to_table()
 ```
 
@@ -624,10 +616,10 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NjcxOTczNywtNzYxMDU1MTE0LDM4Mz
-k0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEs
-LTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMD
-MzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3
-OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX
-0=
+eyJoaXN0b3J5IjpbLTExNjYyNDQyOTgsLTc2MTA1NTExNCwzOD
+M5NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTEx
+LC0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMT
+AzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2NjI0LDE0MDMx
+Nzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMzMjQ1NTM2M1
+19
 -->
