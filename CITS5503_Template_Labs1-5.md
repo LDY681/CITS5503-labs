@@ -523,8 +523,71 @@ if  __name__  ==  '__main__':
 	create_db_table()
 ```
 
+```
+# writetable.py
+import  boto3
+import  os
 
-Then, you need to get the attributes above for each file of the S3 bucket and then write the attributes of each file into the created DynamoDB table. Regarding how to get the attributes for a file, refer to this [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/get_bucket_acl.html)
+BUCKET_NAME  =  '24188516-cloudstorage'
+DB_NAME  =  'CloudFiles'
+
+# Set up AWS instances for S3 and DynamoDB
+s3  =  boto3.client('s3')
+dynamodb  =  boto3.resource('dynamodb', endpoint_url="http://localhost:8001")
+dynamodb_table  =  dynamodb.Table(DB_NAME)
+
+def  list_files():
+	# List all objects in the S3 bucket
+	files  = []
+	objects  =  s3.list_objects_v2(Bucket=BUCKET_NAME)
+	if  'Contents'  in  objects:
+	for  obj  in  objects['Contents']:
+		# get access control list for owner and permission information
+		obj_acl  =  s3.get_object_acl(Bucket=BUCKET_NAME, Key=obj['Key'])
+		files.append({**obj, **obj_acl})
+		return  files
+
+def  extract_file_attributes(file):
+	file_attributes  = {
+	'userId': file['Grants'][0]['Grantee']['ID'],
+	'fileName': os.path.basename(file['Key']),
+	'path': file['Key'],
+	'lastUpdated': file['LastModified'].isoformat(),
+	'owner': file['Owner']['ID'],
+	'permissions': file['Grants'][0]['Permission']
+	}
+	return  file_attributes
+
+  
+
+def  write_to_table():
+# List all files in the bucket
+try:
+files  =  list_files()
+# Iterate through each file
+for  file  in  files:
+# Extract attributes for a file
+file_attributes  =  extract_file_attributes(file)
+# Write the attributes to DynamoDB
+
+db_res  =  dynamodb_table.put_item(Item=file_attributes)
+
+print(f"Inserted {file_attributes['fileName']} into DynamoDB")
+
+  
+
+except  Exception  as  error:
+
+print("Database write operation failed: %s"  %  error)
+
+pass
+
+  
+
+if  __name__  ==  '__main__':
+
+write_to_table()
+```
 
 **NOTE**:
 1) The table should have 2 items. One item corresponds to one file in the bucket and consists of the attributes above and their values.
@@ -561,10 +624,10 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ1NjM4NTIzLC03NjEwNTUxMTQsMzgzOT
-Q1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0MDE4MzUxMSwt
-MjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEwMz
-MzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNCwxNDAzMTc5
-ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0NTUzNjNdfQ
-==
+eyJoaXN0b3J5IjpbLTU5NjcxOTczNywtNzYxMDU1MTE0LDM4Mz
+k0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEs
+LTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMD
+MzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3
+OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX
+0=
 -->
