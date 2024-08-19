@@ -620,7 +620,7 @@ Apply the following policy to the S3 bucket you created in the last lab to allow
 		"Resource": "arn:aws:s3:::<your_s3_bucket>/folder1/folder2/*",
 		"Condition": {
 			"StringNotLike": {
-				"aws:username":"<studentnumber>@student.uwa.edu.au"
+				"aws:username":"24188516@student.uwa.edu.au"
 			}
 		}
 	}
@@ -756,10 +756,10 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzI5Mzc4NTksLTE3NTAwODA5NjMsMj
-ExNDgzNzk4OCwtNzYxMDU1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3
-ODIsMTgwODE0MjE1Miw4NDAxODM1MTEsLTIwNTQwODcxNDUsLT
-E5MjU5ODMzMjIsMTkwMjIwODQyOCwxMDMzMzc4MTM2LDE2MDky
-NTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3OTgzOSw5NDg5ODI5Mj
-IsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbOTkwNjcyNjAsLTE3NTAwODA5NjMsMjExND
+gzNzk4OCwtNzYxMDU1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIs
+MTgwODE0MjE1Miw4NDAxODM1MTEsLTIwNTQwODcxNDUsLTE5Mj
+U5ODMzMjIsMTkwMjIwODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcx
+OTMsLTE2NjU4NzY2MjQsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMT
+M5OTk1NTExNiwtMzMyNDU1MzYzXX0=
 -->
