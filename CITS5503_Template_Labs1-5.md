@@ -613,19 +613,19 @@ Apply the following policy to the S3 bucket you created in the last lab to allow
 
 ```
 {
-"Version": "2012-10-17",
-"Statement": {
-"Sid": "AllowAllS3ActionsInUserFolderForUserOnly",
-"Effect": "DENY",
-"Principal": "*",
-"Action": "s3:*",
-"Resource": "arn:aws:s3:::<your_s3_bucket>/folder1/folder2/*",
-"Condition": {
-"StringNotLike": {
-"aws:username":"<studentnumber>@student.uwa.edu.au"
-}
-}
-}
+	"Version": "2012-10-17",
+	"Statement": {
+		"Sid": "AllowAllS3ActionsInUserFolderForUserOnly",
+		"Effect": "DENY",
+		"Principal": "*",
+		"Action": "s3:*",
+		"Resource": "arn:aws:s3:::<your_s3_bucket>/folder1/folder2/*",
+		"Condition": {
+			"StringNotLike": {
+				"aws:username":"<studentnumber>@student.uwa.edu.au"
+			}
+		}
+	}
 }
 
   
@@ -885,10 +885,10 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NTAwODA5NjMsMjExNDgzNzk4OCwtNz
-YxMDU1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1
-Miw4NDAxODM1MTEsLTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMT
-kwMjIwODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4
-NzY2MjQsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNi
-wtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbNDcxODE2NzU3LC0xNzUwMDgwOTYzLDIxMT
+Q4Mzc5ODgsLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNzk0Nzgy
+LDE4MDgxNDIxNTIsODQwMTgzNTExLC0yMDU0MDg3MTQ1LC0xOT
+I1OTgzMzIyLDE5MDIyMDg0MjgsMTAzMzM3ODEzNiwxNjA5MjU3
+MTkzLC0xNjY1ODc2NjI0LDE0MDMxNzk4MzksOTQ4OTgyOTIyLD
+EzOTk5NTUxMTYsLTMzMjQ1NTM2M119
 -->
