@@ -611,7 +611,7 @@ The bucket policy as a JSON document:
 ```
 # bucketpolicy.json
 {
-	"Version": "2012-10-17",
+	"Version": "2024-08-19",
 	"Statement": {
 		"Sid": "AllowAllS3ActionsInUserFolderForUserOnly",
 		"Effect": "DENY",
@@ -782,7 +782,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NzA5ODQ2NDIsLTE1MzI5NTMzMzIsLT
+eyJoaXN0b3J5IjpbLTEzMTYwMDE4ODQsLTE1MzI5NTMzMzIsLT
 kxMTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEw
 NTUxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLD
 g0MDE4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAy
