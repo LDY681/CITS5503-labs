@@ -651,76 +651,76 @@ Update the script to attach the following policy to the key.
 
 ```
 {
-"Version": "2012-10-17",
-"Id": "key-consolepolicy-3",
-"Statement": [
-{
-"Sid": "Enable IAM User Permissions",
-"Effect": "Allow",
-"Principal": {
-"AWS": "arn:aws:iam::489389878001:root"
-},
-"Action": "kms:*",
-"Resource": "*"
-},
-{
-"Sid": "Allow access for Key Administrators",
-"Effect": "Allow",
-"Principal": {
-"AWS": "arn:aws:iam::489389878001:user/<your_username>"
-},
-"Action": [
-"kms:Create*",
-"kms:Describe*",
-"kms:Enable*",
-"kms:List*",
-"kms:Put*",
-"kms:Update*",
-"kms:Revoke*",
-"kms:Disable*",
-"kms:Get*",
-"kms:Delete*",
-"kms:TagResource",
-"kms:UntagResource",
-"kms:ScheduleKeyDeletion",
-"kms:CancelKeyDeletion"
-],
-"Resource": "*"
-},
-{
-"Sid": "Allow use of the key",
-"Effect": "Allow",
-"Principal": {
-"AWS": "arn:aws:iam::489389878001:user/<your_username>"
-},
-"Action": [
-"kms:Encrypt",
-"kms:Decrypt",
-"kms:ReEncrypt*",
-"kms:GenerateDataKey*",
-"kms:DescribeKey"
-],
-"Resource": "*"
-},
-{
-"Sid": "Allow attachment of persistent resources",
-"Effect": "Allow",
-"Principal": {
-"AWS": "arn:aws:iam::489389878001:user/<your_username>"
-},
-"Action": [
-"kms:CreateGrant",
-"kms:ListGrants",
-"kms:RevokeGrant"
-],
-"Resource": "*",
-"Condition": {
-"Bool": {
-"kms:GrantIsForAWSResource": "true"
-}
-}
-}
-]
+	"Version": "2012-10-17",
+	"Id": "key-consolepolicy-3",
+	"Statement": [
+		{
+			"Sid": "Enable IAM User Permissions",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "arn:aws:iam::489389878001:root"
+			},
+			"Action": "kms:*",
+			"Resource": "*"
+		},
+		{
+			"Sid": "Allow access for Key Administrators",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "arn:aws:iam::489389878001:user/<your_username>"
+			},
+			"Action": [
+				"kms:Create*",
+				"kms:Describe*",
+				"kms:Enable*",
+				"kms:List*",
+				"kms:Put*",
+				"kms:Update*",
+				"kms:Revoke*",
+				"kms:Disable*",
+				"kms:Get*",
+				"kms:Delete*",
+				"kms:TagResource",
+				"kms:UntagResource",
+				"kms:ScheduleKeyDeletion",
+				"kms:CancelKeyDeletion"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "Allow use of the key",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "arn:aws:iam::489389878001:user/<your_username>"
+			},
+			"Action": [
+				"kms:Encrypt",
+				"kms:Decrypt",
+				"kms:ReEncrypt*",
+				"kms:GenerateDataKey*",
+				"kms:DescribeKey"
+			],
+			"Resource": "*"
+		},
+		{
+			"Sid": "Allow attachment of persistent resources",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "arn:aws:iam::489389878001:user/<your_username>"
+			},
+			"Action": [
+				"kms:CreateGrant",
+				"kms:ListGrants",
+				"kms:RevokeGrant"
+			],
+			"Resource": "*",
+			"Condition": {
+			"Bool": {
+				"kms:GrantIsForAWSResource": "true"
+			}
+		}
+		}
+	]
 }
 ```
 
@@ -787,7 +787,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1OTg0ODcxLC0xNzUwMDgwOTYzLDIxMT
+eyJoaXN0b3J5IjpbODY5NTQ2OTg1LC0xNzUwMDgwOTYzLDIxMT
 Q4Mzc5ODgsLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNzk0Nzgy
 LDE4MDgxNDIxNTIsODQwMTgzNTExLC0yMDU0MDg3MTQ1LC0xOT
 I1OTgzMzIyLDE5MDIyMDg0MjgsMTAzMzM3ODEzNiwxNjA5MjU3
