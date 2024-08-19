@@ -460,14 +460,14 @@ tar -zxvf dynamodb_local_latest.tar.gz
 ```
 ![enter image description here](http://localhost/assets/lab2-21.png)
 
-Start DynamoDBLocal instance on JRE environment, I will specify the `-port` number to 8001 since 8000 was already taken for other tasks on my machine. The `-sharedDb` parameter instructs to create a single database file named _shared-local-instance.db_. Every program that connects to DynamoDB accesses this file
+Start DynamoDBLocal instance on JRE environment, I will specify the `-port` number to **8001** since 8000 was already taken for other tasks on my machine. The `-sharedDb` parameter instructs to create a single database file named _shared-local-instance.db_. Every program that connects to DynamoDB accesses this file
 ```
 java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb -port 8001
 ```
 ![enter image description here](http://localhost/assets/lab2-22.png)
 
 2. Create table on DynamoDB
- Create a `databaseoperation.py` script to create the table on DynamoDB, with the following attributes, where `userId` is the partition key and `fileName` is the sort key. `KeyType` indicates `HASH` for Partition key and `RANGE` for sort key. `AttributeName ` and `AttributeType`
+ Create a `databaseoperation.py` script to create the table on DynamoDB, with the following attributes, where `userId` is the partition key and `fileName` is the sort key. `KeyType` indicates `HASH` for Partition key and `RANGE` for sort key. `AttributeName ` and `AttributeType` specify the name and the type of each attribute in the table.
 ```
 # database schema
 CloudFiles = {
@@ -529,9 +529,9 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgyOTYyOTE3NywxODA4MTQyMTUyLDg0MD
-E4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4
-NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNC
-wxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0
-NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMT
+gzNTExLC0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0
+MjgsMTAzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2NjI0LD
+E0MDMxNzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMzMjQ1
+NTM2M119
 -->
