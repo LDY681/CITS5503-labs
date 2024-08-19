@@ -352,209 +352,252 @@ docker rm my-app
 <div  style="page-break-after: always;"></div>
 
 # Lab 3
-
 ### [1] Preparation
-
-Download the python code `cloudstorage.py` from the directory of [src](https://github.com/zhangzhics/CITS5503_Sem2/blob/master/Labs/src/cloudstorage.py) 
-
-Create a directory `rootdir` 
-
-Create a file in `rootdir` called `rootfile.txt` and write some content in it `1\n2\n3\n4\n5\n` 
-
-Create a second directory in rootdir called `subdir`, and in the `subdir` directory create another file `subfile.txt` with the same content as `rootfile.txt`.
-
-  
+Files and directories are created as required, this is the following file structure with three files `cloudstorage.py`, `rootfile.txt` and `subfile.txt`
+![enter image description here](http://127.0.0.1/assets/lab2-18.png)
 
 ### [2] Save to S3 by updating `cloudstorage.py`
-
-  
-
-Modify the downloaded Python script, `cloudstorage.py`, to create an S3 bucket named `<student ID>-cloudstorage`.
-
-  
-
-When the program traverses the directory starting at the root directory `rootdir`, upload each file onto the S3 bucket. An easy way to upload files is to use the command below:
-
-  
+The modified  `cloudstorage.py` is as followed, it will create an S3 bucket named `24188516-cloudstorage` if not existed, then traverse through all the directories and subdirectories in the root directory, and submit any discovered files to the `24188516-cloudstorage` bucket.
 
 ```
+import os
+import boto3
+import base64
 
-s3.upload_file()
+ROOT_DIR =  '.'
+ROOT_S3_DIR =  '24188516-cloudstorage'
+s3 = boto3.client("s3")
 
+bucket_config = {'LocationConstraint': 'eu-north-1'}
+def upload_file(folder_name, file, file_name):
+	file_key = os.path.join(folder_name, file_name).replace("\\", "/")
+	s3.upload_file(file, ROOT_S3_DIR, file_name) # file path, bucket name, key
+	print("Uploading %s"  %  file)
+
+# Main program
+# Insert code to create bucket if not there
+try:
+	response = s3.create_bucket(
+		Bucket=ROOT_S3_DIR,
+		CreateBucketConfiguration=bucket_config
+	)
+	print("Bucket created: $s"  % response)
+except  Exception  as error:
+	print("Bucket creation failed: %s"  % error)
+	pass
+
+# parse directory and upload files
+for dir_name, subdir_list, file_list in os.walk(ROOT_DIR, topdown=True):
+	if dir_name != ROOT_DIR:
+		for fname in file_list:
+			upload_file("%s/"  % dir_name[2:], "%s/%s"  % (dir_name, fname), fname)
+print("done")
 ```
 
-  
+The `s3.upload_file` methods takes in three parameters: **file path, bucket name, key**. We will concat both the *folder_name* and *file_name* as the file key, this way the file will be uploaded to the same file structure as our local machine.
 
-**NOTE**: Make sure your S3 bucket has the same file structure as shown in `[1] Preparation`.
-
-  
+![enter image description here](http://localhost/assets/lab2-19.png)
 
 ### [3] Restore from S3
-
-  
-
 Create a new program called `restorefromcloud.py` that reads the S3 bucket and writes the contents of the bucket within the appropriate directories.
 
-  
+```
+import  os
+import  boto3
 
-**NOTE**: Your local Linux environment should see a copy of the files and the directories from the S3 bucket.
+ROOT_TARGET_DIR  =  '.'  # Root directory where files will be restored to
+ROOT_S3_DIR  =  '24188516-cloudstorage'
+s3  =  boto3.client("s3")
 
-  
+def  download_file(s3_key, local_file_path):
+	local_dir  =  os.path.dirname(local_file_path)
+	# Ensure the local directory exists
+	if  not  os.path.exists(local_dir):
+		print(f"Create directory {local_dir}")
+		os.makedirs(local_dir)
+
+	# Download the file
+	s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)
+	print(f"Downloading {s3_key} to {local_file_path}")
+
+# Main program
+# List all objects in the S3 bucket
+objects  =  s3.list_objects_v2(Bucket=ROOT_S3_DIR)
+
+if  'Contents'  in  objects:
+	for  obj  in  objects['Contents']:
+		s3_key  =  obj['Key']
+		local_file_path  =  os.path.join(ROOT_TARGET_DIR, s3_key).replace("/", os.path.sep)
+		# Download the file from S3 to the corresponding local path
+		download_file(s3_key, local_file_path)
+else:
+	print("No objects found in the bucket.")
+	pass
+	
+print("done")
+```
+
+`s3.list_objects_v2` will print all the files in the bucket along with their attributes such as **Key, Name**, etc. Join the local **ROOT_TARGET_DIR** with **Key** to form the local **local_file_path **. Check if local directory exists with `os.path.exists()`, if not create is with `os.makedirs()`, after that we can call `s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)` with 3 parameters **Bucket, Key, Filename** to download the remote copy to corresponding local directory.
+
+![enter image description here](http://localhost/assets/lab2-20.png)
 
 ### [4] Write information about files to DynamoDB
 
-  
+ 1. Install DynamoDB
 
-Install DynamoDB on your Linux environment
-
-  
-
+Create and jump into the dynamodb directory. Then install JRE and DynamoDB package and extract the tarball files on our lab3 folder. Once the DynamoDB package is extracted, there will be a java compiled code DynamoDBLocal.jar and a folder with libraries DynamoDBLocal_lib, which we use to run the DynamoDB instance.
 ```
-
 mkdir dynamodb
-
 cd dynamodb
 
-```
-
-  
-
-Install jre if not done
-
-  
-
-```
-
+# install jre
 sudo apt-get install default-jre
-
+# install dynamodb
 wget https://s3-ap-northeast-1.amazonaws.com/dynamodb-local-tokyo/dynamodb_local_latest.tar.gz
 
-```
-
-  
-
-You can use the following command to extract files from dynamodb_local_latest.tar.gz
-
-  
-
-```
-
+# unzip dynamodb
 tar -zxvf dynamodb_local_latest.tar.gz
-
 ```
+![enter image description here](http://localhost/assets/lab2-21.png)
 
-  
-
-After the extraction, run the command below
-
-  
-
+Start DynamoDBLocal instance on JRE environment, I will specify the `-port` number to **8001** since 8000 was already taken for other tasks on my machine. The `-sharedDb` parameter instructs to create a single database file named _shared-local-instance.db_. Every program that connects to DynamoDB accesses this file
 ```
-
-java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb
-
+java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb -port 8001
 ```
+![enter image description here](http://localhost/assets/lab2-22.png)
 
-  
-
-Alternatively, you can use docker:
-
+2. Create table in DynamoDB
+ Create a `databaseoperation.py` script to create the table on DynamoDB, with the following attributes, where `userId` is the partition key and `fileName` is the sort key. `KeyType` indicates `HASH` for Partition key and `RANGE` for sort key. `AttributeName ` and `AttributeType` specify the name and the type of each attribute in the table.
+ 
+ **Because DynamoDB is a schema-free database, attributes can be added directly when inserting items into the table, we don't need to specify 'path', 'lastUpdated', 'owner', 'permissions' to comply with AWS's coding standards**
+ 
 ```
-
-docker run -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -inMemory -sharedDb
-
-```
-
-**Note**: Do not close the current window, open a new window to run the following Python script.
-
-  
-
-Write a Python script to create a table called `CloudFiles` on your local DynamoDB and the attributes for the table are:
-
-  
-
-```
-
+# database schema
 CloudFiles = {
-
-'userId',
-
-'fileName',
-
-'path',
-
-'lastUpdated',
-
-'owner',
-
-'permissions'
-
+	'userId',
+	'fileName',
+	'path',
+	'lastUpdated',
+	'owner',
+	'permissions'
 }
+```
+```
+# createtable.py
+import  boto3
 
+def  create_db_table():
+# initialize dynamodb service instance
+dynamodb  =  boto3.resource('dynamodb', endpoint_url="http://localhost:8001")
+table  =  dynamodb.create_table(
+	TableName='CloudFiles',
+	KeySchema=[
+		{
+		'AttributeName': 'userId',
+		'KeyType': 'HASH'  # Partition key
+		},
+		{
+		'AttributeName': 'fileName',
+		'KeyType': 'RANGE'  # Sort key
+		}
+	],
+
+	AttributeDefinitions=[
+		{
+		'AttributeName': 'userId',
+		'AttributeType': 'S'
+		},
+		{
+		'AttributeName': 'fileName',
+		'AttributeType': 'S'
+		}
+	],
+	ProvisionedThroughput={
+		'ReadCapacityUnits': 1,
+		'WriteCapacityUnits': 1
+	}
 )
+print("Table status:", table.table_status)
+
+if  __name__  ==  '__main__':
+	create_db_table()
+```
+![enter image description here](http://localhost/assets/lab2-23.png)
+
+3. Write data into the `CloudFiles` table
+In this case, we will first use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket, the object in `s3.list_objects_v2()` contains **Key** and **LastModified**, to get extra attributes on **Owner, Permission**, we would do an extra call on `s3.get_object_acl` where these information can be found under **Grants** and **Owner** attributes. After we successfully extra all neccessary attributes, call `dynamodb_table.put_item()` to insert each object into the database. Because my region is in `eu-north-1`, we will fill owner Id into the owner field.
 
 ```
+# writetable.py
+import  boto3
+import  os
 
-`userId` is the partition key and `fileName` is the sort key. Regarding the creation, refer to this [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html)
+BUCKET_NAME  =  '24188516-cloudstorage'
+DB_NAME  =  'CloudFiles'
 
-  
+# Set up AWS instances for S3 and DynamoDB
+s3  =  boto3.client('s3')
+dynamodb  =  boto3.resource('dynamodb', endpoint_url="http://localhost:8001")
+dynamodb_table  =  dynamodb.Table(DB_NAME)
 
-Then, you need to get the attributes above for each file of the S3 bucket and then write the attributes of each file into the created DynamoDB table. Regarding how to get the attributes for a file, refer to this [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/get_bucket_acl.html)
+def  list_files():
+	# List all objects in the S3 bucket
+	files  = []
+	objects  =  s3.list_objects_v2(Bucket=BUCKET_NAME)
+	if  'Contents'  in  objects:
+	for  obj  in  objects['Contents']:
+		# get access control list for owner and permission information
+		obj_acl  =  s3.get_object_acl(Bucket=BUCKET_NAME, Key=obj['Key'])
+		files.append({**obj, **obj_acl})
+		return  files
 
-  
-
-**NOTE**:
-
-  
-
-1) The table should have 2 items. One item corresponds to one file in the bucket and consists of the attributes above and their values.
-
-  
-
-2) Regarding the attribute `owner`, if you use a region in the table below, its value should be **owner's name**. Otherwise, its value should be **owner's ID**.
-
-  
-
-| Region | Region Name |
-
-| --- | --- |
-
-| US East (N. Virginia) | us-east-1 |
-
-| Asia Pacific (Tokyo) | ap-northeast-1 |
-
-| Asia Pacific (Singapore) | ap-southeast-1 |
-
-| Asia Pacific (Sydney) | ap-southeast-2 |
-
-  
-  
-
-### [5] Scan the table
+def  extract_file_attributes(file):
+	file_attributes  = {
+		'userId': file['Grants'][0]['Grantee']['ID'],
+		'fileName': os.path.basename(file['Key']),
+		'path': file['Key'],
+		'lastUpdated': file['LastModified'].isoformat(),
+		'owner': file['Owner']['ID'],
+		'permissions': file['Grants'][0]['Permission']
+	}
+	return  file_attributes
 
   
 
-Use AWS CLI command to scan the created DynamoDB table, and output what you've got.
+def  write_to_table():
+# List all files in the bucket
+try:
+	files  =  list_files()
+	# Iterate through each file
+	for  file  in  files:
+		# Extract attributes for a file
+		file_attributes  =  extract_file_attributes(file)
+		
+		# Write the attributes to DynamoDB
+		db_res  =  dynamodb_table.put_item(Item=file_attributes)
+		print(f"Inserted {file_attributes['fileName']} into DynamoDB")
+	
+except  Exception  as  error:
+	print("Database write operation failed: %s"  %  error)
+	pass
 
-  
+if  __name__  ==  '__main__':
+write_to_table()
+```
+![enter image description here](http://localhost/assets/lab2-24.png)
 
-### [6] Delete the table
 
-  
+4. Print and destroy the `CloudFiles` table
+Use AWS CLI command to scan the created DynamoDB table, the table structure can be shown below.
+`aws dynamodb scan --table-name CloudFiles --endpoint-url http://localhost:8001`
 
-Use AWS CLI command to delete the table.
+![enter image description here](http://localhost/assets/lab2-25.png)
 
-  
 
-**NOTE**: Delete the created S3 bucket from AWS console after the lab is done.
+Use AWS CLI command to delete the created DynamoDB table. In this case, only the defined schema which are **Hash** and **Range** key will be printed.
+`aws dynamodb delete-table --table-name CloudFiles --endpoint-url http://localhost:8001`
 
-  
-
-Lab Assessment:
-
-  
-
-A structured presentation (15%). A clear step-by-step with detailed descriptions (85%).
+![enter image description here](http://localhost/assets/lab2-26.png)
 
 <div  style="page-break-after: always;"></div>
 
@@ -570,6 +613,10 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMzMj
-Q1NTM2M119
+eyJoaXN0b3J5IjpbMjExNDgzNzk4OCwtNzYxMDU1MTE0LDM4Mz
+k0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEs
+LTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMD
+MzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3
+OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX
+0=
 -->
