@@ -657,9 +657,10 @@ if  __name__  ==  '__main__':
 ![enter image description here](http://localhost/assets/lab4-1.png)
 
 ### [2] Check whether the script works
+To check if the script works, assume we mess up the username and limit the access to only `12345678@student.uwa.e`
 Use AWS CLI command and AWS S3 console to display the policy content applied to the S3 bucket.
-
 Test the policy by using a username that is not your to access the folder called `rootdir` and output what you've got.
+
 
 ## AES Encryption using KMS
 
@@ -782,11 +783,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjAyMzM5Nzc5LC03MzUzMjU5MTcsLTE1Mz
-I5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3
-OTg4LC03NjEwNTUxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxOD
-A4MTQyMTUyLDg0MDE4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4
-MzMyMiwxOTAyMjA4NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5My
-wtMTY2NTg3NjYyNCwxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5
-OTU1MTE2XX0=
+eyJoaXN0b3J5IjpbLTIwNzQzMDY5NTYsNjAyMzM5Nzc5LC03Mz
+UzMjU5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4
+MDk2MywyMTE0ODM3OTg4LC03NjEwNTUxMTQsMzgzOTQ1MDMxLD
+Y0Mjc5NDc4MiwxODA4MTQyMTUyLDg0MDE4MzUxMSwtMjA1NDA4
+NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEwMzMzNzgxMz
+YsMTYwOTI1NzE5MywtMTY2NTg3NjYyNCwxNDAzMTc5ODM5LDk0
+ODk4MjkyMl19
 -->
