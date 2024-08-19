@@ -479,8 +479,65 @@ CloudFiles = {
 	'permissions'
 }
 
-# databaseoperation.py
+# createtable.py
+import  boto3
 
+def  create_db_table():
+# initialize dynamodb service instance
+dynamodb  =  boto3.resource('dynamodb', endpoint_url="http://localhost:8001")
+table  =  dynamodb.create_table(
+TableName='CloudFiles',
+KeySchema=[
+	{
+	'AttributeName': 'userId',
+	'KeyType': 'HASH'  # Partition key
+	},
+	{
+	'AttributeName': 'fileName',
+	'KeyType': 'RANGE'  # Sort key
+	}
+],
+
+AttributeDefinitions=[
+
+{
+
+'AttributeName': 'userId',
+
+'AttributeType': 'S'
+
+},
+
+{
+
+'AttributeName': 'fileName',
+
+'AttributeType': 'S'
+
+}
+
+],
+
+ProvisionedThroughput={
+
+'ReadCapacityUnits': 5,
+
+'WriteCapacityUnits': 5
+
+}
+
+)
+
+  
+
+print("Table status:", table.table_status)
+
+  
+  
+
+if  __name__  ==  '__main__':
+
+create_db_table()
 ```
 
 
@@ -529,9 +586,9 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMT
-gzNTExLC0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0
-MjgsMTAzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2NjI0LD
-E0MDMxNzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMzMjQ1
-NTM2M119
+eyJoaXN0b3J5IjpbNTk5NTk5NzYzLDY0Mjc5NDc4MiwxODA4MT
+QyMTUyLDg0MDE4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMy
+MiwxOTAyMjA4NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5MywtMT
+Y2NTg3NjYyNCwxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1
+MTE2LC0zMzI0NTUzNjNdfQ==
 -->
