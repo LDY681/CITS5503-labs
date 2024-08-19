@@ -442,6 +442,11 @@ print("done")
 ![enter image description here](http://localhost/assets/lab2-20.png)
 
 ### [4] Write information about files to DynamoDB
+
+ 
+
+ 1. Install Dynamo
+
 Create and jump into the dynamodb directory. Then install JRE and DynamoDB package and extract the tarball files on our lab3 folder. Once the DynamoDB package is extracted, there will be a java compiled code DynamoDBLocal.jar and a folder with libraries DynamoDBLocal_lib, which we use to run the DynamoDB instance.
 ```
 mkdir dynamodb
@@ -521,8 +526,9 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwODE0MjE1Miw4NDAxODM1MTEsLTIwNT
-QwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMDMzMzc4
-MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2MjQsMTQwMzE3OTgzOS
-w5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMyNDU1MzYzXX0=
+eyJoaXN0b3J5IjpbLTk3Nzg5NjY3MCwxODA4MTQyMTUyLDg0MD
+E4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4
+NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNC
+wxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0
+NTUzNjNdfQ==
 -->
