@@ -467,9 +467,7 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb 
 ![enter image description here](http://localhost/assets/lab2-22.png)
 
 2. Create table on DynamoDB
- 
-**Note**: Do not close the current window, open a new window to run the following Python script.
-Write a Python script to create a table called `CloudFiles` on your local DynamoDB and the attributes for the table are:
+ Create a `da`
 ```
 CloudFiles = {
 	'userId',
@@ -528,7 +526,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzY3MzcxMTYsMTgwODE0MjE1Miw4ND
+eyJoaXN0b3J5IjpbLTEwODA5NjAwNDAsMTgwODE0MjE1Miw4ND
 AxODM1MTEsLTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIw
 ODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2Mj
 QsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMy
