@@ -456,9 +456,9 @@ wget https://s3-ap-northeast-1.amazonaws.com/dynamodb-local-tokyo/dynamodb_local
 tar -zxvf dynamodb_local_latest.tar.gz
 ```
 
-After the extraction, run the command below
+Start DynamoDBLocal.jar instance on JRE environment, I will specify the `-port` number to 8001 since 8000 was already taken for other tasks on my machine.
 ```
-java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb
+java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb -port 8001
 ```
 
 Alternatively, you can use docker:
@@ -526,8 +526,8 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTcxNzU0NDY3LDg0MDE4MzUxMSwtMjA1ND
-A4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEwMzMzNzgx
-MzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNCwxNDAzMTc5ODM5LD
-k0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbLTE3OTA1NjUyODksODQwMTgzNTExLC0yMD
+U0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMTAzMzM3
+ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2NjI0LDE0MDMxNzk4Mz
+ksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMzMjQ1NTM2M119
 -->
