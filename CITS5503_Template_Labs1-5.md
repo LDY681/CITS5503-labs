@@ -443,9 +443,7 @@ print("done")
 
 ### [4] Write information about files to DynamoDB
 
- 
-
- 1. Install Dynamo
+ 1. Install DynamoDB
 
 Create and jump into the dynamodb directory. Then install JRE and DynamoDB package and extract the tarball files on our lab3 folder. Once the DynamoDB package is extracted, there will be a java compiled code DynamoDBLocal.jar and a folder with libraries DynamoDBLocal_lib, which we use to run the DynamoDB instance.
 ```
@@ -460,12 +458,16 @@ wget https://s3-ap-northeast-1.amazonaws.com/dynamodb-local-tokyo/dynamodb_local
 # unzip dynamodb
 tar -zxvf dynamodb_local_latest.tar.gz
 ```
+![enter image description here](http://localhost/assets/lab2-21.png)
 
 Start DynamoDBLocal instance on JRE environment, I will specify the `-port` number to 8001 since 8000 was already taken for other tasks on my machine. The `-sharedDb` parameter instructs to create a single database file named _shared-local-instance.db_. Every program that connects to DynamoDB accesses this file
 ```
 java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb -port 8001
 ```
+![enter image description here](http://localhost/assets/lab2-22.png)
 
+2. Create table on DynamoDB
+ 
 **Note**: Do not close the current window, open a new window to run the following Python script.
 Write a Python script to create a table called `CloudFiles` on your local DynamoDB and the attributes for the table are:
 ```
@@ -526,9 +528,9 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk3Nzg5NjY3MCwxODA4MTQyMTUyLDg0MD
-E4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4
-NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNC
-wxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0
-NTUzNjNdfQ==
+eyJoaXN0b3J5IjpbLTEzMzY3MzcxMTYsMTgwODE0MjE1Miw4ND
+AxODM1MTEsLTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIw
+ODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2Mj
+QsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMy
+NDU1MzYzXX0=
 -->
