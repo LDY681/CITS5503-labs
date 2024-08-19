@@ -467,8 +467,9 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb 
 ![enter image description here](http://localhost/assets/lab2-22.png)
 
 2. Create table on DynamoDB
- Create a `da`
+ Create a `databaseoperation.py` script to create the table on DynamoDB, with the following attributes, where `userId` is the partition key and `fileName` is the sort key
 ```
+# database schema
 CloudFiles = {
 	'userId',
 	'fileName',
@@ -477,9 +478,11 @@ CloudFiles = {
 	'owner',
 	'permissions'
 }
+
+# databaseoperation.py
+
 ```
 
-`userId` is the partition key and `fileName` is the sort key. Regarding the creation, refer to this [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html)
 
 Then, you need to get the attributes above for each file of the S3 bucket and then write the attributes of each file into the created DynamoDB table. Regarding how to get the attributes for a file, refer to this [page](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/get_bucket_acl.html)
 
@@ -526,9 +529,9 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODA5NjAwNDAsMTgwODE0MjE1Miw4ND
-AxODM1MTEsLTIwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIw
-ODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2NjU4NzY2Mj
-QsMTQwMzE3OTgzOSw5NDg5ODI5MjIsMTM5OTk1NTExNiwtMzMy
-NDU1MzYzXX0=
+eyJoaXN0b3J5IjpbLTEwMzk1NDU5MiwxODA4MTQyMTUyLDg0MD
+E4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4
+NDI4LDEwMzMzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNC
+wxNDAzMTc5ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0
+NTUzNjNdfQ==
 -->
