@@ -522,8 +522,11 @@ print("Table status:", table.table_status)
 if  __name__  ==  '__main__':
 	create_db_table()
 ```
+![enter image description here](http://localhost/assets/lab2-23.png)
+
 3. Write data into the `CloudFiles` table
-In this case, we will first use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket, the object in `s3.list_objects_v2()` contains **Key** and **LastModified**, to get extra attributes on **Owner, Permission**, we would do an extra call on `s3.get_object_acl` where these information can be found under **Grants** and **Owner** attributes. After
+In this case, we will first use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket, the object in `s3.list_objects_v2()` contains **Key** and **LastModified**, to get extra attributes on **Owner, Permission**, we would do an extra call on `s3.get_object_acl` where these information can be found under **Grants** and **Owner** attributes. After we successfully extra all neccessary attributes, call `dynamodb_table.put_item()` to insert each object into the database. Because 
+
 ```
 # writetable.py
 import  boto3
@@ -581,7 +584,7 @@ except  Exception  as  error:
 if  __name__  ==  '__main__':
 write_to_table()
 ```
-
+![enter image description here](http://localhost/assets/lab2-24.png)
 **NOTE**:
 1) The table should have 2 items. One item corresponds to one file in the bucket and consists of the attributes above and their values.
 
@@ -617,10 +620,10 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTAwNDk5NDQ1LC03NjEwNTUxMTQsMzgzOT
-Q1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0MDE4MzUxMSwt
-MjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEwMz
-MzNzgxMzYsMTYwOTI1NzE5MywtMTY2NTg3NjYyNCwxNDAzMTc5
-ODM5LDk0ODk4MjkyMiwxMzk5OTU1MTE2LC0zMzI0NTUzNjNdfQ
-==
+eyJoaXN0b3J5IjpbLTE5MTM1MDIzNTAsLTc2MTA1NTExNCwzOD
+M5NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTEx
+LC0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMT
+AzMzM3ODEzNiwxNjA5MjU3MTkzLC0xNjY1ODc2NjI0LDE0MDMx
+Nzk4MzksOTQ4OTgyOTIyLDEzOTk5NTUxMTYsLTMzMjQ1NTM2M1
+19
 -->
