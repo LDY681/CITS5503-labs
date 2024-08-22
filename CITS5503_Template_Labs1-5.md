@@ -394,13 +394,13 @@ for dir_name, subdir_list, file_list in os.walk(ROOT_DIR, topdown=True):
 print("done")
 ```
 
-The `s3.upload_file` methods takes in three parameters: **file path, bucket name, key**. We will concat both the *folder_name* and *file_name* as the file key, this way the file will be uploaded to the same file structure as our local machine.
+The `s3.upload_file` methods takes in three parameters: **File path, Bucket name, File key**. We will concat both the *folder_name* and *file_name* as the file key, this way the file will be uploaded to the same file structure as our local machine.
 
 ![enter image description here](http://localhost/assets/lab2-19.png)
 
 ### [3] Restore from S3
 Create a new program called `restorefromcloud.py` that reads the S3 bucket and writes the contents of the bucket within the appropriate directories.
-
+`s3.list_objects_v2` will print all the files in the bucket along with their attributes such as **Key, Name**, etc. Join the local **ROOT_TARGET_DIR** with **Key** to form the local **local_file_path **. Check if local directory exists with `os.path.exists()`, if not create is with `os.makedirs()`, after that we can call `s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)` with 3 parameters **Bucket, Key, Filename** to download the remote copy to corresponding local directory.
 ```
 import  os
 import  boto3
@@ -436,16 +436,13 @@ else:
 	
 print("done")
 ```
-
-`s3.list_objects_v2` will print all the files in the bucket along with their attributes such as **Key, Name**, etc. Join the local **ROOT_TARGET_DIR** with **Key** to form the local **local_file_path **. Check if local directory exists with `os.path.exists()`, if not create is with `os.makedirs()`, after that we can call `s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)` with 3 parameters **Bucket, Key, Filename** to download the remote copy to corresponding local directory.
-
 ![enter image description here](http://localhost/assets/lab2-20.png)
 
 ### [4] Write information about files to DynamoDB
 
  1. Install DynamoDB
 
-Create and jump into the dynamodb directory. Then install JRE and DynamoDB package and extract the tarball files on our lab3 folder. Once the DynamoDB package is extracted, there will be a java compiled code DynamoDBLocal.jar and a folder with libraries DynamoDBLocal_lib, which we use to run the DynamoDB instance.
+Create and jump into the dynamodb directory. Then install *JRE and DynamoDB package and extract the tarball files on our lab3 folder. Once the DynamoDB package is extracted, there will be a java compiled code `DynamoDBLocal.jar` and a folder with libraries `DynamoDBLocal_lib`, which we use to run the DynamoDB instance.
 ```
 mkdir dynamodb
 cd dynamodb
@@ -884,11 +881,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzUzNTU4NDMwLC0xOTU3MTI5NTYsNjk2OT
-cyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDky
-NjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC
-0yMDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMy
-OTUzMzMyLC05MTExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNz
-k4OCwtNzYxMDU1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgw
-ODE0MjE1Ml19
+eyJoaXN0b3J5IjpbMTg5OTYyMzUwOCwtMTk1NzEyOTU2LDY5Nj
+k3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5
+MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNC
+wtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNTkxNywtMTUz
+Mjk1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mz
+c5ODgsLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNzk0NzgyLDE4
+MDgxNDIxNTJdfQ==
 -->
