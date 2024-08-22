@@ -752,7 +752,7 @@ The following file `kmspolicy.json` contains the policy to be attached to the KM
 ```
 
 ### [2] Attach a policy to the created KMS key
-The following code will create the KMS key, applying the above policy from the `kmspolicy.json` JSON file, specifying that the key is for encryption and decryption and use AWS_KMS and assigns am alias based on the student's ID, the generated alias follows the pattern that starts with alias/* e.g. `alias/24188516`. 
+The following code will create a symmetric encryption KMS key with KMS key material, applying the above policy from the `kmspolicy.json` JSON file, specifying that the key is for encryption and decryption and use. Then it assigns an alias based on the student's ID, the generated alias follows the pattern that starts with `alias/*` resulting `alias/24188516`. 
 
 ```
 import  boto3
@@ -820,11 +820,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM5MDQ2NDEyNywtMjA3NDIxNzc4LDE0MT
-M1MDQ5NTMsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2MDIzMzk3
-NzksLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMTAwMjgzLC
-0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTExNCwzODM5
-NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTExLC
-0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMTAz
-MzM3ODEzNl19
+eyJoaXN0b3J5IjpbLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxND
+EzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5
+Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4My
+wtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEwNTUxMTQsMzgz
+OTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0MDE4MzUxMS
+wtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEw
+MzMzNzgxMzZdfQ==
 -->
