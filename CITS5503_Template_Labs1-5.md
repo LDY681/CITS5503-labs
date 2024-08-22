@@ -756,9 +756,39 @@ Update the script to attach the following policy to the key.
 	]
 }
 ```
-```
 
 ```
+import  boto3
+import  json
+
+student_number  =  '24188516'
+
+def  create_kms_key():
+	# import the policy
+	with  open('kmspolicy.json', 'r') as  policy_file:
+		policy  =  json.load(policy_file)
+
+	# Create a new KMS key with kmspolicy.json
+	kms  =  boto3.client('kms')
+	key_response  =  kms.create_key(
+		Policy  =  json.dumps(policy),
+		KeyUsage='ENCRYPT_DECRYPT',
+		Origin='AWS_KMS'
+	)
+	key_id  =  key_response['KeyMetadata']['KeyId']
+
+	# Create an alias for the KMS key
+	alias_name  =  f'alias/{student_number}'
+	alias_response  =  kms.create_alias(
+		AliasName=alias_name,
+		TargetKeyId=key_id
+	)
+	print(f"Key and alias generated successfully!")
+
+	if  __name__  ==  "__main__":
+		create_kms_key()
+```
+
 ### [3] Check whether the script works
 
 Use the AWS KMS console to test whether your username is the key administrator and key user.
@@ -793,11 +823,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjk4OTY3MTIyLC0yMDc0MjE3NzgsMTQxMz
-UwNDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3
-OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05MTExMDAyODMsLT
-E3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1MTE0LDM4Mzk0
-NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEsLT
-IwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMDMz
-Mzc4MTM2XX0=
+eyJoaXN0b3J5IjpbMTgxMjc5MjgzOSwtMjA3NDIxNzc4LDE0MT
+M1MDQ5NTMsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2MDIzMzk3
+NzksLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMTAwMjgzLC
+0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTExNCwzODM5
+NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTExLC
+0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMTAz
+MzM3ODEzNl19
 -->
