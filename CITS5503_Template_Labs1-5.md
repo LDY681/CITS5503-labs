@@ -794,7 +794,8 @@ Go to the KMS service in AWS console, as you can see the key is created with the
 
 ### [4] Use the created KMS key for encryption/decryption
 
-Write a Python script where each file from the S3 bucket is encrypted and then decrypted via the created KMS key. Both encrypted and decrypted files will be in the same folder as the original file.
+```
+```
 
 ### [5] Apply `pycryptodome` for encryption/decryption
 
@@ -820,11 +821,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNz
-Y2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUw
-NDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3OS
-wtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05MTExMDAyODMsLTE3
-NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1MTE0LDM4Mzk0NT
-AzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEsLTIw
-NTQwODcxNDVdfQ==
+eyJoaXN0b3J5IjpbMTMzNjY0OTA2NSw2OTY5NzIxNTYsLTE3OD
+QxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQy
+MTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwND
+IsNjAyMzM5Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMzIsLTkx
+MTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEwNT
+UxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0
+MDE4MzUxMV19
 -->
