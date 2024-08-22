@@ -916,12 +916,8 @@ What is the performance difference between using KMS and using the custom soluti
 ```
 Answer:
 I think **KMS** outperforms in its ease of maintainence and high scalability. It offers automated key management so we don't need to manually manage our keys. KMS is also highly scalable and secure because they use cloud infrastructure.
-**PyCryptodome** is better for its extensibility and low internet overhead. PyCryptodome offers more customizationit doesn't use API calls which are subject to connectivetity and API rate limits, however since encryption/decrption are done on local machine, it doesn't work well with high workload because difficulty to scaleability.
+**PyCryptodome** is better for its extensibility and low internet overhead. PyCryptodome offers more room of customization with more cryptography algorithms and combinations with different options. It doesn't rely on API calls which are subject to connectivetity and rate limits, however since encryption/decrption are done on local machine, it doesn't scale well with high workload.
 
-
-Introduces higher latency due to network calls to AWS and has API rate limits, making it less efficient for high-throughput, low-latency operations. It is, however, highly scalable and secure, with automated key management. We don't need to worry about 
-    
--   **PyCryptodome AES**: Offers lower latency since encryption/decryption occurs locally without network overhead, making it better for high-performance needs. However, it requires manual key management and lacks the built-in scalability and security features of KMS.
 ```
 <div  style="page-break-after: always;"></div>
 
@@ -933,11 +929,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYwMjczNjIyNywxMjE0OTg3NzcxLC0xNT
-Q5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcx
-Mjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5Mz
-YsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0x
-MTI4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03MzUzMj
-U5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2
-MywyMTE0ODM3OTg4XX0=
+eyJoaXN0b3J5IjpbLTE0OTgzMjcxNDgsMTIxNDk4Nzc3MSwtMT
+U0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3
+MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OT
+M2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1Mywt
+MTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1Mz
+I1OTE3LC0xNTMyOTUzMzMyLC05MTExMDAyODMsLTE3NTAwODA5
+NjMsMjExNDgzNzk4OF19
 -->
