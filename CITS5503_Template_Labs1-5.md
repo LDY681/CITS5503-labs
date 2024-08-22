@@ -673,7 +673,7 @@ To check if the script works, assume I mess up the username and limit the access
 ## AES Encryption using KMS
 
 ### [1] Policy to be attached to KMS key
-The following file `kmspolicy.json` contains the policy to be attached to the KMS key, 
+The following file `kmspolicy.json` contains the policy to be attached to the KMS key, which grants specific permissions to  the IAM user which is me at **24188516@student.uwa.edu.au**.
 ```
 # kmspolicy.json
 {
@@ -817,7 +817,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwODI0MzEyNTUsLTIwNzQyMTc3OCwxND
+eyJoaXN0b3J5IjpbLTEyNjA1ODc2NDYsLTIwNzQyMTc3OCwxND
 EzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5
 Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4My
 wtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEwNTUxMTQsMzgz
