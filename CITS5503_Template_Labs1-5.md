@@ -341,7 +341,7 @@ docker ps -a
 ```
 ![enter image description here](http://127.0.0.1/assets/lab2-17.png)
 
-This prints out some properties of he running container, with the corresponding container name and image name that we assigned.
+This prints out some properties of the running container such as **Container ID, STATUS, PORTS**, with the corresponding container name and image name that we assigned.
 
 To stop and remove the container
 ```
@@ -884,11 +884,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDczMDMzMTEsLTE5NTcxMjk1Niw2OT
-Y5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcw
-OTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MD
-QsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03MzUzMjU5MTcsLTE1
-MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2MywyMTE0OD
-M3OTg4LC03NjEwNTUxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4Miwx
-ODA4MTQyMTUyXX0=
+eyJoaXN0b3J5IjpbMzUzNTU4NDMwLC0xOTU3MTI5NTYsNjk2OT
+cyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDky
+NjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC
+0yMDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMy
+OTUzMzMyLC05MTExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNz
+k4OCwtNzYxMDU1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgw
+ODE0MjE1Ml19
 -->
