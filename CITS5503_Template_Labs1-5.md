@@ -790,7 +790,7 @@ Go to the KMS service in AWS console, as you can see the key is created with the
 ![enter image description here](http://localhost/assets/lab4-8.png)
 
 ### [4] Use the created KMS key for encryption/decryption
-- The following code first lists all the files in the specified S3 bucket `24188516-cloudstorage` and then Iterates over the list of files and calls **encrypt_file()** for each file with certain key.
+- The following code in `cryptwithkms.py` first lists all the files in the specified S3 bucket `24188516-cloudstorage` and then Iterates over the list of files and calls **encrypt_file()** for each file with certain key.
 - Inside **encrypt_file()** function, it retrieves the file content from `s3.get_object()`, encrypts the file content using the specified KMS key with `kms.encrypt()`. The result is returned in **CiphertextBlob** and we upload the encrypted content back to the bucket with a new key that appends _.encrypted_ to the original file name. After uploading the encrypted file, it calls the `decrypt_file()` function to decrypt the encrypted entity.
 - Inside **decrypt_file()** function, it retrieves the file content in the same way, then we decrypt encrypted file content with `kms.decrypt()`. The result is the original **Plaintext Bytestring**. We shall convert the bytestring result into a regular string with `.decode('utf-8')`, then the decrypted content is uploaded back to the bucket with a new key that appends _.decrypted_ to the encrypted file name.
 
@@ -863,8 +863,10 @@ Because AWS KMS also uses [AES with 256 bits-long](https://docs.aws.amazon.com/c
 
  1. First install the package
  Run `pip install pycryptodome`
+ ![enter image description here](http://localhost/assets/lab4-12.png)
+ 
  3. Modify the above code in `cryptwithpycryptodome.py`
-
+Now the code is very similar to 
 
 Write another Python script that uses the python library `pycryptodome` to encrypt and decrypt each file in the S3 bucket. Both encrypted and decrypted files will be in the same folder as the original file.
 
@@ -888,11 +890,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMT
-k1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4
-OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NT
-MsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTcz
-NTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMTAwMjgzLC0xNzUwMD
-gwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTExNCwzODM5NDUwMzEs
-NjQyNzk0NzgyXX0=
+eyJoaXN0b3J5IjpbLTE5Njk0MDg5NTksLTEyNTEzNjE0MjcsLT
+kyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2
+NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNz
+c4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2
+MDIzMzk3NzksLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMT
+AwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTEx
+NCwzODM5NDUwMzFdfQ==
 -->
