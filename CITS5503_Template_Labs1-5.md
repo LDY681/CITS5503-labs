@@ -866,10 +866,9 @@ Because AWS KMS also uses [AES with 256 bits-long](https://docs.aws.amazon.com/c
  Run `pip install pycryptodome`
  ![enter image description here](http://localhost/assets/lab4-12.png)
  
- 3. Modify the above code in `cryptwithpycryptodome.py`
+ 2. Modify the above code in `cryptwithpycryptodome.py`
 Now the code is very similar to `cryptwithkms.py`, with few exceptions:
-
-First we import AES package for encryption/decryption and get_random_bytes for random key generation:
+- Import AES package for encryption/decryption and get_random_bytes for random key generation. The **AES_KEY** shall be **32 bytes** or 256 bits-long for consistency with **AWS KMS** approach.
 ```
 	from Crypto.Cipher import AES
 	from Crypto.Random import get_random_bytes
@@ -877,7 +876,7 @@ First we import AES package for encryption/decryption and get_random_bytes for r
 	AES_KEY  = get_random_bytes(32) # 32 bytes = 256 bits-long key
 ```
 
-For the file content part, `AES.new(AES_KEY, AES.MODE_EAX)` initializes a new AES cipher object in EAX mode using the provided `AES_KEY`.
+- For the file content part, `AES.new(AES_KEY, AES.MODE_EAX)` initializes a new AES cipher object in EAX mode using the generated `AES_KEY`.
 ```
 # Encrypt the file content using AES with PyCryptodome in EAX mode
     cipher = AES.new(AES_KEY, AES.MODE_EAX)
@@ -911,11 +910,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzUyMTY2NTU4LC0xMjUxMzYxNDI3LC05Mj
-gzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUx
-NTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OC
-wxNDEzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwNDIsNjAy
-MzM5Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMD
-I4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEwNTUxMTQs
-MzgzOTQ1MDMxXX0=
+eyJoaXN0b3J5IjpbLTE2MzI1MTQ4MTYsLTEyNTEzNjE0MjcsLT
+kyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2
+NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNz
+c4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2
+MDIzMzk3NzksLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMT
+AwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTEx
+NCwzODM5NDUwMzFdfQ==
 -->
