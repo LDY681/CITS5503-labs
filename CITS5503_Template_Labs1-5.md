@@ -672,17 +672,10 @@ To check if the script works, assume I mess up the username and limit the access
 
 ## AES Encryption using KMS
 
-### [1] Create a KMS key
-
-Write a Python script to create a KMS key, where your student number works as an alias for the key.
-
-### [2] Attach a policy to the created KMS key
-
-Update the script to attach the following policy to the key.
-
-**NOTE**: in the policy below, you should replace `<your_username>` with your own username.
-
+### [1] Policy to be attached to KMS key
+The following file `kmspolicy.json` contains the policy to be attached to the KMS key, 
 ```
+# kmspolicy.json
 {
 	"Version": "2012-10-17",
 	"Id": "key-consolepolicy-3",
@@ -757,6 +750,7 @@ Update the script to attach the following policy to the key.
 }
 ```
 
+### [2] Attach a policy to the created KMS key
 ```
 import  boto3
 import  json
@@ -823,11 +817,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgxMjc5MjgzOSwtMjA3NDIxNzc4LDE0MT
-M1MDQ5NTMsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2MDIzMzk3
-NzksLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMTAwMjgzLC
-0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTExNCwzODM5
-NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTExLC
-0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMTAz
-MzM3ODEzNl19
+eyJoaXN0b3J5IjpbLTEwODI0MzEyNTUsLTIwNzQyMTc3OCwxND
+EzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5
+Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4My
+wtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEwNTUxMTQsMzgz
+OTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0MDE4MzUxMS
+wtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEw
+MzMzNzgxMzZdfQ==
 -->
