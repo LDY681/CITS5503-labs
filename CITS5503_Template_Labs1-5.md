@@ -794,8 +794,8 @@ Go to the KMS service in AWS console, as you can see the key is created with the
 
 ### [4] Use the created KMS key for encryption/decryption
 - The following code first lists all the files in the specified S3 bucket `24188516-cloudstorage` and then Iterates over the list of files and calls **encrypt_file()** for each file with certain key.
-- Inside **encrypt_file()** function, it retrieves the file content from `s3.get_object()`, encrypts the file content using the specified KMS key with `kms.encrypt()`. The result is returned in `CiphertextBlob` and we upload the encrypted content back to the bucket with a new key that appends `.encrypted` to the original file name.
-- 
+- Inside **encrypt_file()** function, it retrieves the file content from `s3.get_object()`, encrypts the file content using the specified KMS key with `kms.encrypt()`. The result is returned in `CiphertextBlob` and we upload the encrypted content back to the bucket with a new key that appends `.encrypted` to the original file name. After uploading the encrypted file, it calls the `decrypt_file()` function to decrypt the encrypted entity.
+- Inside **decrypt_file()** function, it retrieves the file content in the same way, then we decrypt encrypted file content with `kms.decrypt()`. The result is the original plaintext.
 
 ```
 import boto3
@@ -881,11 +881,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMTQyMDQzMjIsNjk2OTcyMTU2LC0xNz
-g0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0
-MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MD
-QyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05
-MTExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMD
-U1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4
-NDAxODM1MTFdfQ==
+eyJoaXN0b3J5IjpbLTgzOTAxMTg4OSw2OTY5NzIxNTYsLTE3OD
+QxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQy
+MTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwND
+IsNjAyMzM5Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMzIsLTkx
+MTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEwNT
+UxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0
+MDE4MzUxMV19
 -->
