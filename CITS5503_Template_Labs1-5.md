@@ -795,6 +795,63 @@ Go to the KMS service in AWS console, as you can see the key is created with the
 ### [4] Use the created KMS key for encryption/decryption
 
 ```
+import boto3
+
+s3 = boto3.client('s3')
+kms = boto3.client('kms')
+
+BUCKET_NAME = "24188516-cloudstorage"
+KMS_KEY = "alias/24188516"
+
+def encrypt_file(file_key):
+    # Get the file from bucket and read content
+    s3_object = s3.get_object(Bucket=BUCKET_NAME, Key=file_key)
+    file_content = s3_object['Body'].read()
+
+    # Encrypt the file content using KMS
+    encrypt_res = kms.encrypt(
+        KeyId=KMS_KEY,
+        Plaintext=file_content
+    )
+    file_body = encrypt_res['CiphertextBlob']
+    encrypt_file_key = f"{file_key}.encrypted"
+
+    # Add the encrypted file to bucket
+    s3.put_object(Bucket=BUCKET_NAME, Key=encrypt_file_key, Body=file_body)
+    print("File encrypted as: ", encrypt_file_key, "with content: \n", file_body, "\n")
+    
+	# After encrypted file is uploaded, try to decrypt it
+    decrypt_file(encrypt_file_key)
+
+def decrypt_file(file_key):
+    # Get the encrypted file from bucket and read content
+    s3_object = s3.get_object(Bucket=BUCKET_NAME, Key=file_key)
+    file_content = s3_object['Body'].read()
+
+    # Decrypt the file content using KMS
+    decrypt_res = kms.decrypt(
+        KeyId=KMS_KEY,
+        CiphertextBlob=file_content
+    )
+    plain_text = decrypt_res['Plaintext']
+    file_body = plain_text.decode('utf-8') #convert plain text bytes to a regular string
+    decrypted_file_key = f"{file_key}.decrypted"
+
+    # Upload the decrypted content back to S3
+    s3.put_object(Bucket=BUCKET_NAME, Key=decrypted_file_key, Body=file_body)
+    print("File encrypted as: ", decrypted_file_key, "with content: \n", file_body, "\n")
+
+def process_files(BUCKET_NAME, KMS_KEY):
+    # List all files in the bucket
+    response = s3.list_objects_v2(Bucket=BUCKET_NAME)
+
+    if 'Contents' in response:
+        for obj in response['Contents']:
+            key = obj['Key']
+            encrypt_file(key)
+
+if __name__ == "__main__":
+    process_files(BUCKET_NAME, KMS_KEY)
 ```
 
 ### [5] Apply `pycryptodome` for encryption/decryption
@@ -821,11 +878,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzNjY0OTA2NSw2OTY5NzIxNTYsLTE3OD
-QxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQy
-MTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwND
-IsNjAyMzM5Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMzIsLTkx
-MTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEwNT
-UxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0
-MDE4MzUxMV19
+eyJoaXN0b3J5IjpbLTIxMzM5OTg3NjIsNjk2OTcyMTU2LC0xNz
+g0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0
+MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MD
+QyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05
+MTExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMD
+U1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4
+NDAxODM1MTFdfQ==
 -->
