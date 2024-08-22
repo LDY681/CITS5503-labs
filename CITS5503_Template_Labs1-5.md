@@ -903,10 +903,10 @@ Now the code is very similar to `cryptwithkms.py`, with few exceptions:
 ```
 
 3. See in actions
-Now lets run `python3 cryptwithpycryptodome.py` and see the new approach in action.
+Now lets run `python3 cryptwithpycryptodome.py` and see the new approach in action. You can tell that the encrypted contents are different from **[4]** before the encryption key is different. 
 ![enter image description here](http://localhost/assets/lab4-13.png)
 ![enter image description here](http://localhost/assets/lab4-10.png)
-**NOTE**: Delete the created S3 bucket and KMS key from AWS console after the lab is done.
+![enter image description here](http://localhost/assets/lab4-11.png)
 
 ## Answer the following question (Marked)
 
@@ -924,11 +924,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwNjM3OTc0NiwxMjE0OTg3NzcxLC0xNT
-Q5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcx
-Mjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5Mz
-YsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0x
-MTI4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03MzUzMj
-U5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2
-MywyMTE0ODM3OTg4XX0=
+eyJoaXN0b3J5IjpbNjQ0NDY1NTIxLDEyMTQ5ODc3NzEsLTE1ND
+k4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEy
+OTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNi
+wtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTEx
+Mjg3NTgwNCwtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNT
+kxNywtMTUzMjk1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYz
+LDIxMTQ4Mzc5ODhdfQ==
 -->
