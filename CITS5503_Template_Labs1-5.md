@@ -739,7 +739,7 @@ Update the script to attach the following policy to the key.
 			"Sid": "Allow attachment of persistent resources",
 			"Effect": "Allow",
 			"Principal": {
-				"AWS": "arn:aws:iam::489389878001:user/<your_username>"
+				"AWS": "arn:aws:iam::489389878001:user/24188516@student.uwa.edu.au"
 			},
 			"Action": [
 				"kms:CreateGrant",
@@ -791,7 +791,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3NjE3NTc3OSwxNDEzNTA0OTUzLC0xMT
+eyJoaXN0b3J5IjpbLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0xMT
 I4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03MzUzMjU5
 MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2My
 wyMTE0ODM3OTg4LC03NjEwNTUxMTQsMzgzOTQ1MDMxLDY0Mjc5
