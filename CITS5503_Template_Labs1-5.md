@@ -752,6 +752,8 @@ The following file `kmspolicy.json` contains the policy to be attached to the KM
 ```
 
 ### [2] Attach a policy to the created KMS key
+The following code will create the KMS key, applying the above policy from the `kmspolicy.json` JSON file, and assigns a personalized alias based on the student's ID
+
 ```
 import  boto3
 import  json
@@ -818,11 +820,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQwNjgxNzQ0LC0yMDc0MjE3NzgsMTQxMz
-UwNDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3
-OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05MTExMDAyODMsLT
-E3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1MTE0LDM4Mzk0
-NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEsLT
-IwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMDMz
-Mzc4MTM2XX0=
+eyJoaXN0b3J5IjpbMTUxNzcwMDA1NywtMjA3NDIxNzc4LDE0MT
+M1MDQ5NTMsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2MDIzMzk3
+NzksLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMTAwMjgzLC
+0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTExNCwzODM5
+NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTExLC
+0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMTAz
+MzM3ODEzNl19
 -->
