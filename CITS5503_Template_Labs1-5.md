@@ -758,7 +758,7 @@ The following code will create a symmetric encryption KMS key with KMS key mater
 import  boto3
 import  json
 
-student_number  =  '24188516'
+STUDENT_NUMBER =  '24188516'
 
 def  create_kms_key():
 	# import the policy
@@ -775,7 +775,7 @@ def  create_kms_key():
 	key_id  =  key_response['KeyMetadata']['KeyId']
 
 	# Create an alias for the KMS key
-	alias_name  =  f'alias/{student_number}'
+	alias_name  =  f'alias/{STUDENT_NUMBER}'
 	alias_response  =  kms.create_alias(
 		AliasName=alias_name,
 		TargetKeyId=key_id
@@ -820,11 +820,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLT
-EwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0xMTI4
-NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03MzUzMjU5MT
-csLTE1MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2Mywy
-MTE0ODM3OTg4LC03NjEwNTUxMTQsMzgzOTQ1MDMxLDY0Mjc5ND
-c4MiwxODA4MTQyMTUyLDg0MDE4MzUxMSwtMjA1NDA4NzE0NSwt
-MTkyNTk4MzMyMl19
+eyJoaXN0b3J5IjpbNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNz
+Y2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUw
+NDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3OS
+wtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05MTExMDAyODMsLTE3
+NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1MTE0LDM4Mzk0NT
+AzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEsLTIw
+NTQwODcxNDVdfQ==
 -->
