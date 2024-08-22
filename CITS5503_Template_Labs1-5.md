@@ -791,8 +791,8 @@ Go to the KMS service in AWS console, as you can see the key is created with the
 
 ### [4] Use the created KMS key for encryption/decryption
 - The following code first lists all the files in the specified S3 bucket `24188516-cloudstorage` and then Iterates over the list of files and calls **encrypt_file()** for each file with certain key.
-- Inside **encrypt_file()** function, it retrieves the file content from `s3.get_object()`, encrypts the file content using the specified KMS key with `kms.encrypt()`. The result is returned in `CiphertextBlob` and we upload the encrypted content back to the bucket with a new key that appends `.encrypted` to the original file name. After uploading the encrypted file, it calls the `decrypt_file()` function to decrypt the encrypted entity.
-- Inside **decrypt_file()** function, it retrieves the file content in the same way, then we decrypt encrypted file content with `kms.decrypt()`. The result is the original **plaintext bytestring**. We shall convert the bytestring result into a regular string with `.decode('utf-8')`, then the decrypted content is uploaded back to the bucket with a new key that appends `.decrypted` to the encrypted file name.
+- Inside **encrypt_file()** function, it retrieves the file content from `s3.get_object()`, encrypts the file content using the specified KMS key with `kms.encrypt()`. The result is returned in **CiphertextBlob** and we upload the encrypted content back to the bucket with a new key that appends _.encrypted_ to the original file name. After uploading the encrypted file, it calls the `decrypt_file()` function to decrypt the encrypted entity.
+- Inside **decrypt_file()** function, it retrieves the file content in the same way, then we decrypt encrypted file content with `kms.decrypt()`. The result is the original **Plaintext Bytestring**. We shall convert the bytestring result into a regular string with `.decode('utf-8')`, then the decrypted content is uploaded back to the bucket with a new key that appends _.decrypted_ to the encrypted file name.
 
 ```
 import boto3
@@ -881,7 +881,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzMjczNzY2MSwtMTk1NzEyOTU2LDY5Nj
+eyJoaXN0b3J5IjpbLTkyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Nj
 k3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5
 MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNC
 wtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNTkxNywtMTUz
