@@ -859,7 +859,13 @@ Now we can verify the result in AWS S3 console.
 ![enter image description here](http://localhost/assets/lab4-10.png)![enter image description here](http://localhost/assets/lab4-11.png)
 
 ### [5] Apply `pycryptodome` for encryption/decryption
-Because AWS KMS also uses AES cryptographyin 256 bits, let's do the same with pycryptodome
+Because AWS KMS also uses [AES with 256 bits-long](https://docs.aws.amazon.com/crypto/latest/userguide/awscryp-service-kms.html#awscryp-service-kms-using-and-managing), let's do the same with `pycryptodome`.
+
+ 1. First install the package
+ Run `pip install pycryptodome`
+ 3. Modify the above code in `cryptwithpycryptodome.py`
+
+
 Write another Python script that uses the python library `pycryptodome` to encrypt and decrypt each file in the S3 bucket. Both encrypted and decrypted files will be in the same folder as the original file.
 
 For encryption/decryption, refer to the example code from [fileencrypt.py](https://github.com/zhangzhics/CITS5503_Sem2/blob/master/Labs/src/fileencrypt.py)
@@ -882,7 +888,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MTk5NzI5NTksLTkyODM5Mzk3MSwtMT
+eyJoaXN0b3J5IjpbLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMT
 k1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4
 OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NT
 MsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTcz
