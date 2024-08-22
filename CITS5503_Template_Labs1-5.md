@@ -856,7 +856,10 @@ def process_files(BUCKET_NAME, KMS_KEY):
 if __name__ == "__main__":
     process_files(BUCKET_NAME, KMS_KEY)
 ```
+![enter image description here](http://localhost/assets/lab4-9.png)
 
+Now we can verify the result in AWS S3 console.
+![enter image description here](http://localhost/assets/lab4-10.png)![enter image description here](http://localhost/assets/lab4-11.png)
 ### [5] Apply `pycryptodome` for encryption/decryption
 
 Write another Python script that uses the python library `pycryptodome` to encrypt and decrypt each file in the S3 bucket. Both encrypted and decrypted files will be in the same folder as the original file.
@@ -881,7 +884,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5MDgwNTQyNiw2OTY5NzIxNTYsLTE3OD
+eyJoaXN0b3J5IjpbLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3OD
 QxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQy
 MTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwND
 IsNjAyMzM5Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMzIsLTkx
