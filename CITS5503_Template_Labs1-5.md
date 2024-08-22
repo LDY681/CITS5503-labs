@@ -442,7 +442,7 @@ print("done")
 
  1. Install DynamoDB
 
-Create and jump into the dynamodb directory. Then install *JRE and DynamoDB package and extract the tarball files on our lab3 folder. Once the DynamoDB package is extracted, there will be a java compiled code `DynamoDBLocal.jar` and a folder with libraries `DynamoDBLocal_lib`, which we use to run the DynamoDB instance.
+Create and jump into the dynamodb directory. Then install **JRE** and **DynamoDB** package and extract the tarball files on our lab3 folder. Once the DynamoDB package is extracted, there will be a java compiled code `DynamoDBLocal.jar` and a folder with libraries `DynamoDBLocal_lib`, which we use to run the DynamoDB instance.
 ```
 mkdir dynamodb
 cd dynamodb
@@ -464,9 +464,9 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb 
 ![enter image description here](http://localhost/assets/lab2-22.png)
 
 2. Create table in DynamoDB
- Create a `databaseoperation.py` script to create the table on DynamoDB, with the following attributes, where `userId` is the partition key and `fileName` is the sort key. `KeyType` indicates `HASH` for Partition key and `RANGE` for sort key. `AttributeName ` and `AttributeType` specify the name and the type of each attribute in the table.
+Create a `databaseoperation.py` script to create the table on DynamoDB, with the following attributes, where `userId` is the partition key and `fileName` is the sort key. `KeyType` indicates `HASH` for Partition key and `RANGE` for sort key. `AttributeName ` and `AttributeType` specify the name and the type of each attribute in the table.
  
- **Because DynamoDB is a schema-free database, attributes can be added directly when inserting items into the table, we don't need to specify 'path', 'lastUpdated', 'owner', 'permissions' to comply with AWS's coding standards**
+ **Because DynamoDB is a schema-free database, attributes can be added directly when inserting items into the table, we don't need to declare 'path', 'lastUpdated', 'owner', 'permissions' to comply with AWS's coding standards**
  
 ```
 # database schema
@@ -881,7 +881,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg5OTYyMzUwOCwtMTk1NzEyOTU2LDY5Nj
+eyJoaXN0b3J5IjpbLTMxMzczOTA0MywtMTk1NzEyOTU2LDY5Nj
 k3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5
 MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNC
 wtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNTkxNywtMTUz
