@@ -868,11 +868,23 @@ Because AWS KMS also uses [AES with 256 bits-long](https://docs.aws.amazon.com/c
  
  3. Modify the above code in `cryptwithpycryptodome.py`
 Now the code is very similar to `cryptwithkms.py`, with few exceptions:
-First we import AES package for encryption/decryption and get_random_bytes for random key generation
-`
+First we import AES package for encryption/decryption and get_random_bytes for random key generation:
+```
 	from Crypto.Cipher import AES
 	from Crypto.Random import get_random_bytes
-`
+```
+
+For the file content part, 
+```
+# Encrypt the file content using AES with PyCryptodome in EAX mode
+    cipher = AES.new(AES_KEY, AES.MODE_EAX)
+    cipher_text, tag = cipher.encrypt_and_digest(file_content) #  extract the ciphertext and tag from the encrypted content
+    encrypt_file_key = f"{file_key}.encrypted"
+
+    # Concatenate the nonce, tag, and the ciphertext
+    file_body = cipher.nonce + tag + cipher_text
+```
+
 
 Write another Python script that uses the python library `pycryptodome` to encrypt and decrypt each file in the S3 bucket. Both encrypted and decrypted files will be in the same folder as the original file.
 
@@ -896,7 +908,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA5ODM0MjcwMywtMTI1MTM2MTQyNywtOT
+eyJoaXN0b3J5IjpbMTYzNDYyNjEzNSwtMTI1MTM2MTQyNywtOT
 I4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1
 MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3Nz
 gsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYw
