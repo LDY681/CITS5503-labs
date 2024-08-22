@@ -662,7 +662,7 @@ Test if the policy is applied with `aws s3api get-bucket-policy` on bucket `2418
 Now go to AWS console and see the result visually
 ![enter image description here](http://localhost/assets/lab4-3.png)
 
-To check if the script works, assume I mess up the username and limit the access to only `12345678@student.uwa.edu.au`, now let's try to access the resources in the current user ~~`24188516@student.uwa.edu.au`~~. As expected, the access is denied.
+To check if the script works, assume I mess up the **username** and limit the access to only `12345678@student.uwa.edu.au`, now let's try to access the resources in the current user ~~`24188516@student.uwa.edu.au`~~. As expected, the access is **denied**.
 ![enter image description here](http://localhost/assets/lab4-4.png)
 
 ![enter image description here](http://localhost/assets/lab4-5.png)
@@ -670,7 +670,7 @@ To check if the script works, assume I mess up the username and limit the access
 ## AES Encryption using KMS
 
 ### [1] Policy to be attached to KMS key
-The following file `kmspolicy.json` contains the policy to be attached to the KMS key, which grants specific permissions to  root account and also IAM user which is me at 24188516@student.uwa.edu.au. First it grants the root user full access to all KMS operations `kms:*` on all resources `Resource: "*"`. Then it allows the IAM user to perform key management operations such as **creating, describing, enabling, disabling, tagging, and deleting** keys. Thirdly, it allows the IAM user to use the key for cryptographic operations like **encrypting, decrypting, re-encrypting, and generating data keys**. Lastly it allows the IAM user to manage grants (**create, list, revoke**) for the key onlywhen the grant is for an AWS resource `kms:GrantIsForAWSResource`.
+The following file `kmspolicy.json` contains the policy to be attached to the KMS key, which grants specific permissions to  root account and also IAM user which is me at 24188516@student.uwa.edu.au. First it grants the root user full access to all KMS operations `kms:*` on all resources `Resource: "*"`. Then it allows the IAM user to perform key management operations such as **creating, describing, enabling, disabling, tagging, and deleting** keys. Thirdly, it allows the IAM user to use the key for cryptographic operations like **encrypting, decrypting, re-encrypting, and generating data keys**. Lastly it allows the IAM user to manage grants (**create, list, revoke**) for the key only when the grant is for an AWS resource `kms:GrantIsForAWSResource`.
 
 ```
 # kmspolicy.json
@@ -785,7 +785,7 @@ def  create_kms_key():
 ![enter image description here](http://localhost/assets/lab4-6.png)
 
 ### [3] Check whether the script works
-Go to the KMS service in AWS console, as you can see the key is created with the alias of `24188516`, in the policy section, we can see that user 24188516@student.uwa.edu.au has been granted as the key administrator and key user.
+Go to the KMS service in AWS console, as you can see the key is created with the alias of `24188516`, in the policy section,  	we can see that user 24188516@student.uwa.edu.au has been granted as the **Key Administrator** and **Key User**.
 ![enter image description here](http://localhost/assets/lab4-7.png)
 ![enter image description here](http://localhost/assets/lab4-8.png)
 
@@ -881,11 +881,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc1OTYwOTU5LC0xOTU3MTI5NTYsNjk2OT
-cyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDky
-NjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC
-0yMDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMy
-OTUzMzMyLC05MTExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNz
-k4OCwtNzYxMDU1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgw
-ODE0MjE1Ml19
+eyJoaXN0b3J5IjpbLTUzMjczNzY2MSwtMTk1NzEyOTU2LDY5Nj
+k3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5
+MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNC
+wtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNTkxNywtMTUz
+Mjk1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mz
+c5ODgsLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNzk0NzgyLDE4
+MDgxNDIxNTJdfQ==
 -->
