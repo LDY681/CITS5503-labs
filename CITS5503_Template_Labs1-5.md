@@ -877,7 +877,7 @@ Now the code is very similar to `cryptwithkms.py`, with few exceptions:
 ```
 
 - For the encryption part, `AES.new(AES_KEY, AES.MODE_EAX)` initializes a new AES cipher object in EAX mode using the generated `AES_KEY`. `cipher.encrypt_and_digest()` converts the plaintext **file_content ** into **ciphertext** using AES algorithm and then generates an authentication **tag** to ensure the integrity of the data and get verified in decryption process.
-- For the file_content,  it concatenates the **nonce, tag, and ciphertext** in this exact order into a single byte sequence (`file_body`). **nonce** is a unique value generatedto make sure the resulting ciphertext will be different
+- For the file_content,  it concatenates the **nonce, tag, and ciphertext** in this exact order into a single byte sequence (`file_body`). **nonce** is a unique value generated to make sure the resulting ciphertext will be different and avoid similar issue to **Hash Collision**.
 ```
 # Encrypt the file content using AES with PyCryptodome in EAX mode
     cipher = AES.new(AES_KEY, AES.MODE_EAX)
@@ -911,11 +911,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ5OTU0NTkxOCwtMTI1MTM2MTQyNywtOT
-I4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1
-MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3Nz
-gsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYw
-MjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05MTExMD
-AyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1MTE0
-LDM4Mzk0NTAzMV19
+eyJoaXN0b3J5IjpbLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLT
+kyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2
+NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNz
+c4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2
+MDIzMzk3NzksLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMT
+AwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTEx
+NCwzODM5NDUwMzFdfQ==
 -->
