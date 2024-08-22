@@ -793,7 +793,7 @@ Go to the KMS service in AWS console, as you can see the key is created with the
 ![enter image description here](http://localhost/assets/lab4-8.png)
 
 ### [4] Use the created KMS key for encryption/decryption
-
+The following code first Lists all the files in the specified S3 bucket.
 ```
 import boto3
 
@@ -878,7 +878,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMzM5OTg3NjIsNjk2OTcyMTU2LC0xNz
+eyJoaXN0b3J5IjpbLTE3MTY5Mjc1MzksNjk2OTcyMTU2LC0xNz
 g0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0
 MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MD
 QyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05
