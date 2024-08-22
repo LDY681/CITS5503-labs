@@ -700,7 +700,7 @@ Update the script to attach the following policy to the key.
 			"Sid": "Allow access for Key Administrators",
 			"Effect": "Allow",
 			"Principal": {
-				"AWS": "arn:aws:iam::489389878001:user/<your_username>"
+				"AWS": "arn:aws:iam::489389878001:user/24188516@student.uwa.edu.au"
 			},
 			"Action": [
 				"kms:Create*",
@@ -724,7 +724,7 @@ Update the script to attach the following policy to the key.
 			"Sid": "Allow use of the key",
 			"Effect": "Allow",
 			"Principal": {
-				"AWS": "arn:aws:iam::489389878001:user/<your_username>"
+				"AWS": "arn:aws:iam::489389878001:user/24188516@student.uwa.edu.au"
 			},
 			"Action": [
 				"kms:Encrypt",
@@ -791,11 +791,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQxMzUwNDk1MywtMTEyODc1ODA0LC0yMD
-gwMjU3MDQyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOTUz
-MzMyLC05MTExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OC
-wtNzYxMDU1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgwODE0
-MjE1Miw4NDAxODM1MTEsLTIwNTQwODcxNDUsLTE5MjU5ODMzMj
-IsMTkwMjIwODQyOCwxMDMzMzc4MTM2LDE2MDkyNTcxOTMsLTE2
-NjU4NzY2MjRdfQ==
+eyJoaXN0b3J5IjpbMTU3NjE3NTc3OSwxNDEzNTA0OTUzLC0xMT
+I4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03MzUzMjU5
+MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2My
+wyMTE0ODM3OTg4LC03NjEwNTUxMTQsMzgzOTQ1MDMxLDY0Mjc5
+NDc4MiwxODA4MTQyMTUyLDg0MDE4MzUxMSwtMjA1NDA4NzE0NS
+wtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEwMzMzNzgxMzYsMTYw
+OTI1NzE5M119
 -->
