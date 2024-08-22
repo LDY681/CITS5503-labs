@@ -915,8 +915,8 @@ What is the performance difference between using KMS and using the custom soluti
 ```
 ```
 Answer:
-I think **KMS** outperforms in its ease of maintainence and high scalability. It offers automated key management so we don't need to manually manage our keys. KMS is also highly scalable and secure because they use cloud infrastructure.
-**PyCryptodome** is better for its extensibility and low internet overhead. PyCryptodome offers more room of customization with more cryptography algorithms and combinations with different options. It doesn't rely on API calls which are subject to connectivetity and rate limits, however since encryption/decrption are done on local machine, it doesn't scale well with high workload.
+I think **KMS** outperforms in its ease of maintainence and high scalability. It offers automated key management so we don't need to manually save our keys. KMS is also highly scalable because they are based on cloud infrastructure, which is critical with signific
+**PyCryptodome** is better for its extensibility and low internet overhead. PyCryptodome offers more room of customization with more cryptography algorithms and combinations with different configurations. It doesn't rely on API calls which are subject to connectivetity and rate limits, however since encryption/decrption are done on local machine, it doesn't scale well with high workload.
 
 ```
 <div  style="page-break-after: always;"></div>
@@ -929,11 +929,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTgzMjcxNDgsMTIxNDk4Nzc3MSwtMT
-U0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3
-MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OT
-M2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1Mywt
-MTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1Mz
-I1OTE3LC0xNTMyOTUzMzMyLC05MTExMDAyODMsLTE3NTAwODA5
-NjMsMjExNDgzNzk4OF19
+eyJoaXN0b3J5IjpbODc0MjE4NjQ0LDEyMTQ5ODc3NzEsLTE1ND
+k4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEy
+OTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNi
+wtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTEx
+Mjg3NTgwNCwtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNT
+kxNywtMTUzMjk1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYz
+LDIxMTQ4Mzc5ODhdfQ==
 -->
