@@ -673,7 +673,7 @@ To check if the script works, assume I mess up the username and limit the access
 ## AES Encryption using KMS
 
 ### [1] Policy to be attached to KMS key
-The following file `kmspolicy.json` contains the policy to be attached to the KMS key, which grants specific permissions to  root account and also IAM user which is me at ddd. First it grants the root user full access to all KMS operations `kms:*` on all resources `Resource: "*"`. Then it allows the IAM user to perform key management operations such as **creating, describing, enabling, disabling, tagging, and deleting** keys. Thirdly it allows the IAM user to use the key for cryptographic operations like encrypting, decrypting, re-encrypting, and generating data keys.
+The following file `kmspolicy.json` contains the policy to be attached to the KMS key, which grants specific permissions to  root account and also IAM user which is me at 24188516@student.uwa.edu.au. First it grants the root user full access to all KMS operations `kms:*` on all resources `Resource: "*"`. Then it allows the IAM user to perform key management operations such as **creating, describing, enabling, disabling, tagging, and deleting** keys. Thirdly, it allows the IAM user to use the key for cryptographic operations like **encrypting, decrypting, re-encrypting, and generating data keys**. Lastly it allows the IAM user to manage grants (**create, list, revoke**) for the key onlywhen the grant is for an AWS resource `kms:GrantIsForAWSResource`.
 
 ```
 # kmspolicy.json
@@ -818,11 +818,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ2MDUyMTc1NCwtMjA3NDIxNzc4LDE0MT
-M1MDQ5NTMsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2MDIzMzk3
-NzksLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMTAwMjgzLC
-0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTExNCwzODM5
-NDUwMzEsNjQyNzk0NzgyLDE4MDgxNDIxNTIsODQwMTgzNTExLC
-0yMDU0MDg3MTQ1LC0xOTI1OTgzMzIyLDE5MDIyMDg0MjgsMTAz
-MzM3ODEzNl19
+eyJoaXN0b3J5IjpbODQwNjgxNzQ0LC0yMDc0MjE3NzgsMTQxMz
+UwNDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3
+OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05MTExMDAyODMsLT
+E3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1MTE0LDM4Mzk0
+NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEsLT
+IwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMDMz
+Mzc4MTM2XX0=
 -->
