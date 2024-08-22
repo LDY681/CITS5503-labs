@@ -624,7 +624,7 @@ The bucket policy as a JSON document, **Version** is the policy language recogni
 }
 ```
 
-Because policy parameter only takes in JSON string, our policy is in JSON format. Open the bucket.policy.json, load the json file with `json.load()` and then convert it into string with `json.dumps()`, finally call `s3.put_bucket_policy()` to apply the policy to our bucket.
+Because policy parameter only takes in JSON string, our policy is in JSON format. Open the `bucketpolicy.json`, load the json file with `json.load()` and then convert it into string with `json.dumps()`, finally call `s3.put_bucket_policy()` to apply the policy to our bucket.
 
 ```
 # addpolicy.py
@@ -881,11 +881,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMxMzczOTA0MywtMTk1NzEyOTU2LDY5Nj
-k3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5
-MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNC
-wtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNTkxNywtMTUz
-Mjk1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mz
-c5ODgsLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNzk0NzgyLDE4
-MDgxNDIxNTJdfQ==
+eyJoaXN0b3J5IjpbOTc1OTYwOTU5LC0xOTU3MTI5NTYsNjk2OT
+cyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDky
+NjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC
+0yMDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMy
+OTUzMzMyLC05MTExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNz
+k4OCwtNzYxMDU1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3ODIsMTgw
+ODE0MjE1Ml19
 -->
