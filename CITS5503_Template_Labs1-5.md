@@ -864,7 +864,7 @@ Because AWS KMS also uses [AES with 256 bits-long](https://docs.aws.amazon.com/c
 
  1. First install the package
  Run `pip install pycryptodome`
- ![enter image description here](http://localhost/assets/lab4-12.png)
+![enter image description here](http://localhost/assets/lab4-12.png)
  
  2. Modify the above code in `cryptwithpycryptodome.py`
 Now the code is very similar to `cryptwithkms.py`, with few exceptions:
@@ -903,8 +903,9 @@ Now the code is very similar to `cryptwithkms.py`, with few exceptions:
 ```
 
 3. See in actions
-
-
+Now lets run `python3 cryptwithpycryptodome.py` and see the new approach in action.
+![enter image description here](http://localhost/assets/lab4-13.png)
+![enter image description here](http://localhost/assets/lab4-10.png)
 **NOTE**: Delete the created S3 bucket and KMS key from AWS console after the lab is done.
 
 ## Answer the following question (Marked)
@@ -923,11 +924,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMT
-I1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcy
-MTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNj
-QwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0y
-MDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOT
-UzMzMyLC05MTExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4
-OCwtNzYxMDU1MTE0XX0=
+eyJoaXN0b3J5IjpbMTgwNjM3OTc0NiwxMjE0OTg3NzcxLC0xNT
+Q5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcx
+Mjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5Mz
+YsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0x
+MTI4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03MzUzMj
+U5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2
+MywyMTE0ODM3OTg4XX0=
 -->
