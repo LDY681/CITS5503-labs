@@ -788,7 +788,7 @@ def  create_kms_key():
 ![enter image description here](http://localhost/assets/lab4-6.png)
 
 ### [3] Check whether the script works
-
+Go to the KMS service in AWS console, as you can see the key is created with the alias of `24188516`
 Use the AWS KMS console to test whether your username is the key administrator and key user.
 
 **NOTE**: After you log into the console, you perform the test by showing the policy you create, i.e., which ARN is the key administrator and which ARN is the key user.
@@ -821,11 +821,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLT
-IwNzQyMTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAy
-NTcwNDIsNjAyMzM5Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMz
-IsLTkxMTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03
-NjEwNTUxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMT
-UyLDg0MDE4MzUxMSwtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwx
-OTAyMjA4NDI4XX0=
+eyJoaXN0b3J5IjpbLTY1OTkwMDU4LC0xNzY2OTg5OTM2LC0xMD
+g3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1
+ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC
+0xNTMyOTUzMzMyLC05MTExMDAyODMsLTE3NTAwODA5NjMsMjEx
+NDgzNzk4OCwtNzYxMDU1MTE0LDM4Mzk0NTAzMSw2NDI3OTQ3OD
+IsMTgwODE0MjE1Miw4NDAxODM1MTEsLTIwNTQwODcxNDUsLTE5
+MjU5ODMzMjJdfQ==
 -->
