@@ -888,6 +888,18 @@ Now the code is very similar to `cryptwithkms.py`, with few exceptions:
     file_body = cipher.nonce + tag + cipher_text
 ```
 
+- For the decryption part, we need to first split **nonce, tag, and ciphertext** from the file in this exact order into a single byte sequence (`file_body`). **nonce** is a unique value generated to make sure the resulting ciphertext will be different and avoid similar issue to **Hash Collision**.
+```
+    # Parse the nonce, tag, and the ciphertext from the file content
+    nonce = file_body[:16]  # 16 bytes for the nonce
+    tag = file_body[16:32]  # 16 bytes for the tag
+    cipher_text = file_body[32:] # The rest of the file content is the ciphertext
+
+    # Decrypt the file content using AES with PyCryptodome in EAX mode
+    cipher = AES.new(AES_KEY, AES.MODE_EAX, nonce=nonce)
+    plain_text = cipher.decrypt_and_verify(cipher_text, tag)
+    file_body = plain_text.decode('utf-8') #convert plain text bytes to a regular string
+```
 
 Write another Python script that uses the python library `pycryptodome` to encrypt and decrypt each file in the S3 bucket. Both encrypted and decrypted files will be in the same folder as the original file.
 
@@ -911,11 +923,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLT
-kyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2
-NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNz
-c4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2
-MDIzMzk3NzksLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMT
-AwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTEx
-NCwzODM5NDUwMzFdfQ==
+eyJoaXN0b3J5IjpbLTEwNTc2MDQyMjMsLTE1NDk4NzEzOTUsLT
+EyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3
+MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5Mj
+Y0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwt
+MjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNTkxNywtMTUzMj
+k1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mzc5
+ODgsLTc2MTA1NTExNF19
 -->
