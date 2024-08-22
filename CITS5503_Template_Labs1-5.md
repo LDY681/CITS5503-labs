@@ -915,7 +915,8 @@ What is the performance difference between using KMS and using the custom soluti
 ```
 ```
 Answer:
--   **KMS**: Introduces higher latency due to network calls to AWS and has API rate limits, making it less efficient for high-throughput, low-latency operations. It is, however, highly scalable and secure, with automated key management. The 
+I think **KMS** outperforms in its maintainability and
+Introduces higher latency due to network calls to AWS and has API rate limits, making it less efficient for high-throughput, low-latency operations. It is, however, highly scalable and secure, with automated key management. We don't need to worry about 
     
 -   **PyCryptodome AES**: Offers lower latency since encryption/decryption occurs locally without network overhead, making it better for high-performance needs. However, it requires manual key management and lacks the built-in scalability and security features of KMS.
 ```
@@ -929,7 +930,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1NDMxMzg1NiwxMjE0OTg3NzcxLC0xNT
+eyJoaXN0b3J5IjpbLTU0MjE2NjY0MywxMjE0OTg3NzcxLC0xNT
 Q5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcx
 Mjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5Mz
 YsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0x
