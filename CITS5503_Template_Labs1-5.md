@@ -913,7 +913,12 @@ Now lets run `python3 cryptwithpycryptodome.py` and see the new approach in acti
 ```
 What is the performance difference between using KMS and using the custom solution?
 ```
-
+```
+Answer:
+-   **KMS**: Introduces higher latency due to network calls to AWS and has API rate limits, making it less efficient for high-throughput, low-latency operations. It is, however, highly scalable and secure, with automated key management. The 
+    
+-   **PyCryptodome AES**: Offers lower latency since encryption/decryption occurs locally without network overhead, making it better for high-performance needs. However, it requires manual key management and lacks the built-in scalability and security features of KMS.
+```
 <div  style="page-break-after: always;"></div>
 
 # Lab 5
@@ -924,11 +929,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjQ0NDY1NTIxLDEyMTQ5ODc3NzEsLTE1ND
-k4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEy
-OTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNi
-wtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTEx
-Mjg3NTgwNCwtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNT
-kxNywtMTUzMjk1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYz
-LDIxMTQ4Mzc5ODhdfQ==
+eyJoaXN0b3J5IjpbLTI1NDMxMzg1NiwxMjE0OTg3NzcxLC0xNT
+Q5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcx
+Mjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5Mz
+YsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0x
+MTI4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03MzUzMj
+U5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2
+MywyMTE0ODM3OTg4XX0=
 -->
