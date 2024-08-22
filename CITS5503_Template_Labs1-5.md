@@ -889,7 +889,7 @@ Now the code is very similar to `cryptwithkms.py`, with few exceptions:
 ```
 
 - For the decryption part, we need to first extract **nonce, tag, and ciphertext** from the **file_body**. _Nonce_ is the first 16 bytes of the string, _tag_ is the next 16 bytes and _cipher_text _ is the remaining part of the actual encrypted file content, starting from byte 32 onward. 
-- We need extracted ***
+- We need extracted **nonce** to create a cipher object with the original encryption setup. `cipher.decrypt_and_verify()` decrypts the ciphertext and verifies its integrity using the extracted **tag**
 ```
     # Parse the nonce, tag, and the ciphertext from the file content
     nonce = file_body[:16]  # 16 bytes for the nonce
@@ -902,9 +902,8 @@ Now the code is very similar to `cryptwithkms.py`, with few exceptions:
     file_body = plain_text.decode('utf-8') #convert plain text bytes to a regular string
 ```
 
-Write another Python script that uses the python library `pycryptodome` to encrypt and decrypt each file in the S3 bucket. Both encrypted and decrypted files will be in the same folder as the original file.
+3. See in actions
 
-For encryption/decryption, refer to the example code from [fileencrypt.py](https://github.com/zhangzhics/CITS5503_Sem2/blob/master/Labs/src/fileencrypt.py)
 
 **NOTE**: Delete the created S3 bucket and KMS key from AWS console after the lab is done.
 
@@ -924,11 +923,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjM1MjM0MDYsLTE1NDk4NzEzOTUsLT
-EyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3
-MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5Mj
-Y0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwt
-MjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNTkxNywtMTUzMj
-k1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mzc5
-ODgsLTc2MTA1NTExNF19
+eyJoaXN0b3J5IjpbMTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMT
+I1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcy
+MTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNj
+QwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0y
+MDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOT
+UzMzMyLC05MTExMDAyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4
+OCwtNzYxMDU1MTE0XX0=
 -->
