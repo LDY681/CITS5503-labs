@@ -172,7 +172,7 @@ Now we have the instance id `i-0553e2ea0492e1c73`, add a tag that specifies the 
  ```
 
 ### [6] Get the public IP address
-describe-instances returns available information to the instance with `--instance-ids`, since we only want the IP address for ssh purpose, the query limits the output to only `Reservations[0].Instances[0].PublicIpAddress`
+**describe-instances** returns available information to the instance with `--instance-ids`, since we only want the IP address for ssh purpose, the query limits the output to only `Reservations[0].Instances[0].PublicIpAddress`
 ```
 aws ec2 describe-instances --instance-ids i-0553e2ea0492e1c73 --query 'Reservations[0].Instances[0].PublicIpAddress'
 ```
@@ -192,7 +192,7 @@ The original instance from step 1-7 was destoyed over night so you might see the
 
 ## Create an EC2 instance with Python Boto3
 
-The script uses boto3 package instead of cli commands. Names of some of the methods and parameters can vary but they achived the same goal. The Group name, key name and instance name all have an appendix **'-2'** to differentiate from the previous practice.
+The script uses **boto3** package instead of cli commands. Names of some of the methods and parameters can vary but they achieved the same goal. The **Group name, Key name and Instance name** all have an appendix **'-2'** to differentiate from the previous practice.
 
 The code is as follows:
 ```
@@ -884,11 +884,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAxNjcwNjUwMCwtMTk1NzEyOTU2LDY5Nj
-k3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5
-MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNC
-wtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNTkxNywtMTUz
-Mjk1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mz
-c5ODgsLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNzk0NzgyLDE4
-MDgxNDIxNTJdfQ==
+eyJoaXN0b3J5IjpbLTEwMDczMDMzMTEsLTE5NTcxMjk1Niw2OT
+Y5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcw
+OTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MD
+QsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03MzUzMjU5MTcsLTE1
+MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2MywyMTE0OD
+M3OTg4LC03NjEwNTUxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4Miwx
+ODA4MTQyMTUyXX0=
 -->
