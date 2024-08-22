@@ -795,6 +795,7 @@ Go to the KMS service in AWS console, as you can see the key is created with the
 - Inside **decrypt_file()** function, it retrieves the file content in the same way, then we decrypt encrypted file content with `kms.decrypt()`. The result is the original **Plaintext Bytestring**. We shall convert the bytestring result into a regular string with `.decode('utf-8')`, then the decrypted content is uploaded back to the bucket with a new key that appends _.decrypted_ to the encrypted file name.
 
 ```
+# cryptwithkms.py
 import boto3
 
 s3 = boto3.client('s3')
@@ -866,7 +867,12 @@ Because AWS KMS also uses [AES with 256 bits-long](https://docs.aws.amazon.com/c
  ![enter image description here](http://localhost/assets/lab4-12.png)
  
  3. Modify the above code in `cryptwithpycryptodome.py`
-Now the code is very similar to 
+Now the code is very similar to `cryptwithkms.py`, with few exceptions:
+First we import AES package for encryption/decryption and get_random_bytes for random key generation
+`
+	from Crypto.Cipher import AES
+	from Crypto.Random import get_random_bytes
+`
 
 Write another Python script that uses the python library `pycryptodome` to encrypt and decrypt each file in the S3 bucket. Both encrypted and decrypted files will be in the same folder as the original file.
 
@@ -890,11 +896,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Njk0MDg5NTksLTEyNTEzNjE0MjcsLT
-kyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2
-NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNz
-c4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwtMjA4MDI1NzA0Miw2
-MDIzMzk3NzksLTczNTMyNTkxNywtMTUzMjk1MzMzMiwtOTExMT
-AwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mzc5ODgsLTc2MTA1NTEx
-NCwzODM5NDUwMzFdfQ==
+eyJoaXN0b3J5IjpbMTA5ODM0MjcwMywtMTI1MTM2MTQyNywtOT
+I4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1
+MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3Nz
+gsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYw
+MjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05MTExMD
+AyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1MTE0
+LDM4Mzk0NTAzMV19
 -->
