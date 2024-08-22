@@ -915,9 +915,8 @@ What is the performance difference between using KMS and using the custom soluti
 ```
 ```
 Answer:
-I think **KMS** outperforms in its ease of maintainence. It offers automated key management and is highly scalable and secure because they are stored in the cloud. 
+I think **KMS** outperforms in its ease of maintainence and b. It offers automated key management and is highly scalable and secure because they are stored in the cloud. PyCryptodome is better for its extensibility and low latency due to no internet overhead because it doesn't use API calls which are subject to connectivetity and API rate limits, however since encryption/decrption are done on local machine, it doesn't work well with high workload because difficulty to scaleability.
 
-PyCryptodome is better at extensibility. 
 
 Introduces higher latency due to network calls to AWS and has API rate limits, making it less efficient for high-throughput, low-latency operations. It is, however, highly scalable and secure, with automated key management. We don't need to worry about 
     
@@ -933,11 +932,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0NjgzOTA1MiwxMjE0OTg3NzcxLC0xNT
-Q5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcx
-Mjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5Mz
-YsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0x
-MTI4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03MzUzMj
-U5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2
-MywyMTE0ODM3OTg4XX0=
+eyJoaXN0b3J5IjpbLTE1OTkyOTE2NjMsMTIxNDk4Nzc3MSwtMT
+U0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3
+MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OT
+M2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1Mywt
+MTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1Mz
+I1OTE3LC0xNTMyOTUzMzMyLC05MTExMDAyODMsLTE3NTAwODA5
+NjMsMjExNDgzNzk4OF19
 -->
