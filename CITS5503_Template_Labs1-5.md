@@ -673,7 +673,7 @@ To check if the script works, assume I mess up the username and limit the access
 ## AES Encryption using KMS
 
 ### [1] Policy to be attached to KMS key
-The following file `kmspolicy.json` contains the policy to be attached to the KMS key, which grants specific permissions to  the IAM user which is me at **24188516@student.uwa.edu.au**.
+The following file `kmspolicy.json` contains the policy to be attached to the KMS key, which grants specific permissions to  root account and also IAM user which is me at **24188516@student.uwa.edu.au**. First it grants the root user full access to all KMS operations **kms:*** on all resources (`Resource: "*"`) in the account.
 ```
 # kmspolicy.json
 {
@@ -817,11 +817,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjA1ODc2NDYsLTIwNzQyMTc3OCwxND
-EzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5
-Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMDI4My
-wtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEwNTUxMTQsMzgz
-OTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0MDE4MzUxMS
-wtMjA1NDA4NzE0NSwtMTkyNTk4MzMyMiwxOTAyMjA4NDI4LDEw
-MzMzNzgxMzZdfQ==
+eyJoaXN0b3J5IjpbOTk0ODIzNjg0LC0yMDc0MjE3NzgsMTQxMz
+UwNDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3
+OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05MTExMDAyODMsLT
+E3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1MTE0LDM4Mzk0
+NTAzMSw2NDI3OTQ3ODIsMTgwODE0MjE1Miw4NDAxODM1MTEsLT
+IwNTQwODcxNDUsLTE5MjU5ODMzMjIsMTkwMjIwODQyOCwxMDMz
+Mzc4MTM2XX0=
 -->
