@@ -888,7 +888,7 @@ Now the code is very similar to `cryptwithkms.py`, with few exceptions:
     file_body = cipher.nonce + tag + cipher_text
 ```
 
-- For the decryption part, we need to first split **nonce, tag, and ciphertext** from the file in this exact order into a single byte sequence (`file_body`). **nonce** is a unique value generated to make sure the resulting ciphertext will be different and avoid similar issue to **Hash Collision**.
+- For the decryption part, we need to first split **nonce, tag, and ciphertext** from the **file_body**. _Nonce_ is the first 16 bytes of the string, _tag_ is the next 16 bytes and theremaining part of the file content, starting from byte 32 onward. file in this exact order into a single byte sequence (`file_body`). **nonce** is a unique value generated to make sure the resulting ciphertext will be different and avoid similar issue to **Hash Collision**.
 ```
     # Parse the nonce, tag, and the ciphertext from the file content
     nonce = file_body[:16]  # 16 bytes for the nonce
@@ -923,11 +923,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNTc2MDQyMjMsLTE1NDk4NzEzOTUsLT
-EyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3
-MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5Mj
-Y0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwt
-MjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNTkxNywtMTUzMj
-k1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mzc5
-ODgsLTc2MTA1NTExNF19
+eyJoaXN0b3J5IjpbNDc2OTkwMjQxLC0xNTQ5ODcxMzk1LC0xMj
+UxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIx
+NTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2ND
+AsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQsLTIw
+ODAyNTcwNDIsNjAyMzM5Nzc5LC03MzUzMjU5MTcsLTE1MzI5NT
+MzMzIsLTkxMTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4
+LC03NjEwNTUxMTRdfQ==
 -->
