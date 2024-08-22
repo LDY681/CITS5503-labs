@@ -868,13 +868,16 @@ Because AWS KMS also uses [AES with 256 bits-long](https://docs.aws.amazon.com/c
  
  3. Modify the above code in `cryptwithpycryptodome.py`
 Now the code is very similar to `cryptwithkms.py`, with few exceptions:
+
 First we import AES package for encryption/decryption and get_random_bytes for random key generation:
 ```
 	from Crypto.Cipher import AES
 	from Crypto.Random import get_random_bytes
+	
+	AES_KEY  = get_random_bytes(32) # 32 bytes = 256 bits-long key
 ```
 
-For the file content part, 
+For the file content part, `AES.new(AES_KEY, AES.MODE_EAX)` initializes a new AES cipher object in EAX mode using the provided `AES_KEY`.
 ```
 # Encrypt the file content using AES with PyCryptodome in EAX mode
     cipher = AES.new(AES_KEY, AES.MODE_EAX)
@@ -908,11 +911,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzNDYyNjEzNSwtMTI1MTM2MTQyNywtOT
-I4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1
-MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3Nz
-gsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYw
-MjMzOTc3OSwtNzM1MzI1OTE3LC0xNTMyOTUzMzMyLC05MTExMD
-AyODMsLTE3NTAwODA5NjMsMjExNDgzNzk4OCwtNzYxMDU1MTE0
-LDM4Mzk0NTAzMV19
+eyJoaXN0b3J5IjpbMzUyMTY2NTU4LC0xMjUxMzYxNDI3LC05Mj
+gzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUx
+NTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OC
+wxNDEzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwNDIsNjAy
+MzM5Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMzIsLTkxMTEwMD
+I4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEwNTUxMTQs
+MzgzOTQ1MDMxXX0=
 -->
