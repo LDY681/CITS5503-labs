@@ -75,12 +75,12 @@ python3
 Now we create a python script to wrap these lines in one file and also format the reponse into table structure.
 The python script is located in `~\cits5503\lab1` in my Ubuntu machine.
 
-#### (1) install dependencies
+#### (1) Install dependencies
 The pandas library is used here to convert un-tabulated data into structured table.
 Run the following code to install the extra dependency
 `pip install pandas`
 
-#### (2) explain the code
+#### (2) Explain the code
 The code in the script adds an extra step, the reponse data is sent as a parameter into pandas dataframe and then gets printed.
 ```
 import boto3 as bt
@@ -93,12 +93,12 @@ regions_df = pd.DataFrame(regions)
 print(regions_df)
 ```
 
-#### (3) run the script
+#### (3) Run the script
 
 run the following code to execute the python script:
 `python3 lab1.py`
 
-#### [4] get the results
+#### [4] Get the results
 After the script is executed, results are printed in a table structure:
 | --- | Endpoint | RegionName | OptInStatus |
 | --- | --- | --- | --- |
@@ -884,11 +884,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3OD
-QxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQy
-MTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwND
-IsNjAyMzM5Nzc5LC03MzUzMjU5MTcsLTE1MzI5NTMzMzIsLTkx
-MTEwMDI4MywtMTc1MDA4MDk2MywyMTE0ODM3OTg4LC03NjEwNT
-UxMTQsMzgzOTQ1MDMxLDY0Mjc5NDc4MiwxODA4MTQyMTUyLDg0
-MDE4MzUxMV19
+eyJoaXN0b3J5IjpbMjAxNjcwNjUwMCwtMTk1NzEyOTU2LDY5Nj
+k3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5
+MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNC
+wtMjA4MDI1NzA0Miw2MDIzMzk3NzksLTczNTMyNTkxNywtMTUz
+Mjk1MzMzMiwtOTExMTAwMjgzLC0xNzUwMDgwOTYzLDIxMTQ4Mz
+c5ODgsLTc2MTA1NTExNCwzODM5NDUwMzEsNjQyNzk0NzgyLDE4
+MDgxNDIxNTJdfQ==
 -->
