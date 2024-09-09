@@ -928,11 +928,8 @@ However since encryption/decrption are done on local machine, it doesn't scale w
 # Lab 5
 ## Application Load Balancer
 
-The aim of this part of the lab is to create an application load balancer and load balance requests to 2 EC2 instances. 
-
 ### [1] Create 2 EC2 instances & Add Application Load Balancer
-
-In the first part to create EC2 instances, we can replicate our code from **lab2** as a entry point. The only difference is that we need to create EC2 instances and specify their separated availbility zones. This can be done by using `ec2.describe_availability_zones` to fetch the zones and add the parameter **SubnetId** when doing `ec2.run_instances`.
+In the first part to create EC2 instances, we can replicate our code from **lab2** as an entry point. The only difference is that we need to create EC2 instances and specify their separated availbility zones (subnet). This can be done by using `ec2.describe_subnets()` to fetch the zones and add the parameter **SubnetId** when doing `ec2.run_instances()`.
 
 To differentiate some ARNs that were already declared in **lab2**, some resource names are hypenated with suffix "lab5" at the end, for example:
 ```
@@ -996,11 +993,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5ND
-U3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAw
-OCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC
-05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQx
-NjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMT
-c3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwNDIs
-NjAyMzM5Nzc5XX0=
+eyJoaXN0b3J5IjpbNzczODM0NjkxLC0xMTg3MDcxODA5LDE0OD
+M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
+LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMT
+I1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcy
+MTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNj
+QwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0y
+MDgwMjU3MDQyXX0=
 -->
