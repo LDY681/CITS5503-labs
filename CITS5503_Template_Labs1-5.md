@@ -1072,7 +1072,7 @@ After the execution, go to the console and confirm our *load balancer* and *targ
 
 ### [3] Install Apache Server
 We need to install apache and start the application to see our load balancer in action.
-
+We already saved the created private key **24188516-key-lab5.pem** for both the instances, because I use Putty, use PuttyGen to convert pem key file to ppk format in order to ssh to the instance.
 Try and access each EC2 instance using its public IP address in a browser. The load balancer is expected not to work at the moment, because Apache 2 is not installed in the instance. To make it work, follow the steps below:
 
 First, ssh to each of the two instances. If you can't make it, try [here](https://bobbyhadz.com/blog/aws-ssh-permission-denied-publickey).
@@ -1103,7 +1103,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM4MDg2NTA4OSwtMTE4NzA3MTgwOSwxND
+eyJoaXN0b3J5IjpbLTg2OTk4MjYyNCwtMTE4NzA3MTgwOSwxND
 gzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0
 NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLT
 EyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3
