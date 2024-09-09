@@ -935,10 +935,10 @@ GroupName = '24188516-sg-lab5'
 KeyName = '24188516-key-lab5'
 ```
 The only difference is that we need to create EC2 instances and specify their separated availbility zones (subnet). This can be done by using `ec2.describe_subnets()` to fetch the subnets in each dedicated availablity zones and add the parameter **SubnetId** when doing `ec2.run_instances(SubnetId=SubnetId)`.
-Then we will createload balancer and target group step by step
- - Use `elbv2.create_load_balancer()` and pass in our choosen **Subnets**, and created **SecurityGroups**
- - Use `ec2.describe_vpcs()` to find the vpc that will host our instances and then use `elbv2.create_target_group()` and pass in **Protocol**, **Port**, **VpcId**, etc
-
+Then we will create *load balancer* and *target group* step by step
+ - Use `elbv2.create_load_balancer()` with our choosen **Subnets**, created **SecurityGroups**, etc.
+ - Use `ec2.describe_vpcs()` to find the vpc that will host our instances and then use `elbv2.create_target_group()` and p**Protocol**, **Port**, **VpcId**, etc.
+- Use `elbv2.register_targets()` to register instances as targets, 
 This is the full script of the code and I will explain the steps on creating load balancer and target group down below. 
 ```
 import boto3 as bt
@@ -1097,11 +1097,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk3MTM5OTE1MywtMTE4NzA3MTgwOSwxND
-gzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0
-NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLT
-EyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3
-MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5Mj
-Y0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwt
-MjA4MDI1NzA0Ml19
+eyJoaXN0b3J5IjpbLTE2NDIyNzUzMDMsLTExODcwNzE4MDksMT
+Q4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0
+NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC
+0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5
+NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOT
+I2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQs
+LTIwODAyNTcwNDJdfQ==
 -->
