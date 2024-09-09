@@ -935,12 +935,14 @@ GroupName = '24188516-sg-lab5'
 KeyName = '24188516-key-lab5'
 ```
 The only difference is that we need to create EC2 instances and specify their separated availbility zones (subnet). This can be done by using `ec2.describe_subnets()` to fetch the subnets in each dedicated availablity zones and add the parameter **SubnetId** when doing `ec2.run_instances(SubnetId=SubnetId)`.
+
 Then we will create *load balancer* and *target group* step by step
  - Create load balancer: Use `elbv2.create_load_balancer()` with our choosen **Subnets**, created **SecurityGroups**, etc.
  - Create target group: Use `ec2.describe_vpcs()` to find the vpc that will host our instances and then use `elbv2.create_target_group()` with **Protocol**, **Port**, **VpcId**, etc.
-- Register instances as targets: Use `elbv2.register_targets()` with **TargetGroupArn** (return from `elbv2.create_target_group()`) and **Targets** (Id as **InstanceId**)
-- Add a listener to forward traffic from **port 80** to the **target group** (EC2 instance): Use `elbv2.create_listener()` with **LoadBalancerArn** (return from `elbv2.create_load_balancer()`) and 
-This is the full script of the code and I will explain the steps on creating load balancer and target group down below. 
+- Register instances as targets: Use `elbv2.register_targets()` with **TargetGroupArn** (return from `elbv2.create_target_group()`),**Targets** (Id as **InstanceId**), etc.
+- Add a listener to forward traffic from **port 80** to the **target group** (EC2 instance): Use `elbv2.create_listener()` with **LoadBalancerArn** (return from `elbv2.create_load_balancer()`), **DefaultActions** as **forward ** to the **TargetGroupArn**, etc.
+
+This is the full code script down below to perform actions above
 ```
 import boto3 as bt
 import os
@@ -1098,7 +1100,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAzMzQ3MTU3NiwtMTE4NzA3MTgwOSwxND
+eyJoaXN0b3J5IjpbLTU5NjgyOTQzMiwtMTE4NzA3MTgwOSwxND
 gzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0
 NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLT
 EyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3
