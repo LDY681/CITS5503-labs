@@ -1088,19 +1088,19 @@ As you can see, now we are logged in.
 
 ### [4] Install apache & Access results using IP addresses
 
-
-Second, update each instance:
+First, let's update each instance and install apache2 in each instance:
 ```
 sudo apt-get update
-```
-
-Third, install apache2 in each instance:
-
-```
 sudo apt install apache2
 ```
+![enter image description here](http://localhost/assets/lab5-9.png)
 
- sudo vi /var/www/html/index.html
+Now, edit the `<title>` and `</title>` tags inside the `/var/www/html/index.html` file to show the instance name.
+```
+sudo vi /var/www/html/index.html
+
+```
+
 
 
 Fourth, edit the `<title>` and `</title>` tags inside the `/var/www/html/index.html` file to show the instance name.
@@ -1114,11 +1114,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NDUyNzc5MjcsLTExODcwNzE4MDksMT
-Q4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0
-NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC
-0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5
-NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOT
-I2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQs
-LTIwODAyNTcwNDJdfQ==
+eyJoaXN0b3J5IjpbNTkyMjYzOTM4LC0xMTg3MDcxODA5LDE0OD
+M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
+LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMT
+I1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcy
+MTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNj
+QwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0y
+MDgwMjU3MDQyXX0=
 -->
