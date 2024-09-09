@@ -1079,8 +1079,12 @@ We already stored the generated private key as **24188516-key-lab5.pem** for bot
 Bacause I use Putty on Windows OS, first we need to use PuttyGen to convert pem key file to ppk format for later ssh actions.
 ![enter image description here](http://localhost/assets/lab5-5.png)
 
-Now
+Now configure the authentication credentials and host on Putty with our converted keys and Ip addresses we recorded from the last step.
 ![enter image description here](http://localhost/assets/lab5-6.png)
+![enter image description here](http://localhost/assets/lab5-7.png)
+
+As you can see, now we are logged in. 
+![enter image description here](http://localhost/assets/lab5-8.png)
 Try and access each EC2 instance using its public IP address in a browser. The load balancer is expected not to work at the moment, because Apache 2 is not installed in the instance. To make it work, follow the steps below:
 
 First, ssh to each of the two instances. If you can't make it, try [here](https://bobbyhadz.com/blog/aws-ssh-permission-denied-publickey).
@@ -1111,11 +1115,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3NTQ5MTkxMCwtMTE4NzA3MTgwOSwxND
-gzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0
-NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLT
-EyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3
-MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5Mj
-Y0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwt
-MjA4MDI1NzA0Ml19
+eyJoaXN0b3J5IjpbLTE2OTg5ODEwNDYsLTExODcwNzE4MDksMT
+Q4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0
+NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC
+0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5
+NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOT
+I2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQs
+LTIwODAyNTcwNDJdfQ==
 -->
