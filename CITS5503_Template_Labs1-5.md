@@ -929,37 +929,136 @@ However since encryption/decrption are done on local machine, it doesn't scale w
 ## Application Load Balancer
 
 ### [1] Create 2 EC2 instances & Add Application Load Balancer
-In the first part to create EC2 instances, we can replicate our code from **lab2** as an entry point. The only difference is that we need to create EC2 instances and specify their separated availbility zones (subnet). This can be done by using `ec2.describe_subnets()` to fetch the zones and add the parameter **SubnetId** when doing `ec2.run_instances()`.
-
-To differentiate some ARNs that were already declared in **lab2**, some resource names are hypenated with suffix "lab5" at the end, for example:
+In the first part to create EC2 instances, we can replicate our code from **lab2** as an entry point. To differentiate some ARNs that were already declared in **lab2**, some resource names are hypenated with suffix "lab5" at the end, for example:
 ```
 GroupName = '24188516-sg-lab5'
 KeyName = '24188516-key-lab5'
 ```
-This is the full script of the code and I will explain the steps on creating load balancer and target group down below:
+This is the full script of the code and I will explain the steps on creating load balancer and target group down below. 
 ```
+import boto3 as bt
+import os
+
+GroupName = '24188516-sg-lab5'
+KeyName = '24188516-key-lab5'
+InstanceName1 = '24188516-vm1'
+InstanceName2 = '24188516-vm2'
+LoadBalancerName = '24188516-elb'
+TargetGroupName = '24188516-tg'
+
+# Initialize EC2 and ELBv2 clients
+ec2 = bt.client('ec2', region_name='eu-north-1')
+elbv2 = bt.client('elbv2')
+
+# 1. Create security group
+step1_response = ec2.create_security_group(
+    Description="Security group for lab5 environment",
+    GroupName=GroupName
+)
+
+# 2. Authorize SSH (port 22) and HTTP (port 80) inbound rules
+step2_response = ec2.authorize_security_group_ingress(
+    GroupName=GroupName,
+    IpPermissions=[
+        {
+            'IpProtocol': 'tcp',
+            'FromPort': 22,
+            'ToPort': 22,
+            'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+        },
+        {
+            'IpProtocol': 'tcp',
+            'FromPort': 80,
+            'ToPort': 80,
+            'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+        }
+    ]
+)
+
+# 3. Create key-pair
+step3_response = ec2.create_key_pair(KeyName=KeyName)
+PrivateKey = step3_response['KeyMaterial']
+## Save key-pair
+with open(f'{KeyName}.pem', 'w') as file:
+    file.write(PrivateKey)
+## Grant file permission
+os.chmod(f'{KeyName}.pem', 0o400)
+
+# 4. Get two of subnets in availability zones
+step4_response = ec2.describe_subnets()['Subnets']
+Subnets = [subnet['SubnetId'] for subnet in step4_response[:2]]
+
+# 5. Create instances in these two availability zones
+Instances = []
+for idx, SubnetId in enumerate(Subnets):
+    InstanceName = f"24188516-vm{idx + 1}"
+    step5_response = ec2.run_instances(
+        ImageId='ami-07a0715df72e58928',
+        SecurityGroupIds=[step1_response['GroupId']],
+        MinCount=1,
+        MaxCount=1,
+        InstanceType='t3.micro',
+        KeyName=KeyName,
+        SubnetId=SubnetId
+    )
+    InstanceId = step5_response['Instances'][0]['InstanceId']
+    Instances.append(InstanceId)
+    
+    # Tag instance with the appropriate name
+    ec2.create_tags(
+        Resources=[InstanceId],
+        Tags=[
+            {
+                'Key': 'Name',
+                'Value': InstanceName
+            }
+        ]
+    )
+
+# 6. Create application load balancer
+step6_response = elbv2.create_load_balancer(
+    Name=LoadBalancerName,
+    Subnets=Subnets,
+    SecurityGroups=[step1_response['GroupId']],
+    Scheme='internet-facing',
+    Type='application'
+)
+LoadBalancerArn = step6_response['LoadBalancers'][0]['LoadBalancerArn']
+
+# 7. Create target group
+VpcId = ec2.describe_vpcs()['Vpcs'][0]['VpcId']
+step7_response = elbv2.create_target_group(
+    Name=TargetGroupName,
+    Protocol='HTTP',
+    Port=80,
+    VpcId=VpcId,
+    TargetType='instance'
+)
+TargetGroupArn = step7_response['TargetGroups'][0]['TargetGroupArn']
+
+# 8. Register instances as targets
+elbv2.register_targets(
+    TargetGroupArn=TargetGroupArn,
+    Targets=[{'Id': InstanceId} for InstanceId in Instances]
+)
+
+# 9. Create a listener for the load balancer
+elbv2.create_listener(
+    LoadBalancerArn=LoadBalancerArn,
+    Protocol='HTTP',
+    Port=80,
+    DefaultActions=[{
+        'Type': 'forward',
+        'TargetGroupArn': TargetGroupArn
+    }]
+)
+
+# Printouts
+print(f"Instance IDs: {Instances}")
+print(f"Load Balancer ARN: {LoadBalancerArn}")
+print(f"Target Group ARN: {TargetGroupArn}")
 ```
 
-
-### [2] Create an Application Load Balancer
-
-Update the script above to create an application load balancer and load balance HTTP requests to the created 2 instances. Note that the v2 of the ELB interface below should be used:
-```
-client = boto3.client('elbv2')
-```
-
-The script updates include:
-
-First, create a load balancer, during which specify the two created region subnets and the
-security group created in the previous step.
-
-Second, create a target group using the same VPC that was used to create
-the instances.
-
-Third, register targets in the target group.
-
-Last, create a listener with a default rule Protocol: HTTP and Port 80
-forwarding on to the target group.
 
 ### [3] Test the Application Load Balancer
 
@@ -993,11 +1092,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzczODM0NjkxLC0xMTg3MDcxODA5LDE0OD
-M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
-LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMT
-I1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcy
-MTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNj
-QwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0y
-MDgwMjU3MDQyXX0=
+eyJoaXN0b3J5IjpbLTE5NDcwNzcwNzAsLTExODcwNzE4MDksMT
+Q4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0
+NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC
+0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5
+NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOT
+I2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQs
+LTIwODAyNTcwNDJdfQ==
 -->
