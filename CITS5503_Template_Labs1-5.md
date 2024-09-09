@@ -915,8 +915,12 @@ What is the performance difference between using KMS and using the custom soluti
 ```
 ```
 Answer:
-I think **KMS** outperforms in its ease of maintainence and high scalability. It offers automated key management so we don't need to manually save our keys. KMS is also highly scalable because they are based on cloud infrastructure, which is critical under significant workload.
-**PyCryptodome** is better for its extensibility and low internet overhead. PyCryptodome offers more room of customization with more cryptography algorithms and combinations with different configurations. It doesn't rely on API calls which are subject to connectivetity and rate limits, however since encryption/decrption are done on local machine, it doesn't scale well with high workload.
+I think KMS outperforms in its ease of maintainence and high scalability.
+It offers automated key management so we don't need to manually save our keys.
+KMS is also highly scalable because they are based on cloud infrastructure, which is critical under significant workload.
+**PyCryptodome** is better for its extensibility and low internet overhead. PyCryptodome offers more room of customization with more cryptography algorithms and combinations with different configurations.
+It doesn't rely on API calls which are subject to connectivetity and rate limits.
+However since encryption/decrption are done on local machine, it doesn't scale well with high workload.
 
 ```
 <div  style="page-break-after: always;"></div>
@@ -1146,7 +1150,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1MTk5MjIwMyw1NDE3NDg0NDQsMTM0Nz
+eyJoaXN0b3J5IjpbMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0Nz
 EzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYx
 NDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLT
 E3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIw
