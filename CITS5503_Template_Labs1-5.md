@@ -932,7 +932,9 @@ The aim of this part of the lab is to create an application load balancer and lo
 
 ### [1] Create 2 EC2 instances & Add Application Load Balancer
 
-In the first part 
+In the first part to create EC2 instances, we can replicate our code from lab2 as a entry point. The only difference is that we need to create EC2 instances and specify their separated availbility zones. This can be done by using `ec2.describe_availability_zones` to fetch the zones and add ***
+
+
 Write a Python Boto3 script to create 2 EC2 instances (the instance type can be `t2.micro` or `t3.micro`) in two different availability zones (name the instances following the format: \<student number\>-vm1 and \<student number\>-vm2) in the region mapped to your student number. In this script, a security group should be created to authorise inbound traffic for HTTP and SSH, which will be used by the following steps. 
 
 
@@ -985,11 +987,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUyODM2OTksOTQ1NzI3NjQxLDE1MzMwND
-g1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwt
-MTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOT
-U3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5
-OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1My
-wtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1
-MzI1OTE3XX0=
+eyJoaXN0b3J5IjpbLTEzMDYxNjY3NDYsOTQ1NzI3NjQxLDE1Mz
+MwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3
+MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC
+0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2
+OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwND
+k1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3OSwt
+NzM1MzI1OTE3XX0=
 -->
