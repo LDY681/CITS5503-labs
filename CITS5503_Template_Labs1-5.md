@@ -1104,6 +1104,7 @@ sudo vi /var/www/html/index.html
 <title>Hello, this is VM1!</title>
 <style type="text/css" media="screen">
 ```
+![enter image description here](http://localhost/assets/lab5-10.png)
 
 Now we can go the the IP addresses allocated to each instance and see that the new title names are applied
 ![enter image description here](http://localhost/assets/lab5-11.png)
@@ -1116,11 +1117,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM5NDMxNzUwOCwtMTE4NzA3MTgwOSwxND
-gzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0
-NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLT
-EyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3
-MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5Mj
-Y0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwt
-MjA4MDI1NzA0Ml19
+eyJoaXN0b3J5IjpbMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0OD
+M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
+LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMT
+I1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcy
+MTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNj
+QwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0y
+MDgwMjU3MDQyXX0=
 -->
