@@ -939,7 +939,7 @@ Then we will create *load balancer* and *target group* step by step
  - Create load balancer: Use `elbv2.create_load_balancer()` with our choosen **Subnets**, created **SecurityGroups**, etc.
  - Create target group: Use `ec2.describe_vpcs()` to find the vpc that will host our instances and then use `elbv2.create_target_group()` with **Protocol**, **Port**, **VpcId**, etc.
 - Register instances as targets: Use `elbv2.register_targets()` with **TargetGroupArn** (return from `elbv2.create_target_group()`) and **Targets** (Id as **InstanceId**)
-- Add a listener to forward traffic will be forwarded to a target group.
+- Add a listener to forward traffic from **port 80** to the **target group** (EC2 instance): Use `elbv2.create_listener()` with **LoadBalancerArn** (return from `elbv2.create_load_balancer()`) and 
 This is the full script of the code and I will explain the steps on creating load balancer and target group down below. 
 ```
 import boto3 as bt
@@ -1098,7 +1098,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzNDAyNjY3NywtMTE4NzA3MTgwOSwxND
+eyJoaXN0b3J5IjpbMTAzMzQ3MTU3NiwtMTE4NzA3MTgwOSwxND
 gzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0
 NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLT
 EyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3
