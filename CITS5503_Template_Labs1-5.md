@@ -930,8 +930,9 @@ However since encryption/decrption are done on local machine, it doesn't scale w
 
 The aim of this part of the lab is to create an application load balancer and load balance requests to 2 EC2 instances. 
 
-### [1] Create 2 EC2 instances
+### [1] Create 2 EC2 instances & Add Application Load Balancer
 
+In the first part 
 Write a Python Boto3 script to create 2 EC2 instances (the instance type can be `t2.micro` or `t3.micro`) in two different availability zones (name the instances following the format: \<student number\>-vm1 and \<student number\>-vm2) in the region mapped to your student number. In this script, a security group should be created to authorise inbound traffic for HTTP and SSH, which will be used by the following steps. 
 
 
@@ -984,11 +985,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
-Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
-NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNj
-k2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3
-MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1OD
-A0LC0yMDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1MzI1OTE3LC0x
-NTMyOTUzMzMyXX0=
+eyJoaXN0b3J5IjpbLTUyODM2OTksOTQ1NzI3NjQxLDE1MzMwND
+g1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwt
+MTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOT
+U3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5
+OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1My
+wtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3OSwtNzM1
+MzI1OTE3XX0=
 -->
