@@ -934,17 +934,14 @@ The aim of this part of the lab is to create an application load balancer and lo
 
 In the first part to create EC2 instances, we can replicate our code from **lab2** as a entry point. The only difference is that we need to create EC2 instances and specify their separated availbility zones. This can be done by using `ec2.describe_availability_zones` to fetch the zones and add the parameter **SubnetId** when doing `ec2.run_instances`.
 
-To differentiate some ARNs that were already declared in **lab2**, some resource names are hypenated with suffix "lab5" at the end
+To differentiate some ARNs that were already declared in **lab2**, some resource names are hypenated with suffix "lab5" at the end, for example:
 ```
 GroupName = '24188516-sg-lab5'
 KeyName = '24188516-key-lab5'
-InstanceName1 = '24188516-vm1'
-InstanceName2 = '24188516-vm2'
-LoadBalancerName = '24188516-elb'
-TargetGroupName = '24188516-tg'
 ```
-
-Write a Python Boto3 script to create 2 EC2 instances (the instance type can be `t2.micro` or `t3.micro`) in two different availability zones (name the instances following the format: \<student number\>-vm1 and \<student number\>-vm2) in the region mapped to your student number. In this script, a security group should be created to authorise inbound traffic for HTTP and SSH, which will be used by the following steps. 
+This is the full script of the code and I will explain the steps on creating load balancer and target group down below:
+```
+```
 
 
 ### [2] Create an Application Load Balancer
@@ -996,11 +993,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NjIzOTM0NDEsOTQ1NzI3NjQxLDE1Mz
-MwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3
-MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC
-0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2
-OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwND
-k1MywtMTEyODc1ODA0LC0yMDgwMjU3MDQyLDYwMjMzOTc3OSwt
-NzM1MzI1OTE3XX0=
+eyJoaXN0b3J5IjpbMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
+A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
+LC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLT
+E5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5
+ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OT
+UzLC0xMTI4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03
+MzUzMjU5MTddfQ==
 -->
