@@ -940,9 +940,9 @@ Then we will create *load balancer* and *target group* step by step
  - Create load balancer: Use `elbv2.create_load_balancer()` with our choosen **Subnets**, created **SecurityGroups**, etc.
  - Create target group: Use `ec2.describe_vpcs()` to find the vpc that will host our instances and then use `elbv2.create_target_group()` with **Protocol**, **Port**, **VpcId**, etc.
 - Register instances as targets: Use `elbv2.register_targets()` with **TargetGroupArn** (return from `elbv2.create_target_group()`),**Targets** (Id as **InstanceId**), etc.
-- Add a listener to forward traffic from **port 80** to the **target group** (EC2 instance): Use `elbv2.create_listener()` with **LoadBalancerArn** (return from `elbv2.create_load_balancer()`), **DefaultActions** as **forward ** to the **TargetGroupArn**, etc.
+- Add a listener to forward traffic from **port 80** to the **target group** (EC2 instance): Use `elbv2.create_listener()` with **LoadBalancerArn** (return from `elbv2.create_load_balancer()`), **DefaultActions** as **forward** to the **TargetGroupArn**, etc.
 
-This is the full code script down below to perform actions above
+This is the full code script that perform the actions above.
 ```
 import boto3 as bt
 import os
@@ -1067,8 +1067,7 @@ print(f"Load Balancer ARN: {LoadBalancerArn}")
 print(f"Target Group ARN: {TargetGroupArn}")
 ```
 
-
-### [3] Test the Application Load Balancer
+### [3] Install Apache Server
 
 Try and access each EC2 instance using its public IP address in a browser. The load balancer is expected not to work at the moment, because Apache 2 is not installed in the instance. To make it work, follow the steps below:
 
@@ -1100,11 +1099,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU5NjgyOTQzMiwtMTE4NzA3MTgwOSwxND
-gzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0
-NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLT
-EyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3
-MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4NzA5Mj
-Y0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTExMjg3NTgwNCwt
-MjA4MDI1NzA0Ml19
+eyJoaXN0b3J5IjpbLTE4ODA2NjA2MTMsLTExODcwNzE4MDksMT
+Q4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0
+NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC
+0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5
+NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOT
+I2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQs
+LTIwODAyNTcwNDJdfQ==
 -->
