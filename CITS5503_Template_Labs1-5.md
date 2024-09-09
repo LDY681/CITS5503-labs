@@ -982,6 +982,9 @@ Third, install apache2 in each instance:
 sudo apt install apache2
 ```
 
+ sudo vi /var/www/html/index.html
+
+
 Fourth, edit the `<title>` and `</title>` tags inside the `/var/www/html/index.html` file to show the instance name.
 
 Last, use a browser from your host OS to access each instance by their respective IP address and see if you can get an Apache web page that shows your instance name. Output what you've got. If you are using the University network, it is likely that you cannot access the installed apache2. To address this issue, you may switch to a non-university network.
@@ -993,11 +996,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
-A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
-LC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLT
-E5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5
-ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OT
-UzLC0xMTI4NzU4MDQsLTIwODAyNTcwNDIsNjAyMzM5Nzc5LC03
-MzUzMjU5MTddfQ==
+eyJoaXN0b3J5IjpbLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5ND
+U3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAw
+OCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC
+05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQx
+NjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMT
+c3OCwxNDEzNTA0OTUzLC0xMTI4NzU4MDQsLTIwODAyNTcwNDIs
+NjAyMzM5Nzc5XX0=
 -->
