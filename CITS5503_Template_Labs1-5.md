@@ -112,7 +112,7 @@ Our credentials can be found from step [3]. These configurations help us to corr
 
 
 ### 4. Install boto3
-Although `botocore` is included with the AWS CLI package, `boto3` is the Python the AWS SDK for Python is used to send API requests and automate tasks via Python scripts, such as launching EC2 instances or managing S3 buckets. Install `boto3` using the following command:
+Although `botocore` is included with the AWS CLI package, `boto3` is the Python SDK for AWS, and can be used to send API requests and automate tasks via Python scripts, such as launching EC2 instances in the next step. Install `boto3` using the following command:
 ```bash
 pip3 install boto3
 ```
@@ -122,15 +122,15 @@ pip3 install boto3
 
 ## Test the Installed Environment
 
-
 ### 1. Test the AWS Environment
+
 To verify that our AWS CLI is configured correctly and connected to the AWS environment, we run the following command to list the available regions in our AWS account:
 
 ```bash
 aws ec2 describe-regions --output table
 ```
 
-- **`aws ec2 describe-regions`**: This command queries the AWS EC2 service to list all available regions where AWS services are provided.
+- **`ec2 describe-regions`**: This command queries the AWS EC2 service to list all available regions where AWS services are provided.
 - **`--output table`**: Formats the output in a readable table structure, making it easier to view and interpret the region data.
 
 This command allows us to verify that we are connected to AWS, and the output should display a list of regions in a structured table.
@@ -1877,11 +1877,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDAyNzY3MzMyLDQ4ODcwNjc2MSw4NzU2Nz
-Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
-Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
-Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
-NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
-Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
-fQ==
+eyJoaXN0b3J5IjpbLTE1OTQ0NzczMjUsNDg4NzA2NzYxLDg3NT
+Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
+LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
+cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
+LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
+Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
+NV19
 -->
