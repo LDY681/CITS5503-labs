@@ -265,86 +265,98 @@ The original instance created in steps 1-7 was destroyed overnight, so I had to 
 
 ![AWS Console](http://127.0.0.1/assets/lab2-9.png)
 
-## Create an EC2 instance with Python Boto3
+## Create an EC2 Instance with Python Boto3
 
-The script uses **boto3** package instead of cli commands. Names of some of the methods and parameters can vary but they achieved the same goal. The **Group name, Key name and Instance name** all have an appendix **'-2'** to differentiate from the previous practice.
+In this step, we create an EC2 instance using the **boto3** Python package instead of AWS CLI commands. Although some method names and parameters differ, the result is the same as in the previous steps. To differentiate from the previous instance, we append `'-2'` to the **Group name**, **Key name**, and **Instance name**.
 
-The code is as follows:
-```
-import  boto3  as  bt
-import  os
+### Python Script
+The following Python script uses `boto3` to create the EC2 instance, security group, key pair, and instance tags:
 
-# constants
-GroupName  =  '24188516-sg-2'
-KeyName  =  '24188516-key-2'
-InstanceName=  '24188516-vm-2'
+```python
+import boto3 as bt
+import os
 
-ec2  =  bt.client('ec2')
+# Constants
+GroupName = '24188516-sg-2'
+KeyName = '24188516-key-2'
+InstanceName = '24188516-vm-2'
 
-# 1 create security group
-step1_response  =  ec2.create_security_group(
-	Description="security group for development environment",
-	GroupName=GroupName
+ec2 = bt.client('ec2')
+
+# 1. Create security group
+step1_response = ec2.create_security_group(
+    Description="security group for development environment",
+    GroupName=GroupName
 )
 
-# 2 authorise ssh inbound rule
-step2_response  =  ec2.authorize_security_group_ingress(
-	GroupName=GroupName,
-	IpPermissions=[
-		{
-			'IpProtocol': 'tcp',
-			'FromPort': 22,
-			'ToPort': 22,
-			'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
-		}
-	]
+# 2. Authorize SSH inbound rule
+step2_response = ec2.authorize_security_group_ingress(
+    GroupName=GroupName,
+    IpPermissions=[
+        {
+            'IpProtocol': 'tcp',
+            'FromPort': 22,
+            'ToPort': 22,
+            'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+        }
+    ]
 )
 
-# 3 create key-pair
-step3_response  =  ec2.create_key_pair(KeyName=KeyName)
-PrivateKey  =  step3_response['KeyMaterial']
-## save key-pair
-with  open(f'{KeyName}.pem', 'w') as  file:
-file.write(PrivateKey)
-## grant file permission
+# 3. Create key pair
+step3_response = ec2.create_key_pair(KeyName=KeyName)
+PrivateKey = step3_response['KeyMaterial']
+
+# Save key pair to a file
+with open(f'{KeyName}.pem', 'w') as file:
+    file.write(PrivateKey)
+
+# Grant file permission to the private key
 os.chmod(f'{KeyName}.pem', 0o400)
 
-# 4 create instance
-step4_response  =  ec2.run_instances(
-	ImageId='ami-07a0715df72e58928',
-	SecurityGroupIds=[GroupName],
-	MinCount=1,
-	MaxCount=1,
-	InstanceType='t3.micro',
-	KeyName=KeyName
-)
-InstanceId  =  step4_response['Instances'][0]['InstanceId']
-
-# 5 create tag
-step5_repsonse  =  ec2.create_tags(
-	Resources=[InstanceId],
-	Tags=[
-		{
-		'Key': 'Name',
-		'Value': InstanceName
-		}
-	]
+# 4. Create EC2 instance
+step4_response = ec2.run_instances(
+    ImageId='ami-07a0715df72e58928',
+    SecurityGroupIds=[GroupName],
+    MinCount=1,
+    MaxCount=1,
+    InstanceType='t3.micro',
+    KeyName=KeyName
 )
 
-# 6 get IP address
-step6_response  =  ec2.describe_instances(InstanceIds=[InstanceId])
-# Extract the public IP address
-public_ip_address  =  step6_response['Reservations'][0]['Instances'][0]['PublicIpAddress']
+# Retrieve the Instance ID
+InstanceId = step4_response['Instances'][0]['InstanceId']
 
-# print all responses
-print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_repsonse}\n{public_ip_address}\n")
+# 5. Create a tag for the instance
+step5_response = ec2.create_tags(
+    Resources=[InstanceId],
+    Tags=[{'Key': 'Name', 'Value': InstanceName}]
+)
+
+# 6. Get the public IP address of the instance
+step6_response = ec2.describe_instances(InstanceIds=[InstanceId])
+public_ip_address = step6_response['Reservations'][0]['Instances'][0]['PublicIpAddress']
+
+# Print all responses
+print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_response}\n{public_ip_address}\n")
 ```
 
-After the script is executed, the repsonses of each step is printed as follows:
-![enter image description here](http://127.0.0.1/assets/lab2-10.png)
+### Code Explanation
+1. **Security Group Creation**: We first create a security group with the name `24188516-sg-2` to manage inbound and outbound rules.
+2. **SSH Authorization**: An inbound rule is added to allow SSH access (TCP on port 22) for all IPs (`0.0.0.0/0`).
+3. **Key Pair Creation**: We generate a key pair (`24188516-key-2`), save the private key in a `.pem` file, and set the correct file permissions for security.
+4. **Instance Creation**: The script launches a `t3.micro` EC2 instance with the AMI ID `ami-07a0715df72e58928` and attaches the security group and key pair.
+5. **Tagging the Instance**: The instance is tagged with the name `24188516-vm-2` to identify it.
+6. **Retrieving the Public IP**: After the instance is created, the public IP address is retrieved for SSH access.
 
-Go to the AWS console to check the created instance;
-![enter image description here](http://127.0.0.1/assets/lab2-11.png)
+### Output and Results
+Once the script is executed, the responses from each step are printed, showing the security group creation, key pair, instance ID, and public IP address.
+
+![Script Output](http://127.0.0.1/assets/lab2-10.png)
+
+You can also verify the created instance in the AWS console:
+
+![AWS Console Instance](http://127.0.0.1/assets/lab2-11.png)
+
 
 ## Use Docker inside a Linux OS
 
@@ -1192,7 +1204,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgxMDU1NTI1NywtMTMyMjQxMjQ0OSwzOT
+eyJoaXN0b3J5IjpbLTc0MzU2MzM5OCwtMTMyMjQxMjQ0OSwzOT
 k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
 NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
 E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
