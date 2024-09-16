@@ -8,18 +8,18 @@
 # Lab 1
 ## AWS Account and Log in
 ### [1] Reset and Login into IAM User Account
-To start with, I received an email with the initial login credentials for my IAM user account. After navigating to the AWS login portal, I successfully logged in using these credentials and promptly reset my password as instructed.
+To start with, I received an email with the initial login credentials for my IAM user account. After navigating to the AWS login portal, I successfully logged in using these credentials and reset my password as instructed.
 
 ![enter image description here](http://127.0.0.1/assets/lab1-1.png)
 
-This step grants access to the AWS Management Console, which provides all necessary resources and services for managing AWS infrastructure.
+This step grants access to the AWS Management Console, which provides UI controls on necessary AWS resources and services for future lab activities.
 
 ### [2] Access Identity and Access Management (IAM)
-After logging in, I saw a clickable with my `IAM user` and `Account ID` information on the top-right corner. Once opened, I clicked on the top-right user panel to access `Security Credentials`.
+After logging in, locate a clickable with my `IAM user` and `Account ID` information on the top-right corner. Once opened, click at the bottom entry on the user panel to access `Security Credentials`.
 
 ![enter image description here](http://127.0.0.1/assets/lab1-2.png)
 
-Within the `Access keys` tab, I created a new access key and secret. These credentials can be used for programmatic access to AWS services, allowing you to interact with AWS through command-line interfaces (CLI), SDKs, or APIs. It's important to securely store these credentials in a private location, as they grant significant access to your AWS resources.
+Within the `Access keys` tab, I created a new access key and secret. These credentials can be used for programmatic access to AWS services, allowing us to interact with AWS through command-line interfaces (AWS-CLI), SDKs (Botos3 API). It's important to securely store these credentials in a private location, as they grant significant access to your AWS resources.
 
 ![enter image description here](http://127.0.0.1/assets/lab1-3.png)
 
@@ -1868,11 +1868,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg4NzA2NzYxLDg3NTY3NDc0MSwtMTc4NT
-EwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTks
-NTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MT
-I0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMs
-OTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMz
-EwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQy
-N119
+eyJoaXN0b3J5IjpbNDM3NzI0NjI5LDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
