@@ -1640,7 +1640,7 @@ Answer:
 # Lab 5
 ## Application Load Balancer
 
-### 1-2. Create 2 EC2 Instances & Add Application Load Balancer
+### 1. Create 2 EC2 Instances & Add Application Load Balancer
 
 In this section, we will replicate some of the steps from **Lab 2** to create two EC2 instances, with a few changes to add an additional application load balancer. We will append the suffix `-lab5` to resource names like **security group** and **key pair** to differentiate them from the resources in **Lab 2**.
 
@@ -1827,7 +1827,7 @@ The public IPv4 addresses for both EC2 instances are recorded for verification.
 
 ![EC2 Public IPs](http://localhost/assets/lab5-4.png)
 
-### 3. SSH to Our Instances
+### 2. SSH to Our Instances
 
 In this step, we will SSH into the EC2 instances to install Apache and start the web server, allowing us to see the load balancer in action.
 
@@ -1854,7 +1854,7 @@ Now, click "Open" to open a SSH connection. We are logged into the EC2 instance.
 
 ![SSH Connection Established](http://localhost/assets/lab5-8.png)
 
-### 4. Install Apache & Access Results Using IP Addresses
+### 3. Install Apache & Access Results Using IP Addresses
 
 In this step, we will install **Apache** on each EC2 instance, modify the HTML content, and verify the setup by accessing the instances via their public IP addresses.
 
@@ -1891,7 +1891,7 @@ We now repeat this step for the second instance (VM2) and modify the `<title>` t
 
 ![HTML Modification](http://localhost/assets/lab5-10.png)
 
-#### 3. Access the EC2 Instances via Public IP Addresses
+#### 4. Access the EC2 Instances via Public IP Addresses
 Now that Apache is running and the HTML content has been updated, we can access each instance using its public IP address. Open your browser and visit the public IP addresses assigned to each instance.
 
 - **VM1** will display the title: "Hello, this is VM1!"
@@ -1909,11 +1909,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQzMzg0ODMyLDQ4ODcwNjc2MSw4NzU2Nz
-Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
-Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
-Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
-NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
-Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
-fQ==
+eyJoaXN0b3J5IjpbMTE0NTg2MTU5NCw0ODg3MDY3NjEsODc1Nj
+c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
+LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
+E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
+MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
+g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
+XX0=
 -->
