@@ -410,9 +410,9 @@ COPY ./html/ /usr/local/apache2/htdocs/
 This Dockerfile specifies that we are using Apache HTTP Server version 2.4 and that the contents of the `html` folder should be copied to the appropriate directory inside the Docker container (`/usr/local/apache2/htdocs/`).
 
 #### Add User to Docker Group
-We add our user (`liudayubob`) to the Docker group to grant permission to manage Docker containers, then reboot the Ubuntu console:
+We add our username (`liudayubob`) to the Docker group to grant permission to manage Docker containers, then reboot the Ubuntu console:
 ```bash
-sudo usermod -a -G docker <username>
+sudo usermod -a -G docker liudayubob
 ```
 
 #### Build the Docker Image
@@ -431,7 +431,7 @@ Now, we run the image using the following command:
 docker run -p 80:80 -dit --name my-app my-apache2
 ```
 
-This command maps the host machine's port 80 to the Docker container's port 80, runs the container in detached mode with the name `my-app`, and uses the `my-apache2` image.
+This command maps the host machine's port to the Docker container's **port 80, runs the container in detached mode with the name `my-app`, and uses the `my-apache2` image.
 
 ![Docker Run](http://127.0.0.1/assets/lab2-15.png)
 
@@ -1229,11 +1229,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwMjkyNjMxMSwtMTMyMjQxMjQ0OSwzOT
-k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
-NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
-E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
-OTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNT
-gsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwx
-NDEzNTA0OTUzXX0=
+eyJoaXN0b3J5IjpbLTE2MDE0ODgzMDIsLTEzMjI0MTI0NDksMz
+k5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3
+NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMT
+IxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4
+MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MT
+U4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3Nzgs
+MTQxMzUwNDk1M119
 -->
