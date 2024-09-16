@@ -62,7 +62,7 @@ To confirm that Python is installed and up to date, use the following command:
 python3 -V
 ```
 
-- **`python3`**: This specifies that we are checking the version of Python 3.x.
+- **`python3`**: Specifies that we are running a version of Python 3.x.
 - **`-V`**: Outputs the installed Python version.
 
 The output verifies that Python 3.10.12 is installed.
@@ -70,19 +70,21 @@ The output verifies that Python 3.10.12 is installed.
 ![Check Python Version](http://127.0.0.1/assets/lab1-6.png)
 
 #### Install pip3
-To install and manage Python libraries, use **pip**. Install it with:
+
+To easily install and manage Python libraries, we also need to install **pip**. Install it with:
 
 ```bash
 sudo apt install -y python3-pip
 ```
 
-- **`python3-pip`**: Installs pip for Python 3 specifically.
+- **`python3-pip`**: pip package for Python 3 specifically.
 
-Once installed, you can use `pip3` to install third-party Python packages
+Once installed, we can now use `pip3` to install third-party Python packages for future labs.
 
 ![Installing pip3](http://127.0.0.1/assets/lab1-7.png)
 
 ### 2. Install AWS CLI
+
 To interact with AWS services from the command line, we use the AWS CLI (Command Line Interface). Install and upgrade it to the latest version using:
 
 ```bash
@@ -1873,7 +1875,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI2OTMxNDI1Nyw0ODg3MDY3NjEsODc1Nj
+eyJoaXN0b3J5IjpbMjAyOTM3NzU2Miw0ODg3MDY3NjEsODc1Nj
 c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
 LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
 E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
