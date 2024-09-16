@@ -1326,7 +1326,7 @@ In the **Policy** section of the KMS key, you should see that the user `24188516
 
 The following script, `cryptwithkms.py`, encrypts and decrypts files in the S3 bucket `24188516-cloudstorage` using the KMS key we created earlier (`alias/24188516`).
 
-#### Workflow:
+### Workflow:
 1. The script first calls **`process_files()`** to list all files in the specified S3 bucket:
    - Lists all files in the specified S3 bucket.
    - Iterates through each file, calling `encrypt_file()` for encryption and subsequent decryption.
@@ -1448,7 +1448,7 @@ This package provides AES encryption functionality similar to what AWS KMS offer
 #### 2. Modify the Code in `cryptwithpycryptodome.py`
 The code is similar to the `cryptwithkms.py` script from the previous step, but now we use `pycryptodome` for encryption and decryption.
 
-##### Key Differences:
+### Workflow Explanation:
 - **Import AES and Random Byte Generation**: We import `AES` from `pycryptodome` for encryption/decryption and `get_random_bytes` for random key generation. The **AES_KEY** is **32 bytes** (256 bits) long, aligning with the AWS KMS approach.
 
 ```python
@@ -1841,11 +1841,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODc1Njc0NzQxLC0xNzg1MTAwODIsNTE3OD
-Y4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1OSw1MzUyMzk0MzIs
-NTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2Nj
-U2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEs
-MTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OT
-g3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5
-NzFdfQ==
+eyJoaXN0b3J5IjpbMTQzMzk2MjEyMyw4NzU2NzQ3NDEsLTE3OD
+UxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5
+LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyND
+EyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIz
+LDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MT
+MxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0
+MjddfQ==
 -->
