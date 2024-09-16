@@ -373,9 +373,10 @@ The original instance created in steps 1-7 was destroyed overnight, so I had to 
 
 ![AWS Console](http://127.0.0.1/assets/lab2-9.png)
 
+
 ## Create an EC2 Instance with Python Boto3
 
-In this step, we create an EC2 instance using the **boto3** Python package instead of AWS CLI commands. Although some method names and parameters differ, the result is the same as in the previous steps. To differentiate from the previous instance, we append `-2` to the **Group name**, **Key name**, and **Instance name**.
+In this step, we create an EC2 instance using the **boto3** Python package instead of AWS CLI commands. While the method names and parameters differ, the outcome is the same as in the previous steps. To differentiate this instance from the previous one, we append `-2` to the **Group name**, **Key name**, and **Instance name**.
 
 ### Python Script
 The following Python script uses `boto3` to create the EC2 **instance, security group, key pair, and instance tag**:
@@ -449,12 +450,51 @@ print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_r
 ```
 
 ### Code Explanation
-1. **Security Group Creation**: We first create a security group with the name `24188516-sg-2` to manage inbound and outbound rules.
-2. **SSH Authorization**: An inbound rule is added to allow SSH access (TCP on port 22) for all IPs (`0.0.0.0/0`).
-3. **Key Pair Creation**: We generate a key pair (`24188516-key-2`), save the private key in a `.pem` file, and set the correct file permissions for security.
-4. **Instance Creation**: This step launches a `t3.micro` EC2 instance with the AMI ID `ami-07a0715df72e58928` and attaches the security group and key pair.
-5. **Tagging the Instance**: The instance is tagged with the name `24188516-vm-2` to identify it.
-6. **Retrieving the Public IP**: After the instance is created, the public IP address is retrieved for SSH access.
+1. **`ec2.create_security_group()`**:
+   - **`Description`**: Describes the purpose of the security group, here labeled as "security group for development environment".
+   - **`GroupName`**: Defines the name of the security group, in this case, `24188516-sg-2`.
+
+   This function creates a security group that will control inbound and outbound traffic for the instance.
+
+2. **`ec2.authorize_security_group_ingress()`**:
+   - **`GroupName`**: Specifies the security group where the rule will be added, in this case, `24188516-sg-2`.
+   - **`IpPermissions`**: This parameter contains the rules that specify what type of inbound traffic is allowed. 
+     - **`IpProtocol`**: Defines the protocol, here set to `tcp` for SSH access.
+     - **`FromPort` and `ToPort`**: Both set to `22`, defining the SSH port.
+     - **`IpRanges`**: Defines the IP range allowed to access the instance. Here, `0.0.0.0/0` allows access from any IP.
+
+   This function allows SSH access to the instance by authorizing TCP traffic on port 22.
+
+3. **`ec2.create_key_pair()`**:
+   - **`KeyName`**: Specifies the name of the key pair, here `24188516-key-2`.
+
+   This function generates a new key pair and returns the private key. The private key (`KeyMaterial`) is stored securely in a `.pem` file for later SSH access.
+
+4. **file.write()**:
+   - The private key is saved to a `.pem` file using Python’s built-in `open()` function, and **`os.chmod()`** is used to set the file’s permission to `400` (read-only for the owner), ensuring the file is secure and can only be read by the owner.
+
+5. **`ec2.run_instances()`**:
+   - **`ImageId`**: Specifies the Amazon Machine Image (AMI) ID, in this case, `ami-07a0715df72e58928`, which contains pre-configured software and settings.
+   - **`SecurityGroupIds`**: Lists the security group IDs that will be associated with the instance. Here, the security group is `24188516-sg-2`.
+   - **`MinCount` and `MaxCount`**: Define how many instances to launch. Both set to 1, indicating only one instance will be created.
+   - **`InstanceType`**: Defines the type of instance to launch, in this case, `t3.micro`.
+   - **`KeyName`**: Specifies the name of the key pair, `24188516-key-2`, used for SSH access.
+
+   This function creates the EC2 instance with the specified configurations and returns the instance details, including the **InstanceId**.
+
+6. **`ec2.create_tags()`**:
+   - **`Resources`**: Specifies the resources to tag, in this case, the instance ID.
+   - **`Tags`**: Defines the key-value pairs for tagging. Here, the tag key is `Name` and the value is `24188516-vm-2`, which labels the instance for easier identification.
+
+   This function assigns the tag `24188516-vm-2` to the instance for identification purposes.
+
+7. **`ec2.describe_instances()`**:
+   - **`InstanceIds`**: Specifies the instance ID to describe.
+
+   This function retrieves details about the instance, including the public IP address, which is necessary for SSH access.
+
+8. **Printing Results**:
+   - Finally, the script prints all responses, including the security group creation, key pair creation, instance ID, and public IP address for review.
 
 ### Output and Results
 Once the script is executed, the responses from each step are printed, showing the security group creation, key pair, instance ID, and public IP address.
@@ -1666,11 +1706,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNT
-IzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5
-LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NT
-cyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4
-LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLT
-kyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2
-NTE1OF19
+eyJoaXN0b3J5IjpbMjEwMjI4NjE1MCwtMjIzNTIwMjk3LC03Nz
+cyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDks
+LTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0OD
+M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
+LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMT
+I1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcy
+MTU2XX0=
 -->
