@@ -214,19 +214,19 @@ Once the key is created, we ensure it has the correct permissions by copying the
 chmod 400 24188516-key.pem
 ```
 
-This command grants the owner of the file read-only permissions to secure the key. Below is the output after successfully creating and securing the key:
+This command grants the owner of the file **read-only** permissions to secure the key. Below is the output after successfully creating and securing the key:
 
 ![Key Pair Creation](http://127.0.0.1/assets/lab2-3.png)
 ![Permission Change](http://127.0.0.1/assets/lab2-4.png)
 
 
 ### [4] Create the instance 
-Because my student number is `24188516`, create an ec2 instance in `eu-north-1` region. `--image-id` specifies ami id with preset configurations, mine is `ami-07a0715df72e58928`. `--instance-type` is set to t2.micro, and we are using the private key `24188516-key`
+Because my student number is `24188516`, let's create an ec2 instance in `eu-north-1` region. `--image-id` specifies ami id with preset configurations, mine is `ami-07a0715df72e58928`. `--instance-type` is set to t2.micro, and we are using the private key `24188516-key`
 ```
  aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 24188516-sg --count 1 --instance-type t3.micro --key-name 24188516-key --query 'Instances[0].InstanceId'
  ```
 
-For some reason, at the moment I was working on the lab, t2.micro container is not supported so I switched to t3.micro. The instance is created with instance id `i-0553e2ea0492e1c73`
+For some reason, at the moment I was working on the lab, **t2.micro** container is not supported so I switched to t3.micro. The instance is created with instance id `i-0553e2ea0492e1c73`
 ![enter image description here](http://127.0.0.1/assets/lab2-6.png)
 ![enter image description here](http://127.0.0.1/assets/lab2-5.png)
 
@@ -1182,7 +1182,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5MzMxMTU3MiwtMTMyMjQxMjQ0OSwzOT
+eyJoaXN0b3J5IjpbMjAyNzU3NDExNywtMTMyMjQxMjQ0OSwzOT
 k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
 NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
 E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
