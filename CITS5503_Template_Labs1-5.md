@@ -723,6 +723,7 @@ This script performs the following steps:
    - The file is uploaded to the same folder structure in the S3 bucket as it exists on the local machine.
 
 Here is the script down below:
+
 ```python
 import os
 import boto3
@@ -782,6 +783,23 @@ We create a new program, `restorefromcloud.py`, to restore files from the S3 buc
 
 We combine the local **ROOT_TARGET_DIR** with the **Key** to form the local file path. If the local directory does not exist, we create it using `os.makedirs()`. Finally, we download each file from the S3 bucket using `s3.download_file()`.
 
+### Workflow:
+
+This script performs the following steps:
+
+1. **List Objects in the S3 Bucket**:
+   - The script uses `s3.list_objects_v2()` to list all the files (objects) in the `24188516-cloudstorage` S3 bucket. The response contains details about each file, including its **Key**, which indicates the path of the file within the S3 bucket.
+
+2. **Create Local Directory Structure**:
+   - For each file found in the S3 bucket, the script constructs a local file path by combining the **ROOT_TARGET_DIR** (the root directory where files will be restored) with the file's S3 **Key**.
+   - Before downloading the file, the script checks if the directory for the local file path exists using `os.path.exists()`. If the directory does not exist, the script creates it using `os.makedirs()`.
+
+3. **Download Files from S3**:
+   - Once the local directory is confirmed or created, the script calls `s3.download_file()` to download the file from the S3 bucket and store it in the corresponding local directory.
+   - The function accepts the **S3 bucket name**, **S3 key (file path)**, and **local file path** as parameters, ensuring that the files are restored to the correct locations.
+
+Here is the script down below:
+
 ```python
 import os
 import boto3
@@ -820,10 +838,7 @@ else:
 print("done")
 ```
 
-### Code Explanation
-
-- **`boto3.client("s3")`**: Initializes the S3 client for interacting with the S3 bucket.
-  
+### Code Explanation  
 - **`s3.list_objects_v2()`**: Lists all objects stored in the specified S3 bucket.
   - **`Bucket`**: Specifies the S3 bucket name, which is `24188516-cloudstorage` in out case.
 
@@ -1945,7 +1960,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDY0OTY5LDEwNTE5MTg3MDgsODUyMz
+eyJoaXN0b3J5IjpbNTM2NTcyNzM0LDEwNTE5MTg3MDgsODUyMz
 ExODM3LDQ4ODcwNjc2MSw4NzU2NzQ3NDEsLTE3ODUxMDA4Miw1
 MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOT
 QzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5
