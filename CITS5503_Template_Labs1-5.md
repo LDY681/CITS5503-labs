@@ -1843,14 +1843,14 @@ Since we are using Windows and Putty as our SSH client, we need to convert the p
 #### 2. Configure Putty for SSH Access
 Once the key is converted, we can configure Putty to use the correct authentication credentials and the public IP addresses of the two EC2 instances we recorded in the last step.
 
-1. **Host**: Enter the public IP address of the EC2 instance you want to connect to.
-2. **Authentication**: Under "Connection -> SSH -> Auth", browse and load the `.ppk` file for the private key.
+1. **Host**: Enters the public IP address of the EC2 instance we would like to connect to.
+2. **Authentication**: Under "Connection -> SSH -> Auth", loads the `.ppk` file for the private key.
 
 ![Putty Configuration](http://localhost/assets/lab5-6.png)
 ![Putty Host Setup](http://localhost/assets/lab5-7.png)
 
 #### 3. SSH into the EC2 Instance
-Now, click "Open" to initiate the SSH connection. You will be logged into the EC2 instance.
+Now, click "Open" to open a SSH connection. We are logged into the EC2 instance.
 
 ![SSH Connection Established](http://localhost/assets/lab5-8.png)
 
@@ -1866,11 +1866,12 @@ sudo apt-get update
 sudo apt install apache2
 ```
 
-Once the installation is complete, Apache will start serving content from the default directory `/var/www/html/`.
+Once the installation is complete, Apache will start serving contents from the default directory `/var/www/html/`.
 
 ![Apache Installation](http://localhost/assets/lab5-9.png)
 
 #### 2. Modify the HTML File to Display Instance Name
+
 To help us identify which EC2 instance is serving the content, we will edit the `<title>` tag of the default `index.html` file to include the instance name. Use the following command to edit the file:
 
 ```bash
@@ -1886,7 +1887,7 @@ Here’s an example of the modified HTML file for **VM1**:
 <style type="text/css" media="screen">
 ```
 
-You can repeat this step for the second instance (VM2) and modify the `<title>` tag accordingly.
+We now repeat this step for the second instance (VM2) and modify the `<title>` tag to **VM2** instead.
 
 ![HTML Modification](http://localhost/assets/lab5-10.png)
 
@@ -1908,11 +1909,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5MjcxNDMyNCw0ODg3MDY3NjEsODc1Nj
-c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
-LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
-E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
-MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
-g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
-XX0=
+eyJoaXN0b3J5IjpbNzQzMzg0ODMyLDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
