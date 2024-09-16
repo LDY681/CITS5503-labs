@@ -993,7 +993,7 @@ After extracting all necessary attributes, we use `dynamodb_table.put_item()` to
 
 ### Workflow
 
-1. **Lists all files in the S3 bucket**: The script uses `s3.list_objects_v2()` to retrieve the list of all objects in the specified S3 bucket (`24188516-cloudstorage`). The response contains metadata for each file, including the `Key` (file name) and `LastModified` timestamp.
+1. **Lists all files in the S3 bucket**:The script uses `s3.list_objects_v2()` to retrieve the list of all objects in the specified S3 bucket (`24188516-cloudstorage`). The response contains metadata for each file, including the `Key` (file name) and `LastModified` timestamp.
 
 2. **Retrieves owner and permission information**: For each file, the script calls `s3.get_object_acl()` to fetch the Access Control List (ACL) associated with the file. The ACL contains details about the file’s owner and permission settings, found in the **Grants** and **Owner** attributes.
 
@@ -1981,11 +1981,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyODIzNjI3NzEsLTE4NTQ0NzQ2MjksMT
-A1MTkxODcwOCw4NTIzMTE4MzcsNDg4NzA2NzYxLDg3NTY3NDc0
-MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3LC03Nz
-cyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDks
-LTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0OD
-M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
-XX0=
+eyJoaXN0b3J5IjpbNzU0MjMzMDI1LC0xODU0NDc0NjI5LDEwNT
+E5MTg3MDgsODUyMzExODM3LDQ4ODcwNjc2MSw4NzU2NzQ3NDEs
+LTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mj
+c1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0x
+MzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNT
+I2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NF19
+
 -->
