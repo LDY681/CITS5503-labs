@@ -155,17 +155,16 @@ python3
 
 - **`import boto3`**: Imports the **`boto3`** library, which is used to interact with AWS services via Python.
 - **`boto3.client('ec2')`**: Initializes a client for the EC2 service, allowing us to make requests to EC2, such as querying regions, starting instances, etc.
-- **`ec2.describe_regions()`**: This method queries the EC2 service to retrieve a list of available AWS regions. It returns the data in JSON format.
-- **`print(response)`**: Outputs the result, which contains details about the available regions, in a JSON structure.
+- **`ec2.describe_regions()`**: Queries the EC2 service to retrieve a list of available AWS regions. It returns the data in JSON format.
+- **`print(response)`**: Outputs the result, which contains details about the available regions.
 
 This code verifies that our Python environment is correctly set up and able to interact with AWS services via `boto3`.
 
 ![Python Region Response](http://127.0.0.1/assets/lab1-12.png)
 
-
-
 ### 3. Write a Python Script
-Now we create a Python script to wrap these lines into a single file and format the response into a structured table. The Python script is located in `~\cits5503\lab1` on our Ubuntu machine.
+
+Now we create a Python script to wrap these commands into a single file. We should also format the response into a structured table. The Python script is located in `~\lab1` folder on our Ubuntu machine.
 
 #### (1) Install Dependencies
 We use the `pandas` library to convert un-tabulated data into a structured table. To install this additional dependency, run the following command:
@@ -174,6 +173,7 @@ pip install pandas
 ```
 
 #### (2) Code Explanation
+
 The code in the script adds an extra step. After retrieving the region data from AWS, we pass the response into a `pandas` dataframe to format and print the output in a table structure.
 
 ```python
@@ -1878,11 +1878,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjA0MjM0MjksNDg4NzA2NzYxLDg3NT
-Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
-LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
-cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
-LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
-Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
-NV19
+eyJoaXN0b3J5IjpbMTMxNjAzNjA1LDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
