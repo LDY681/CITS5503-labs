@@ -301,6 +301,37 @@ Below are the outputs after successfully creating the key and setting the approp
 ![Permission Change](http://127.0.0.1/assets/lab2-4.png)
 
 
+### 4. Create the Instance
+Since my student number is `24188516`, create an EC2 instance in the `eu-north-1` region. The `--image-id` specifies the AMI ID with preset configurations; in this case, the AMI ID is `ami-07a0715df72e58928`. The instance type is set to `t3.micro`, and we use the private key `24188516-key` for secure access.
+
+```bash
+aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 24188516-sg --count 1 --instance-type t3.micro --key-name 24188516-key --query 'Instances[0].InstanceId'
+```
+
+At the time of running the lab, the **t2.micro** instance type was not supported, so we switched to **t3.micro**. The instance was successfully created with the instance ID `i-0553e2ea0492e1c73`.
+
+
+
+Now, we create an EC2 instance using the `aws ec2 run-instances` command. Since my student number is `24188516`, create an EC2 instance in the `eu-north-1` region.
+
+```bash
+aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 24188516-sg --count 1 --instance-type t3.micro --key-name 24188516-key --query 'Instances[0].InstanceId'
+```
+
+#### Key Parameters:
+- **`--image-id ami-07a0715df72e58928`**: Specifies the Amazon Machine Image (AMI) ID to be used for the instance. This AMI ID refers to a pre-configured image with the required operating system and software. In this case, `ami-07a0715df72e58928` is used, which provides a ready-to-use environment.
+- **`--security-group-ids 24188516-sg`**: Links the instance to the previously created security group (`24188516-sg`). This security group defines the allowed inbound and outbound traffic rules, including SSH access on port 22.
+- **`--count 1`**: Specifies that only one instance will be created. This flag allows you to create multiple instances simultaneously if needed.
+- **`--instance-type t3.micro`**: Defines the type of EC2 instance to launch. The **t3.micro** instance type offers a small, low-cost instance with a balanced mix of compute, memory, and network resources. Originally, we planned to use **t2.micro**, but due to limitations at the time, **t3.micro** was chosen instead.
+- **`--key-name 24188516-key`**: Specifies the name of the key pair to associate with the instance. This key will be used to securely access the instance via SSH.
+- **`--query 'Instances[0].InstanceId'`**: This extracts and displays the **InstanceId** of the newly created EC2 instance. The **InstanceId** is the unique identifier for the instance, which can be used in subsequent AWS commands to manage or monitor the instance.
+
+Once the command is executed, the instance is successfully created, and the **InstanceId** is displayed. In this case, the instance ID returned is `i-0553e2ea0492e1c73`.
+
+![Create EC2 Instance](http://127.0.0.1/assets/lab2-6.png)
+![Instance ID](http://127.0.0.1/assets/lab2-5.png)
+
+The screenshots show the successful creation of the EC2 instance and the returned **InstanceId**.
 
 
 ### 5. Add a Tag to the Instance
@@ -1630,11 +1661,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA2OTEzNjE2OCw1MzUyMzk0MzIsNTMzMT
-czMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIs
-LTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
-A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
-LC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLT
-E5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5
-ODk5MzZdfQ==
+eyJoaXN0b3J5IjpbLTI5Mzk4OTQ0LDUzNTIzOTQzMiw1MzMxNz
+MzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5Miwt
+MTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMD
+Q4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEs
+LTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMT
+k1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4
+OTkzNl19
 -->
