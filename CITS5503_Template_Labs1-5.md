@@ -130,7 +130,7 @@ To verify that our AWS CLI is configured correctly and connected to the AWS envi
 aws ec2 describe-regions --output table
 ```
 
-- **`ec2 describe-regions`**: This command queries the AWS EC2 service to list all available regions where AWS services are provided.
+- **`aws ec2 describe-regions`**: This command queries the AWS EC2 service to list all available regions where AWS services are provided.
 - **`--output table`**: Formats the output in a readable table structure, making it easier to view and interpret the region data.
 
 This command allows us to verify that we are connected to AWS, and the output should display a list of regions in a structured table.
@@ -140,7 +140,8 @@ This command allows us to verify that we are connected to AWS, and the output sh
 
 
 ### 2. Test the Python Environment
-After confirming that the AWS CLI is working correctly, we now test the Python environment using **`boto3`**, the AWS SDK for Python. This allows us to interact with AWS services programmatically through Python.
+
+After confirming that the AWS CLI is working correctly, we now test the Python environment using **`boto3`**, the AWS SDK for Python language.
 
 The following Python code connects to the AWS EC2 service and retrieves the available regions, similar to the CLI test but now within the Python environment:
 
@@ -1877,7 +1878,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTQ0NzczMjUsNDg4NzA2NzYxLDg3NT
+eyJoaXN0b3J5IjpbLTE1NjA0MjM0MjksNDg4NzA2NzYxLDg3NT
 Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
 LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
 cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
