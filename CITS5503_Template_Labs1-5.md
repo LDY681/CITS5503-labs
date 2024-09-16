@@ -658,80 +658,106 @@ This script connects to the local DynamoDB instance running on port **8001** and
 ![Create DynamoDB Table](http://localhost/assets/lab2-23.png)
 
 
-3. Write data into the `CloudFiles` table
-In this case, we will first use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket, the object in `s3.list_objects_v2()` contains **Key** and **LastModified**, to get extra attributes on **Owner, Permission**, we would do an extra call on `s3.get_object_acl` where these information can be found under **Grants** and **Owner** attributes. After we successfully extra all neccessary attributes, call `dynamodb_table.put_item()` to insert each object into the database. Because my region is in `eu-north-1`, we will fill owner Id into the owner field.
 
-```
+### 3. Write Data into the `CloudFiles` Table
+In this step, we write data into the `CloudFiles` table. First, we use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket. The output contains attributes such as **Key** and **LastModified**. To retrieve additional information like **Owner** and **Permissions**, we make a separate call to `s3.get_object_acl()`, which provides these details under the **Grants** and **Owner** attributes.
+
+After extracting all necessary attributes, we use `dynamodb_table.put_item()` to insert each object into the DynamoDB table. Since the region is `eu-north-1`, we populate the `owner` field with the owner's ID.
+
+Here’s the script:
+
+```python
 # writetable.py
-import  boto3
-import  os
+import boto3
+import os
 
-BUCKET_NAME  =  '24188516-cloudstorage'
-DB_NAME  =  'CloudFiles'
+BUCKET_NAME = '24188516-cloudstorage'
+DB_NAME = 'CloudFiles'
 
 # Set up AWS instances for S3 and DynamoDB
-s3  =  boto3.client('s3')
-dynamodb  =  boto3.resource('dynamodb', endpoint_url="http://localhost:8001")
-dynamodb_table  =  dynamodb.Table(DB_NAME)
+s3 = boto3.client('s3')
+dynamodb = boto3.resource('dynamodb', endpoint_url="http://localhost:8001")
+dynamodb_table = dynamodb.Table(DB_NAME)
 
-def  list_files():
-	# List all objects in the S3 bucket
-	files  = []
-	objects  =  s3.list_objects_v2(Bucket=BUCKET_NAME)
-	if  'Contents'  in  objects:
-	for  obj  in  objects['Contents']:
-		# get access control list for owner and permission information
-		obj_acl  =  s3.get_object_acl(Bucket=BUCKET_NAME, Key=obj['Key'])
-		files.append({**obj, **obj_acl})
-		return  files
+def list_files():
+    # List all objects in the S3 bucket
+    files = []
+    objects = s3.list_objects_v2(Bucket=BUCKET_NAME)
+    
+    if 'Contents' in objects:
+        for obj in objects['Contents']:
+            # Get access control list for owner and permission information
+            obj_acl = s3.get_object_acl(Bucket=BUCKET_NAME, Key=obj['Key'])
+            files.append({**obj, **obj_acl})
+    
+    return files
 
-def  extract_file_attributes(file):
-	file_attributes  = {
-		'userId': file['Grants'][0]['Grantee']['ID'],
-		'fileName': os.path.basename(file['Key']),
-		'path': file['Key'],
-		'lastUpdated': file['LastModified'].isoformat(),
-		'owner': file['Owner']['ID'],
-		'permissions': file['Grants'][0]['Permission']
-	}
-	return  file_attributes
+def extract_file_attributes(file):
+    # Extract attributes of a file
+    file_attributes = {
+        'userId': file['Grants'][0]['Grantee']['ID'],
+        'fileName': os.path.basename(file['Key']),
+        'path': file['Key'],
+        'lastUpdated': file['LastModified'].isoformat(),
+        'owner': file['Owner']['ID'],
+        'permissions': file['Grants'][0]['Permission']
+    }
+    
+    return file_attributes
 
-  
+def write_to_table():
+    # List all files in the bucket and write them to the DynamoDB table
+    try:
+        files = list_files()
+        
+        # Iterate through each file
+        for file in files:
+            # Extract attributes for the file
+            file_attributes = extract_file_attributes(file)
+            
+            # Write the attributes to DynamoDB
+            db_res = dynamodb_table.put_item(Item=file_attributes)
+            print(f"Inserted {file_attributes['fileName']} into DynamoDB")
+    
+    except Exception as error:
+        print(f"Database write operation failed: {error}")
+        pass
 
-def  write_to_table():
-# List all files in the bucket
-try:
-	files  =  list_files()
-	# Iterate through each file
-	for  file  in  files:
-		# Extract attributes for a file
-		file_attributes  =  extract_file_attributes(file)
-		
-		# Write the attributes to DynamoDB
-		db_res  =  dynamodb_table.put_item(Item=file_attributes)
-		print(f"Inserted {file_attributes['fileName']} into DynamoDB")
-	
-except  Exception  as  error:
-	print("Database write operation failed: %s"  %  error)
-	pass
-
-if  __name__  ==  '__main__':
-write_to_table()
+if __name__ == '__main__':
+    write_to_table()
 ```
-![enter image description here](http://localhost/assets/lab2-24.png)
 
+This script performs the following:
+1. Lists all files in the S3 bucket using `s3.list_objects_v2`.
+2. Retrieves owner and permission information using `s3.get_object_acl`.
+3. Extracts file attributes like `userId`, `fileName`, `path`, `lastUpdated`, `owner`, and `permissions`.
+4. Inserts each file's attributes into the DynamoDB table using `put_item()`.
 
-4. Print and destroy the `CloudFiles` table
-Use AWS CLI command to scan the created DynamoDB table, the table structure can be shown below.
-`aws dynamodb scan --table-name CloudFiles --endpoint-url http://localhost:8001`
+![DynamoDB Write](http://localhost/assets/lab2-24.png)
 
-![enter image description here](http://localhost/assets/lab2-25.png)
+### 4. Print and Destroy the `CloudFiles` Table
 
+#### Print the Table
+We use the AWS CLI to scan and print the contents of the `CloudFiles` table. The following command retrieves all items in the table and displays them:
 
-Use AWS CLI command to delete the created DynamoDB table. In this case, only the defined schema which are **Hash** and **Range** key will be printed.
-`aws dynamodb delete-table --table-name CloudFiles --endpoint-url http://localhost:8001`
+```bash
+aws dynamodb scan --table-name CloudFiles --endpoint-url http://localhost:8001
+```
 
-![enter image description here](http://localhost/assets/lab2-26.png)
+This command prints the table structure, showing the data we inserted in the previous step.
+
+![DynamoDB Scan](http://localhost/assets/lab2-25.png)
+
+#### Destroy the Table
+To delete the `CloudFiles` table, we use the following AWS CLI command:
+
+```bash
+aws dynamodb delete-table --table-name CloudFiles --endpoint-url http://localhost:8001
+```
+
+This command deletes the table, removing all data and schema. Only the defined schema (partition key and sort key) will be printed before deletion.
+
+![DynamoDB Delete Table](http://localhost/assets/lab2-26.png)
 
 <div  style="page-break-after: always;"></div>
 
@@ -1254,11 +1280,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxNjM0MjAxLDUzMzE3MzM4Niw0MzA3NT
-cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
-LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
-Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
-NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNj
-k2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3
-MDkyNjQwXX0=
+eyJoaXN0b3J5IjpbMTA4MDQ4MzU3Niw1MzMxNzMzODYsNDMwNz
+U3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgw
+OSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MT
+c0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEz
+OTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LD
+Y5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4
+NzA5MjY0MF19
 -->
