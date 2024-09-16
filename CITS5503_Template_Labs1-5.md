@@ -721,10 +721,6 @@ print("done")
  
 - **`os.walk()`**: Recursively traverses through the root directory (`.`) and subdirectories, finding all files to be uploaded.
 
-- **`upload_file()`**: Uploads a file to the S3 bucket. The function uses the following parameters:
-  - **`folder_name`**: The folder path relative to the root directory.
-  - **`file`**: The full file path of the file to upload.
-  - **`file_name`**: The name of the file being uploaded.
 - **`s3.upload_file()`**: Uploads the file to the S3 bucket. It accepts the following parameters:
   - **`file`**: The local path to the file to upload.
   - **`Bucket`**: Specifies the destination S3 bucket, `24188516-cloudstorage`.
@@ -1779,7 +1775,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4OTMxNTA4MCw1MTc4NjgzNDAsLTIyMz
+eyJoaXN0b3J5IjpbLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMz
 UyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYs
 NDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4Nz
 A3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQz
