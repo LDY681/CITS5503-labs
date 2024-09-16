@@ -1241,11 +1241,13 @@ Here’s the full JSON policy:
 
 #### Key Parameters:
 - **Statement 1**: Grants full access (`kms:*`) to the root account (`arn:aws:iam::489389878001:root`) for all KMS operations on all resources.
-- 
+
 - **Statement 2**: The IAM user (`24188516@student.uwa.edu.au`) is granted permissions to perform key management tasks such as **creating, describing, enabling, disabling, tagging, and deleting** keys, indicating by `kms:Create`,`kms:Describe`,`kms:Enable`,`kms:List`,`kms:Put`,`kms:Update`,`kms:Revoke`,`kms:Disable`,`kms:Get`,
 `kms:Delete`,`kms:TagResource`,`kms:UntagResource`,`kms:ScheduleKeyDeletion`,`kms:CancelKeyDeletion`.
-- **Statement 3**: The IAM user can use the key for cryptographic functions like **encrypting, decrypting, re-encrypting, and generating** data keys, indicating by `kms:Encrypt`,  `kms:Decrypt`  `kms:ReEncrypt`,  `kms:GenerateDataKey` and  `kms:DescribeKey`,
-- **Statement 4**: Allows the IAM user to manage grants like **creating, listing, and revoking** grants for the key, but only when the grant is for an AWS resource (`kms:GrantIsForAWSResource`).
+
+- **Statement 3**: The IAM user can use the key for cryptographic functions like **encrypting, decrypting, re-encrypting, and generating** data keys, indicating by `kms:Encrypt`,  `kms:Decrypt`  `kms:ReEncrypt`,  `kms:GenerateDataKey` and  `kms:DescribeKey`.
+
+- **Statement 4**: Only when the grant is for an AWS resource (`kms:GrantIsForAWSResource`), allows the IAM user to manage grants like **creating, listing, and revoking** a key, indicating by `kms:CreateGrant`, `kms:ListGrants`, `kms:RevokeGrant`
 
 This policy ensures secure management of the KMS key, allowing only authorized users to perform key management and cryptographic operations.
 
@@ -1836,7 +1838,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1MTMwNjM1MiwtMTc4NTEwMDgyLDUxNz
+eyJoaXN0b3J5IjpbMTkwMzk3ODQwMywtMTc4NTEwMDgyLDUxNz
 g2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMy
 LDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5Nj
 Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
