@@ -6,7 +6,9 @@
 </div>
 
 # Lab 1
+
 ## AWS Account and Log in
+
 ### [1] Reset and Login into IAM User Account
 
 To start with, I received an email with the initial login credentials for my IAM user account. After navigating to the AWS login portal, I successfully logged in using these credentials and reset my password as instructed.
@@ -31,8 +33,7 @@ Since I am running a Windows machine, I chose to use  `Ubuntu on Windows` via th
 
 ![enter image description here](http://127.0.0.1/assets/lab1-4.png)
 
-By using WSL, I can run Linux-based commands and utilities without the need for a virtual machine or dual-boot setup, which saves both time and resources. This approach is ideal for development work where access to Linux-based tools is necessary while maintaining the flexibility of a Windows system.
-
+By using WSL, I can run Linux-based commands and utilities without the need for a virtual machine, which saves both time and resources. 
 
 ## Install Linux Packages
 
@@ -40,6 +41,7 @@ By using WSL, I can run Linux-based commands and utilities without the need for 
 Since my Ubuntu version is `22.04`, I automatically receive the latest stable Python version, which is `3.10.12`.
 
 #### Update Packages
+
 Before installing Python, let's ensure our system's packages are up to date. Run the following commands to update and upgrade packages: 
 ```bash
 sudo apt update
@@ -1871,11 +1873,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDI0NTI3NjksNDg4NzA2NzYxLDg3NT
-Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
-LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
-cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
-LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
-Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
-NV19
+eyJoaXN0b3J5IjpbLTM1MjQ3NTU3NCw0ODg3MDY3NjEsODc1Nj
+c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
+LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
+E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
+MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
+g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
+XX0=
 -->
