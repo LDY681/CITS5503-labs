@@ -101,17 +101,18 @@ Once installed, we can execute AWS CLI commands to interact with various AWS res
 ### 3. Configure AWS CLI
 
 After installation, configure the AWS CLI to connect to our IAM User account. Entering the credentials **Access Key ID, Secret Access Key, Region** in the prompts after using the following command:
+
 ```bash
 aws configure
 ```
-These credentials can be found from step [3]. These configurations help us to set up our AWS environment correctly and accessing AWS services securely.
+Our credentials can be found from step [3]. These configurations help us to correctly authenticate and set up our AWS environment and to access AWS services securely.
 
 ![Configure AWS CLI](http://127.0.0.1/assets/lab1-9.png)
 
 
 
 ### 4. Install boto3
-Although `botocore` is included with the AWS CLI package, `boto3` the AWS SDK for Python is used to send API requests and automate tasks via Python scripts, such as launching EC2 instances or managing S3 buckets. Install `boto3` using the following command:
+Although `botocore` is included with the AWS CLI package, `boto3` is the Python the AWS SDK for Python is used to send API requests and automate tasks via Python scripts, such as launching EC2 instances or managing S3 buckets. Install `boto3` using the following command:
 ```bash
 pip3 install boto3
 ```
@@ -1876,11 +1877,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg3MDcyNzk2NSw0ODg3MDY3NjEsODc1Nj
-c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
-LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
-E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
-MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
-g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
-XX0=
+eyJoaXN0b3J5IjpbNDAyNzY3MzMyLDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
