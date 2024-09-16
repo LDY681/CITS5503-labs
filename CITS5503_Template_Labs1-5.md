@@ -38,11 +38,11 @@ By using WSL, I can run Linux-based commands and utilities without the need for 
 ## Install Linux Packages
 
 ### 1. Install Python 3.10.x
-Since my Ubuntu version is `22.04`, I automatically receive the latest stable Python version, which is `3.10.12`.
+Since my Ubuntu version is `22.04`, my system automatically comes with its corresponding latest Python version, which is `3.10.12`.
 
 #### Update Packages
 
-Before installing Python, let's ensure our system's packages are up to date. Run the following commands to update and upgrade packages: 
+Before installing Python, ensure our system's packages are up to date. Run the following commands to update and upgrade packages: 
 ```bash
 sudo apt update
 sudo apt -y upgrade
@@ -53,7 +53,6 @@ sudo apt -y upgrade
 Since upgrading packages involves modifying the system, administrative privileges are required. This is why we prefix the command with `sudo`. 
 -  **`apt update`** updates the package lists from **Apt** package management tool. These package lists contain references to the latest versions of packages. 
 -  **`apt upgrade`** upgrades all installed packages to their latest versions based on the information fetched from the update command, `-y` automatically answers **YES** to any prompts that might appear during the upgrade process.
-
 
 #### Verify Python Version
 To confirm that Python is installed and check the version, use the following command:
@@ -1873,11 +1872,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1MjQ3NTU3NCw0ODg3MDY3NjEsODc1Nj
-c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
-LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
-E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
-MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
-g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
-XX0=
+eyJoaXN0b3J5IjpbMjI0ODE2MzYyLDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
