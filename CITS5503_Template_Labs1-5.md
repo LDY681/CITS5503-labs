@@ -1642,9 +1642,9 @@ Answer:
 
 ### 1-2. Create 2 EC2 Instances & Add Application Load Balancer
 
-In this section, we will replicate some of the steps from **Lab 2** to create two EC2 instances, with a few changes to accommodate the new resources for **Lab 5**. We will append the suffix `-lab5` to resource names like **security group** and **key pair** to differentiate them from the resources in **Lab 2**.
+In this section, we will replicate some of the steps from **Lab 2** to create two EC2 instances, with a few changes to add an additional application load balancer. We will append the suffix `-lab5` to resource names like **security group** and **key pair** to differentiate them from the resources in **Lab 2**.
 
-#### Key Changes added on top of Lab 2:
+#### Key Changes on top of Lab 2:
 - **Subnets and Availability Zones**: We will create the two EC2 instances in different **availability zones** by using `ec2.describe_subnets()` to fetch the subnets, and specifying the **SubnetId** parameter when launching the EC2 instances.
 - **Load Balancer and Target Group**: 
   - **Create Load Balancer**: Using `elbv2.create_load_balancer()` with the required subnets, security groups, and settings.
@@ -1776,7 +1776,7 @@ print(f"Target Group ARN: {TargetGroupArn}")
 ### Code Explanation:
 
 1. **`ec2.create_security_group()`**: Creates a new security group.
-   - **GroupName**: `24188516-sg-lab5`, specifies the name of the security group.
+   - **GroupName**: Specifies the name of the security group, which is `24188516-sg-lab5`.
    - **Description**: A description for the security group.
 
 2. **`ec2.authorize_security_group_ingress()`**: Authorizes inbound traffic.
@@ -1907,11 +1907,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTU1ODQzMjIwLDQ4ODcwNjc2MSw4NzU2Nz
-Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
-Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
-Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
-NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
-Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
-fQ==
+eyJoaXN0b3J5IjpbLTExODg2MTMxMjgsNDg4NzA2NzYxLDg3NT
+Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
+LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
+cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
+LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
+Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
+NV19
 -->
