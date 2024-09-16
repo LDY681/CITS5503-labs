@@ -46,24 +46,38 @@ sudo apt -y upgrade
 ![Updating System](http://127.0.0.1/assets/lab1-5.png)
 
 Since upgrading packages involves modifying the system, administrative privileges are required. This is why we prefix the command with `sudo`. 
--  `apt update` updates the package lists from **Apt** package management tool. These package lists contain references to the latest versions of packages. 
--  `apt upgrade` upgrades all installed packages to their latest versions based on the information fetched from the update command, `-y` automatically answers **YES** to any prompts that might appear during the upgrade process.
+-  **`apt update`** updates the package lists from **Apt** package management tool. These package lists contain references to the latest versions of packages. 
+-  **`apt upgrade`** upgrades all installed packages to their latest versions based on the information fetched from the update command, `-y` automatically answers **YES** to any prompts that might appear during the upgrade process.
+
 
 #### Verify Python Version
-Once updated, verify the version of Python installed by using the command:
+To confirm that Python is installed and check the version, use the following command:
+
 ```bash
 python3 -V
 ```
-This should display the Python version as `3.10.12`.
+
+- **`python3`**: This specifies that we are checking the version of Python 3.x.
+- **`-V`**: Outputs the installed Python version.
+
+The output should display something like:
+```bash
+Python 3.10.12
+```
+This verifies that Python 3.10.12 is installed.
 
 ![Check Python Version](http://127.0.0.1/assets/lab1-6.png)
 
 #### Install pip3
-To manage Python packages, install `pip3`, the most popular package installer for Python to install third-party libraries and dependencies. Use the following command:
+To install and manage Python libraries, use **pip3**. Install it with:
+
 ```bash
 sudo apt install -y python3-pip
 ```
-This command installs `pip3` and confirms the installation.
+
+- **`python3-pip`**: Installs pip for Python 3, which is essential for installing third-party Python packages.
+
+Once installed, you can use `pip3` to install and manage Python packages.
 
 ![Installing pip3](http://127.0.0.1/assets/lab1-7.png)
 
@@ -1563,11 +1577,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MzE4MjgyOTEsNTM1MjM5NDMyLDUzMz
-E3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1Njky
-LC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1Mz
-MwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3
-MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC
-0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2
-OTg5OTM2XX0=
+eyJoaXN0b3J5IjpbNTAzMTY4ODQwLDUzNTIzOTQzMiw1MzMxNz
+MzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5Miwt
+MTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMD
+Q4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEs
+LTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMT
+k1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4
+OTkzNl19
 -->
