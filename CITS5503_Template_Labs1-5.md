@@ -104,7 +104,7 @@ This command queries the available regions in our AWS account and displays the i
 ![AWS Region Table](http://127.0.0.1/assets/lab1-11.png)
 
 ### 2. Test the Python Environment
-After confirming the AWS CLI is working, we now test the Python environment using `boto3`, the AWS SDK for Python. Our goal is to achieve a similar output to the previous test but this time within the Python environment:
+After confirming the AWS CLI is working, we now test the Python environment using `boto3`, the AWS SDK for Python. Our goal is to achieve a similar output to the previous test, but this time within the Python environment:
 ```python
 python3
 >>> import boto3
@@ -113,7 +113,7 @@ python3
 >>> print(response)
 ```
 
-This code snippet connects to the EC2 service through `boto3` and retrieves the list of regions in JSON format, demonstrating that the Python environment is correctly set up to interact with AWS services.
+This code snippet runs directly from the Python command line,  connects to the EC2 service through `boto3` and retrieves the list of regions in JSON format, demonstrating that the Python environment is correctly set up.
 
 ![Python Region Response](http://127.0.0.1/assets/lab1-12.png)
 
@@ -1163,7 +1163,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0NjI0NTU2MiwtMTMyMjQxMjQ0OSwzOT
+eyJoaXN0b3J5IjpbLTg1MTI2OTc0MCwtMTMyMjQxMjQ0OSwzOT
 k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
 NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
 E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
