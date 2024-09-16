@@ -359,7 +359,7 @@ aws ec2 describe-instances --instance-ids i-0553e2ea0492e1c73 --query 'Reservati
 - **`--instance-ids`**: Specifies the instance ID, which is `i-0553e2ea0492e1c73` in this case.
 - **`--query`**: Limits the output to the `PublicIpAddress` of the instance, providing the required IP address for SSH access.
 
-This IP address is printed after
+This IP address is queried and printed, save it for SSH connection in the next step.
 
 ![Public IP Address](http://127.0.0.1/assets/lab2-7.png)
 
@@ -379,6 +379,7 @@ After connecting, we can see system information on the console, indicating that 
 ![SSH Connection](http://127.0.0.1/assets/lab2-8.png)
 
 ### 8. List the Created Instance Using the AWS Console
+
 The original instance created in steps 1-7 was destroyed overnight, so I had to run the commands again and the instance ID would differ. Here is a screenshot of the sucessfully created instance from the AWS console:
 
 ![AWS Console](http://127.0.0.1/assets/lab2-9.png)
@@ -1878,7 +1879,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzMTU2MDgwMCw0ODg3MDY3NjEsODc1Nj
+eyJoaXN0b3J5IjpbLTM1Nzk1MDk5MCw0ODg3MDY3NjEsODc1Nj
 c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
 LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
 E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
