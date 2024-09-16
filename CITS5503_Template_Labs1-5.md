@@ -813,7 +813,7 @@ print("done")
   - **`s3_key`**: The key (path) of the file in the S3 bucket.
   - **`local_file_path`**: Specifies the destination file path on the local machine.
 
-- **`os.makedirs()`**: Creates the specified directory if it doesn’t already exist, to the local directory structure the S3 directory structure.
+- **`os.makedirs()`**: Creates the specified directory if it doesn’t already exist, so we can mirror the local directory structure to our S3 directory structure.
 
 This script traverses the S3 bucket, restoring files to the local directory in the same structure they were uploaded.
 
@@ -822,6 +822,7 @@ This script traverses the S3 bucket, restoring files to the local directory in t
 ### 4. Write Information About Files to DynamoDB
 
 #### 1. Install DynamoDB
+
 First, we create and navigate into the `dynamodb` directory. We then install **JRE** and download the **DynamoDB** package, extracting the necessary files for local use. Once extracted, we have the compiled Java code `DynamoDBLocal.jar` and a folder containing libraries `DynamoDBLocal_lib`, which are required to run a local DynamoDB instance.
 
 ```bash
@@ -847,8 +848,8 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb 
 ```
 
 #### Key Parameters:
-- **`-Djava.library.path`**: Specifies the path to the required native libraries for running DynamoDB locally, which is `./DynamoDBLocal_lib`.
-- **`-jar`**: Indicates the JAR file `DynamoDBLocal.jar` that contains the DynamoDB local service.
+- **`-Djava.library.path`**: Specifies the path to the required native libraries for running DynamoDB locally (`./DynamoDBLocal_lib`).
+- **`-jar`**: Indicates the JAR file (`DynamoDBLocal.jar`) that contains the DynamoDB local service.
 - **`-sharedDb`**: Configures DynamoDB to use a single shared database file (`_shared-local-instance.db`).
 - **`-port`**: Specifies that the service should listen on port 8001.
 
@@ -1894,11 +1895,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4NzU0OTI5NSw0ODg3MDY3NjEsODc1Nj
-c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
-LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
-E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
-MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
-g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
-XX0=
+eyJoaXN0b3J5IjpbNTA5MDQyMTMyLDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
