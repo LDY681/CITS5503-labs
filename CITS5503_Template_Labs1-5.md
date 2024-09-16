@@ -279,9 +279,6 @@ Once executed, this command creates a rule allowing SSH access on port 22, and t
 
 ![Authorize Inbound Traffic](http://127.0.0.1/assets/lab2-2.png)
 
-The screenshot shows the successful creation of the security rule allowing inbound SSH traffic to the security group.
-
-
 ### 3. Create a Key Pair
 
 To securely connect to the EC2 instance, we generate a public and private key pair. The private key will be used to authenticate SSH connections, while the public key is associated with the EC2 instance. This step is crucial for securing the private key and ensuring that it can be used for SSH connections without exposing it to others.
@@ -298,13 +295,14 @@ aws ec2 create-key-pair --key-name 24188516-key --query 'KeyMaterial' --output t
 - **`--output text`**: Specifies that the output format should be plain text (instead of JSON). The output is redirected to a file using the `>` operator, which saves the private key as `24188516-key.pem`.
 
 #### Set Permissions for the Key:
-After the key is generated, we ensure it has the correct permissions using the following command:
+
+After the key is generated, we ensure it has the correct permissions by using the `chmod` command:
 
 ```bash
 chmod 400 24188516-key.pem
 ```
 
-- **`chmod 400`**: This changes the file’s permissions to **read-only** for the owner. It ensures that only the owner of the file can read it, which is necessary to secure the key and prevent unauthorized access.
+- **`chmod 400`**: This changes the file’s permissions to **read-only** for the file owner. It ensures that only the owner of the file can read it, which is necessary to secure the key and prevent unauthorized access.
 
 Below are the outputs after successfully creating the key and setting the appropriate permissions:
 
@@ -1879,11 +1877,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NzU1MTAwNzksNDg4NzA2NzYxLDg3NT
-Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
-LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
-cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
-LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
-Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
-NV19
+eyJoaXN0b3J5IjpbMTQyMDQ1NDc5OSw0ODg3MDY3NjEsODc1Nj
+c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
+LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
+E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
+MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
+g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
+XX0=
 -->
