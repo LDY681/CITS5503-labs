@@ -117,18 +117,20 @@ This code snippet runs directly from the Python command line,  connects to the E
 
 ![Python Region Response](http://127.0.0.1/assets/lab1-12.png)
 
-### [3] Write a Python script
-Now we create a python script to wrap these lines in one file and also format the reponse into table structure.
-The python script is located in `~\cits5503\lab1` in my Ubuntu machine.
 
-#### (1) Install dependencies
-The pandas library is used here to convert un-tabulated data into structured table.
-Run the following code to install the extra dependency
-`pip install pandas`
+### 3. Write a Python Script
+Now we create a Python script to wrap these lines into a single file and format the response into a structured table. The Python script is located in `~\cits5503\lab1` on our Ubuntu machine.
 
-#### (2) Explain the code
-The code in the script adds an extra step, the reponse data is sent as a parameter into pandas dataframe and then gets printed.
+#### (1) Install Dependencies
+We use the `pandas` library to convert un-tabulated data into a structured table. To install this additional dependency, run the following command:
+```bash
+pip install pandas
 ```
+
+#### (2) Code Explanation
+The code in the script adds an extra step. After retrieving the region data from AWS, we pass the response into a `pandas` dataframe to format and print the output in a table structure.
+
+```python
 import boto3 as bt
 import pandas as pd
 
@@ -139,32 +141,40 @@ regions_df = pd.DataFrame(regions)
 print(regions_df)
 ```
 
-#### (3) Run the script
+- **`boto3 as bt`**: We import `boto3`, aliased as `bt`, to interact with AWS services.
+- **`pandas as pd`**: We import `pandas`, aliased as `pd`, to structure our data into a table.
+- **`ec2 = bt.client('ec2')`**: We connect to the EC2 service.
+- **`response = ec2.describe_regions()`**: We retrieve the available AWS regions.
+- **`pd.DataFrame(regions)`**: We convert the regions data into a pandas DataFrame for structured output.
 
-run the following code to execute the python script:
-`python3 lab1.py`
+#### (3) Run the Script
+To execute the Python script, use the following command:
+```bash
+python3 lab1.py
+```
 
-#### [4] Get the results
-After the script is executed, results are printed in a table structure:
+#### 4. Get the Results
+After running the script, the results are printed in a table format:
+
 | --- | Endpoint | RegionName | OptInStatus |
 | --- | --- | --- | --- |
-0| ec2.ap-south-1.amazonaws.com| ap-south-1| opt-in-not-required
-1| ec2.eu-north-1.amazonaws.com| eu-north-1| opt-in-not-required
-2| ec2.eu-west-3.amazonaws.com| eu-west-3| opt-in-not-required
-3| ec2.eu-west-2.amazonaws.com| eu-west-2| opt-in-not-required
-4| ec2.eu-west-1.amazonaws.com| eu-west-1| opt-in-not-required
-5| ec2.ap-northeast-3.amazonaws.com| ap-northeast-3| opt-in-not-required
-6| ec2.ap-northeast-2.amazonaws.com| ap-northeast-2| opt-in-not-required
-7| ec2.ap-northeast-1.amazonaws.com| ap-northeast-1| opt-in-not-required
-8| ec2.ca-central-1.amazonaws.com| ca-central-1| opt-in-not-required
-9| ec2.sa-east-1.amazonaws.com| sa-east-1| opt-in-not-required
-10| ec2.ap-southeast-1.amazonaws.com| ap-southeast-1| opt-in-not-required
-11| ec2.ap-southeast-2.amazonaws.com| ap-southeast-2| opt-in-not-required
-12| ec2.eu-central-1.amazonaws.com| eu-central-1| opt-in-not-required
-13| ec2.us-east-1.amazonaws.com| us-east-1| opt-in-not-required
-14| ec2.us-east-2.amazonaws.com| us-east-2| opt-in-not-required
-15| ec2.us-west-1.amazonaws.com| us-west-1| opt-in-not-required
-16| ec2.us-west-2.amazonaws.com| us-west-2| opt-in-not-required
+| 0 | ec2.ap-south-1.amazonaws.com | ap-south-1 | opt-in-not-required |
+| 1 | ec2.eu-north-1.amazonaws.com | eu-north-1 | opt-in-not-required |
+| 2 | ec2.eu-west-3.amazonaws.com | eu-west-3 | opt-in-not-required |
+| 3 | ec2.eu-west-2.amazonaws.com | eu-west-2 | opt-in-not-required |
+| 4 | ec2.eu-west-1.amazonaws.com | eu-west-1 | opt-in-not-required |
+| 5 | ec2.ap-northeast-3.amazonaws.com | ap-northeast-3 | opt-in-not-required |
+| 6 | ec2.ap-northeast-2.amazonaws.com | ap-northeast-2 | opt-in-not-required |
+| 7 | ec2.ap-northeast-1.amazonaws.com | ap-northeast-1 | opt-in-not-required |
+| 8 | ec2.ca-central-1.amazonaws.com | ca-central-1 | opt-in-not-required |
+| 9 | ec2.sa-east-1.amazonaws.com | sa-east-1 | opt-in-not-required |
+| 10 | ec2.ap-southeast-1.amazonaws.com | ap-southeast-1 | opt-in-not-required |
+| 11 | ec2.ap-southeast-2.amazonaws.com | ap-southeast-2 | opt-in-not-required |
+| 12 | ec2.eu-central-1.amazonaws.com | eu-central-1 | opt-in-not-required |
+| 13 | ec2.us-east-1.amazonaws.com | us-east-1 | opt-in-not-required |
+| 14 | ec2.us-east-2.amazonaws.com | us-east-2 | opt-in-not-required |
+| 15 | ec2.us-west-1.amazonaws.com | us-west-1 | opt-in-not-required |
+| 16 | ec2.us-west-2.amazonaws.com | us-west-2 | opt-in-not-required |
 
 <div  style="page-break-after: always;"></div>
 
@@ -1163,7 +1173,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1MTI2OTc0MCwtMTMyMjQxMjQ0OSwzOT
+eyJoaXN0b3J5IjpbMTE5NjM4OTU2MiwtMTMyMjQxMjQ0OSwzOT
 k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
 NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
 E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
