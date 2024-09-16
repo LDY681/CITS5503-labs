@@ -83,7 +83,7 @@ These credentials can be found from step [3]. These configurations help us to se
 
 
 ### 4. Install boto3
-Although `botocore` is included with the AWS CLI package, `boto3`the AWS SDK for Python, simplifies API requests and makes it easier to automate tasks such as launching EC2 instances or managing S3 buckets via Python scripts. Install it using the following command:
+Although `botocore` is included with the AWS CLI package, `boto3` the AWS SDK for Python is used to send API requests and automate tasks via Python scripts, such as launching EC2 instances or managing S3 buckets. Install `boto3` using the following command:
 ```bash
 pip3 install boto3
 ```
@@ -1154,11 +1154,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQyNTI5NzQ2LC0xMzIyNDEyNDQ5LDM5OT
-Y2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0
-MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMT
-Q5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5
-Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OC
-wtMTc2Njk4OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0
-MTM1MDQ5NTNdfQ==
+eyJoaXN0b3J5IjpbMTI5OTQxMDc1NywtMTMyMjQxMjQ0OSwzOT
+k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
+NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
+E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
+OTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNT
+gsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwx
+NDEzNTA0OTUzXX0=
 -->
