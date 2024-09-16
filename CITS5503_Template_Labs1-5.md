@@ -252,6 +252,7 @@ aws ec2 create-security-group --group-name 24188516-sg --description "security g
 ```
 
 #### Key Parameters:
+
 - **`--group-name`**: Specifies the name of the security group. In this case, we use `24188516-sg` to uniquely identify the group based on our student number.
   
 - **`--description`**: Provides a human-readable description of the security group’s purpose. Here, we describe it as "security group for development environment" to indicate the group will be used for development purposes.
@@ -481,6 +482,7 @@ print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_r
 ```
 
 ### Code Explanation
+
 1. **`ec2.create_security_group()`**:
    - **`Description`**: Describes the purpose of the security group, here labeled as "security group for development environment".
    - **`GroupName`**: Defines the name of the security group, in this case, `24188516-sg-2`.
@@ -534,6 +536,7 @@ sudo apt install docker.io -y
 ```
 
 #### Key Parameters:
+
 - **`docker.io`**: Specifies the Docker package to install.
 - **`-y`**: Automatically confirms the installation without prompting for user input.
 
@@ -545,6 +548,7 @@ sudo systemctl start docker
 ```
 
 #### Key Parameters:
+
 - **`start`**: Tells the system to start the Docker service.
 - **`docker`**: Specifies the Docker service to start.
 
@@ -556,6 +560,7 @@ sudo systemctl enable docker
 ```
 
 #### Key Parameters:
+
 - **`enable`**: Enables Docker to start automatically when the system boots.
 - **`docker`**: Specifies the Docker service to enable.
 
@@ -570,6 +575,7 @@ docker --version
 ```
 
 #### Key Parameters:
+
 - **`--version`**: Prints the installed Docker version.
 
 This command outputs the installed Docker version, ensuring that Docker is ready to use.
@@ -604,6 +610,7 @@ COPY ./html/ /usr/local/apache2/htdocs/
 ```
 
 #### Key Parameters:
+
 - **`FROM`**: Specifies the base image for the container. In this case, it uses Apache HTTP Server version 2.4.
 - **`COPY`**: Copies the contents of the `html` directory from the local system into the container’s web server directory (`/usr/local/apache2/htdocs/`), making the `index.html` file accessible via the web server.
 
@@ -616,6 +623,7 @@ sudo usermod -a -G docker liudayubob
 ```
 
 #### Key Parameters:
+
 - **`usermod -a -G`**: Adds the user `liudayubob` to the Docker group (`docker`), allowing us to manage Docker without administrative permissions.
 
 #### Build the Docker Image
@@ -627,6 +635,7 @@ docker build -t my-apache2 .
 ```
 
 #### Key Parameters:
+
 - **`build`**: Instructs Docker to build an image based on the `Dockerfile` in the current directory.
 - **`-t`**: Tags the image with the name `my-apache2` for easy reference.
 - **`.`**: Specifies the build context, indicating the current directory (where the `Dockerfile` and `html` folder are located).
@@ -644,6 +653,7 @@ docker run -p 80:80 -dit --name my-app my-apache2
 ```
 
 #### Key Parameters:
+
 - **`-p`**: Maps the host machine's port to the Docker container's port, enabling access to the container’s web server from the host.
 - **`-dit`**: Runs the container in detached mode (`d`), keeps STDIN open (`i`), and allocates a pseudo-TTY (`t`).
 - **`--name`**: Sets the container name to `my-app`.
@@ -669,6 +679,7 @@ docker ps -a
 ```
 
 #### Key Parameters:
+
 - **`ps`**: Lists the currently running containers.
 - **`-a`**: Includes all containers, even those that are not running.
 
@@ -685,6 +696,7 @@ docker rm my-app
 ```
 
 #### Key Parameters:
+
 - **`stop`**: Stops the running container.
 - **`rm`**: Removes the container from the system.
 
@@ -839,7 +851,8 @@ else:
 print("done")
 ```
 
-### Code Explanation  
+### Code Explanation 
+
 - **`s3.list_objects_v2()`**: Lists all objects stored in the specified S3 bucket.
   - **`Bucket`**: Specifies the S3 bucket name, which is `24188516-cloudstorage` in out case.
 
@@ -883,6 +896,7 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb 
 ```
 
 #### Key Parameters:
+
 - **`-Djava.library.path`**: Specifies the path to the required native libraries for running DynamoDB locally (`./DynamoDBLocal_lib`).
 - **`-jar`**: Indicates the JAR file (`DynamoDBLocal.jar`) that contains the DynamoDB local service.
 - **`-sharedDb`**: Configures DynamoDB to use a single shared database file (`_shared-local-instance.db`).
@@ -1080,6 +1094,7 @@ aws dynamodb scan --table-name CloudFiles --endpoint-url http://localhost:8001
 ```
 
 #### Key Parameters:
+
 - **`--table-name`**: Specifies the name of the DynamoDB table to scan, in this case, `CloudFiles`.
 - **`--endpoint-url`**: Specifies the endpoint URL for connecting to the local DynamoDB instance running on port **8001**.
 
@@ -1095,6 +1110,7 @@ aws dynamodb delete-table --table-name CloudFiles --endpoint-url http://localhos
 ```
 
 #### Key Parameters:
+
 - **`--table-name`**: Specifies the name of the DynamoDB table to delete, in this case, `CloudFiles`.
 - **`--endpoint-url`**: Specifies the endpoint URL for connecting to the local DynamoDB instance running on port **8001**.
 
@@ -1154,7 +1170,7 @@ This script performs the following steps:
 
 2. **Converts the policy to a string**: The policy is converted into a string format using `json.dumps()`, as the `s3.put_bucket_policy()` function requires the policy to be passed as a JSON string.
 
-3. **Applies the policy to the S3 bucket**: The script uses `s3.put_bucket_policy()` to attach the policy to the specified S3 bucket (`24188516-cloudstorage`). This method takes in two key parameters:
+3. **Applies the policy to the S3 bucket**: The script uses `s3.put_bucket_policy()` to attach the policy to the specified S3 bucket (`24188516-cloudstorage`). This method takes in two parameters:
    - **Bucket**: The name of the S3 bucket (`24188516-cloudstorage`).
    - **Policy**: The policy in JSON string format that will govern access to the bucket.
 
@@ -1213,6 +1229,7 @@ aws s3api get-bucket-policy --bucket 24188516-cloudstorage --query Policy --outp
 ```
 
 #### Key Parameters:
+
 - **`--bucket`**: Specifies the name of the S3 bucket to check for the applied policy, in this case, `24188516-cloudstorage`.
 - **`--query Policy`**: Filters the output to display only the bucket policy.
 - **`--output text`**: Outputs the policy in plain text format.
@@ -1327,7 +1344,8 @@ Here’s the full JSON policy:
 }
 ```
 
-#### Code Explanation
+### Code Explanation
+
 - **Statement 1**: Grants full access (`kms:*`) to the root account (`arn:aws:iam::489389878001:root`) for all KMS operations on all resources.
 
 - **Statement 2**: The IAM user (`24188516@student.uwa.edu.au`) is granted permissions to perform key management tasks such as **creating, describing, enabling, disabling, tagging, and deleting** keys (`kms:Create`,`kms:Describe`,`kms:Enable`,`kms:List`,`kms:Put`,`kms:Update`,`kms:Revoke`,`kms:Disable`,`kms:Get`,
@@ -1381,6 +1399,7 @@ if __name__ == "__main__":
 ```
 
 ### Code Explanation
+
 - **`boto3.client('kms')`**: Initializes a KMS client for interacting with the AWS Key Management Service.
 
 - **`kms.create_key()`**: Creates a new KMS key.
@@ -1500,6 +1519,7 @@ if __name__ == "__main__":
 ```
 
 ### Code Explanation
+
 - **`s3.get_object()`**: Retrieves the specified file from the S3 bucket.
   - **`Bucket`**: The name of the S3 bucket (`24188516-cloudstorage`).
   - **`Key`**: The key (file name) of the file to retrieve.
@@ -1653,6 +1673,7 @@ if __name__ == "__main__":
 ```
 
 ### Code Explanation
+
 1. **`get_random_bytes()`**: This function generates a secure random byte sequence to use as the AES encryption key. In this case, we generate 32 bytes (256 bits) to match the AWS KMS key length.
   
 2. **`AES.new(AES_KEY, AES.MODE_EAX)`**: Initializes a new AES cipher object in EAX mode using the generated AES key. EAX mode provides both encryption and authentication, ensuring data integrity during decryption.
@@ -1962,11 +1983,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzMDc4MTk2MSwxMDUxOTE4NzA4LDg1Mj
-MxMTgzNyw0ODg3MDY3NjEsODc1Njc0NzQxLC0xNzg1MTAwODIs
-NTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1OSw1MzUyMz
-k0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwz
-OTk2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mj
-c2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOF19
+eyJoaXN0b3J5IjpbLTkzMzc3MTU3LDEwNTE5MTg3MDgsODUyMz
+ExODM3LDQ4ODcwNjc2MSw4NzU2NzQ3NDEsLTE3ODUxMDA4Miw1
+MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOT
+QzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5
+OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNz
+Y0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4XX0=
 
 -->
