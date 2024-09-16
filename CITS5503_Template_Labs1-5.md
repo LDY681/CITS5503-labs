@@ -1,5 +1,5 @@
 
-<div  style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
 <h2>Labs 1-5</h2>
 <p>Student ID: 24188515</p>
 <p>Student Name: Dayu Liu</p>
@@ -1558,7 +1558,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5MTA5MTE4LDUzMzE3MzM4Niw0MzA3NT
+eyJoaXN0b3J5IjpbNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
 cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
 LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
 Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
