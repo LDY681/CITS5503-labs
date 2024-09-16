@@ -52,6 +52,9 @@ sudo apt -y upgrade
 ![Updating System](http://127.0.0.1/assets/lab1-5.png)
 
 Since upgrading packages involves modifying the system, administrative privileges are required. Hence we need to prefix the command with `sudo`. 
+
+### Code explanation
+
 -  **`apt update`** updates the package lists from **Apt** package management tool. These package lists contain references to the latest versions of packages. 
 -  **`apt upgrade`** upgrades all installed packages to their latest versions based on the information retrieved from the update command, `-y` automatically answers **YES** to any prompts that might appear during the upgrade process.
 
@@ -61,6 +64,8 @@ To confirm that Python is installed and up to date, use the following command:
 ```bash
 python3 -V
 ```
+
+### Code explanation
 
 - **`python3`**: Specifies that we are running a version of Python 3.x.
 - **`-V`**: Outputs the installed Python version.
@@ -77,6 +82,8 @@ To easily install and manage Python libraries, we also need to install **pip**. 
 sudo apt install -y python3-pip
 ```
 
+### Code explanation
+
 - **`python3-pip`**: pip package for Python 3 specifically.
 
 Once installed, we can now use `pip3` to install third-party Python packages for future labs.
@@ -90,6 +97,8 @@ To interact with AWS services from the command line, we use the AWS CLI (Command
 ```bash
 pip3 install awscli --upgrade
 ```
+
+### Code explanation
 
 - **`awscli`**: This installs the AWS Command Line Interface, enabling us to manage AWS services, directly from the terminal.
 - **`--upgrade`**: Ensures that if an older version of AWS CLI is already installed, it will be replaced with the latest version, which includes new features and updates and guarantees consistency.
@@ -129,6 +138,8 @@ To verify that our AWS CLI is configured correctly and connected to the AWS envi
 ```bash
 aws ec2 describe-regions --output table
 ```
+
+### Code explanation
 
 - **`aws ec2 describe-regions`**: This command queries the AWS EC2 service to list all available regions where AWS services are provided.
 - **`--output table`**: Formats the output in a readable table structure, making it easier to view and interpret the region data.
@@ -1994,11 +2005,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjY5ODU1OTg3LC0xODU0NDc0NjI5LDEwNT
-E5MTg3MDgsODUyMzExODM3LDQ4ODcwNjc2MSw4NzU2NzQ3NDEs
-LTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mj
-c1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0x
-MzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNT
-I2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NF19
-
+eyJoaXN0b3J5IjpbLTEzNDUxMTM3MzAsLTE4NTQ0NzQ2MjksMT
+A1MTkxODcwOCw4NTIzMTE4MzcsNDg4NzA2NzYxLDg3NTY3NDc0
+MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3LC03Nz
+cyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDks
+LTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0OD
+M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
+XX0=
 -->
