@@ -492,30 +492,24 @@ print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_r
      - **`IpRanges`**: Defines the IP range allowed to access the instance. Here, `0.0.0.0/0` allows access from any IP.
 
 3. **`ec2.create_key_pair()`**:
-   - **`KeyName`**: Specifies the name of the key pair, here `24188516-key-2`,  generates a new key pair and returns the private key. 
+   - **`KeyName`**: Specifies the name of the key pair, here `24188516-key-2`,  generates a new key pair and returns the private key.
 
 4. **`file.write()`**:
-   - The private key is saved to a `.pem` file using Python’s built-in `open()` function, and **`os.chmod()`** is used to set the file’s permission to `400` (read-only for the owner), ensuring the file is secure and can only be read by the owner.
+   - The private key is saved to a `.pem` file using Python’s built-in File library with the `open()` function, and **`os.chmod()`** is used to set the file’s permission to `400` (read-only).
 
 5. **`ec2.run_instances()`**:
    - **`ImageId`**: Specifies the Amazon Machine Image (AMI) ID, in this case, `ami-07a0715df72e58928`, which contains pre-configured software and settings.
    - **`SecurityGroupIds`**: Lists the security group IDs that will be associated with the instance. Here, the security group is `24188516-sg-2`.
-   - **`MinCount` and `MaxCount`**: Define how many instances to launch. Both set to 1, indicating only one instance will be created.
+   - **`MinCount` and `MaxCount`**: Define how many instances to launch. only one instance will be created in our case.
    - **`InstanceType`**: Defines the type of instance to launch, in this case, `t3.micro`.
    - **`KeyName`**: Specifies the name of the key pair, `24188516-key-2`, used for SSH access.
-
-   This function creates the EC2 instance with the specified configurations and returns the instance details, including the **InstanceId**.
 
 6. **`ec2.create_tags()`**:
    - **`Resources`**: Specifies the resources to tag, in this case, the instance ID.
    - **`Tags`**: Defines the key-value pairs for tagging. Here, the tag key is `Name` and the value is `24188516-vm-2`, which labels the instance for easier identification.
 
-   This function assigns the tag `24188516-vm-2` to the instance for identification purposes.
-
 7. **`ec2.describe_instances()`**:
-   - **`InstanceIds`**: Specifies the instance ID to describe.
-
-   This function retrieves details about the instance, including the public IP address, which is necessary for SSH access.
+   - **`InstanceIds`**: Specifies the instance ID to describe 
 
 ### Output and Results
 Once the script is executed, the responses from each step are printed, showing the security group creation, key pair, instance ID, and public IP address.
@@ -1892,7 +1886,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDAwMzgwODY5LDQ4ODcwNjc2MSw4NzU2Nz
+eyJoaXN0b3J5IjpbNzkyMzgyMDY2LDQ4ODcwNjc2MSw4NzU2Nz
 Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
 Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
 Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
