@@ -231,7 +231,7 @@ At the time of running the lab, the **t2.micro** instance type was not supported
 ![Create EC2 Instance](http://127.0.0.1/assets/lab2-6.png)
 ![Instance ID](http://127.0.0.1/assets/lab2-5.png)
 
-### 5. Add a Tag to Your Instance
+### 5. Add a Tag to the Instance
 Now that we have the instance ID `i-0553e2ea0492e1c73`, we add a tag to name the instance. The tag key is `Name`, and the value is our student number followed by `-vm`, so the tag is `24188516-vm`.
 
 ```bash
@@ -260,8 +260,8 @@ After connecting, we can see system information on the console, indicating that 
 
 ![SSH Connection](http://127.0.0.1/assets/lab2-8.png)
 
-### 8. List the Created Instance Using the AWS Console
-The original instance created in steps 1-7 was destroyed overnight, so the instance ID might differ. Here is a screenshot of the newly created instance from the AWS console:
+### 8. List the Created Instances Using the AWS Console
+The original instance created in steps 1-7 was destroyed overnight, so the instance ID might differ. Here is a screenshot of the sucessfully created instance from the AWS console:
 
 ![AWS Console](http://127.0.0.1/assets/lab2-9.png)
 
@@ -1192,11 +1192,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE0MDA2ODc0NCwtMTMyMjQxMjQ0OSwzOT
-k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
-NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
-E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
-OTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNT
-gsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwx
-NDEzNTA0OTUzXX0=
+eyJoaXN0b3J5IjpbNjkxNDIwOTYyLC0xMzIyNDEyNDQ5LDM5OT
+Y2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0
+MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMT
+Q5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5
+Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OC
+wtMTc2Njk4OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0
+MTM1MDQ5NTNdfQ==
 -->
