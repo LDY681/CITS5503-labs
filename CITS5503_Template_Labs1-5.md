@@ -212,17 +212,14 @@ After running the Python script, the results are printed in a table format. The 
 | 15 | ec2.us-west-1.amazonaws.com | us-west-1 | opt-in-not-required |
 | 16 | ec2.us-west-2.amazonaws.com | us-west-2 | opt-in-not-required |
 
-#### Key Columns:
-- **Endpoint**: This is the public URL of the AWS service (EC2 in this case) for each region. It’s the endpoint through which API calls to EC2 are routed for that specific region. For example, `ec2.ap-south-1.amazonaws.com` is the endpoint for the **ap-south-1** region.
-- **RegionName**: Represents the region code for each AWS region. In the future labs, we will be using `eu-north-1` It is used when specifying a region in your AWS CLI commands, SDKs, or configurations. Each region is associated with a specific geographic location, such as `ap-south-1` for the Asia Pacific (Mumbai) region or `us-east-1` for the US East (N. Virginia) region.
+- **Endpoint**: Indicates a public URL of the AWS service (EC2) for each region. It’s the endpoint through which API calls are routed for that specific region.
+- **RegionName**: Represents the region code for each AWS region. In the future labs, we will be using `eu-north-1` for the European North region .
 - **OptInStatus**: Shows the status of whether a region requires users to opt-in before using it. `opt-in-not-required` means that the region is generally available for all AWS users.
 
 This table helps verify the connection to AWS and confirms that the Python environment is correctly configured to retrieve information from AWS services.
 
-
 <div  style="page-break-after: always;"></div>
 
-# 
 # Lab 2
 
 ## Create an EC2 Instance Using AWS CLI
@@ -1602,11 +1599,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTM3NDEyMjksNTM1MjM5NDMyLDUzMz
-E3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1Njky
-LC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1Mz
-MwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3
-MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC
-0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2
-OTg5OTM2XX0=
+eyJoaXN0b3J5IjpbNTIwODMxNzY2LDUzNTIzOTQzMiw1MzMxNz
+MzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5Miwt
+MTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMD
+Q4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEs
+LTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMT
+k1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4
+OTkzNl19
 -->
