@@ -76,14 +76,14 @@ After installation, configure the AWS CLI to connect to our Amazon EC2 instance.
 ```bash
 aws configure
 ```
-These credentials can be found from step [3]. These configuration is essential for securely accessing AWS services, ensuring that your AWS environment is set up for easy interaction with AWS resources.
+These credentials can be found from step [3]. These configurations help us to set up our AWS environment correctly and accessing AWS services securely.
 
 ![Configure AWS CLI](http://127.0.0.1/assets/lab1-9.png)
 
-> **Important:** Make sure to store your access keys securely and avoid exposing them in scripts or public repositories.
+
 
 ### 4. Install boto3
-Although `botocore` is included with the AWS CLI package, `boto3`, the AWS SDK for Python, simplifies API requests and makes it easier to automate tasks such as launching EC2 instances or managing S3 buckets via Python scripts. Install it using the following command:
+Although `botocore` is included with the AWS CLI package, `boto3`the AWS SDK for Python, simplifies API requests and makes it easier to automate tasks such as launching EC2 instances or managing S3 buckets via Python scripts. Install it using the following command:
 ```bash
 pip3 install boto3
 ```
@@ -1154,11 +1154,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2ODAxMTQ3MzgsLTEzMjI0MTI0NDksMz
-k5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3
-NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMT
-IxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4
-MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MT
-U4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3Nzgs
-MTQxMzUwNDk1M119
+eyJoaXN0b3J5IjpbOTQyNTI5NzQ2LC0xMzIyNDEyNDQ5LDM5OT
+Y2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0
+MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMT
+Q5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5
+Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OC
+wtMTc2Njk4OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0
+MTM1MDQ5NTNdfQ==
 -->
