@@ -1598,7 +1598,183 @@ However since encryption/decrption are done on local machine, it doesn't scale w
 ```
 <div  style="page-break-after: always;"></div>
 
-TODO
+# Lab 5
+## Application Load Balancer
+
+### 1-2. Create 2 EC2 Instances & Add Application Load Balancer
+
+In this section, we will replicate some of the steps from **Lab 2** to create two EC2 instances, but with a few changes to accommodate the new resources for **Lab 5**. We append the suffix `lab5` to resource names like **security group** and **key pair** to differentiate them from the resources in **Lab 2**.
+
+#### Key Changes:
+- **Subnets and Availability Zones**: We will create the two EC2 instances in different **availability zones** by using `ec2.describe_subnets()` to fetch the subnets, and specifying the **SubnetId** parameter when launching the EC2 instances.
+- **Load Balancer and Target Group**: 
+  - **Create Load Balancer**: Using `elbv2.create_load_balancer()` with the required subnets, security groups, and settings.
+  - **Create Target Group**: Using `elbv2.create_target_group()` with the VPC ID, protocol, and port.
+  - **Register Targets**: Register the EC2 instances to the load balancer target group.
+  - **Create Listener**: Set up a listener to forward HTTP traffic from **port 80** to the **target group**.
+
+#### Python Script for Automation:
+
+```python
+import boto3 as bt
+import os
+
+GroupName = '24188516-sg-lab5'
+KeyName = '24188516-key-lab5'
+InstanceName1 = '24188516-vm1'
+InstanceName2 = '24188516-vm2'
+LoadBalancerName = '24188516-elb'
+TargetGroupName = '24188516-tg'
+
+# Initialize EC2 and ELBv2 clients
+ec2 = bt.client('ec2', region_name='eu-north-1')
+elbv2 = bt.client('elbv2')
+
+# 1. Create security group
+step1_response = ec2.create_security_group(
+    Description="Security group for lab5 environment",
+    GroupName=GroupName
+)
+
+# 2. Authorize SSH (port 22) and HTTP (port 80) inbound rules
+step2_response = ec2.authorize_security_group_ingress(
+    GroupName=GroupName,
+    IpPermissions=[
+        {
+            'IpProtocol': 'tcp',
+            'FromPort': 22,
+            'ToPort': 22,
+            'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+        },
+        {
+            'IpProtocol': 'tcp',
+            'FromPort': 80,
+            'ToPort': 80,
+            'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+        }
+    ]
+)
+
+# 3. Create key-pair
+step3_response = ec2.create_key_pair(KeyName=KeyName)
+PrivateKey = step3_response['KeyMaterial']
+# Save key-pair
+with open(f'{KeyName}.pem', 'w') as file:
+    file.write(PrivateKey)
+# Grant file permission
+os.chmod(f'{KeyName}.pem', 0o400)
+
+# 4. Get two subnets in different availability zones
+step4_response = ec2.describe_subnets()['Subnets']
+Subnets = [subnet['SubnetId'] for subnet in step4_response[:2]]
+
+# 5. Create instances in two availability zones
+Instances = []
+for idx, SubnetId in enumerate(Subnets):
+    InstanceName = f"24188516-vm{idx + 1}"
+    step5_response = ec2.run_instances(
+        ImageId='ami-07a0715df72e58928',
+        SecurityGroupIds=[step1_response['GroupId']],
+        MinCount=1,
+        MaxCount=1,
+        InstanceType='t3.micro',
+        KeyName=KeyName,
+        SubnetId=SubnetId
+    )
+    InstanceId = step5_response['Instances'][0]['InstanceId']
+    Instances.append(InstanceId)
+    
+    # Tag instance with name
+    ec2.create_tags(
+        Resources=[InstanceId],
+        Tags=[{'Key': 'Name', 'Value': InstanceName}]
+    )
+
+# 6. Create application load balancer
+step6_response = elbv2.create_load_balancer(
+    Name=LoadBalancerName,
+    Subnets=Subnets,
+    SecurityGroups=[step1_response['GroupId']],
+    Scheme='internet-facing',
+    Type='application'
+)
+LoadBalancerArn = step6_response['LoadBalancers'][0]['LoadBalancerArn']
+
+# 7. Create target group
+VpcId = ec2.describe_vpcs()['Vpcs'][0]['VpcId']
+step7_response = elbv2.create_target_group(
+    Name=TargetGroupName,
+    Protocol='HTTP',
+    Port=80,
+    VpcId=VpcId,
+    TargetType='instance'
+)
+TargetGroupArn = step7_response['TargetGroups'][0]['TargetGroupArn']
+
+# 8. Register instances as targets
+elbv2.register_targets(
+    TargetGroupArn=TargetGroupArn,
+    Targets=[{'Id': InstanceId} for InstanceId in Instances]
+)
+
+# 9. Create a listener for the load balancer
+elbv2.create_listener(
+    LoadBalancerArn=LoadBalancerArn,
+    Protocol='HTTP',
+    Port=80,
+    DefaultActions=[{
+        'Type': 'forward',
+        'TargetGroupArn': TargetGroupArn
+    }]
+)
+
+# Print results
+print(f"Instance IDs: {Instances}")
+print(f"Load Balancer ARN: {LoadBalancerArn}")
+print(f"Target Group ARN: {TargetGroupArn}")
+```
+
+
+1. **`ec2.create_security_group()`**: Creates a new security group.
+   - **GroupName**: `24188516-sg-lab5`, specifies the name of the security group.
+   - **Description**: A description for the security group.
+
+2. **`ec2.authorize_security_group_ingress()`**: Authorizes inbound traffic.
+   - **IpProtocol**: Specifies `tcp` for the protocol.
+   - **FromPort**/**ToPort**: Specifies ports `22` and `80` for SSH and HTTP access.
+   - **IpRanges**: Allows access from `0.0.0.0/0`, meaning any IP address.
+
+3. **`ec2.create_key_pair()`**: Creates an SSH key pair for secure access.
+   - **KeyName**: `24188516-key-lab5`, specifies the name of the key pair.
+
+4. **`ec2.describe_subnets()`**: Retrieves available subnets and selects two for launching instances in different availability zones.
+
+5. **`ec2.run_instances()`**: Launches EC2 instances in separate subnets.
+   - **ImageId**: Specifies `ami-07a0715df72e58928` as the AMI ID for the instances.
+   - **SecurityGroupIds**: Associates the instances with the previously created security group (`24188516-sg-lab5`).
+   - **SubnetId**: Assigns instances to specific subnets to ensure they are in different availability zones.
+   - **InstanceType**: Defines `t3.micro` as the instance type.
+
+6. **`elbv2.create_load_balancer()`**: Creates an application load balancer.
+   - **Name**: `24188516-elb`, defines the name of the load balancer.
+   - **Subnets**: Assigns the load balancer to the subnets created earlier.
+   - **SecurityGroups**: Associates the load balancer with the security group.
+
+7. **`elbv2.create_target_group()`**: Creates a target group for the instances.
+   - **Name**: `24188516-tg`, specifies the target group name.
+   - **Protocol**: HTTP is specified as the protocol for communication.
+   - **Port**: Uses port `80` for HTTP traffic.
+   - **VpcId**: Associates the target group with the VPC where the instances are launched.
+
+8. **`elbv2.register_targets()`**: Registers the EC2 instances as targets for the load balancer.
+   - **TargetGroupArn**: Registers instances to the specified target group.
+
+9. **`elbv2.create_listener()`**: Adds a listener to the load balancer.
+   - **LoadBalancerArn**: Assigns the listener to the specified load balancer.
+   - **Protocol**: HTTP is set as the protocol.
+   - **Port**: Listens on port `80`.
+   - **DefaultActions**: Forwards traffic to the target group.
+
 
 #### Verify in the AWS Console:
 After the script is executed, you can verify the creation of the **load balancer** and **target group** in the AWS console.
@@ -1702,11 +1878,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjY3NTM3MTUsODc1Njc0NzQxLC0xNzg1MT
-AwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1OSw1
-MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMj
-Q0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5
-NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMT
-AwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3
-XX0=
+eyJoaXN0b3J5IjpbLTY4NzEzMjg1Miw4NzU2NzQ3NDEsLTE3OD
+UxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5
+LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyND
+EyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIz
+LDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MT
+MxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0
+MjddfQ==
 -->
