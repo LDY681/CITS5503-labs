@@ -178,38 +178,47 @@ After running the script, the results are printed in a table format:
 
 <div  style="page-break-after: always;"></div>
 
+# 
 # Lab 2
 
-## Create an EC2 instance using awscli
-### [1] Create a security group
-Create a security group with the name of my student number `24188516-sg`, `--group-name` specifies the group name and `--description` adds a description.
-```
+## Create an EC2 Instance Using AWS CLI
+
+### 1. Create a Security Group
+We start by creating a security group with the name based on our student number, `24188516-sg`. The `--group-name` flag specifies the group name, and `--description` provides a description of the group.
+```bash
 aws ec2 create-security-group --group-name 24188516-sg --description "security group for development environment"
 ```
-![enter image description here](http://127.0.0.1/assets/lab2-1.png)
-The response will return the GroupId being created.
-### [2] Authorise inbound traffic for ssh
-Create a rule to add tcp permission to this security group, `--protocol` specifies which internet protocol, `--port` specifies which port used for connection and `--cidr` specifies IP routing.
-```
+
+This command creates a new security group, and the response will return the `GroupId` for the created group.
+
+![Create Security Group](http://127.0.0.1/assets/lab2-1.png)
+
+### 2. Authorize Inbound Traffic for SSH
+Next, we add a rule to allow SSH access via TCP. The `--protocol` flag specifies the internet protocol, `--port` indicates the port used for the connection, and `--cidr` defines the IP range allowed access (in this case, `0.0.0.0/0` allows access from any IP).
+```bash
 aws ec2 authorize-security-group-ingress --group-name 24188516-sg --protocol tcp --port 22 --cidr 0.0.0.0/0
 ```
-![enter image description here](http://127.0.0.1/assets/lab2-2.png)
 
-The response will return the newly created rule along with specific rulesets.
+This command creates a rule allowing SSH traffic on port 22, and the response will display the newly created rule along with specific rulesets.
 
-### [3] Create a key pair
-Now we need to create a `private key` and `public key` pair for encrypted connection. The `generated private key` is then saved as plain-text into `24188516-key.pem` file.
-```
+![Authorize Inbound Traffic](http://127.0.0.1/assets/lab2-2.png)
+
+### 3. Create a Key Pair
+To establish a secure, encrypted connection to the EC2 instance, we generate a private and public key pair. The generated private key is saved as plain text in the `24188516-key.pem` file.
+```bash
 aws ec2 create-key-pair --key-name 24188516-key --query 'KeyMaterial' --output text > 24188516-key.pem
 ```
 
-To use this key on Linux, copy the file to a directory ~/.ssh and change the permissions to:
-```
+Once the key is created, we ensure it has the correct permissions by copying the file to the `~/.ssh` directory and adjusting the permissions:
+```bash
 chmod 400 24188516-key.pem
 ```
-This grants the owner of the file read permission, the output is as follow:
-![enter image description here](http://127.0.0.1/assets/lab2-3.png)
-![enter image description here](http://127.0.0.1/assets/lab2-4.png)
+
+This command grants the owner of the file read-only permissions to secure the key. Below is the output after successfully creating and securing the key:
+
+![Key Pair Creation](http://127.0.0.1/assets/lab2-3.png)
+![Permission Change](http://127.0.0.1/assets/lab2-4.png)
+
 
 ### [4] Create the instance 
 Because my student number is `24188516`, create an ec2 instance in `eu-north-1` region. `--image-id` specifies ami id with preset configurations, mine is `ami-07a0715df72e58928`. `--instance-type` is set to t2.micro, and we are using the private key `24188516-key`
@@ -1173,11 +1182,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMwMTU2ODQsLTEzMjI0MTI0NDksMzk5Nj
-Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
-LDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxND
-k4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4Mzkz
-OTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC
-0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQx
-MzUwNDk1M119
+eyJoaXN0b3J5IjpbMTc5NDc3NzQ5MywtMTMyMjQxMjQ0OSwzOT
+k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
+NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
+E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
+OTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNT
+gsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwx
+NDEzNTA0OTUzXX0=
 -->
