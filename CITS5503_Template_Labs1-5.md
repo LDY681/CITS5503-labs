@@ -1734,6 +1734,7 @@ print(f"Load Balancer ARN: {LoadBalancerArn}")
 print(f"Target Group ARN: {TargetGroupArn}")
 ```
 
+### Code Explanation:
 
 1. **`ec2.create_security_group()`**: Creates a new security group.
    - **GroupName**: `24188516-sg-lab5`, specifies the name of the security group.
@@ -1878,7 +1879,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY4NzEzMjg1Miw4NzU2NzQ3NDEsLTE3OD
+eyJoaXN0b3J5IjpbMTkzNjU1MzgzNSw4NzU2NzQ3NDEsLTE3OD
 UxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5
 LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyND
 EyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIz
