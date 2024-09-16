@@ -164,6 +164,8 @@ python3
 >>> print(response)
 ```
 
+### Code explanation
+
 - **`import boto3`**: Imports the **`boto3`** library, which is used to interact with AWS services via Python.
 - **`boto3.client('ec2')`**: Initializes a client for the EC2 service, allowing us to make requests to EC2, such as querying regions, starting instances, etc.
 - **`ec2.describe_regions()`**: Queries the EC2 service to retrieve a list of available AWS regions. It returns the data in JSON format.
@@ -2005,11 +2007,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNDUxMTM3MzAsLTE4NTQ0NzQ2MjksMT
-A1MTkxODcwOCw4NTIzMTE4MzcsNDg4NzA2NzYxLDg3NTY3NDc0
-MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3LC03Nz
-cyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDks
-LTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0OD
-M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
-XX0=
+eyJoaXN0b3J5IjpbMTM5OTgwNzk5MSwtMTg1NDQ3NDYyOSwxMD
+UxOTE4NzA4LDg1MjMxMTgzNyw0ODg3MDY3NjEsODc1Njc0NzQx
+LC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3Nz
+I3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwt
+MTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4Mz
+UyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDRd
+fQ==
 -->
