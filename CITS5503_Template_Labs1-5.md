@@ -53,7 +53,7 @@ sudo apt -y upgrade
 
 Since upgrading packages involves modifying the system, administrative privileges are required. Hence we need to prefix the command with `sudo`. 
 
-### Code explanation
+> ### Code Explanation
 
 -  **`apt update`** updates the package lists from **Apt** package management tool. These package lists contain references to the latest versions of packages. 
 -  **`apt upgrade`** upgrades all installed packages to their latest versions based on the information retrieved from the update command, `-y` automatically answers **YES** to any prompts that might appear during the upgrade process.
@@ -65,7 +65,7 @@ To confirm that Python is installed and up to date, use the following command:
 python3 -V
 ```
 
-### Code explanation
+> ### Code Explanation
 
 - **`python3`**: Specifies that we are running a version of Python 3.x.
 - **`-V`**: Outputs the installed Python version.
@@ -82,7 +82,7 @@ To easily install and manage Python libraries, we also need to install **pip**. 
 sudo apt install -y python3-pip
 ```
 
-### Code explanation
+> ### Code Explanation
 
 - **`python3-pip`**: pip package for Python 3 specifically.
 
@@ -98,7 +98,7 @@ To interact with AWS services from the command line, we use the AWS CLI (Command
 pip3 install awscli --upgrade
 ```
 
-### Code explanation
+> ### Code Explanation
 
 - **`awscli`**: This installs the AWS Command Line Interface, enabling us to manage AWS services, directly from the terminal.
 - **`--upgrade`**: Ensures that if an older version of AWS CLI is already installed, it will be replaced with the latest version, which includes new features and updates and guarantees consistency.
@@ -139,7 +139,7 @@ To verify that our AWS CLI is configured correctly and connected to the AWS envi
 aws ec2 describe-regions --output table
 ```
 
-### Code explanation
+> ### Code Explanation
 
 - **`aws ec2 describe-regions`**: This command queries the AWS EC2 service to list all available regions where AWS services are provided.
 - **`--output table`**: Formats the output in a readable table structure, making it easier to view and interpret the region data.
@@ -164,7 +164,7 @@ python3
 >>> print(response)
 ```
 
-### Code explanation
+> ### Code Explanation
 
 - **`import boto3`**: Imports the **`boto3`** library, which is used to interact with AWS services via Python.
 - **`boto3.client('ec2')`**: Initializes a client for the EC2 service, allowing us to make requests to EC2, such as querying regions, starting instances, etc.
@@ -200,7 +200,7 @@ regions_df = pd.DataFrame(regions)
 print(regions_df)
 ```
 
-### Code explanation
+> ### Code Explanation
 
 - **`boto3 as bt`**: Imports `boto3`, aliased as `bt`.
 - **`pandas as pd`**: Imports `pandas`, aliased as `pd`.
@@ -500,7 +500,7 @@ public_ip_address = step6_response['Reservations'][0]['Instances'][0]['PublicIpA
 print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_response}\n{public_ip_address}\n")
 ```
 
-### Code Explanation
+> ### Code Explanation
 
 1. **`ec2.create_security_group()`**:
    - **`Description`**: Describes the purpose of the security group, here labeled as "security group for development environment".
@@ -790,7 +790,7 @@ for dir_name, subdir_list, file_list in os.walk(ROOT_DIR, topdown=True):
 print("done")
 ```
 
-### Code Explanation
+> ### Code Explanation
 
 - **`s3.create_bucket()`**: Attempts to create an S3 bucket.
   - **`Bucket`**: Specifies the name of the bucket to be created, which is `24188516-cloudstorage`.
@@ -866,7 +866,7 @@ else:
 print("done")
 ```
 
-### Code Explanation 
+> ### Code Explanation 
 
 - **`s3.list_objects_v2()`**: Lists all objects stored in the specified S3 bucket.
   - **`Bucket`**: Specifies the S3 bucket name, which is `24188516-cloudstorage` in out case.
@@ -981,7 +981,7 @@ if __name__ == '__main__':
     create_db_table()
 ```
 
-### Code Explanation
+> ### Code Explanation
 
 - **`boto3.resource("dynamodb")`**: Initializes a DynamoDB resource instance, allowing interaction with the DynamoDB service. We specify `endpoint_url="http://localhost:8001"` to connect to the local DynamoDB instance running on port **8001**.
   
@@ -1087,7 +1087,7 @@ if __name__ == '__main__':
     write_to_table()
 ```
 
-### Code Explanation
+> ### Code Explanation
 
 - **`s3.list_objects_v2()`**: Lists all objects in the specified S3 bucket.
   - **`Bucket`**: Specifies the name of the bucket to retrieve the object list from, in this case, `24188516-cloudstorage`.
@@ -1220,7 +1220,7 @@ if __name__ == '__main__':
     apply_bucket_policy()
 ```
 
-### Code Explanation
+> ### Code Explanation
 
 - **`boto3.client('s3')`**: Initializes an S3 client for interacting with the S3 service.
   
@@ -1362,7 +1362,7 @@ Here’s the full JSON policy:
 }
 ```
 
-### Code Explanation
+> ### Code Explanation
 
 - **Statement 1**: Grants full access (`kms:*`) to the root account (`arn:aws:iam::489389878001:root`) for all KMS operations on all resources.
 
@@ -1416,7 +1416,7 @@ if __name__ == "__main__":
     create_kms_key()
 ```
 
-### Code Explanation
+> ### Code Explanation
 
 - **`boto3.client('kms')`**: Initializes a KMS client for interacting with the AWS Key Management Service.
 
@@ -1541,7 +1541,7 @@ if __name__ == "__main__":
     process_files(BUCKET_NAME, KMS_KEY)
 ```
 
-### Code Explanation
+> ### Code Explanation
 
 - **`s3.get_object()`**: Retrieves the specified file from the S3 bucket.
   - **`Bucket`**: The name of the S3 bucket (`24188516-cloudstorage`).
@@ -1696,7 +1696,7 @@ if __name__ == "__main__":
     process_files(BUCKET_NAME)
 ```
 
-### Code Explanation
+> ### Code Explanation
 
 1. **`get_random_bytes()`**: This function generates a secure random byte sequence to use as the AES encryption key. In this case, we generate 32 bytes (256 bits) to match the AWS KMS key length.
   
@@ -1870,7 +1870,7 @@ print(f"Load Balancer ARN: {LoadBalancerArn}")
 print(f"Target Group ARN: {TargetGroupArn}")
 ```
 
-### Code Explanation
+>  ### Code Explanation
 
 1. **`ec2.create_security_group()`**: Creates a new security group.
    - **GroupName**: Specifies the name of the security group, which is `24188516-sg-lab5`.
@@ -2007,7 +2007,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5OTgwNzk5MSwtMTg1NDQ3NDYyOSwxMD
+eyJoaXN0b3J5IjpbMTY1NzMwNjgwMSwtMTg1NDQ3NDYyOSwxMD
 UxOTE4NzA4LDg1MjMxMTgzNyw0ODg3MDY3NjEsODc1Njc0NzQx
 LC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3Nz
 I3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwt
