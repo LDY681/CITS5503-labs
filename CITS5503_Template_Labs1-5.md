@@ -67,7 +67,7 @@ To interact with AWS services from the command line, the AWS CLI (Command Line I
 ```bash
 pip3 install awscli --upgrade
 ```
-This ensures that we have the most recent version of AWS CLI with all the latest features and updates, allowing you to interact with AWS resources such as EC2, S3, and others directly from your terminal.
+This ensures that we have the most recent version of AWS CLI with latest features and updates, to interact with AWS resources such as EC2, S3, etc.
 
 ![Install AWS CLI](http://127.0.0.1/assets/lab1-8.png)
 
@@ -1154,7 +1154,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTUyNzg4NjEsLTEzMjI0MTI0NDksMz
+eyJoaXN0b3J5IjpbLTE1OTQwNDIwNzQsLTEzMjI0MTI0NDksMz
 k5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3
 NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMT
 IxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4
