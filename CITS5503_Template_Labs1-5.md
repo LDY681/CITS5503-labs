@@ -431,12 +431,12 @@ Now, we run the image using the following command:
 docker run -p 80:80 -dit --name my-app my-apache2
 ```
 
-This command maps the host machine's port to the Docker container's **port 80, runs the container in detached mode with the name `my-app`, and uses the `my-apache2` image.
+This command maps the host machine's port **80** to the Docker container's port **80**, runs the container in detached mode with the name `my-app`, and uses the `my-apache2` image.
 
 ![Docker Run](http://127.0.0.1/assets/lab2-15.png)
 
 #### Access the Hosted HTML Page
-Open a browser and access `http://localhost` or `http://127.0.0.1`. The HTML page is hosted and displays "Hello, World!"
+Open a browser and access `http://localhost` or `http://127.0.0.1`. The HTML page is now live and displays "Hello, World!"
 
 ![Docker Webpage](http://127.0.0.1/assets/lab2-16.png)
 
@@ -1229,11 +1229,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDE0ODgzMDIsLTEzMjI0MTI0NDksMz
-k5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3
-NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMT
-IxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4
-MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MT
-U4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3Nzgs
-MTQxMzUwNDk1M119
+eyJoaXN0b3J5IjpbNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OT
+Y2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0
+MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMT
+Q5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5
+Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OC
+wtMTc2Njk4OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0
+MTM1MDQ5NTNdfQ==
 -->
