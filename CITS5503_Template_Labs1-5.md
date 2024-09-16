@@ -24,9 +24,11 @@ Within the `Access keys` tab, I created a new access key and secret. These crede
 ![enter image description here](http://127.0.0.1/assets/lab1-3.png)
 
 ## Set up recent Linux OSes
+Since I am running a Windows machine, I chose to set up `Ubuntu on Windows` via the Windows Subsystem for Linux (WSL). This option provides an isolated Linux environment with a separate file directory, making file management easier and more organized within the Windows system.
 
-I am running a windows machine, I decided to go with `ubuntus on windows` because it offers an isolated environment and separated file directory, which sets ease with file management.
 ![enter image description here](http://127.0.0.1/assets/lab1-4.png)
+
+By using WSL, I can run Linux-based commands and utilities without the need for a virtual machine or dual-boot setup, which saves both time and resources. This approach is ideal for development work where access to Linux-based tools is necessary while maintaining the flexibility of a Windows system.
 
 ## Install Linux packages
 ### [1] Install Python 3.10.x
@@ -1122,11 +1124,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTk4MjU5MjczLDM5OTY2NTY5MiwtMTE4Nz
-A3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQz
-LDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1ND
-k4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEy
-OTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNi
-wtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTEx
-Mjg3NTgwNF19
+eyJoaXN0b3J5IjpbLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMT
+g3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1
+NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMT
+U0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3
+MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OT
+M2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1Mywt
+MTEyODc1ODA0XX0=
 -->
