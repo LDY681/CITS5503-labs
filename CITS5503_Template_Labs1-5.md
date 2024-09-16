@@ -1239,7 +1239,7 @@ Here’s the full JSON policy:
 }
 ```
 
-#### Key Parameters:
+#### Code Explanation:
 - **Statement 1**: Grants full access (`kms:*`) to the root account (`arn:aws:iam::489389878001:root`) for all KMS operations on all resources.
 
 - **Statement 2**: The IAM user (`24188516@student.uwa.edu.au`) is granted permissions to perform key management tasks such as **creating, describing, enabling, disabling, tagging, and deleting** keys (`kms:Create`,`kms:Describe`,`kms:Enable`,`kms:List`,`kms:Put`,`kms:Update`,`kms:Revoke`,`kms:Disable`,`kms:Get`,
@@ -1250,7 +1250,6 @@ Here’s the full JSON policy:
 - **Statement 4**: Only when the grant is for an AWS resource (`kms:GrantIsForAWSResource`), allows the IAM user to manage grants like **creating, listing, and revoking** keys (`kms:CreateGrant`, `kms:ListGrants`, `kms:RevokeGrant`)
 
 This policy ensures secure management of the KMS key, allowing only authorized users to perform key management and cryptographic operations.
-
 
 ### 2. Attach a Policy to the Created KMS Key
 
@@ -1293,20 +1292,24 @@ if __name__ == "__main__":
     create_kms_key()
 ```
 
-#### Explanation of the Script:
-1. **Policy Import**: The `kmspolicy.json` file is loaded using `json.load()` and converted into a string using `json.dumps()`. This policy defines the permissions for both the root account and the IAM user (`24188516@student.uwa.edu.au`).
-2. **Create KMS Key**: A new KMS key is created using `kms.create_key()`. The key is specified for encryption and decryption with the `KeyUsage='ENCRYPT_DECRYPT'` parameter.
-3. **Key ID**: The response from the `create_key()` call contains metadata, including the `KeyId`, which we extract for further use.
-4. **Create Alias**: The `kms.create_alias()` function creates an alias for the newly generated KMS key. The alias follows the format `alias/24188516` where `24188516` is the student's ID.
+### Code Explanation
+- **`boto3.client('kms')`**: Initializes a KMS client for interacting with the AWS Key Management Service.
+  
+- **`kms.create_key()`**: Creates a new KMS key.
+  - **`Policy`**: Specifies the access control policy (loaded from `kmspolicy.json`) that defines who can manage and use the key.
+  - **`KeyUsage`**: Defines the purpose of the key, here set to `ENCRYPT_DECRYPT` for symmetric encryption and decryption.
+  - **`Origin`**: Specifies the key material source, set to `AWS_KMS` to have AWS manage the key material.
+
+- **`key_response['KeyMetadata']['KeyId']`**: Extracts the key ID from the response returned by `kms.create_key()`. The key ID uniquely identifies the key for future operations.
+
+- **`kms.create_alias()`**: Assigns a human-readable alias to the KMS key.
+  - **`AliasName`**: Defines the alias for the key, here set to `alias/24188516`.
+  - **`TargetKeyId`**: Specifies the key ID to which the alias is assigned.
 
 #### Output:
 Once the script is executed, a symmetric KMS key is created with the policy applied, and an alias (`alias/24188516`) is assigned to the key.
 
 ![KMS Key and Alias](http://localhost/assets/lab4-6.png)
-
-### Key Points:
-- **KMS Key Creation**: The key is created specifically for encryption and decryption operations.
-- **Alias Assignment**: The alias `alias/24188516` provides a human-readable reference to the key, simplifying future key management.
 
 ### 3. Check Whether the Script Works
 
@@ -1838,11 +1841,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4Njg5ODkyMCwtMTc4NTEwMDgyLDUxNz
-g2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMy
-LDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5Nj
-Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
-LDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxND
-k4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4Mzkz
-OTcxXX0=
+eyJoaXN0b3J5IjpbODE4NDk5MjUzLC0xNzg1MTAwODIsNTE3OD
+Y4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1OSw1MzUyMzk0MzIs
+NTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2Nj
+U2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEs
+MTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OT
+g3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5
+NzFdfQ==
 -->
