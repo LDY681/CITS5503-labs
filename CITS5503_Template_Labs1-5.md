@@ -731,10 +731,11 @@ The method **`s3.upload_file()`** ensures the file is uploaded to the correct lo
 ![S3 Upload](http://localhost/assets/lab2-19.png)
 
 
-### 3. Restore from S3
-We create a new program, `restorefromcloud.py`, to restore files from the S3 bucket and write them to the appropriate directories. The program uses `s3.list_objects_v2` to list all files in the S3 bucket and their attributes (e.g., **Key, Name**). 
 
-We join the local **ROOT_TARGET_DIR** with the **Key** to form the local file path. If the local directory doesn't exist, we create it using `os.makedirs()`. Finally, we download each file from the S3 bucket using `s3.download_file()` with the parameters **Bucket**, **Key**, and **Filename**.
+### 3. Restore from S3
+We create a new program, `restorefromcloud.py`, to restore files from the S3 bucket and write them to the appropriate directories. The program uses `s3.list_objects_v2` to list all files in the S3 bucket along with their attributes, such as **Key** and **Name**.
+
+We combine the local **ROOT_TARGET_DIR** with the **Key** to form the local file path. If the local directory does not exist, we create it using `os.makedirs()`. Finally, we download each file from the S3 bucket using `s3.download_file()`.
 
 ```python
 import os
@@ -774,16 +775,28 @@ else:
 print("done")
 ```
 
+### Code Explanation
+
+- **`boto3.client("s3")`**: Initializes the S3 client for interacting with the S3 bucket.
+  
+- **`s3.list_objects_v2()`**: Lists all objects stored in the specified S3 bucket.
+  - **`Bucket`**: Specifies the S3 bucket name, here `24188516-cloudstorage`, from which we are retrieving files.
+
+- **`s3.download_file()`**: Downloads the specified file from S3 to the local directory.
+  - **`Bucket`**: Specifies the S3 bucket name, `24188516-cloudstorage`.
+  - **`s3_key`**: The key (path) of the file in the S3 bucket.
+  - **`local_file_path`**: Specifies the destination file path on the local machine.
+
+- **`os.makedirs()`**: Creates the specified directory if it doesn’t already exist, ensuring the local directory structure mirrors the S3 directory structure.
+
 This script traverses the S3 bucket, restoring files to the local directory in the same structure they were uploaded.
 
 ![S3 Restore](http://localhost/assets/lab2-20.png)
 
-
-
 ### 4. Write Information About Files to DynamoDB
 
 #### 1. Install DynamoDB
-First, we create and navigate into the `dynamodb` directory. We then install **JRE** and the **DynamoDB** package, extracting the necessary files for local use. Once extracted, we have the compiled Java code `DynamoDBLocal.jar` and a folder containing libraries `DynamoDBLocal_lib`, which we use to run a local DynamoDB instance.
+First, we create and navigate into the `dynamodb` directory. We then install **JRE** and download the **DynamoDB** package, extracting the necessary files for local use. Once extracted, we have the compiled Java code `DynamoDBLocal.jar` and a folder containing libraries `DynamoDBLocal_lib`, which are required to run a local DynamoDB instance.
 
 ```bash
 mkdir dynamodb
@@ -801,11 +814,17 @@ tar -zxvf dynamodb_local_latest.tar.gz
 
 ![DynamoDB Extraction](http://localhost/assets/lab2-21.png)
 
-Next, we start the DynamoDB instance locally using **JRE**. We specify the port as **8001** since **8000** is already in use. The `-sharedDb` flag creates a single database file, `_shared-local-instance.db`, which is accessed by all programs connecting to DynamoDB.
+Next, we start the DynamoDB instance locally using **JRE**. The port is set to **8001** since **8000** is already in use. The `-sharedDb` flag creates a single database file, `_shared-local-instance.db`, which is accessed by all programs connecting to this local DynamoDB instance.
 
 ```bash
 java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb -port 8001
 ```
+
+#### Key Parameters:
+- **`-Djava.library.path=./DynamoDBLocal_lib`**: Specifies the path to the required native libraries for running DynamoDB locally.
+- **`-jar DynamoDBLocal.jar`**: Indicates the JAR file that contains the DynamoDB local service.
+- **`-sharedDb`**: Configures DynamoDB to use a single shared database file (`_shared-local-instance.db`).
+- **`-port 8001`**: Specifies that the service should listen on port 8001.
 
 ![Start DynamoDB](http://localhost/assets/lab2-22.png)
 
@@ -1775,11 +1794,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMz
-UyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYs
-NDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4Nz
-A3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQz
-LDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1ND
-k4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEy
-OTU2XX0=
+eyJoaXN0b3J5IjpbLTEyOTEzNjMwMzksLTE3ODUxMDA4Miw1MT
+c4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQz
+Miw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OT
+Y2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0
+MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMT
+Q5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5
+Mzk3MV19
 -->
