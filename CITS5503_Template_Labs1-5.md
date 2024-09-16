@@ -1891,7 +1891,8 @@ We now repeat this step for the second instance (VM2) and modify the `<title>` t
 
 ![HTML Modification](http://localhost/assets/lab5-10.png)
 
-#### 4. Access the EC2 Instances via Public IP Addresses
+### 4. Access the EC2 Instances via Public IP Addresses
+
 Now that Apache is running and the HTML content has been updated, we can access each instance using its public IP address. Open your browser and visit the public IP addresses assigned to each instance.
 
 - **VM1** will display the title: "Hello, this is VM1!"
@@ -1909,11 +1910,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0NTg2MTU5NCw0ODg3MDY3NjEsODc1Nj
-c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
-LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
-E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
-MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
-g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
-XX0=
+eyJoaXN0b3J5IjpbODUyMzExODM3LDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
