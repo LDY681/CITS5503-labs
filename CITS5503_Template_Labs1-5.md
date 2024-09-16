@@ -242,7 +242,7 @@ This table helps verify the connection to AWS and confirms that our Python envir
 
 ### 1. Create a Security Group
 
-We begin by creating a security group with a unique name based on our student number, `24188516-sg`. A security group acts as a virtual firewall for our EC2 instances, controlling inbound and outbound traffic.
+We begin by creating a security group with a unique name based on our student number, `24188516-sg`. A security group acts as an access control mechanism for our EC2 instances, controlling inbound and outbound traffic.
 
 The following command creates the security group:
 
@@ -255,7 +255,7 @@ aws ec2 create-security-group --group-name 24188516-sg --description "security g
   
 - **`--description`**: Provides a human-readable description of the security group’s purpose. Here, we describe it as "security group for development environment" to indicate the group will be used for development purposes.
 
-Once executed, this command will create the security group and return the **GroupId**, which is a unique identifier for the newly created security group. The **GroupId** is important because it will be used in future commands when modifying or referencing the security group.
+Once executed, this command will create the security group and return the **GroupId**, which is a unique identifier for the newly created security group. Copy this **GroupId** because it will be used in future commands when modifying or referencing the security group.
 
 ![Create Security Group](http://127.0.0.1/assets/lab2-1.png)
 
@@ -1883,11 +1883,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjU3NDE4MzEsNDg4NzA2NzYxLDg3NT
-Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
-LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
-cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
-LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
-Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
-NV19
+eyJoaXN0b3J5IjpbMzE0MDQ2OTY2LDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
