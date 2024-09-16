@@ -855,13 +855,13 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb 
 
 ![Start DynamoDB](http://localhost/assets/lab2-22.png)
 
-
 #### 2. Create a Table in DynamoDB
 We create a Python script, `createtable.py`, to define a table named `CloudFiles` in DynamoDB. The table uses `userId` as the partition key and `fileName` as the sort key. We define the keys using `KeyType` (`HASH` for partition key and `RANGE` for sort key), while `AttributeName` and `AttributeType` specify the attributes' names and types.
 
 Although DynamoDB is schema-free, attributes like `path`, `lastUpdated`, `owner`, and `permissions` don’t need to be predefined in the table schema, but they can be added later when inserting items into the table.
 
 Here’s the table schema:
+
 ```python
 # Database schema
 CloudFiles = {
@@ -937,8 +937,14 @@ The script connects to the local DynamoDB instance, creates the `CloudFiles` tab
 ### 3. Write Data into the `CloudFiles` Table
 In this step, we write data into the `CloudFiles` table. First, we use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket. The output contains attributes such as **Key** and **LastModified**. To retrieve additional information like **Owner** and **Permissions**, we make a separate call to `s3.get_object_acl()`, which provides these details under the **Grants** and **Owner** attributes.
 
-After extracting all necessary attributes, we use `dynamodb_table.put_item()` to insert each object into the DynamoDB table. Since the region is `eu-north-1`, we populate the `owner` field with the owner's ID.
+After extracting all necessary attributes, we use `dynamodb_table.put_item()` to insert each object into the DynamoDB table. Since our designated region is `eu-north-1`, we populate the `owner` field with the owner's ID.
 
+
+This script performs the following:
+1. Lists all files in the S3 bucket using `s3.list_objects_v2`.
+2. Retrieves owner and permission information using `s3.get_object_acl`.
+3. Extracts file attributes like `userId`, `fileName`, `path`, `lastUpdated`, `owner`, and `permissions`.
+4. Inserts each file's attributes into the DynamoDB table using `put_item()`.
 Here’s the script:
 
 ```python
@@ -1013,12 +1019,6 @@ if __name__ == '__main__':
 
 - **`dynamodb_table.put_item()`**: Inserts an item into the DynamoDB table.
   - **`Item`**: Specifies the attributes of the item to insert. In this case, it includes attributes like `userId`, `fileName`, `path`, `lastUpdated`, `owner`, and `permissions`.
-
-This script performs the following:
-1. Lists all files in the S3 bucket using `s3.list_objects_v2`.
-2. Retrieves owner and permission information using `s3.get_object_acl`.
-3. Extracts file attributes like `userId`, `fileName`, `path`, `lastUpdated`, `owner`, and `permissions`.
-4. Inserts each file's attributes into the DynamoDB table using `put_item()`.
 
 ![DynamoDB Write](http://localhost/assets/lab2-24.png)
 
@@ -1895,11 +1895,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA5MDQyMTMyLDQ4ODcwNjc2MSw4NzU2Nz
-Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
-Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
-Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
-NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
-Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
-fQ==
+eyJoaXN0b3J5IjpbNzUzNDU4Nyw0ODg3MDY3NjEsODc1Njc0Nz
+QxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3
+NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OS
+wtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4
+MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0ND
+QsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1XX0=
+
 -->
