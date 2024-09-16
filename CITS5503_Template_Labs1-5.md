@@ -1449,6 +1449,7 @@ This package provides AES encryption functionality similar to what AWS KMS offer
 The code is similar to the `cryptwithkms.py` script from the previous step, but now we use `pycryptodome` for encryption and decryption.
 
 ### Workflow:
+
 - **Import AES and Random Byte Generation**: We import `AES` from `pycryptodome` for encryption/decryption and `get_random_bytes` for random key generation. The **AES_KEY** is **32 bytes** (256 bits) long, aligning with the AWS KMS approach.
 
 ```python
@@ -1489,7 +1490,7 @@ plain_text = cipher.decrypt_and_verify(cipher_text, tag)
 file_body = plain_text.decode('utf-8')  # Convert decrypted content to a string
 ```
 
-Here’s the full modified script:
+Here’s the full script:
 
 ```python
 # cryptwithpycryptodome.py
@@ -1562,7 +1563,7 @@ if __name__ == "__main__":
   
 3. **`cipher.encrypt_and_digest(file_content)`**: Encrypts the provided file content and generates a cryptographic tag to verify the integrity of the encrypted data during decryption.
 
-. **`cipher.decrypt_and_verify(cipher_text, tag)`**: Decrypts the ciphertext using the AES key and verifies the integrity of the decrypted data with the provided tag.
+4. **`cipher.decrypt_and_verify(cipher_text, tag)`**: Decrypts the ciphertext using the AES key and verifies the integrity of the decrypted data with the provided tag.
 
 #### 3. See It in Action
 Now, let's run the script using:
@@ -1579,11 +1580,6 @@ You can verify the encrypted and decrypted files in the AWS S3 console:
 
 ![S3 Encrypted Files](http://localhost/assets/lab4-10.png)
 ![S3 Decrypted Files](http://localhost/assets/lab4-11.png)
-
-### Key Points:
-- **Encryption Consistency**: We use AES with a 256-bit key, ensuring consistency with the AWS KMS approach.
-- **Encryption/Decryption Process**: The script uses PyCryptodome's AES encryption in EAX mode to secure the files, similar to how KMS operates.
-- **File Handling**: Encrypted and decrypted files are stored in the S3 bucket with `.encrypted` and `.decrypted` appended to their original names.
 
 ## Answer the following question (Marked)
 
@@ -1602,151 +1598,7 @@ However since encryption/decrption are done on local machine, it doesn't scale w
 ```
 <div  style="page-break-after: always;"></div>
 
-# Lab 5
-## Application Load Balancer
-
-### 1-2. Create 2 EC2 Instances & Add Application Load Balancer
-
-In this section, we will replicate some of the steps from **Lab 2** to create two EC2 instances, but with a few changes to accommodate the new resources for **Lab 5**. We append the suffix `lab5` to resource names like **security group** and **key pair** to differentiate them from the resources in **Lab 2**.
-
-#### Key Changes:
-- **Subnets and Availability Zones**: We will create the two EC2 instances in different **availability zones** by using `ec2.describe_subnets()` to fetch the subnets, and specifying the **SubnetId** parameter when launching the EC2 instances.
-- **Load Balancer and Target Group**: 
-  - **Create Load Balancer**: Using `elbv2.create_load_balancer()` with the required subnets, security groups, and settings.
-  - **Create Target Group**: Using `elbv2.create_target_group()` with the VPC ID, protocol, and port.
-  - **Register Targets**: Register the EC2 instances to the load balancer target group.
-  - **Create Listener**: Set up a listener to forward HTTP traffic from **port 80** to the **target group**.
-
-#### Python Script for Automation:
-
-```python
-import boto3 as bt
-import os
-
-GroupName = '24188516-sg-lab5'
-KeyName = '24188516-key-lab5'
-InstanceName1 = '24188516-vm1'
-InstanceName2 = '24188516-vm2'
-LoadBalancerName = '24188516-elb'
-TargetGroupName = '24188516-tg'
-
-# Initialize EC2 and ELBv2 clients
-ec2 = bt.client('ec2', region_name='eu-north-1')
-elbv2 = bt.client('elbv2')
-
-# 1. Create security group
-step1_response = ec2.create_security_group(
-    Description="Security group for lab5 environment",
-    GroupName=GroupName
-)
-
-# 2. Authorize SSH (port 22) and HTTP (port 80) inbound rules
-step2_response = ec2.authorize_security_group_ingress(
-    GroupName=GroupName,
-    IpPermissions=[
-        {
-            'IpProtocol': 'tcp',
-            'FromPort': 22,
-            'ToPort': 22,
-            'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
-        },
-        {
-            'IpProtocol': 'tcp',
-            'FromPort': 80,
-            'ToPort': 80,
-            'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
-        }
-    ]
-)
-
-# 3. Create key-pair
-step3_response = ec2.create_key_pair(KeyName=KeyName)
-PrivateKey = step3_response['KeyMaterial']
-# Save key-pair
-with open(f'{KeyName}.pem', 'w') as file:
-    file.write(PrivateKey)
-# Grant file permission
-os.chmod(f'{KeyName}.pem', 0o400)
-
-# 4. Get two subnets in different availability zones
-step4_response = ec2.describe_subnets()['Subnets']
-Subnets = [subnet['SubnetId'] for subnet in step4_response[:2]]
-
-# 5. Create instances in two availability zones
-Instances = []
-for idx, SubnetId in enumerate(Subnets):
-    InstanceName = f"24188516-vm{idx + 1}"
-    step5_response = ec2.run_instances(
-        ImageId='ami-07a0715df72e58928',
-        SecurityGroupIds=[step1_response['GroupId']],
-        MinCount=1,
-        MaxCount=1,
-        InstanceType='t3.micro',
-        KeyName=KeyName,
-        SubnetId=SubnetId
-    )
-    InstanceId = step5_response['Instances'][0]['InstanceId']
-    Instances.append(InstanceId)
-    
-    # Tag instance with name
-    ec2.create_tags(
-        Resources=[InstanceId],
-        Tags=[{'Key': 'Name', 'Value': InstanceName}]
-    )
-
-# 6. Create application load balancer
-step6_response = elbv2.create_load_balancer(
-    Name=LoadBalancerName,
-    Subnets=Subnets,
-    SecurityGroups=[step1_response['GroupId']],
-    Scheme='internet-facing',
-    Type='application'
-)
-LoadBalancerArn = step6_response['LoadBalancers'][0]['LoadBalancerArn']
-
-# 7. Create target group
-VpcId = ec2.describe_vpcs()['Vpcs'][0]['VpcId']
-step7_response = elbv2.create_target_group(
-    Name=TargetGroupName,
-    Protocol='HTTP',
-    Port=80,
-    VpcId=VpcId,
-    TargetType='instance'
-)
-TargetGroupArn = step7_response['TargetGroups'][0]['TargetGroupArn']
-
-# 8. Register instances as targets
-elbv2.register_targets(
-    TargetGroupArn=TargetGroupArn,
-    Targets=[{'Id': InstanceId} for InstanceId in Instances]
-)
-
-# 9. Create a listener for the load balancer
-elbv2.create_listener(
-    LoadBalancerArn=LoadBalancerArn,
-    Protocol='HTTP',
-    Port=80,
-    DefaultActions=[{
-        'Type': 'forward',
-        'TargetGroupArn': TargetGroupArn
-    }]
-)
-
-# Print results
-print(f"Instance IDs: {Instances}")
-print(f"Load Balancer ARN: {LoadBalancerArn}")
-print(f"Target Group ARN: {TargetGroupArn}")
-```
-
-#### Steps Summary:
-1. **Security Group**: Creates a security group for **SSH (port 22)** and **HTTP (port 80)** access.
-2. **Key Pair**: Generates a key pair for accessing the instances.
-3. **Subnet Selection**: Fetches two subnets from different availability zones using `ec2.describe_subnets()`.
-4. **Create EC2 Instances**: Launches two EC2 instances in separate availability zones, and assigns names to each instance.
-5. **Load Balancer**: Creates an application load balancer that is internet-facing and linked to the security group and subnets.
-6. **Target Group**: Creates a target group for the EC2 instances, specifying the VPC and HTTP port 80.
-7. **Register Instances**: Registers the EC2 instances as targets for the load balancer.
-8. **Listener**: Sets up a listener to forward traffic from **port 80** to the target group.
+TODO
 
 #### Verify in the AWS Console:
 After the script is executed, you can verify the creation of the **load balancer** and **target group** in the AWS console.
@@ -1850,11 +1702,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NjQxMDg5MjcsODc1Njc0NzQxLC0xNz
-g1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1
-OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMj
-QxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQy
-Myw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0Nz
-EzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYx
-NDI3XX0=
+eyJoaXN0b3J5IjpbNjY3NTM3MTUsODc1Njc0NzQxLC0xNzg1MT
+AwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1OSw1
+MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMj
+Q0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5
+NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMT
+AwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3
+XX0=
 -->
