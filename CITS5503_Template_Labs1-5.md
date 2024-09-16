@@ -995,11 +995,39 @@ This script performs the following:
 
 ![DynamoDB Write](http://localhost/assets/lab2-24.png)
 
+### 4. Print and Destroy the `CloudFiles` Table
 
+#### Print the Table
+We use the AWS CLI to scan and print the contents of the `CloudFiles` table. The following command retrieves all items in the table and displays them:
 
+```bash
+aws dynamodb scan --table-name CloudFiles --endpoint-url http://localhost:8001
+```
+
+#### Key Parameters:
+- **`--table-name`**: Specifies the name of the DynamoDB table to scan, in this case, `CloudFiles`.
+- **`--endpoint-url`**: Specifies the endpoint URL for connecting to the local DynamoDB instance running on port **8001**.
+
+This command prints the table structure, showing the data we inserted in the previous step.
+
+![DynamoDB Scan](http://localhost/assets/lab2-25.png)
+
+#### Destroy the Table
+To delete the `CloudFiles` table, we use the following AWS CLI command:
+
+```bash
+aws dynamodb delete-table --table-name CloudFiles --endpoint-url http://localhost:8001
+```
+
+#### Key Parameters:
+- **`--table-name`**: Specifies the name of the DynamoDB table to delete, in this case, `CloudFiles`.
+- **`--endpoint-url`**: Specifies the endpoint URL for connecting to the local DynamoDB instance running on port **8001**.
+
+This command deletes the table, removing all data and schema. Only the defined schema (partition key and sort key) will be printed before deletion.
+
+![DynamoDB Delete Table](http://localhost/assets/lab2-26.png)
 
 <div  style="page-break-after: always;"></div>
-
 
 # Lab 4
 ## Apply a Policy to Restrict Permissions on Bucket
@@ -1797,11 +1825,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODExOTU2MjY0LC0xNzg1MTAwODIsNTE3OD
-Y4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1OSw1MzUyMzk0MzIs
-NTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2Nj
-U2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEs
-MTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OT
-g3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5
-NzFdfQ==
+eyJoaXN0b3J5IjpbLTEzMTAzMjM4OTEsLTE3ODUxMDA4Miw1MT
+c4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQz
+Miw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OT
+Y2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0
+MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMT
+Q5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5
+Mzk3MV19
 -->
