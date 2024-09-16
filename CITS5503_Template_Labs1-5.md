@@ -1446,15 +1446,20 @@ The following script, `cryptwithkms.py`, encrypts and decrypts files in the S3 b
 
 ### Workflow
 
-1. The script first calls **`process_files()`** to list all files in the specified S3 bucket:
+1. **Traverse all Files**:
+The script first calls **`process_files()`** to list all files in the specified S3 bucket:
    - Lists all files in the specified S3 bucket.
    - Iterates through each file, calling `encrypt_file()` for encryption and subsequent decryption.
-2. For each file, **`encrypt_file()`** function retrieves the file content from S3, encrypts it using the specified KMS key, and uploads the encrypted file back to the bucket with a new key that appends `.encrypted` to the original file name:
+ 
+2. **Encrypt each File**:
+For each file, **`encrypt_file()`** function retrieves the file content from S3, encrypts it using the specified KMS key, and uploads the encrypted file back to the bucket with a new key that appends `.encrypted` to the original file name:
 	- Retrieves the file from the S3 bucket using `s3.get_object()`.
    - Encrypts the file content using the KMS key with `kms.encrypt()`.
    - Uploads the encrypted content back to the bucket with a new key that appends `.encrypted` to the original file name.
    - Calls `decrypt_file()` to decrypt the encrypted file.
-3. **`decrypt_file()`** function decrypts the file content and uploads the decrypted file back to the bucket with a new key that appends `.decrypted` to the encrypted file name:
+  
+3. **Decrypt encrypted Files**:
+**`decrypt_file()`** function decrypts the file content and uploads the decrypted file back to the bucket with a new key that appends `.decrypted` to the encrypted file name:
 	- Retrieves the encrypted file from the bucket using `s3.get_object()`.
    - Decrypts the file content using the KMS key with `kms.decrypt()`.
    - Converts the decrypted content from bytes to a regular string using `.decode('utf-8')`.
@@ -1988,7 +1993,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTk3MTU4Mjc5LC0xODU0NDc0NjI5LDEwNT
+eyJoaXN0b3J5IjpbMzQ3MTc1NzMzLC0xODU0NDc0NjI5LDEwNT
 E5MTg3MDgsODUyMzExODM3LDQ4ODcwNjc2MSw4NzU2NzQ3NDEs
 LTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mj
 c1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0x
