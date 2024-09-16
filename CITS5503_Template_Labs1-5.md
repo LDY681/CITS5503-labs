@@ -174,7 +174,7 @@ pip install pandas
 
 #### (2) Code Explanation
 
-The code in the script adds an extra step. After retrieving the region data from AWS, we pass the response into a `pandas` dataframe to format and print the output in a table structure.
+The code in this  script adds an extra step. After retrieving the region data from AWS, we pass the response into a `pandas` dataframe to format and print the output in a table structure.
 
 ```python
 import boto3 as bt
@@ -187,8 +187,9 @@ regions_df = pd.DataFrame(regions)
 print(regions_df)
 ```
 
-- **`boto3 as bt`**: Import `boto3`, aliased as `bt`, to interact with AWS services.
-- **`pandas as pd`**: Import `pandas`, aliased as `pd`, to structure our data into a table.
+
+- **`boto3 as bt`**: Import `boto3`, aliased as `bt`.
+- **`pandas as pd`**: Import `pandas`, aliased as `pd`.
 - **`ec2 = bt.client('ec2')`**: Connect to the EC2 service.
 - **`response = ec2.describe_regions()`**: Retrieve the available AWS regions.
 - **`pd.DataFrame(regions)`**: Convert the regions data into a pandas DataFrame for structured output.
@@ -1878,11 +1879,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMxNjAzNjA1LDQ4ODcwNjc2MSw4NzU2Nz
-Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
-Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
-Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
-NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
-Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
-fQ==
+eyJoaXN0b3J5IjpbLTQ3NzUzMTY4OSw0ODg3MDY3NjEsODc1Nj
+c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
+LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
+E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
+MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
+g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
+XX0=
 -->
