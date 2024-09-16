@@ -609,20 +609,28 @@ This command builds the Docker image, preparing it to run an Apache server that 
 
 ![Docker Build](http://127.0.0.1/assets/lab2-14.png)
 
+
 #### Run the Docker Container
-Now, we run the image using the following command:
+After building the image `my-apache2`, we run the Docker container using the following command:
+
 ```bash
 docker run -p 80:80 -dit --name my-app my-apache2
 ```
 
-This command maps the host machine's port **80** to the Docker container's port **80**, runs the container in detached mode with the name `my-app`, and uses the `my-apache2` image.
+#### Key Parameters:
+- **`-p`**: Maps the host machine's port to the Docker container's port, enabling access to the container’s web server from the host.
+- **`-dit`**: Runs the container in detached mode (`d`), keeps STDIN open (`i`), and allocates a pseudo-TTY (`t`).
+- **`--name`**: Sets the container name to `my-app`.
+
+This command starts the Apache server inside the container, serving the HTML content at port 80.
 
 ![Docker Run](http://127.0.0.1/assets/lab2-15.png)
 
 #### Access the Hosted HTML Page
-Open a browser and access `http://localhost` or `http://127.0.0.1`. The HTML page is now live and displays "Hello, World!"
+To view the hosted HTML page, open a browser and navigate to `http://localhost` or `http://127.0.0.1`. The browser will display the "Hello, World!" message from the `index.html` file served by the Apache HTTP server inside the Docker container.
 
 ![Docker Webpage](http://127.0.0.1/assets/lab2-16.png)
+
 
 ### 6. Other Docker Commands
 
@@ -1742,11 +1750,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3Nz
-I3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwt
-MTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4Mz
-UyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQs
-MTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMj
-UxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIx
-NTZdfQ==
+eyJoaXN0b3J5IjpbLTE3NjYwMTk0OSw1MTc4NjgzNDAsLTIyMz
+UyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYs
+NDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4Nz
+A3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQz
+LDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1ND
+k4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEy
+OTU2XX0=
 -->
