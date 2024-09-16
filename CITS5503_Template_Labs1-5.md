@@ -1147,54 +1147,151 @@ After running the script, you can verify the encrypted and decrypted files in th
 - **Encryption/Decryption**: The script successfully encrypts files using KMS and decrypts them, both operations being performed on files stored in the S3 bucket.
 - **File Naming**: The encrypted and decrypted files are stored with `.encrypted` and `.decrypted` appended to their original names, making it easy to track each file's status.
 
-### [5] Apply `pycryptodome` for encryption/decryption
-Because AWS KMS also uses [AES with 256 bits-long](https://docs.aws.amazon.com/crypto/latest/userguide/awscryp-service-kms.html#awscryp-service-kms-using-and-managing), let's do the same with `pycryptodome`.
+### 5. Apply `pycryptodome` for Encryption/Decryption
 
- 1. First install the package
- Run `pip install pycryptodome`
-![enter image description here](http://localhost/assets/lab4-12.png)
- 
- 2. Modify the above code in `cryptwithpycryptodome.py`
-Now the code is very similar to `cryptwithkms.py`, with few exceptions:
-- Import AES package for encryption/decryption and get_random_bytes for random key generation. The **AES_KEY** shall be **32 bytes** or 256 bits-long for consistency with **AWS KMS** approach.
-```
-	from Crypto.Cipher import AES
-	from Crypto.Random import get_random_bytes
-	
-	AES_KEY  = get_random_bytes(32) # 32 bytes = 256 bits-long key
+Since AWS KMS uses AES with 256-bit encryption, we can apply the same encryption standard using the `pycryptodome` package for consistency. Here's how we implement AES encryption and decryption with `pycryptodome`.
+
+#### 1. Install `pycryptodome`
+First, install the `pycryptodome` package by running the following command:
+
+```bash
+pip install pycryptodome
 ```
 
-- For the encryption part, `AES.new(AES_KEY, AES.MODE_EAX)` initializes a new AES cipher object in EAX mode using the generated `AES_KEY`. `cipher.encrypt_and_digest()` converts the plaintext **file_content ** into **ciphertext** using AES algorithm and then generates an authentication **tag** to ensure the integrity of the data and get verified in decryption process.
-- For the file_content,  it concatenates the **nonce, tag, and ciphertext** in this exact order into a single byte sequence (`file_body`). **nonce** is a unique value generated to make sure the resulting ciphertext will be different and avoid similar issue to **Hash Collision**.
+This package provides AES encryption functionality similar to what AWS KMS offers.
+
+![Pycryptodome Installation](http://localhost/assets/lab4-12.png)
+
+#### 2. Modify the Code in `cryptwithpycryptodome.py`
+The code is similar to the `cryptwithkms.py` script from the previous step, but now we use `pycryptodome` for encryption and decryption.
+
+##### Key Differences:
+- **Import AES and Random Byte Generation**: We import `AES` from `pycryptodome` for encryption/decryption and `get_random_bytes` for random key generation. The **AES_KEY** is **32 bytes** (256 bits) long, aligning with the AWS KMS approach.
+
+```python
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
+
+AES_KEY = get_random_bytes(32)  # 32 bytes = 256 bits-long key
 ```
+
+- **Encryption Process**:
+  - We initialize an AES cipher object in EAX mode with the generated `AES_KEY`: `AES.new(AES_KEY, AES.MODE_EAX)`.
+  - The file content is encrypted using `cipher.encrypt_and_digest()`, which generates the ciphertext and an authentication tag for integrity verification.
+  - We concatenate the **nonce**, **tag**, and **ciphertext** in that order to create the encrypted file content. The nonce is used to ensure unique ciphertexts for the same plaintext, preventing issues like hash collisions.
+
+```python
 # Encrypt the file content using AES with PyCryptodome in EAX mode
+cipher = AES.new(AES_KEY, AES.MODE_EAX)
+cipher_text, tag = cipher.encrypt_and_digest(file_content)  # Encrypt and generate tag
+encrypt_file_key = f"{file_key}.encrypted"
+
+# Concatenate the nonce, tag, and the ciphertext
+file_body = cipher.nonce + tag + cipher_text
+```
+
+- **Decryption Process**:
+  - We extract the **nonce**, **tag**, and **ciphertext** from the concatenated file content (`file_body`). The nonce is the first 16 bytes, the tag is the next 16 bytes, and the remaining content is the ciphertext.
+  - Using the extracted nonce, we create a new AES cipher object to decrypt the file and verify its integrity with the tag.
+
+```python
+# Parse the nonce, tag, and the ciphertext from the file content
+nonce = file_body[:16]  # First 16 bytes for the nonce
+tag = file_body[16:32]  # Next 16 bytes for the tag
+cipher_text = file_body[32:]  # The remaining bytes are the ciphertext
+
+# Decrypt the file content using AES with PyCryptodome in EAX mode
+cipher = AES.new(AES_KEY, AES.MODE_EAX, nonce=nonce)
+plain_text = cipher.decrypt_and_verify(cipher_text, tag)
+file_body = plain_text.decode('utf-8')  # Convert decrypted content to a string
+```
+
+Here’s the full modified script:
+
+```python
+# cryptwithpycryptodome.py
+from Crypto.Cipher import AES
+from Crypto.Random import get_random_bytes
+import boto3
+
+s3 = boto3.client('s3')
+
+BUCKET_NAME = "24188516-cloudstorage"
+AES_KEY = get_random_bytes(32)  # 256-bit key
+
+def encrypt_file(file_key):
+    # Get the file from the bucket and read content
+    s3_object = s3.get_object(Bucket=BUCKET_NAME, Key=file_key)
+    file_content = s3_object['Body'].read()
+
+    # Encrypt the file content using AES with PyCryptodome in EAX mode
     cipher = AES.new(AES_KEY, AES.MODE_EAX)
-    cipher_text, tag = cipher.encrypt_and_digest(file_content) #  extract the ciphertext and tag from the encrypted content
+    cipher_text, tag = cipher.encrypt_and_digest(file_content)
     encrypt_file_key = f"{file_key}.encrypted"
 
-    # Concatenate the nonce, tag, and the ciphertext
+    # Concatenate the nonce, tag, and ciphertext
     file_body = cipher.nonce + tag + cipher_text
-```
 
-- For the decryption part, we need to first extract **nonce, tag, and ciphertext** from the **file_body**. _Nonce_ is the first 16 bytes of the string, _tag_ is the next 16 bytes and _cipher_text _ is the remaining part of the actual encrypted file content, starting from byte 32 onward. 
-- We need extracted **nonce** to create a cipher object with the original encryption setup. `cipher.decrypt_and_verify()` decrypts the ciphertext and verifies its integrity using the extracted **tag**
-```
-    # Parse the nonce, tag, and the ciphertext from the file content
-    nonce = file_body[:16]  # 16 bytes for the nonce
-    tag = file_body[16:32]  # 16 bytes for the tag
-    cipher_text = file_body[32:] # The rest of the file content is the ciphertext
+    # Upload the encrypted file back to the bucket
+    s3.put_object(Bucket=BUCKET_NAME, Key=encrypt_file_key, Body=file_body)
+    print(f"File encrypted as: {encrypt_file_key} with content: \n{file_body}\n")
+    
+    # Decrypt the file after encryption
+    decrypt_file(encrypt_file_key)
+
+def decrypt_file(file_key):
+    # Get the encrypted file from the bucket and read content
+    s3_object = s3.get_object(Bucket=BUCKET_NAME, Key=file_key)
+    file_body = s3_object['Body'].read()
+
+    # Parse the nonce, tag, and ciphertext from the file content
+    nonce = file_body[:16]  # First 16 bytes for the nonce
+    tag = file_body[16:32]  # Next 16 bytes for the tag
+    cipher_text = file_body[32:]  # The rest of the file content is the ciphertext
 
     # Decrypt the file content using AES with PyCryptodome in EAX mode
     cipher = AES.new(AES_KEY, AES.MODE_EAX, nonce=nonce)
     plain_text = cipher.decrypt_and_verify(cipher_text, tag)
-    file_body = plain_text.decode('utf-8') #convert plain text bytes to a regular string
+    file_body = plain_text.decode('utf-8')  # Convert plain text bytes to a regular string
+    decrypted_file_key = f"{file_key}.decrypted"
+
+    # Upload the decrypted content back to the bucket
+    s3.put_object(Bucket=BUCKET_NAME, Key=decrypted_file_key, Body=file_body)
+    print(f"File decrypted as: {decrypted_file_key} with content: \n{file_body}\n")
+
+def process_files(BUCKET_NAME):
+    # List all files in the bucket
+    response = s3.list_objects_v2(Bucket=BUCKET_NAME)
+
+    if 'Contents' in response:
+        for obj in response['Contents']:
+            key = obj['Key']
+            encrypt_file(key)
+
+if __name__ == "__main__":
+    process_files(BUCKET_NAME)
 ```
 
-3. See in actions
-Now lets run `python3 cryptwithpycryptodome.py` and see the new approach in action. You can tell that the encrypted contents are different from **[4]** before the encryption key is different. 
-![enter image description here](http://localhost/assets/lab4-13.png)
-![enter image description here](http://localhost/assets/lab4-10.png)
-![enter image description here](http://localhost/assets/lab4-11.png)
+#### 3. See It in Action
+Now, let's run the script using:
+
+```bash
+python3 cryptwithpycryptodome.py
+```
+
+The encrypted content will differ from the previous method since a different encryption key is used.
+
+![Encrypted Content](http://localhost/assets/lab4-13.png)
+
+You can verify the encrypted and decrypted files in the AWS S3 console:
+
+![S3 Encrypted Files](http://localhost/assets/lab4-10.png)
+![S3 Decrypted Files](http://localhost/assets/lab4-11.png)
+
+### Key Points:
+- **Encryption Consistency**: We use AES with a 256-bit key, ensuring consistency with the AWS KMS approach.
+- **Encryption/Decryption Process**: The script uses PyCryptodome's AES encryption in EAX mode to secure the files, similar to how KMS operates.
+- **File Handling**: Encrypted and decrypted files are stored in the S3 bucket with `.encrypted` and `.decrypted` appended to their original names.
 
 ## Answer the following question (Marked)
 
@@ -1405,11 +1502,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1ODAwNzk0OCw1MzMxNzMzODYsNDMwNz
-U3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgw
-OSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MT
-c0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEz
-OTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LD
-Y5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4
-NzA5MjY0MF19
+eyJoaXN0b3J5IjpbLTE0ODM3Njc5NTgsNTMzMTczMzg2LDQzMD
+c1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4
+MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1ND
+E3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcx
+Mzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Ni
+w2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEw
+ODcwOTI2NDBdfQ==
 -->
