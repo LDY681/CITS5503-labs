@@ -71,9 +71,9 @@ To install and manage Python libraries, use **pip**. Install it with:
 sudo apt install -y python3-pip
 ```
 
-- **`python3-pip`**: Installs pip for Python 3 specifically, which is essential for installing third-party Python packages.
+- **`python3-pip`**: Installs pip for Python 3 specifically.
 
-Once installed, you can use `pip3` to install and manage Python packages.
+Once installed, you can use `pip3` to install third-party Python packages
 
 ![Installing pip3](http://127.0.0.1/assets/lab1-7.png)
 
@@ -1573,7 +1573,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1MjQwMDY5NCw1MzUyMzk0MzIsNTMzMT
+eyJoaXN0b3J5IjpbMTQwMzkyMDkxOCw1MzUyMzk0MzIsNTMzMT
 czMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIs
 LTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
 A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
