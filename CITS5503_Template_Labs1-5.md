@@ -1327,26 +1327,19 @@ In the **Policy** section of the KMS key, you should see that the user `24188516
 The following script, `cryptwithkms.py`, encrypts and decrypts files in the S3 bucket `24188516-cloudstorage` using the KMS key we created earlier (`alias/24188516`).
 
 #### Workflow:
-1. The script first lists all files in the specified S3 bucket.
-2. For each file, the **`encrypt_file()`** function retrieves the file content from S3, encrypts it using the specified KMS key, and uploads the encrypted file back to the bucket with a new key that appends `.encrypted` to the original file name.
-3. After encrypting the file, it calls the **`decrypt_file()`** function to decrypt the file content and uploads the decrypted file back to the bucket with a new key that appends `.decrypted` to the encrypted file name.
-
-### Workflow Explanation
-1. The script first lists all files in the specified S3 bucket, for each file call **`encrypt_file(file_key)`**:
-   - Retrieves the file from the S3 bucket using `s3.get_object()`.
+1. The script first lists all files in the specified S3 bucket, it calls **`process_files(BUCKET_NAME, KMS_KEY)`**:
+   - Lists all files in the specified S3 bucket.
+   - Iterates through each file, calling `encrypt_file()` for encryption and subsequent decryption.
+2. For each file, the **`encrypt_file()`** function retrieves the file content from S3, encrypts it using the specified KMS key, and uploads the encrypted file back to the bucket with a new key that appends `.encrypted` to the original file name:
+	- Retrieves the file from the S3 bucket using `s3.get_object()`.
    - Encrypts the file content using the KMS key with `kms.encrypt()`.
    - Uploads the encrypted content back to the bucket with a new key that appends `.encrypted` to the original file name.
    - Calls `decrypt_file()` to decrypt the encrypted file.
-
-2. **`decrypt_file(file_key)`**:
-   - Retrieves the encrypted file from the bucket using `s3.get_object()`.
+3. **`decrypt_file()`** function to decrypt the file content and uploads the decrypted file back to the bucket with a new key that appends `.decrypted` to the encrypted file name:
+	- Retrieves the encrypted file from the bucket using `s3.get_object()`.
    - Decrypts the file content using the KMS key with `kms.decrypt()`.
    - Converts the decrypted content from bytes to a regular string using `.decode('utf-8')`.
    - Uploads the decrypted content back to the bucket with a new key that appends `.decrypted` to the encrypted file name.
-
-3. **`process_files(BUCKET_NAME, KMS_KEY)`**:
-   - Lists all files in the specified S3 bucket.
-   - Iterates through each file, calling `encrypt_file()` for encryption and subsequent decryption.
 
 Here’s the Python script:
 
@@ -1853,11 +1846,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0ODg2NTI2NywtMTc4NTEwMDgyLDUxNz
-g2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMy
-LDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5Nj
-Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
-LDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxND
-k4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4Mzkz
-OTcxXX0=
+eyJoaXN0b3J5IjpbLTE3ODMwODcwODQsLTE3ODUxMDA4Miw1MT
+c4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQz
+Miw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OT
+Y2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0
+MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMT
+Q5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5
+Mzk3MV19
 -->
