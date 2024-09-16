@@ -366,7 +366,7 @@ sudo apt install docker.io -y
 ```
 
 ### 2. Start the Docker Service
-After installation, we start the Docker service immediately with:
+After installation, we start the Docker service with:
 ```bash
 sudo systemctl start docker
 ```
@@ -380,12 +380,12 @@ sudo systemctl enable docker
 ![Docker Installation](http://127.0.0.1/assets/lab2-12.png)
 
 ### 4. Check Docker Version
-After the Docker service is installed and enabled, we verify that Docker is working properly by checking its version:
+After the Docker service is installed and enabled, we can verify that Docker is working properly by checking its version:
 ```bash
 docker --version
 ```
 
-This command prints out the installed version of Docker, confirming that it's working correctly.
+This command prints out the installed version of Docker, confirming that it's functional.
 
 ![Docker Version Check](http://127.0.0.1/assets/lab2-13.png)
 
@@ -393,7 +393,7 @@ This command prints out the installed version of Docker, confirming that it's wo
 Next, we create an HTML file to be served via an Apache HTTP server running inside a Docker container. The file `index.html` is located inside the `html` directory and contains the following content:
 ```html
   <html>
-    <head> </head>
+    <head></head>
     <body>
       <p>Hello, World!</p>
     </body>
@@ -1229,7 +1229,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzNDM4MjMwOCwtMTMyMjQxMjQ0OSwzOT
+eyJoaXN0b3J5IjpbLTkwMjkyNjMxMSwtMTMyMjQxMjQ0OSwzOT
 k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
 NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
 E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
