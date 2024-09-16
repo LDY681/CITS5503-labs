@@ -391,7 +391,7 @@ In this step, we create an EC2 instance using the **boto3** Python package inste
 
 The following Python script uses `boto3` to create the EC2 **instance, security group, key pair, and instance tag**:
 
-### Workflow Explanation
+### Workflow:
 
 1. **Create Security Group**:  
    The script starts by creating a security group (`24188516-sg-2`) using `ec2.create_security_group()`.
@@ -405,15 +405,12 @@ The following Python script uses `boto3` to create the EC2 **instance, security 
 4. **Create EC2 Instance**:  
    The script launches an EC2 instance in the specified security group using `ec2.run_instances()`. The **AMI ID** (`ami-07a0715df72e58928`), **instance type** (`t3.micro`), and **key name** (`24188516-key-2`) are provided as parameters.
 
-5. **Tag the Instance**:  
-   A name tag (`24188516-vm-2`) is created for the EC2 instance using `ec2.create_tags()`, which helps in identifying the instance easily within the AWS environment.
+5. **Tag EC2 Instance**:  
+   A name tag (`24188516-vm-2`) is created for the EC2 instance using `ec2.create_tags()`, which helps in identifying the instance easily.
 
 6. **Retrieve Public IP Address**:  
-   The public IP address of the newly created EC2 instance is retrieved using `ec2.describe_instances()`. This IP address is needed for SSH access to the instance.
-
-7. **Print All Responses**:  
-   Finally, the responses from all the steps are printed to the console, including the security group creation, key pair, instance ID, and public IP address.
-
+   The public IP address of the newly created EC2 instance is retrieved using `ec2.describe_instances()`.
+   
 ```python
 import boto3 as bt
 import os
@@ -486,9 +483,7 @@ print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_r
 1. **`ec2.create_security_group()`**:
    - **`Description`**: Describes the purpose of the security group, here labeled as "security group for development environment".
    - **`GroupName`**: Defines the name of the security group, in this case, `24188516-sg-2`.
-
-   This function creates a security group that will control inbound and outbound traffic for the instance.
-
+  
 2. **`ec2.authorize_security_group_ingress()`**:
    - **`GroupName`**: Specifies the security group where the rule will be added, in this case, `24188516-sg-2`.
    - **`IpPermissions`**: This parameter contains the rules that specify what type of inbound traffic is allowed. 
@@ -496,12 +491,8 @@ print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_r
      - **`FromPort` and `ToPort`**: Both set to `22`, defining the SSH port.
      - **`IpRanges`**: Defines the IP range allowed to access the instance. Here, `0.0.0.0/0` allows access from any IP.
 
-   This function allows SSH access to the instance by authorizing TCP traffic on port 22.
-
 3. **`ec2.create_key_pair()`**:
-   - **`KeyName`**: Specifies the name of the key pair, here `24188516-key-2`.
-
-   This function generates a new key pair and returns the private key. The private key (`KeyMaterial`) is stored securely in a `.pem` file for later SSH access.
+   - **`KeyName`**: Specifies the name of the key pair, here `24188516-key-2`,  generates a new key pair and returns the private key. 
 
 4. **`file.write()`**:
    - The private key is saved to a `.pem` file using Python’s built-in `open()` function, and **`os.chmod()`** is used to set the file’s permission to `400` (read-only for the owner), ensuring the file is secure and can only be read by the owner.
@@ -1901,11 +1892,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTIwNDk4NzMsNDg4NzA2NzYxLDg3NT
-Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
-LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
-cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
-LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
-Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
-NV19
+eyJoaXN0b3J5IjpbNDAwMzgwODY5LDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
