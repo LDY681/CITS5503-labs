@@ -688,18 +688,20 @@ docker rm my-app
 - **`rm`**: Removes the container from the system.
 
 These commands stop the `my-app` container and then remove it from the system.
-<div  style="page-break-after: always;"></div>
 
+<div  style="page-break-after: always;"></div>
 
 # Lab 3
 
-### 1. Preparation
+### 1. Create  Files
+
 We begin by creating the required files and directories. The following file structure contains three files: `cloudstorage.py`, `rootfile.txt`, and `subfile.txt`.
 
 ![File Structure](http://127.0.0.1/assets/lab2-18.png)
 
 
 ### 2. Save to S3 by Updating `cloudstorage.py`
+
 The `cloudstorage.py` script is modified to create an S3 bucket named `24188516-cloudstorage` if it doesn’t already exist. The script then traverses all directories and subdirectories in the root directory and uploads any discovered files to the S3 bucket.
 
 ```python
@@ -751,7 +753,7 @@ print("done")
   - **`Bucket`**: Specifies the destination S3 bucket, `24188516-cloudstorage`.
   - **`file_name`**: The key under which the file is stored in the S3 bucket, formed by concatenating the folder path and file name.
 
-The method **`s3.upload_file()`** ensures the file is uploaded to the correct location in S3, maintaining the local directory structure.
+Now our files are uploaded to the corresponding locations in out S3 bucket, maintaining the local directory structure.
 
 ![S3 Upload](http://localhost/assets/lab2-19.png)
 
@@ -1893,11 +1895,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzgwMDI4ODAsNDg4NzA2NzYxLDg3NT
-Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
-LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
-cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
-LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
-Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
-NV19
+eyJoaXN0b3J5IjpbLTgwNDgzODY2NCw0ODg3MDY3NjEsODc1Nj
+c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
+LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
+E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
+MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
+g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
+XX0=
 -->
