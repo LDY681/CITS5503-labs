@@ -939,13 +939,24 @@ In this step, we write data into the `CloudFiles` table. First, we use `s3.list_
 
 After extracting all necessary attributes, we use `dynamodb_table.put_item()` to insert each object into the DynamoDB table. Since our designated region is `eu-north-1`, we populate the `owner` field with the owner's ID.
 
+
 ### Workflow:
 
-This script performs the following:
-1. Lists all files in the S3 bucket using `s3.list_objects_v2`.
-2. Retrieves owner and permission information using `s3.get_object_acl`.
-3. Extracts file attributes like `userId`, `fileName`, `path`, `lastUpdated`, `owner`, and `permissions`.
-4. Inserts each file's attributes into the DynamoDB table using `put_item()`.
+This script performs the following steps:
+
+1. **Lists all files in the S3 bucket**: The script uses `s3.list_objects_v2()` to retrieve the list of all objects in the specified S3 bucket (`24188516-cloudstorage`). The response contains metadata for each file, including the `Key` (file name) and `LastModified` timestamp.
+
+2. **Retrieves owner and permission information**: For each file, the script calls `s3.get_object_acl()` to fetch the Access Control List (ACL) associated with the file. The ACL contains details about the file’s owner and permission settings, found in the **Grants** and **Owner** attributes.
+
+3. **Extracts file attributes**: The script extracts key attributes from each file, including:
+   - **userId**: The ID of the user or entity who has permissions for the file.
+   - **fileName**: The name of the file, extracted from the `Key` in the S3 response.
+   - **path**: The full S3 key (file path) of the file.
+   - **lastUpdated**: The last modification date of the file, extracted from `LastModified`.
+   - **owner**: The owner’s ID, retrieved from the ACL.
+   - **permissions**: The file's access permissions, extracted from the ACL’s `Grants`.
+
+4. **Inserts file attributes into the DynamoDB table**: The extracted file attributes are then inserted into the DynamoDB `CloudFiles` table using `dynamodb_table.put_item()`. This operation stores each file’s metadata in the database, associating it with the appropriate `userId` and `fileName`.
 
 Here’s the script:
 
@@ -1104,14 +1115,13 @@ Since the policy parameter in `s3.put_bucket_policy()` only accepts a JSON strin
 
 This script performs the following steps:
 
-1. **Reads the JSON policy**: The script uses `json.load()` to read the bucket policy from the `bucketpolicy.json` file. This policy outlines the permissions that will be applied to the S3 bucket.
+1. **Reads the JSON policy from File system**: The script uses `json.load()` to read the bucket policy from the `bucketpolicy.json` file. This policy outlines the permissions that will be applied to the S3 bucket.
 
 2. **Converts the policy to a string**: The policy is converted into a string format using `json.dumps()`, as the `s3.put_bucket_policy()` function requires the policy to be passed as a JSON string.
 
 3. **Applies the policy to the S3 bucket**: The script uses `s3.put_bucket_policy()` to attach the policy to the specified S3 bucket (`24188516-cloudstorage`). This method takes in two key parameters:
    - **Bucket**: The name of the S3 bucket (`24188516-cloudstorage`).
    - **Policy**: The policy in JSON string format that will govern access to the bucket.
-
 
 Here’s the Python script to apply the policy:
 
@@ -1916,7 +1926,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0NDgwMTQxNCw4NTIzMTE4MzcsNDg4Nz
+eyJoaXN0b3J5IjpbMTA1MTkxODcwOCw4NTIzMTE4MzcsNDg4Nz
 A2NzYxLDg3NTY3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwt
 MjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3Mz
 M4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0x
