@@ -326,20 +326,30 @@ Once the command is executed, the instance is successfully created, and the **In
 The screenshots show the successful creation of the EC2 instance and the returned **InstanceId**.
 
 ### 5. Add a Tag to the Instance
-Now that we have the instance ID `i-0553e2ea0492e1c73`, we add a tag to name the instance. The tag key is `Name`, and the value is our student number followed by `-vm`, so the tag is `24188516-vm`.
+Now that we have the instance ID `i-0553e2ea0492e1c73`, we will add a tag to name the instance. The tag key will be `Name`, and the value will be our student number followed by `-vm` to uniquely identify the instance as `24188516-vm`.
 
 ```bash
 aws ec2 create-tags --resources i-0553e2ea0492e1c73 --tags Key=Name,Value=24188516-vm
 ```
 
+#### Key Parameters:
+- **`--resources`**: Specifies the ID of the resource to tag, in this case, the instance ID `i-0553e2ea0492e1c73`.
+- **`--tags`**: Defines the key-value pair for the tag. Here, the key is `Name`, and the value is `24188516-vm`, which labels the instance for identification purposes.
+
+Once the command is executed, the instance will be tagged with `24188516-vm`, making it easier to identify in the AWS console.
+
 ### 6. Get the Public IP Address
-To retrieve the public IP address of the instance, we use the `describe-instances` command. The query limits the output to only the `PublicIpAddress` of the instance:
+To retrieve the public IP address of the instance, we use the `describe-instances` command. The query extracts only the `PublicIpAddress` from the instance details:
 
 ```bash
 aws ec2 describe-instances --instance-ids i-0553e2ea0492e1c73 --query 'Reservations[0].Instances[0].PublicIpAddress'
 ```
 
-This IP address is needed for SSH access to the instance.
+#### Key Parameters:
+- **`--instance-ids`**: Specifies the instance ID, which is `i-0553e2ea0492e1c73` in this case.
+- **`--query`**: Limits the output to the `PublicIpAddress` of the instance, providing the required IP address for SSH access.
+
+This IP address is crucial for connecting to the instance via SSH.
 
 ![Public IP Address](http://127.0.0.1/assets/lab2-7.png)
 
@@ -349,6 +359,10 @@ Now, we connect to the instance using the public IP address `16.171.151.20` via 
 ```bash
 ssh -i 24188516-key.pem ubuntu@16.171.151.20
 ```
+
+#### Key Parameters: 
+- **`-i`**: Specifies the identity file (private key) to use for SSH authentication, which is `24188516-key.pem`.
+- **`ubuntu@16.171.151.20`**: Connects to the instance as the `ubuntu` user at the public IP address `16.171.151.20`.
 
 After connecting, we can see system information on the console, indicating that the connection was successful.
 
@@ -1652,11 +1666,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MTMxNTA2NjEsLTc3NzI3NTA1OSw1Mz
-UyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0
-OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5ND
-U3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAw
-OCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC
-05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQx
-NjUxNThdfQ==
+eyJoaXN0b3J5IjpbNDMxODM1ODQ4LC03NzcyNzUwNTksNTM1Mj
+M5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDks
+Mzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1Nz
+I3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgs
+MTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOT
+I4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1
+MTU4XX0=
 -->
