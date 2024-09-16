@@ -91,22 +91,31 @@ pip3 install boto3
 ![Install boto3](http://127.0.0.1/assets/lab1-10.png)
 
 
-## Test the installed environment
-### [1] Test the AWS environment
-To confirm that we are connected to the `AWS environment`, run a simple command which prints out the region table.
-`aws ec2 describe-regions --output table`
-![enter image description here](http://127.0.0.1/assets/lab1-11.png)
+## Test the Installed Environment
 
-### [2] Test the Python environment
-We executed a command offered by AWS-Cli in the terminal, now we want to test on the python environment to achive a similar goal:
+### 1. Test the AWS Environment
+To confirm that we are properly connected to the AWS environment, we run a simple command that prints out the region table. This helps us verify that our AWS CLI configuration is correct and functional:
+```bash
+aws ec2 describe-regions --output table
 ```
+
+This command queries the available regions in our AWS account and displays the information in a structured table format.
+
+![AWS Region Table](http://127.0.0.1/assets/lab1-11.png)
+
+### 2. Test the Python Environment
+After confirming the AWS CLI is working, we now test the Python environment using `boto3`, the AWS SDK for Python. Our goal is to achieve a similar output to the previous test but this time within the Python environment:
+```python
 python3
 >>> import boto3
 >>> ec2 = boto3.client('ec2')
 >>> response = ec2.describe_regions()
 >>> print(response)
 ```
-![enter image description here](http://127.0.0.1/assets/lab1-12.png)
+
+This code snippet connects to the EC2 service through `boto3` and retrieves the list of regions in JSON format, demonstrating that the Python environment is correctly set up to interact with AWS services.
+
+![Python Region Response](http://127.0.0.1/assets/lab1-12.png)
 
 ### [3] Write a Python script
 Now we create a python script to wrap these lines in one file and also format the reponse into table structure.
@@ -1154,7 +1163,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5OTQxMDc1NywtMTMyMjQxMjQ0OSwzOT
+eyJoaXN0b3J5IjpbLTI0NjI0NTU2MiwtMTMyMjQxMjQ0OSwzOT
 k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
 NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
 E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
