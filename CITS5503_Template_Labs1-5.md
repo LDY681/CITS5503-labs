@@ -1330,16 +1330,20 @@ if __name__ == "__main__":
 
 ### Code Explanation
 - **`boto3.client('kms')`**: Initializes a KMS client for interacting with the AWS Key Management Service.
+
 - **`kms.create_key()`**: Creates a new KMS key.
   - **`Policy`**: Specifies the access control policy (loaded from `kmspolicy.json`) that defines who can manage and use the key.
   - **`KeyUsage`**: Defines the purpose of the key, here set to `ENCRYPT_DECRYPT` for symmetric encryption and decryption.
   - **`Origin`**: Specifies the key material source, set to `AWS_KMS` to have AWS manage the key material.
+  
 - **`key_response['KeyMetadata']['KeyId']`**: Extracts the key ID from the response returned by `kms.create_key()`. The key ID uniquely identifies the key for future operations.
+
 - **`kms.create_alias()`**: Assigns a human-readable alias to the KMS key.
   - **`AliasName`**: Defines the alias for the key, here set to `alias/24188516`.
   - **`TargetKeyId`**: Specifies the key ID to which the alias is assigned.
 
 #### Output:
+
 Once the script is executed, a symmetric KMS key is created with the policy applied, and an alias (`alias/24188516`) is assigned to the key.
 
 ![KMS Key and Alias](http://localhost/assets/lab4-6.png)
@@ -1349,11 +1353,13 @@ Once the script is executed, a symmetric KMS key is created with the policy appl
 To verify that the script has successfully created the KMS key and applied the policy, follow these steps:
 
 #### 1. Check the KMS Key in the AWS Console
+
 Navigate to the **KMS service** in the AWS console. In the list of keys, you should see the newly created key with the alias `alias/24188516`. This confirms that the KMS key and alias have been successfully generated.
 
 ![KMS Key and Alias](http://localhost/assets/lab4-7.png)
 
 #### 2. Verify the Policy
+
 In the **Policy** section of the KMS key, you should see that the user `24188516@student.uwa.edu.au` has been assigned the roles of **Key Administrator** and **Key User**. This confirms that the policy from the `kmspolicy.json` file has been correctly applied to the key, granting the appropriate permissions to the IAM user.
 
 ![Policy Verification](http://localhost/assets/lab4-8.png)
@@ -1363,6 +1369,7 @@ In the **Policy** section of the KMS key, you should see that the user `24188516
 The following script, `cryptwithkms.py`, encrypts and decrypts files in the S3 bucket `24188516-cloudstorage` using the KMS key we created earlier (`alias/24188516`).
 
 ### Workflow:
+
 1. The script first calls **`process_files()`** to list all files in the specified S3 bucket:
    - Lists all files in the specified S3 bucket.
    - Iterates through each file, calling `encrypt_file()` for encryption and subsequent decryption.
@@ -1461,6 +1468,7 @@ if __name__ == "__main__":
 ![Encryption/Decryption Process](http://localhost/assets/lab4-9.png)
 
 #### Verify Results in the AWS S3 Console
+
 After running the script, you can verify the encrypted and decrypted files in the AWS S3 console. The original files will have additional encrypted and decrypted versions as shown below.
 
 ![S3 Encrypted Files](http://localhost/assets/lab4-10.png)
@@ -1904,11 +1912,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjk2NjY2MzI3LDQ4ODcwNjc2MSw4NzU2Nz
-Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
-Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
-Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
-NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
-Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
-fQ==
+eyJoaXN0b3J5IjpbLTc1MzgzNjcxMyw0ODg3MDY3NjEsODc1Nj
+c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
+LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
+E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
+MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
+g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
+XX0=
 -->
