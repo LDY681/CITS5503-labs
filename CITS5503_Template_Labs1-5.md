@@ -509,14 +509,15 @@ print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_r
    - **`Tags`**: Defines the key-value pairs for tagging. Here, the tag key is `Name` and the value is `24188516-vm-2`, which labels the instance for easier identification.
 
 7. **`ec2.describe_instances()`**:
-   - **`InstanceIds`**: Specifies the instance ID to describe 
+   - **`InstanceIds`**: Specifies the instance ID to describe details on.
 
 ### Output and Results
+
 Once the script is executed, the responses from each step are printed, showing the security group creation, key pair, instance ID, and public IP address.
 
 ![Script Output](http://127.0.0.1/assets/lab2-10.png)
 
-Let's verify the created instance in the AWS console:
+Let's verify the created instance in the AWS console as well:
 
 ![AWS Console Instance](http://127.0.0.1/assets/lab2-11.png)
 
@@ -524,6 +525,7 @@ Let's verify the created instance in the AWS console:
 ## Use Docker Inside a Linux OS
 
 ### 1. Install Docker
+
 To install Docker, we use the following command to install the necessary packages:
 
 ```bash
@@ -531,7 +533,7 @@ sudo apt install docker.io -y
 ```
 
 #### Key Parameters:
-- **`docker.io`**: Specifies the Docker package to install. This package includes the Docker engine and command-line tools.
+- **`docker.io`**: Specifies the Docker package to install.
 - **`-y`**: Automatically confirms the installation without prompting for user input.
 
 ### 2. Start the Docker Service
@@ -553,12 +555,13 @@ sudo systemctl enable docker
 ```
 
 #### Key Parameters:
-- **`enable`**: Configures Docker to start automatically when the system boots.
+- **`enable`**: Enables Docker to start automatically when the system boots.
 - **`docker`**: Specifies the Docker service to enable.
 
 ![Docker Installation](http://127.0.0.1/assets/lab2-12.png)
 
 ### 4. Check Docker Version
+
 To verify that Docker has been installed and is running properly, check its version using:
 
 ```bash
@@ -1886,11 +1889,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzkyMzgyMDY2LDQ4ODcwNjc2MSw4NzU2Nz
-Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
-Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
-Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
-NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
-Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
-fQ==
+eyJoaXN0b3J5IjpbMTEzNTIxMDQyNiw0ODg3MDY3NjEsODc1Nj
+c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
+LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
+E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
+MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
+g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
+XX0=
 -->
