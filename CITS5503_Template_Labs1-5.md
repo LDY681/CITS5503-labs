@@ -580,8 +580,8 @@ COPY ./html/ /usr/local/apache2/htdocs/
 ```
 
 #### Key Parameters:
-- **`FROM httpd:2.4`**: Specifies the base image for the container. In this case, it uses Apache HTTP Server version 2.4.
-- **`COPY ./html/ /usr/local/apache2/htdocs/`**: Copies the contents of the `html` directory from the local system into the container’s web server directory (`/usr/local/apache2/htdocs/`), making the `index.html` file accessible via the web server.
+- **`FROM`**: Specifies the base image for the container. In this case, it uses Apache HTTP Server version 2.4.
+- **`COPY`**: Copies the contents of the `html` directory from the local system into the container’s web server directory (`/usr/local/apache2/htdocs/`), making the `index.html` file accessible via the web server.
 
 #### Add User to Docker Group
 We add our username (`liudayubob`) to the Docker group to grant permission to manage Docker containers, then reboot the system:
@@ -591,7 +591,7 @@ sudo usermod -a -G docker liudayubob
 ```
 
 #### Key Parameters:
-- **`usermod -a -G docker`**: Adds the user `liudayubob` to the Docker group (`docker`), allowing them to manage Docker without using `sudo`.
+- **`usermod -a -G`**: Adds the user `liudayubob` to the Docker group (`docker`), allowing them to manage Docker without using `sudo`.
 
 #### Build the Docker Image
 Once the `Dockerfile` and `html` folder are in place, we build the Docker image using the following command:
@@ -1742,11 +1742,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI1NTE3NDE3MCwtMjIzNTIwMjk3LC03Nz
-cyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDks
-LTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0OD
-M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
-LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMT
-I1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcy
-MTU2XX0=
+eyJoaXN0b3J5IjpbNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3Nz
+I3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwt
+MTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4Mz
+UyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQs
+MTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMj
+UxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIx
+NTZdfQ==
 -->
