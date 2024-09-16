@@ -45,7 +45,9 @@ sudo apt -y upgrade
 
 ![Updating System](http://127.0.0.1/assets/lab1-5.png)
 
-Since upgrading packages involves modifying the system, administrative privileges are required. This is why we prefix the command with `sudo`. The first command `apt update` updates the package lists from **Apt** package management tool. These package lists contain references to the latest versions of packages. In the second command, we upgrade all installed packages to their latest versions based on the information fetched from the update command, `-y` automatically answers **YES** to any prompts that might appear during the upgrade process.
+Since upgrading packages involves modifying the system, administrative privileges are required. This is why we prefix the command with `sudo`. 
+-  `apt update` updates the package lists from **Apt** package management tool. These package lists contain references to the latest versions of packages. 
+-  `apt upgrade` upgrades all installed packages to their latest versions based on the information fetched from the update command, `-y` automatically answers **YES** to any prompts that might appear during the upgrade process.
 
 #### Verify Python Version
 Once updated, verify the version of Python installed by using the command:
@@ -1561,11 +1563,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTA1NzUwNCw1MzUyMzk0MzIsNTMzMT
-czMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIs
-LTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
-A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
-LC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLT
-E5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5
-ODk5MzZdfQ==
+eyJoaXN0b3J5IjpbLTE2MzE4MjgyOTEsNTM1MjM5NDMyLDUzMz
+E3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1Njky
+LC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1Mz
+MwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3
+MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC
+0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2
+OTg5OTM2XX0=
 -->
