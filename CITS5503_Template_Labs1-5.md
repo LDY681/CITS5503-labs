@@ -975,6 +975,18 @@ if __name__ == '__main__':
     write_to_table()
 ```
 
+### Code Explanation
+
+- **`s3.list_objects_v2()`**: Lists all objects in the specified S3 bucket.
+  - **`Bucket`**: Specifies the name of the bucket to retrieve the object list from, in this case, `24188516-cloudstorage`.
+  
+- **`s3.get_object_acl()`**: Retrieves the access control list (ACL) of the specified object to get details like the owner and permissions.
+  - **`Bucket`**: Specifies the S3 bucket name, `24188516-cloudstorage`.
+  - **`Key`**: Specifies the key (path) of the object for which the ACL is retrieved.
+
+- **`dynamodb_table.put_item()`**: Inserts an item into the DynamoDB table.
+  - **`Item`**: Specifies the attributes of the item to insert. In this case, it includes attributes like `userId`, `fileName`, `path`, `lastUpdated`, `owner`, and `permissions`.
+
 This script performs the following:
 1. Lists all files in the S3 bucket using `s3.list_objects_v2`.
 2. Retrieves owner and permission information using `s3.get_object_acl`.
@@ -983,29 +995,8 @@ This script performs the following:
 
 ![DynamoDB Write](http://localhost/assets/lab2-24.png)
 
-### 4. Print and Destroy the `CloudFiles` Table
 
-#### Print the Table
-We use the AWS CLI to scan and print the contents of the `CloudFiles` table. The following command retrieves all items in the table and displays them:
 
-```bash
-aws dynamodb scan --table-name CloudFiles --endpoint-url http://localhost:8001
-```
-
-This command prints the table structure, showing the data we inserted in the previous step.
-
-![DynamoDB Scan](http://localhost/assets/lab2-25.png)
-
-#### Destroy the Table
-To delete the `CloudFiles` table, we use the following AWS CLI command:
-
-```bash
-aws dynamodb delete-table --table-name CloudFiles --endpoint-url http://localhost:8001
-```
-
-This command deletes the table, removing all data and schema. Only the defined schema (partition key and sort key) will be printed before deletion.
-
-![DynamoDB Delete Table](http://localhost/assets/lab2-26.png)
 
 <div  style="page-break-after: always;"></div>
 
@@ -1806,11 +1797,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5NzY4OTI5MywtMTc4NTEwMDgyLDUxNz
-g2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMy
-LDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5Nj
-Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
-LDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxND
-k4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4Mzkz
-OTcxXX0=
+eyJoaXN0b3J5IjpbODExOTU2MjY0LC0xNzg1MTAwODIsNTE3OD
+Y4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1OSw1MzUyMzk0MzIs
+NTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2Nj
+U2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEs
+MTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OT
+g3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5
+NzFdfQ==
 -->
