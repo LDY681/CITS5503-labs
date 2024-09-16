@@ -1294,14 +1294,11 @@ if __name__ == "__main__":
 
 ### Code Explanation
 - **`boto3.client('kms')`**: Initializes a KMS client for interacting with the AWS Key Management Service.
-  
 - **`kms.create_key()`**: Creates a new KMS key.
   - **`Policy`**: Specifies the access control policy (loaded from `kmspolicy.json`) that defines who can manage and use the key.
   - **`KeyUsage`**: Defines the purpose of the key, here set to `ENCRYPT_DECRYPT` for symmetric encryption and decryption.
   - **`Origin`**: Specifies the key material source, set to `AWS_KMS` to have AWS manage the key material.
-
 - **`key_response['KeyMetadata']['KeyId']`**: Extracts the key ID from the response returned by `kms.create_key()`. The key ID uniquely identifies the key for future operations.
-
 - **`kms.create_alias()`**: Assigns a human-readable alias to the KMS key.
   - **`AliasName`**: Defines the alias for the key, here set to `alias/24188516`.
   - **`TargetKeyId`**: Specifies the key ID to which the alias is assigned.
@@ -1325,100 +1322,7 @@ In the **Policy** section of the KMS key, you should see that the user `24188516
 
 ![Policy Verification](http://localhost/assets/lab4-8.png)
 
-### Key Points:
-- **KMS Key Creation**: The key is successfully created with the alias `alias/24188516`.
-- **Policy Application**: The IAM user `24188516@student.uwa.edu.au` is assigned as both the **Key Administrator** and **Key User**, confirming the policy has been applied correctly.
-
-### 4. Use the Created KMS Key for Encryption/Decryption
-
-The following script, `cryptwithkms.py`, encrypts and decrypts files in the S3 bucket `24188516-cloudstorage` using the KMS key we created earlier (`alias/24188516`).
-
-#### Workflow:
-1. The script first lists all files in the specified S3 bucket.
-2. For each file, the **`encrypt_file()`** function retrieves the file content from S3, encrypts it using the specified KMS key, and uploads the encrypted file back to the bucket with a new key that appends `.encrypted` to the original file name.
-3. After encrypting the file, it calls the **`decrypt_file()`** function to decrypt the file content and uploads the decrypted file back to the bucket with a new key that appends `.decrypted` to the encrypted file name.
-
-Here’s the Python script:
-
-```python
-# cryptwithkms.py
-import boto3
-
-s3 = boto3.client('s3')
-kms = boto3.client('kms')
-
-BUCKET_NAME = "24188516-cloudstorage"
-KMS_KEY = "alias/24188516"
-
-def encrypt_file(file_key):
-    # Get the file from bucket and read its content
-    s3_object = s3.get_object(Bucket=BUCKET_NAME, Key=file_key)
-    file_content = s3_object['Body'].read()
-
-    # Encrypt the file content using KMS
-    encrypt_res = kms.encrypt(
-        KeyId=KMS_KEY,
-        Plaintext=file_content
-    )
-    file_body = encrypt_res['CiphertextBlob']
-    encrypt_file_key = f"{file_key}.encrypted"
-
-    # Upload the encrypted file back to the bucket
-    s3.put_object(Bucket=BUCKET_NAME, Key=encrypt_file_key, Body=file_body)
-    print(f"File encrypted as: {encrypt_file_key} with content: \n{file_body}\n")
-    
-    # After encrypting, decrypt the file
-    decrypt_file(encrypt_file_key)
-
-def decrypt_file(file_key):
-    # Get the encrypted file from the bucket and read its content
-    s3_object = s3.get_object(Bucket=BUCKET_NAME, Key=file_key)
-    file_content = s3_object['Body'].read()
-
-    # Decrypt the file content using KMS
-    decrypt_res = kms.decrypt(
-        KeyId=KMS_KEY,
-        CiphertextBlob=file_content
-    )
-    plain_text = decrypt_res['Plaintext']
-    file_body = plain_text.decode('utf-8')  # Convert plain text bytes to a regular string
-    decrypted_file_key = f"{file_key}.decrypted"
-
-    # Upload the decrypted content back to the bucket
-    s3.put_object(Bucket=BUCKET_NAME, Key=decrypted_file_key, Body=file_body)
-    print(f"File decrypted as: {decrypted_file_key} with content: \n{file_body}\n")
-
-def process_files(BUCKET_NAME, KMS_KEY):
-    # List all files in the bucket
-    response = s3.list_objects_v2(Bucket=BUCKET_NAME)
-
-    if 'Contents' in response:
-        for obj in response['Contents']:
-            key = obj['Key']
-            encrypt_file(key)
-
-if __name__ == "__main__":
-    process_files(BUCKET_NAME, KMS_KEY)
-```
-
-#### Explanation of the Script:
-1. **`encrypt_file(file_key)`**:
-   - Retrieves the file from the S3 bucket using `s3.get_object()`.
-   - Encrypts the file content using the KMS key with `kms.encrypt()`.
-   - Uploads the encrypted content back to the bucket with a new key that appends `.encrypted` to the original file name.
-   - Calls `decrypt_file()` to decrypt the encrypted file.
-
-2. **`decrypt_file(file_key)`**:
-   - Retrieves the encrypted file from the bucket using `s3.get_object()`.
-   - Decrypts the file content using the KMS key with `kms.decrypt()`.
-   - Converts the decrypted content from bytes to a regular string using `.decode('utf-8')`.
-   - Uploads the decrypted content back to the bucket with a new key that appends `.decrypted` to the encrypted file name.
-
-3. **`process_files(BUCKET_NAME, KMS_KEY)`**:
-   - Lists all files in the specified S3 bucket.
-   - Iterates through each file, calling `encrypt_file()` for encryption and subsequent decryption.
-
-![Encryption/Decryption Process](http://localhost/assets/lab4-9.png)
+TODO
 
 #### Verify Results in the AWS S3 Console
 After running the script, you can verify the encrypted and decrypted files in the AWS S3 console. The original files will have additional encrypted and decrypted versions as shown below.
@@ -1841,11 +1745,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODE4NDk5MjUzLC0xNzg1MTAwODIsNTE3OD
-Y4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1OSw1MzUyMzk0MzIs
-NTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2Nj
-U2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEs
-MTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OT
-g3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5
-NzFdfQ==
+eyJoaXN0b3J5IjpbMTE4ODkwMDg5MCwtMTc4NTEwMDgyLDUxNz
+g2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMy
+LDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5Nj
+Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
+LDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxND
+k4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4Mzkz
+OTcxXX0=
 -->
