@@ -470,7 +470,7 @@ print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_r
 
    This function generates a new key pair and returns the private key. The private key (`KeyMaterial`) is stored securely in a `.pem` file for later SSH access.
 
-4. **file.write()**:
+4. **`file.write()`**:
    - The private key is saved to a `.pem` file using Python’s built-in `open()` function, and **`os.chmod()`** is used to set the file’s permission to `400` (read-only for the owner), ensuring the file is secure and can only be read by the owner.
 
 5. **`ec2.run_instances()`**:
@@ -493,9 +493,6 @@ print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_r
 
    This function retrieves details about the instance, including the public IP address, which is necessary for SSH access.
 
-8. **Printing Results**:
-   - Finally, the script prints all responses, including the security group creation, key pair creation, instance ID, and public IP address for review.
-
 ### Output and Results
 Once the script is executed, the responses from each step are printed, showing the security group creation, key pair, instance ID, and public IP address.
 
@@ -505,37 +502,58 @@ Let's verify the created instance in the AWS console:
 
 ![AWS Console Instance](http://127.0.0.1/assets/lab2-11.png)
 
+
 ## Use Docker Inside a Linux OS
 
 ### 1. Install Docker
-To install Docker, we first run the following command to install the necessary packages for the Docker service:
+To install Docker, we use the following command to install the necessary packages:
+
 ```bash
 sudo apt install docker.io -y
 ```
 
+#### Key Parameters:
+- **`docker.io`**: Specifies the Docker package to install. This package includes the Docker engine and command-line tools.
+- **`-y`**: Automatically confirms the installation without prompting for user input.
+
 ### 2. Start the Docker Service
-After installation, we start the Docker service with:
+After installation, we start the Docker service to make it ready for use:
+
 ```bash
 sudo systemctl start docker
 ```
 
+#### Key Parameters:
+- **`start`**: Tells the system to start the Docker service.
+- **`docker`**: Specifies the Docker service to start.
+
 ### 3. Enable Docker to Start on Boot
-To ensure Docker starts automatically at boot, we enable it using:
+To ensure Docker starts automatically whenever the system boots, we enable the Docker service with:
+
 ```bash
 sudo systemctl enable docker
 ```
 
+#### Key Parameters:
+- **`enable`**: Configures Docker to start automatically when the system boots.
+- **`docker`**: Specifies the Docker service to enable.
+
 ![Docker Installation](http://127.0.0.1/assets/lab2-12.png)
 
 ### 4. Check Docker Version
-After the Docker service is installed and enabled, we can verify that Docker is working properly by checking its version:
+To verify that Docker has been installed and is running properly, check its version using:
+
 ```bash
 docker --version
 ```
 
-This command prints out the installed version of Docker, confirming that it's functional.
+#### Key Parameters:
+- **`--version`**: Prints the installed Docker version, confirming that Docker is functional.
+
+This command outputs the installed Docker version, ensuring that Docker is ready to use.
 
 ![Docker Version Check](http://127.0.0.1/assets/lab2-13.png)
+
 
 ### 5. Build and Run an `httpd` Container
 Next, we create an HTML file to be served via an Apache HTTP server running inside a Docker container. The file `index.html` is located inside the `html` directory and contains the following content:
@@ -1706,7 +1724,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwMjI4NjE1MCwtMjIzNTIwMjk3LC03Nz
+eyJoaXN0b3J5IjpbMTY4MjUzMDY0NywtMjIzNTIwMjk3LC03Nz
 cyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDks
 LTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0OD
 M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
