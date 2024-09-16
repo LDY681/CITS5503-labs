@@ -255,17 +255,13 @@ aws ec2 create-security-group --group-name 24188516-sg --description "security g
   
 - **`--description`**: Provides a human-readable description of the security group’s purpose. Here, we describe it as "security group for development environment" to indicate the group will be used for development purposes.
 
-Once executed, this command will create the security group and return the **GroupId**, which is a unique identifier for the newly created security group. Copy this **GroupId** because it will be used in future commands when modifying or referencing the security group.
+Once executed, this command will create the security group and return the **GroupId**, which is a unique identifier for the newly created security group. Keep this **GroupId** because we will use it for future commands when creating our EC2 instance and etc.
 
 ![Create Security Group](http://127.0.0.1/assets/lab2-1.png)
 
-The screenshot shows the output of the command, displaying the **GroupId** for the newly created security group.
-
-
-
 ### 2. Authorize Inbound Traffic for SSH
 
-Now that the security group is created, we need to add a rule to allow inbound SSH traffic. This is necessary to enable secure access to our EC2 instances using the SSH protocol on port 22.
+Now that the security group is created, we need to add a rule to allow inbound SSH traffic. This step enables secure access to our EC2 instances using the SSH protocol on port 22.
 
 The following command authorizes inbound traffic for SSH:
 
@@ -1883,11 +1879,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzE0MDQ2OTY2LDQ4ODcwNjc2MSw4NzU2Nz
-Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
-Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
-Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
-NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
-Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
-fQ==
+eyJoaXN0b3J5IjpbLTE2NzU1MTAwNzksNDg4NzA2NzYxLDg3NT
+Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
+LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
+cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
+LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
+Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
+NV19
 -->
