@@ -188,11 +188,11 @@ print(regions_df)
 ```
 
 
-- **`boto3 as bt`**: Import `boto3`, aliased as `bt`.
-- **`pandas as pd`**: Import `pandas`, aliased as `pd`.
-- **`ec2 = bt.client('ec2')`**: Connect to the EC2 service.
-- **`response = ec2.describe_regions()`**: Retrieve the available AWS regions.
-- **`pd.DataFrame(regions)`**: Convert the regions data into a pandas DataFrame for structured output.
+- **`boto3 as bt`**: Imports `boto3`, aliased as `bt`.
+- **`pandas as pd`**: Imports `pandas`, aliased as `pd`.
+- **`ec2 = bt.client('ec2')`**: Initializes a client for the EC2 service, allowing us to make requests to EC2, such as querying regions, starting instances, etc.
+- **`response = ec2.describe_regions()`**: Queries the EC2 service to retrieve a list of available AWS regions. It returns the data in JSON format.
+- **`pd.DataFrame(regions)`**: Converts the regions data into a pandas DataFrame for structured output.
 
 #### (3) Run the Script
 To execute the Python script, use the following command:
@@ -223,11 +223,15 @@ After running the Python script, the results are printed in a table format. The 
 | 15 | ec2.us-west-1.amazonaws.com | us-west-1 | opt-in-not-required |
 | 16 | ec2.us-west-2.amazonaws.com | us-west-2 | opt-in-not-required |
 
+#### Key Parameters:
+
 - **Endpoint**: Indicates a public URL of the AWS service (EC2) for each region. It’s the endpoint through which API calls are routed for that specific region.
+
 - **RegionName**: Represents the region code for each AWS region. In the future labs, we will be using `eu-north-1` for the European North region .
+
 - **OptInStatus**: Shows the status of whether a region requires users to opt-in before using it. `opt-in-not-required` means that the region is generally available for all AWS users.
 
-This table helps verify the connection to AWS and confirms that the Python environment is correctly configured to retrieve information from AWS services.
+This table helps verify the connection to AWS and confirms that our Python environment is correctly configured to retrieve information from AWS services.
 
 <div  style="page-break-after: always;"></div>
 
@@ -1879,11 +1883,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ3NzUzMTY4OSw0ODg3MDY3NjEsODc1Nj
-c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
-LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
-E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
-MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
-g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
-XX0=
+eyJoaXN0b3J5IjpbLTEzMjU3NDE4MzEsNDg4NzA2NzYxLDg3NT
+Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
+LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
+cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
+LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
+Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
+NV19
 -->
