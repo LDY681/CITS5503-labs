@@ -673,6 +673,7 @@ We begin by creating the required files and directories. The following file stru
 
 ![File Structure](http://127.0.0.1/assets/lab2-18.png)
 
+
 ### 2. Save to S3 by Updating `cloudstorage.py`
 The `cloudstorage.py` script is modified to create an S3 bucket named `24188516-cloudstorage` if it doesn’t already exist. The script then traverses all directories and subdirectories in the root directory and uploads any discovered files to the S3 bucket.
 
@@ -714,21 +715,25 @@ print("done")
 
 ### Code Explanation
 
-- **`boto3.client()`**: Initializes the S3 client using the `boto3` library to interact with Amazon S3.
-- **`s3.create_bucket()`**: Attempts to create an S3 bucket named `24188516-cloudstorage`. The **`LocationConstraint`** is set to `eu-north-1`, ensuring the bucket is created in the desired region.
+- **`s3.create_bucket()`**: Attempts to create an S3 bucket.
+  - **`Bucket`**: Specifies the name of the bucket to be created, which is `24188516-cloudstorage`.
+  - **`CreateBucketConfiguration`**: Defines configuration options for the bucket. In this case, we set the `LocationConstraint` to `eu-north-1`, which places the bucket in the specified AWS region.
+ 
 - **`os.walk()`**: Recursively traverses through the root directory (`.`) and subdirectories, finding all files to be uploaded.
+
 - **`upload_file()`**: Uploads a file to the S3 bucket. The function uses the following parameters:
   - **`folder_name`**: The folder path relative to the root directory.
   - **`file`**: The full file path of the file to upload.
   - **`file_name`**: The name of the file being uploaded.
 - **`s3.upload_file()`**: Uploads the file to the S3 bucket. It accepts the following parameters:
   - **`file`**: The local path to the file to upload.
-  - **`ROOT_S3_DIR`**: The name of the destination S3 bucket, `24188516-cloudstorage`.
+  - **`Bucket`**: Specifies the destination S3 bucket, `24188516-cloudstorage`.
   - **`file_name`**: The key under which the file is stored in the S3 bucket, formed by concatenating the folder path and file name.
 
 The method **`s3.upload_file()`** ensures the file is uploaded to the correct location in S3, maintaining the local directory structure.
 
 ![S3 Upload](http://localhost/assets/lab2-19.png)
+
 
 ### 3. Restore from S3
 We create a new program, `restorefromcloud.py`, to restore files from the S3 bucket and write them to the appropriate directories. The program uses `s3.list_objects_v2` to list all files in the S3 bucket and their attributes (e.g., **Key, Name**). 
@@ -1774,11 +1779,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExOTc2OTExMzMsNTE3ODY4MzQwLC0yMj
-M1MjAyOTcsLTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2
-LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExOD
-cwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0
-Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNT
-Q5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcx
-Mjk1Nl19
+eyJoaXN0b3J5IjpbMTY4OTMxNTA4MCw1MTc4NjgzNDAsLTIyMz
+UyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYs
+NDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4Nz
+A3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQz
+LDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1ND
+k4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEy
+OTU2XX0=
 -->
