@@ -1154,12 +1154,14 @@ As expected, when trying to access the bucket resources under the user `24188516
 
 The following JSON file, `kmspolicy.json`, defines the access control policy to be attached to the KMS (Key Management Service) key. This policy grants permissions to both the root account and the IAM user (`24188516@student.uwa.edu.au`), ensuring appropriate access levels for key management and cryptographic operations.
 
-#### Key Aspects of the Policy:
-- **Root Account Permissions**: Grants full access (`kms:*`) to the root account (`arn:aws:iam::489389878001:root`) for all KMS operations on all resources.
-- **Key Management for IAM User**: The IAM user (`24188516@student.uwa.edu.au`) is granted permissions to perform key management tasks such as **creating, describing, enabling, disabling, tagging, and deleting keys**.
-- **Cryptographic Operations**: The IAM user can use the key for cryptographic functions like **encrypting, decrypting, re-encrypting, and generating data keys**.
-- **Grant Management**: Allows the IAM user to manage grants (e.g., **creating, listing, and revoking** grants) for the key, but only when the grant is for an AWS resource (`kms:GrantIsForAWSResource`).
-
+#### Breakdown of the Policy:
+- **Version**: `"2012-10-17"` – This version of the policy language is required for policy documents.
+- **Statements**: The policy contains four main statements:
+  1. **Root Account Permissions**: Grants the root account full access to KMS operations.
+  2. **Key Administrators**: Grants the IAM user permissions for key management tasks.
+  3. **Use of the Key**: Grants the IAM user permissions for encryption, decryption, and other cryptographic operations.
+  4. **Grant Management**: Allows the IAM user to manage grants, ensuring the grants are for AWS resources.
+ 
 Here’s the full JSON policy:
 
 ```json
@@ -1238,13 +1240,11 @@ Here’s the full JSON policy:
 }
 ```
 
-#### Breakdown of the Policy:
-- **Version**: `"2012-10-17"` – This version of the policy language is required for policy documents.
-- **Statements**: The policy contains four main statements:
-  1. **Root Account Permissions**: Grants the root account full access to KMS operations.
-  2. **Key Administrators**: Grants the IAM user permissions for key management tasks.
-  3. **Use of the Key**: Grants the IAM user permissions for encryption, decryption, and other cryptographic operations.
-  4. **Grant Management**: Allows the IAM user to manage grants, ensuring the grants are for AWS resources.
+#### Key Aspects of the Policy:
+- **Root Account Permissions**: Grants full access (`kms:*`) to the root account (`arn:aws:iam::489389878001:root`) for all KMS operations on all resources.
+- **Key Management for IAM User**: The IAM user (`24188516@student.uwa.edu.au`) is granted permissions to perform key management tasks such as **creating, describing, enabling, disabling, tagging, and deleting keys**.
+- **Cryptographic Operations**: The IAM user can use the key for cryptographic functions like **encrypting, decrypting, re-encrypting, and generating data keys**.
+- **Grant Management**: Allows the IAM user to manage grants (e.g., **creating, listing, and revoking** grants) for the key, but only when the grant is for an AWS resource (`kms:GrantIsForAWSResource`).
 
 This policy ensures secure management of the KMS key, allowing only authorized users to perform key management and cryptographic operations.
 
@@ -1835,7 +1835,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI4NjU1OTA2NiwtMTc4NTEwMDgyLDUxNz
+eyJoaXN0b3J5IjpbMTg0NzQ0NTQ1MCwtMTc4NTEwMDgyLDUxNz
 g2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMy
 LDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5Nj
 Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
