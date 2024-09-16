@@ -1642,9 +1642,9 @@ Answer:
 
 ### 1-2. Create 2 EC2 Instances & Add Application Load Balancer
 
-In this section, we will replicate some of the steps from **Lab 2** to create two EC2 instances, but with a few changes to accommodate the new resources for **Lab 5**. We append the suffix `lab5` to resource names like **security group** and **key pair** to differentiate them from the resources in **Lab 2**.
+In this section, we will replicate some of the steps from **Lab 2** to create two EC2 instances, with a few changes to accommodate the new resources for **Lab 5**. We will append the suffix `-lab5` to resource names like **security group** and **key pair** to differentiate them from the resources in **Lab 2**.
 
-#### Key Changes compared to Lab 2:
+#### Key Changes added on top of Lab 2:
 - **Subnets and Availability Zones**: We will create the two EC2 instances in different **availability zones** by using `ec2.describe_subnets()` to fetch the subnets, and specifying the **SubnetId** parameter when launching the EC2 instances.
 - **Load Balancer and Target Group**: 
   - **Create Load Balancer**: Using `elbv2.create_load_balancer()` with the required subnets, security groups, and settings.
@@ -1652,7 +1652,7 @@ In this section, we will replicate some of the steps from **Lab 2** to create tw
   - **Register Targets**: Register the EC2 instances to the load balancer target group.
   - **Create Listener**: Set up a listener to forward HTTP traffic from **port 80** to the **target group**.
 
-#### Python Script for Automation:
+This is the python script applied these changes:
 
 ```python
 import boto3 as bt
@@ -1907,7 +1907,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjk5NTc5NTE3LDQ4ODcwNjc2MSw4NzU2Nz
+eyJoaXN0b3J5IjpbNTU1ODQzMjIwLDQ4ODcwNjc2MSw4NzU2Nz
 Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
 Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
 Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
