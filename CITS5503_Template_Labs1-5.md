@@ -1332,7 +1332,7 @@ The following script, `cryptwithkms.py`, encrypts and decrypts files in the S3 b
 3. After encrypting the file, it calls the **`decrypt_file()`** function to decrypt the file content and uploads the decrypted file back to the bucket with a new key that appends `.decrypted` to the encrypted file name.
 
 ### Workflow Explanation
-1. **`encrypt_file(file_key)`**:
+1. The script first lists all files in the specified S3 bucket, for each file call **`encrypt_file(file_key)`**:
    - Retrieves the file from the S3 bucket using `s3.get_object()`.
    - Encrypts the file content using the KMS key with `kms.encrypt()`.
    - Uploads the encrypted content back to the bucket with a new key that appends `.encrypted` to the original file name.
@@ -1853,7 +1853,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzMTM2NzI1OCwtMTc4NTEwMDgyLDUxNz
+eyJoaXN0b3J5IjpbMTI0ODg2NTI2NywtMTc4NTEwMDgyLDUxNz
 g2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMy
 LDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5Nj
 Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
