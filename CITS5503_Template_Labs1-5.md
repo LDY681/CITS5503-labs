@@ -463,92 +463,104 @@ These commands stop the `my-app` container and then remove it from the system.
 
 <div  style="page-break-after: always;"></div>
 
+
 # Lab 3
-### [1] Preparation
-Files and directories are created as required, this is the following file structure with three files `cloudstorage.py`, `rootfile.txt` and `subfile.txt`
-![enter image description here](http://127.0.0.1/assets/lab2-18.png)
 
-### [2] Save to S3 by updating `cloudstorage.py`
-The modified  `cloudstorage.py` is as followed, it will create an S3 bucket named `24188516-cloudstorage` if not existed, then traverse through all the directories and subdirectories in the root directory, and submit any discovered files to the `24188516-cloudstorage` bucket.
+### 1. Preparation
+We begin by creating the required files and directories. The following file structure contains three files: `cloudstorage.py`, `rootfile.txt`, and `subfile.txt`.
 
-```
+![File Structure](http://127.0.0.1/assets/lab2-18.png)
+
+### 2. Save to S3 by Updating `cloudstorage.py`
+The `cloudstorage.py` script is modified to create an S3 bucket named `24188516-cloudstorage` if it doesn’t already exist. The script then traverses through all directories and subdirectories in the root directory and uploads any discovered files to the S3 bucket.
+
+```python
 import os
 import boto3
-import base64
 
-ROOT_DIR =  '.'
-ROOT_S3_DIR =  '24188516-cloudstorage'
+ROOT_DIR = '.'
+ROOT_S3_DIR = '24188516-cloudstorage'
 s3 = boto3.client("s3")
 
 bucket_config = {'LocationConstraint': 'eu-north-1'}
+
 def upload_file(folder_name, file, file_name):
-	file_key = os.path.join(folder_name, file_name).replace("\\", "/")
-	s3.upload_file(file, ROOT_S3_DIR, file_name) # file path, bucket name, key
-	print("Uploading %s"  %  file)
+    file_key = os.path.join(folder_name, file_name).replace("\\", "/")
+    s3.upload_file(file, ROOT_S3_DIR, file_name)  # file path, bucket name, key
+    print(f"Uploading {file}")
 
 # Main program
-# Insert code to create bucket if not there
 try:
-	response = s3.create_bucket(
-		Bucket=ROOT_S3_DIR,
-		CreateBucketConfiguration=bucket_config
-	)
-	print("Bucket created: $s"  % response)
-except  Exception  as error:
-	print("Bucket creation failed: %s"  % error)
-	pass
+    # Create bucket if not there
+    response = s3.create_bucket(
+        Bucket=ROOT_S3_DIR,
+        CreateBucketConfiguration=bucket_config
+    )
+    print(f"Bucket created: {response}")
+except Exception as error:
+    print(f"Bucket creation failed: {error}")
+    pass
 
-# parse directory and upload files
+# Traverse directory and upload files
 for dir_name, subdir_list, file_list in os.walk(ROOT_DIR, topdown=True):
-	if dir_name != ROOT_DIR:
-		for fname in file_list:
-			upload_file("%s/"  % dir_name[2:], "%s/%s"  % (dir_name, fname), fname)
+    if dir_name != ROOT_DIR:
+        for fname in file_list:
+            upload_file(f"{dir_name[2:]}/", f"{dir_name}/{fname}", fname)
+
 print("done")
 ```
 
-The `s3.upload_file` methods takes in three parameters: **File path, Bucket name, File key**. We will concat both the *folder_name* and *file_name* as the file key, this way the file will be uploaded to the same file structure as our local machine.
+The method `s3.upload_file()` accepts three parameters: **File path**, **Bucket name**, and **File key**. We concatenate both the *folder_name* and *file_name* to form the file key, ensuring the file is uploaded with the same directory structure as our local machine.
 
-![enter image description here](http://localhost/assets/lab2-19.png)
+![S3 Upload](http://localhost/assets/lab2-19.png)
 
-### [3] Restore from S3
-Create a new program called `restorefromcloud.py` that reads the S3 bucket and writes the contents of the bucket within the appropriate directories.
-`s3.list_objects_v2` will print all the files in the bucket along with their attributes such as **Key, Name**, etc. Join the local **ROOT_TARGET_DIR** with **Key** to form the local **local_file_path **. Check if local directory exists with `os.path.exists()`, if not create is with `os.makedirs()`, after that we can call `s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)` with 3 parameters **Bucket, Key, Filename** to download the remote copy to corresponding local directory.
-```
-import  os
-import  boto3
+### 3. Restore from S3
+We create a new program, `restorefromcloud.py`, to restore files from the S3 bucket and write them to the appropriate directories. The program uses `s3.list_objects_v2` to list all files in the S3 bucket and their attributes (e.g., **Key, Name**). 
 
-ROOT_TARGET_DIR  =  '.'  # Root directory where files will be restored to
-ROOT_S3_DIR  =  '24188516-cloudstorage'
-s3  =  boto3.client("s3")
+We join the local **ROOT_TARGET_DIR** with the **Key** to form the local file path. If the local directory doesn't exist, we create it using `os.makedirs()`. Finally, we download each file from the S3 bucket using `s3.download_file()` with the parameters **Bucket**, **Key**, and **Filename**.
 
-def  download_file(s3_key, local_file_path):
-	local_dir  =  os.path.dirname(local_file_path)
-	# Ensure the local directory exists
-	if  not  os.path.exists(local_dir):
-		print(f"Create directory {local_dir}")
-		os.makedirs(local_dir)
+```python
+import os
+import boto3
 
-	# Download the file
-	s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)
-	print(f"Downloading {s3_key} to {local_file_path}")
+ROOT_TARGET_DIR = '.'  # Root directory where files will be restored
+ROOT_S3_DIR = '24188516-cloudstorage'
+s3 = boto3.client("s3")
+
+def download_file(s3_key, local_file_path):
+    local_dir = os.path.dirname(local_file_path)
+    
+    # Ensure the local directory exists
+    if not os.path.exists(local_dir):
+        print(f"Creating directory {local_dir}")
+        os.makedirs(local_dir)
+
+    # Download the file
+    s3.download_file(ROOT_S3_DIR, s3_key, local_file_path)
+    print(f"Downloading {s3_key} to {local_file_path}")
 
 # Main program
 # List all objects in the S3 bucket
-objects  =  s3.list_objects_v2(Bucket=ROOT_S3_DIR)
+objects = s3.list_objects_v2(Bucket=ROOT_S3_DIR)
 
-if  'Contents'  in  objects:
-	for  obj  in  objects['Contents']:
-		s3_key  =  obj['Key']
-		local_file_path  =  os.path.join(ROOT_TARGET_DIR, s3_key).replace("/", os.path.sep)
-		# Download the file from S3 to the corresponding local path
-		download_file(s3_key, local_file_path)
+if 'Contents' in objects:
+    for obj in objects['Contents']:
+        s3_key = obj['Key']
+        local_file_path = os.path.join(ROOT_TARGET_DIR, s3_key).replace("/", os.path.sep)
+        
+        # Download the file from S3 to the corresponding local path
+        download_file(s3_key, local_file_path)
 else:
-	print("No objects found in the bucket.")
-	pass
-	
+    print("No objects found in the bucket.")
+    pass
+
 print("done")
 ```
-![enter image description here](http://localhost/assets/lab2-20.png)
+
+This script traverses the S3 bucket, restoring files to the local directory in the same structure they were uploaded.
+
+![S3 Restore](http://localhost/assets/lab2-20.png)
+
 
 ### [4] Write information about files to DynamoDB
 
@@ -1229,11 +1241,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OT
-Y2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0
-MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMT
-Q5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5
-Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OC
-wtMTc2Njk4OTkzNiwtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0
-MTM1MDQ5NTNdfQ==
+eyJoaXN0b3J5IjpbNTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMj
+QxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQy
+Myw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0Nz
+EzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYx
+NDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLT
+E3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIw
+NzQyMTc3OF19
 -->
