@@ -562,88 +562,101 @@ This script traverses the S3 bucket, restoring files to the local directory in t
 ![S3 Restore](http://localhost/assets/lab2-20.png)
 
 
-### [4] Write information about files to DynamoDB
 
- 1. Install DynamoDB
+### 4. Write Information About Files to DynamoDB
 
-Create and jump into the dynamodb directory. Then install **JRE** and **DynamoDB** package and extract the tarball files on our lab3 folder. Once the DynamoDB package is extracted, there will be a java compiled code `DynamoDBLocal.jar` and a folder with libraries `DynamoDBLocal_lib`, which we use to run the DynamoDB instance.
-```
+#### 1. Install DynamoDB
+First, we create and navigate into the `dynamodb` directory. We then install **JRE** and the **DynamoDB** package, extracting the necessary files for local use. Once extracted, we have the compiled Java code `DynamoDBLocal.jar` and a folder containing libraries `DynamoDBLocal_lib`, which we use to run a local DynamoDB instance.
+
+```bash
 mkdir dynamodb
 cd dynamodb
 
-# install jre
+# Install JRE
 sudo apt-get install default-jre
-# install dynamodb
+
+# Download DynamoDB package
 wget https://s3-ap-northeast-1.amazonaws.com/dynamodb-local-tokyo/dynamodb_local_latest.tar.gz
 
-# unzip dynamodb
+# Extract DynamoDB
 tar -zxvf dynamodb_local_latest.tar.gz
 ```
-![enter image description here](http://localhost/assets/lab2-21.png)
 
-Start DynamoDBLocal instance on JRE environment, I will specify the `-port` number to **8001** since 8000 was already taken for other tasks on my machine. The `-sharedDb` parameter instructs to create a single database file named _shared-local-instance.db_. Every program that connects to DynamoDB accesses this file
-```
+![DynamoDB Extraction](http://localhost/assets/lab2-21.png)
+
+Next, we start the DynamoDB instance locally using **JRE**. We specify the port as **8001** since **8000** is already in use. The `-sharedDb` flag creates a single database file, `_shared-local-instance.db`, which is accessed by all programs connecting to DynamoDB.
+
+```bash
 java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb -port 8001
 ```
-![enter image description here](http://localhost/assets/lab2-22.png)
 
-2. Create table in DynamoDB
-Create a `databaseoperation.py` script to create the table on DynamoDB, with the following attributes, where `userId` is the partition key and `fileName` is the sort key. `KeyType` indicates `HASH` for Partition key and `RANGE` for sort key. `AttributeName ` and `AttributeType` specify the name and the type of each attribute in the table.
- 
- **Because DynamoDB is a schema-free database, attributes can be added directly when inserting items into the table, we don't need to declare 'path', 'lastUpdated', 'owner', 'permissions' to comply with AWS's coding standards**
- 
-```
-# database schema
+![Start DynamoDB](http://localhost/assets/lab2-22.png)
+
+#### 2. Create a Table in DynamoDB
+We then create a Python script, `createtable.py`, to define a table named `CloudFiles` in DynamoDB. The table uses `userId` as the partition key and `fileName` as the sort key. We define the keys using `KeyType` (`HASH` for partition key and `RANGE` for sort key), while `AttributeName` and `AttributeType` specify the attributes' names and types.
+
+Although DynamoDB is schema-free, meaning attributes like `path`, `lastUpdated`, `owner`, and `permissions` don't need to be predefined, we include them for future use when inserting items into the table.
+
+Here’s the table schema:
+```python
+# Database schema
 CloudFiles = {
-	'userId',
-	'fileName',
-	'path',
-	'lastUpdated',
-	'owner',
-	'permissions'
+    'userId',
+    'fileName',
+    'path',
+    'lastUpdated',
+    'owner',
+    'permissions'
 }
 ```
-```
+
+Here’s the script to create the table:
+```python
 # createtable.py
-import  boto3
+import boto3
 
-def  create_db_table():
-# initialize dynamodb service instance
-dynamodb  =  boto3.resource('dynamodb', endpoint_url="http://localhost:8001")
-table  =  dynamodb.create_table(
-	TableName='CloudFiles',
-	KeySchema=[
-		{
-		'AttributeName': 'userId',
-		'KeyType': 'HASH'  # Partition key
-		},
-		{
-		'AttributeName': 'fileName',
-		'KeyType': 'RANGE'  # Sort key
-		}
-	],
+def create_db_table():
+    # Initialize DynamoDB service instance
+    dynamodb = boto3.resource('dynamodb', endpoint_url="http://localhost:8001")
+    
+    table = dynamodb.create_table(
+        TableName='CloudFiles',
+        KeySchema=[
+            {
+                'AttributeName': 'userId',
+                'KeyType': 'HASH'  # Partition key
+            },
+            {
+                'AttributeName': 'fileName',
+                'KeyType': 'RANGE'  # Sort key
+            }
+        ],
+        AttributeDefinitions=[
+            {
+                'AttributeName': 'userId',
+                'AttributeType': 'S'  # String type
+            },
+            {
+                'AttributeName': 'fileName',
+                'AttributeType': 'S'  # String type
+            }
+        ],
+        ProvisionedThroughput={
+            'ReadCapacityUnits': 1,
+            'WriteCapacityUnits': 1
+        }
+    )
+    
+    print("Table status:", table.table_status)
 
-	AttributeDefinitions=[
-		{
-		'AttributeName': 'userId',
-		'AttributeType': 'S'
-		},
-		{
-		'AttributeName': 'fileName',
-		'AttributeType': 'S'
-		}
-	],
-	ProvisionedThroughput={
-		'ReadCapacityUnits': 1,
-		'WriteCapacityUnits': 1
-	}
-)
-print("Table status:", table.table_status)
-
-if  __name__  ==  '__main__':
-	create_db_table()
+if __name__ == '__main__':
+    create_db_table()
 ```
-![enter image description here](http://localhost/assets/lab2-23.png)
+
+This script connects to the local DynamoDB instance running on port **8001** and creates the `CloudFiles` table with the specified schema. It prints the table's status after creation.
+
+![Create DynamoDB Table](http://localhost/assets/lab2-23.png)
+
 
 3. Write data into the `CloudFiles` table
 In this case, we will first use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket, the object in `s3.list_objects_v2()` contains **Key** and **LastModified**, to get extra attributes on **Owner, Permission**, we would do an extra call on `s3.get_object_acl` where these information can be found under **Grants** and **Owner** attributes. After we successfully extra all neccessary attributes, call `dynamodb_table.put_item()` to insert each object into the database. Because my region is in `eu-north-1`, we will fill owner Id into the owner field.
@@ -1241,11 +1254,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMj
-QxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQy
-Myw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0Nz
-EzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYx
-NDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLT
-E3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIw
-NzQyMTc3OF19
+eyJoaXN0b3J5IjpbLTIxNjM0MjAxLDUzMzE3MzM4Niw0MzA3NT
+cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
+LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
+Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
+NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNj
+k2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3
+MDkyNjQwXX0=
 -->
