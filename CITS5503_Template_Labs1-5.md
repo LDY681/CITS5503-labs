@@ -972,19 +972,92 @@ Here’s the full JSON policy:
 
 This policy is critical for securely managing the KMS key, ensuring that only authorized users can perform key management and cryptographic operations.
 
+### 2. Attach a Policy to the Created KMS Key
 
+In this step, we create a symmetric encryption KMS key and apply the policy from the `kmspolicy.json` file that was defined earlier. The KMS key is specified for encryption and decryption purposes. After the key is created, we assign an alias using the student's ID, following the format `alias/*`, which results in `alias/24188516`.
 
-### [3] Check whether the script works
-Go to the KMS service in AWS console, as you can see the key is created with the alias of `24188516`, in the policy section,  	we can see that user 24188516@student.uwa.edu.au has been granted as the **Key Administrator** and **Key User**.
-![enter image description here](http://localhost/assets/lab4-7.png)
-![enter image description here](http://localhost/assets/lab4-8.png)
+Here’s the Python script that performs these operations:
 
-### [4] Use the created KMS key for encryption/decryption
-- The following code in `cryptwithkms.py` first lists all the files in the specified S3 bucket `24188516-cloudstorage` and then Iterates over the list of files and calls **encrypt_file()** for each file with certain key.
-- Inside **encrypt_file()** function, it retrieves the file content from `s3.get_object()`, encrypts the file content using the specified KMS key with `kms.encrypt()`. The result is returned in **CiphertextBlob** and we upload the encrypted content back to the bucket with a new key that appends _.encrypted_ to the original file name. After uploading the encrypted file, it calls the `decrypt_file()` function to decrypt the encrypted entity.
-- Inside **decrypt_file()** function, it retrieves the file content in the same way, then we decrypt encrypted file content with `kms.decrypt()`. The result is the original **Plaintext Bytestring**. We shall convert the bytestring result into a regular string with `.decode('utf-8')`, then the decrypted content is uploaded back to the bucket with a new key that appends _.decrypted_ to the encrypted file name.
+```python
+import boto3
+import json
 
+STUDENT_NUMBER = '24188516'
+
+def create_kms_key():
+    # Import the policy from the JSON file
+    with open('kmspolicy.json', 'r') as policy_file:
+        policy = json.load(policy_file)
+
+    # Create a new KMS key with the imported policy
+    kms = boto3.client('kms')
+    key_response = kms.create_key(
+        Policy=json.dumps(policy),
+        KeyUsage='ENCRYPT_DECRYPT',
+        Origin='AWS_KMS'
+    )
+    
+    # Extract the KeyId from the response
+    key_id = key_response['KeyMetadata']['KeyId']
+
+    # Create an alias for the KMS key using the student number
+    alias_name = f'alias/{STUDENT_NUMBER}'
+    alias_response = kms.create_alias(
+        AliasName=alias_name,
+        TargetKeyId=key_id
+    )
+    
+    print(f"Key and alias generated successfully!")
+
+if __name__ == "__main__":
+    create_kms_key()
 ```
+
+#### Explanation of the Script:
+1. **Policy Import**: The `kmspolicy.json` file is loaded using `json.load()` and converted into a string using `json.dumps()`. This policy defines the permissions for both the root account and the IAM user (`24188516@student.uwa.edu.au`).
+2. **Create KMS Key**: A new KMS key is created using `kms.create_key()`. The key is specified for encryption and decryption with the `KeyUsage='ENCRYPT_DECRYPT'` parameter.
+3. **Key ID**: The response from the `create_key()` call contains metadata, including the `KeyId`, which we extract for further use.
+4. **Create Alias**: The `kms.create_alias()` function creates an alias for the newly generated KMS key. The alias follows the format `alias/24188516` where `24188516` is the student's ID.
+
+#### Output:
+Once the script is executed, a symmetric KMS key is created with the policy applied, and an alias (`alias/24188516`) is assigned to the key.
+
+![KMS Key and Alias](http://localhost/assets/lab4-6.png)
+
+### Key Points:
+- **KMS Key Creation**: The key is created specifically for encryption and decryption operations.
+- **Alias Assignment**: The alias `alias/24188516` provides a human-readable reference to the key, simplifying future key management.
+
+### 3. Check Whether the Script Works
+
+To verify that the script has successfully created the KMS key and applied the policy, follow these steps:
+
+#### 1. Check the KMS Key in the AWS Console
+Navigate to the **KMS service** in the AWS console. In the list of keys, you should see the newly created key with the alias `alias/24188516`. This confirms that the KMS key and alias have been successfully generated.
+
+![KMS Key and Alias](http://localhost/assets/lab4-7.png)
+
+#### 2. Verify the Policy
+In the **Policy** section of the KMS key, you should see that the user `24188516@student.uwa.edu.au` has been assigned the roles of **Key Administrator** and **Key User**. This confirms that the policy from the `kmspolicy.json` file has been correctly applied to the key, granting the appropriate permissions to the IAM user.
+
+![Policy Verification](http://localhost/assets/lab4-8.png)
+
+### Key Points:
+- **KMS Key Creation**: The key is successfully created with the alias `alias/24188516`.
+- **Policy Application**: The IAM user `24188516@student.uwa.edu.au` is assigned as both the **Key Administrator** and **Key User**, confirming the policy has been applied correctly.
+
+### 4. Use the Created KMS Key for Encryption/Decryption
+
+The following script, `cryptwithkms.py`, encrypts and decrypts files in the S3 bucket `24188516-cloudstorage` using the KMS key we created earlier (`alias/24188516`).
+
+#### Workflow:
+1. The script first lists all files in the specified S3 bucket.
+2. For each file, the **`encrypt_file()`** function retrieves the file content from S3, encrypts it using the specified KMS key, and uploads the encrypted file back to the bucket with a new key that appends `.encrypted` to the original file name.
+3. After encrypting the file, it calls the **`decrypt_file()`** function to decrypt the file content and uploads the decrypted file back to the bucket with a new key that appends `.decrypted` to the encrypted file name.
+
+Here’s the Python script:
+
+```python
 # cryptwithkms.py
 import boto3
 
@@ -995,7 +1068,7 @@ BUCKET_NAME = "24188516-cloudstorage"
 KMS_KEY = "alias/24188516"
 
 def encrypt_file(file_key):
-    # Get the file from bucket and read content
+    # Get the file from bucket and read its content
     s3_object = s3.get_object(Bucket=BUCKET_NAME, Key=file_key)
     file_content = s3_object['Body'].read()
 
@@ -1007,15 +1080,15 @@ def encrypt_file(file_key):
     file_body = encrypt_res['CiphertextBlob']
     encrypt_file_key = f"{file_key}.encrypted"
 
-    # Add the encrypted file to bucket
+    # Upload the encrypted file back to the bucket
     s3.put_object(Bucket=BUCKET_NAME, Key=encrypt_file_key, Body=file_body)
-    print("File encrypted as: ", encrypt_file_key, "with content: \n", file_body, "\n")
+    print(f"File encrypted as: {encrypt_file_key} with content: \n{file_body}\n")
     
-	# After encrypted file is uploaded, try to decrypt it
+    # After encrypting, decrypt the file
     decrypt_file(encrypt_file_key)
 
 def decrypt_file(file_key):
-    # Get the encrypted file from bucket and read content
+    # Get the encrypted file from the bucket and read its content
     s3_object = s3.get_object(Bucket=BUCKET_NAME, Key=file_key)
     file_content = s3_object['Body'].read()
 
@@ -1025,12 +1098,12 @@ def decrypt_file(file_key):
         CiphertextBlob=file_content
     )
     plain_text = decrypt_res['Plaintext']
-    file_body = plain_text.decode('utf-8') #convert plain text bytes to a regular string
+    file_body = plain_text.decode('utf-8')  # Convert plain text bytes to a regular string
     decrypted_file_key = f"{file_key}.decrypted"
 
-    # Upload the decrypted content back to S3
+    # Upload the decrypted content back to the bucket
     s3.put_object(Bucket=BUCKET_NAME, Key=decrypted_file_key, Body=file_body)
-    print("File encrypted as: ", decrypted_file_key, "with content: \n", file_body, "\n")
+    print(f"File decrypted as: {decrypted_file_key} with content: \n{file_body}\n")
 
 def process_files(BUCKET_NAME, KMS_KEY):
     # List all files in the bucket
@@ -1044,10 +1117,35 @@ def process_files(BUCKET_NAME, KMS_KEY):
 if __name__ == "__main__":
     process_files(BUCKET_NAME, KMS_KEY)
 ```
-![enter image description here](http://localhost/assets/lab4-9.png)
 
-Now we can verify the result in AWS S3 console.
-![enter image description here](http://localhost/assets/lab4-10.png)![enter image description here](http://localhost/assets/lab4-11.png)
+#### Explanation of the Script:
+1. **`encrypt_file(file_key)`**:
+   - Retrieves the file from the S3 bucket using `s3.get_object()`.
+   - Encrypts the file content using the KMS key with `kms.encrypt()`.
+   - Uploads the encrypted content back to the bucket with a new key that appends `.encrypted` to the original file name.
+   - Calls `decrypt_file()` to decrypt the encrypted file.
+
+2. **`decrypt_file(file_key)`**:
+   - Retrieves the encrypted file from the bucket using `s3.get_object()`.
+   - Decrypts the file content using the KMS key with `kms.decrypt()`.
+   - Converts the decrypted content from bytes to a regular string using `.decode('utf-8')`.
+   - Uploads the decrypted content back to the bucket with a new key that appends `.decrypted` to the encrypted file name.
+
+3. **`process_files(BUCKET_NAME, KMS_KEY)`**:
+   - Lists all files in the specified S3 bucket.
+   - Iterates through each file, calling `encrypt_file()` for encryption and subsequent decryption.
+
+![Encryption/Decryption Process](http://localhost/assets/lab4-9.png)
+
+#### Verify Results in the AWS S3 Console
+After running the script, you can verify the encrypted and decrypted files in the AWS S3 console. The original files will have additional encrypted and decrypted versions as shown below.
+
+![S3 Encrypted Files](http://localhost/assets/lab4-10.png)
+![S3 Decrypted Files](http://localhost/assets/lab4-11.png)
+
+### Key Points:
+- **Encryption/Decryption**: The script successfully encrypts files using KMS and decrypts them, both operations being performed on files stored in the S3 bucket.
+- **File Naming**: The encrypted and decrypted files are stored with `.encrypted` and `.decrypted` appended to their original names, making it easy to track each file's status.
 
 ### [5] Apply `pycryptodome` for encryption/decryption
 Because AWS KMS also uses [AES with 256 bits-long](https://docs.aws.amazon.com/crypto/latest/userguide/awscryp-service-kms.html#awscryp-service-kms-using-and-managing), let's do the same with `pycryptodome`.
@@ -1307,11 +1405,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5MzE4MDc2NTQsNTMzMTczMzg2LDQzMD
-c1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4
-MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1ND
-E3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcx
-Mzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Ni
-w2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEw
-ODcwOTI2NDBdfQ==
+eyJoaXN0b3J5IjpbLTM1ODAwNzk0OCw1MzMxNzMzODYsNDMwNz
+U3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgw
+OSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MT
+c0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEz
+OTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LD
+Y5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4
+NzA5MjY0MF19
 -->
