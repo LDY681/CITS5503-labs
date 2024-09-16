@@ -14,7 +14,7 @@ To start with, I received an email with the initial login credentials for my IAM
 This step grants access to the AWS Management Console, which provides all necessary resources and services for managing AWS infrastructure.
 
 ### [2] Access Identity and Access Management (IAM)
-After logging in, I . Once opened, I clicked on the top-right user panel to access `Security Credentials`.
+After logging in, I saw a clickable with my IAM user and Account ID information on the top-right corner. Once opened, I clicked on the top-right user panel to access `Security Credentials`.
 Clicked on the top-right panel to access `security cridentials`
 ![enter image description here](http://127.0.0.1/assets/lab1-2.png)
 
@@ -1120,11 +1120,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDIxMzE0NjUsMzk5NjY1NjkyLC0xMTg3MD
-cxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMs
-NTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OT
-g3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5
-NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC
-0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEy
-ODc1ODA0XX0=
+eyJoaXN0b3J5IjpbLTEzMzg1MTcwNzMsMzk5NjY1NjkyLC0xMT
+g3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1
+NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMT
+U0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3
+MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OT
+M2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1Mywt
+MTEyODc1ODA0XX0=
 -->
