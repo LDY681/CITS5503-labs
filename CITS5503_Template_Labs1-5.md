@@ -1816,6 +1816,7 @@ print(f"Target Group ARN: {TargetGroupArn}")
    - **DefaultActions**: Forwards traffic to the target group.
 
 #### Verify in the AWS Console:
+
 After the script is executed, you can verify the creation of the **load balancer** and **target group** in the AWS console.
 
 ![Load Balancer Created](http://localhost/assets/lab5-2.png)
@@ -1830,7 +1831,7 @@ The public IPv4 addresses for both EC2 instances are recorded for verification.
 
 In this step, we will SSH into the EC2 instances to install Apache and start the web server, allowing us to see the load balancer in action.
 
-#### Use Putty to Connect to EC2 Instances
+> Use Putty to Connect to EC2 Instances
 Since we are using Windows and Putty as our SSH client, we need to convert the private key (`24188516-key-lab5.pem`) to **PPK format** for Putty to use.
 
 #### 1. Convert PEM Key to PPK Format
@@ -1907,11 +1908,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExODg2MTMxMjgsNDg4NzA2NzYxLDg3NT
-Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
-LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
-cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
-LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
-Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
-NV19
+eyJoaXN0b3J5IjpbLTg5MjcxNDMyNCw0ODg3MDY3NjEsODc1Nj
+c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
+LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
+E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
+MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
+g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
+XX0=
 -->
