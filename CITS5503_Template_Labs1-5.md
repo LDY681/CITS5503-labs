@@ -1100,7 +1100,7 @@ This JSON policy ensures that any user attempting to access the bucket, who is n
 
 Since the policy parameter in `s3.put_bucket_policy()` only accepts a JSON string, we load the JSON policy from `bucketpolicy.json`, convert it into a string using `json.dumps()`, and then apply it to the bucket using `s3.put_bucket_policy()`.
 
-> ### Workflow:
+### Workflow:
 
 This script does the following:
 1. Reads the JSON policy from `bucketpolicy.json`.
@@ -1149,9 +1149,11 @@ if __name__ == '__main__':
 ![Applying S3 Bucket Policy](http://localhost/assets/lab4-1.png)
 
 ### 2. Check Whether the Script Works
+
 After applying the bucket policy, we test to ensure that the policy is working as intended.
 
 #### Verify the Policy Using AWS CLI
+
 To check whether the policy has been applied to the `24188516-cloudstorage` bucket, we use the following AWS CLI command:
 
 ```bash
@@ -1167,16 +1169,17 @@ This command retrieves the policy attached to the S3 bucket and outputs it in pl
 
 ![Policy Check with AWS CLI](http://localhost/assets/lab4-2.png)
 
-
 #### Visual Confirmation via AWS Console
 Next, we navigate to the AWS console to visually confirm that the policy is in place for the `24188516-cloudstorage` bucket. The console should display the same policy, with the conditions we set for restricting access based on the username.
 
 ![Policy Check in AWS Console](http://localhost/assets/lab4-3.png)
 
 #### Test Denied Access with Incorrect Username
+
 To test whether the policy is correctly restricting access, we deliberately alter the username in the policy. For example, we change the username condition to only allow access to `12345678@student.uwa.edu.au`, effectively denying access to the current user `24188516@student.uwa.edu.au`.
 
 ![Denied Access](http://localhost/assets/lab4-4.png)
+
 ![Access Denied](http://localhost/assets/lab4-5.png)
 
 As expected, when trying to access the bucket resources under the user `24188516@student.uwa.edu.au`, the access is denied.
@@ -1901,7 +1904,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTc5NDY1MzU1LDQ4ODcwNjc2MSw4NzU2Nz
+eyJoaXN0b3J5IjpbNjk2NjY2MzI3LDQ4ODcwNjc2MSw4NzU2Nz
 Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
 Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
 Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
