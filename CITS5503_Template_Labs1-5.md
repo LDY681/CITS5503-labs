@@ -630,7 +630,7 @@ docker build -t my-apache2 .
 - **`-t`**: Tags the image with the name `my-apache2` for easy reference.
 - **`.`**: Specifies the build context, indicating the current directory (where the `Dockerfile` and `html` folder are located).
 
-This command builds the Docker image alias as `my-apache2`, preparing it to run an Apache server that serves the `index.html` file.
+This command builds the Docker image alias as `my-apache2`, preparing it to run the Apache server that serves the `index.html` file.
 
 ![Docker Build](http://127.0.0.1/assets/lab2-14.png)
 
@@ -652,7 +652,8 @@ This command starts the Apache server inside the container, serving the HTML con
 ![Docker Run](http://127.0.0.1/assets/lab2-15.png)
 
 #### Access the Hosted HTML Page
-To view the hosted HTML page, open a browser and navigate to `http://localhost` or `http://127.0.0.1`. The browser will display the "Hello, World!" message from the `index.html` file served by the Apache HTTP server inside the Docker container.
+
+To view the hosted HTML page, open a browser and navigate to `http://localhost` or `http://127.0.0.1`. The browser will display the **"Hello, World!"** message from the `index.html` file served by the Apache HTTP server inside the Docker container.
 
 ![Docker Webpage](http://127.0.0.1/assets/lab2-16.png)
 
@@ -675,6 +676,7 @@ This command displays the properties of the containers, such as **Container ID**
 ![Docker ps -a](http://127.0.0.1/assets/lab2-17.png)
 
 #### Stop and Remove the Container
+
 To stop and remove the running container, use the following commands:
 ```bash
 docker stop my-app
@@ -686,8 +688,6 @@ docker rm my-app
 - **`rm`**: Removes the container from the system.
 
 These commands stop the `my-app` container and then remove it from the system.
-
-
 <div  style="page-break-after: always;"></div>
 
 
@@ -1893,11 +1893,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQ2NDk2NDUwLDQ4ODcwNjc2MSw4NzU2Nz
-Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
-Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
-Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
-NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
-Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
-fQ==
+eyJoaXN0b3J5IjpbLTIwNzgwMDI4ODAsNDg4NzA2NzYxLDg3NT
+Y3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3
+LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
+cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
+LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
+Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
+NV19
 -->
