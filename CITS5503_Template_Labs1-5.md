@@ -317,7 +317,8 @@ Now, let's create an EC2 instance using the `aws ec2 run-instances` command. Sin
 aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 24188516-sg --count 1 --instance-type t3.micro --key-name 24188516-key --query 'Instances[0].InstanceId'
 ```
 
-> At the time of running the lab, the **t2.micro** instance type was not available, so we switched to **t3.micro**. The instance was successfully created with the instance ID `i-0553e2ea0492e1c73`.
+***Note:***
+> At the time of running the lab, the **t2.micro** instance type was not available, so I switched to **t3.micro**. The instance was successfully created with the instance ID `i-0553e2ea0492e1c73`.
 
 #### Key Parameters:
 - **`--image-id`**: Specifies the Amazon Machine Image (AMI) ID to be used for the instance. In this case, `ami-07a0715df72e58928` is used, refers to a pre-configured image for this class.
@@ -332,9 +333,8 @@ Once the command is executed, the instance is successfully created, and the **In
 ![Create EC2 Instance](http://127.0.0.1/assets/lab2-6.png)
 ![Instance ID](http://127.0.0.1/assets/lab2-5.png)
 
-The screenshots show the successful creation of the EC2 instance and the returned **InstanceId**.
-
 ### 5. Add a Tag to the Instance
+
 Now that we have the instance ID `i-0553e2ea0492e1c73`, we will add a tag to name the instance. The tag key will be `Name`, and the value will be our student number followed by `-vm` to uniquely identify the instance as `24188516-vm`.
 
 ```bash
@@ -348,6 +348,7 @@ aws ec2 create-tags --resources i-0553e2ea0492e1c73 --tags Key=Name,Value=241885
 Once the command is executed, the instance will be tagged with `24188516-vm`, making it easier to identify in the AWS console.
 
 ### 6. Get the Public IP Address
+
 To retrieve the public IP address of the instance, we use the `describe-instances` command. The query extracts only the `PublicIpAddress` from the instance details:
 
 ```bash
@@ -1877,7 +1878,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEwMDAwMDQ1NCw0ODg3MDY3NjEsODc1Nj
+eyJoaXN0b3J5IjpbMTE1Njg4MzU3Miw0ODg3MDY3NjEsODc1Nj
 c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
 LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
 E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
