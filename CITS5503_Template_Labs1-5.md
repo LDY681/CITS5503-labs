@@ -821,17 +821,18 @@ java -Djava.library.path=./DynamoDBLocal_lib -jar DynamoDBLocal.jar –sharedDb 
 ```
 
 #### Key Parameters:
-- **`-Djava.library.path=./DynamoDBLocal_lib`**: Specifies the path to the required native libraries for running DynamoDB locally.
-- **`-jar DynamoDBLocal.jar`**: Indicates the JAR file that contains the DynamoDB local service.
+- **`-Djava.library.path`**: Specifies the path to the required native libraries for running DynamoDB locally, which is `./DynamoDBLocal_lib`.
+- **`-jar`**: Indicates the JAR file `DynamoDBLocal.jar` that contains the DynamoDB local service.
 - **`-sharedDb`**: Configures DynamoDB to use a single shared database file (`_shared-local-instance.db`).
-- **`-port 8001`**: Specifies that the service should listen on port 8001.
+- **`-port`**: Specifies that the service should listen on port 8001.
 
 ![Start DynamoDB](http://localhost/assets/lab2-22.png)
 
-#### 2. Create a Table in DynamoDB
-We then create a Python script, `createtable.py`, to define a table named `CloudFiles` in DynamoDB. The table uses `userId` as the partition key and `fileName` as the sort key. We define the keys using `KeyType` (`HASH` for partition key and `RANGE` for sort key), while `AttributeName` and `AttributeType` specify the attributes' names and types.
 
-Although DynamoDB is schema-free, meaning attributes like `path`, `lastUpdated`, `owner`, and `permissions` don't need to be predefined, we include them for future use when inserting items into the table.
+#### 2. Create a Table in DynamoDB
+We create a Python script, `createtable.py`, to define a table named `CloudFiles` in DynamoDB. The table uses `userId` as the partition key and `fileName` as the sort key. We define the keys using `KeyType` (`HASH` for partition key and `RANGE` for sort key), while `AttributeName` and `AttributeType` specify the attributes' names and types.
+
+Although DynamoDB is schema-free, attributes like `path`, `lastUpdated`, `owner`, and `permissions` don’t need to be predefined in the table schema, but they can be added later when inserting items into the table.
 
 Here’s the table schema:
 ```python
@@ -889,11 +890,22 @@ if __name__ == '__main__':
     create_db_table()
 ```
 
-This script connects to the local DynamoDB instance running on port **8001** and creates the `CloudFiles` table with the specified schema. It prints the table's status after creation.
+### Code Explanation
+
+- **`boto3.resource("dynamodb")`**: Initializes a DynamoDB resource instance, allowing interaction with the DynamoDB service. We specify `endpoint_url="http://localhost:8001"` to connect to the local DynamoDB instance running on port **8001**.
+  
+- **`dynamodb.create_table()`**: Creates a new table in DynamoDB.
+  - **`TableName`**: Specifies the name of the table, here `CloudFiles`.
+  - **`KeySchema`**: Defines the partition key and sort key for the table:
+    - **`AttributeName`**: Specifies the name of the attribute. We use `userId` for the partition key and `fileName` for the sort key.
+    - **`KeyType`**: Specifies whether the attribute is a partition key (`HASH`) or a sort key (`RANGE`).
+  - **`AttributeDefinitions`**: Specifies the types of attributes used in the key schema:
+    - **`AttributeType`**: Defines the type of the attribute. In this case, both `userId` and `fileName` are of type `S` (string).
+  - **`ProvisionedThroughput`**: Defines the read and write capacity for the table. Here, both read and write capacity are set to 1.
+
+The script connects to the local DynamoDB instance, creates the `CloudFiles` table, and prints the table status after creation.
 
 ![Create DynamoDB Table](http://localhost/assets/lab2-23.png)
-
-
 
 ### 3. Write Data into the `CloudFiles` Table
 In this step, we write data into the `CloudFiles` table. First, we use `s3.list_objects_v2()` to list all files in the `24188516-cloudstorage` bucket. The output contains attributes such as **Key** and **LastModified**. To retrieve additional information like **Owner** and **Permissions**, we make a separate call to `s3.get_object_acl()`, which provides these details under the **Grants** and **Owner** attributes.
@@ -1794,11 +1806,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyOTEzNjMwMzksLTE3ODUxMDA4Miw1MT
-c4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQz
-Miw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OT
-Y2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0
-MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMT
-Q5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5
-Mzk3MV19
+eyJoaXN0b3J5IjpbMTI5NzY4OTI5MywtMTc4NTEwMDgyLDUxNz
+g2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMy
+LDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5Nj
+Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
+LDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxND
+k4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4Mzkz
+OTcxXX0=
 -->
