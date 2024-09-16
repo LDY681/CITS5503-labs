@@ -60,22 +60,18 @@ python3 -V
 - **`python3`**: This specifies that we are checking the version of Python 3.x.
 - **`-V`**: Outputs the installed Python version.
 
-The output should display something like:
-```bash
-Python 3.10.12
-```
-This verifies that Python 3.10.12 is installed.
+The output verifies that Python 3.10.12 is installed.
 
 ![Check Python Version](http://127.0.0.1/assets/lab1-6.png)
 
 #### Install pip3
-To install and manage Python libraries, use **pip3**. Install it with:
+To install and manage Python libraries, use **pip**. Install it with:
 
 ```bash
 sudo apt install -y python3-pip
 ```
 
-- **`python3-pip`**: Installs pip for Python 3, which is essential for installing third-party Python packages.
+- **`python3-pip`**: Installs pip for Python 3 specifically, which is essential for installing third-party Python packages.
 
 Once installed, you can use `pip3` to install and manage Python packages.
 
@@ -1577,11 +1573,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTAzMTY4ODQwLDUzNTIzOTQzMiw1MzMxNz
-MzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5Miwt
-MTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMD
-Q4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEs
-LTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMT
-k1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4
-OTkzNl19
+eyJoaXN0b3J5IjpbLTY1MjQwMDY5NCw1MzUyMzk0MzIsNTMzMT
+czMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIs
+LTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
+A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
+LC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLT
+E5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5
+ODk5MzZdfQ==
 -->
