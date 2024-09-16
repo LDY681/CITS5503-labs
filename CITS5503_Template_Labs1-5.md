@@ -362,7 +362,7 @@ ssh -i 24188516-key.pem ubuntu@16.171.151.20
 
 #### Key Parameters: 
 - **`-i`**: Specifies the identity file (private key) to use for SSH authentication, which is `24188516-key.pem`.
-- **`ubuntu@16.171.151.20`**: Connects to the instance as the `ubuntu` user at the public IP address `16.171.151.20`.
+- **`ubuntu@16.171.151.20`**: Connects to the instance as the `ubuntu` user, which is the default username.
 
 After connecting, we can see system information on the console, indicating that the connection was successful.
 
@@ -375,10 +375,10 @@ The original instance created in steps 1-7 was destroyed overnight, so I had to 
 
 ## Create an EC2 Instance with Python Boto3
 
-In this step, we create an EC2 instance using the **boto3** Python package instead of AWS CLI commands. Although some method names and parameters differ, the result is the same as in the previous steps. To differentiate from the previous instance, we append `'-2'` to the **Group name**, **Key name**, and **Instance name**.
+In this step, we create an EC2 instance using the **boto3** Python package instead of AWS CLI commands. Although some method names and parameters differ, the result is the same as in the previous steps. To differentiate from the previous instance, we append `-2` to the **Group name**, **Key name**, and **Instance name**.
 
 ### Python Script
-The following Python script uses `boto3` to create the EC2 instance, security group, key pair, and instance tags:
+The following Python script uses `boto3` to create the EC2 **instance, security group, key pair, and instance tag**:
 
 ```python
 import boto3 as bt
@@ -1666,11 +1666,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMxODM1ODQ4LC03NzcyNzUwNTksNTM1Mj
-M5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDks
-Mzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1Nz
-I3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgs
-MTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOT
-I4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1
-MTU4XX0=
+eyJoaXN0b3J5IjpbLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNT
+IzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5
+LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NT
+cyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4
+LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLT
+kyODM5Mzk3MSwtMTk1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2
+NTE1OF19
 -->
