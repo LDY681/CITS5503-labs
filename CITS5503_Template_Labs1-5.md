@@ -172,7 +172,7 @@ We use the `pandas` library to convert un-tabulated data into a structured table
 pip install pandas
 ```
 
-#### (2) Code Explanation
+#### (2) Create a script
 
 The code in this  script adds an extra step. After retrieving the region data from AWS, we pass the response into a `pandas` dataframe to format and print the output in a table structure.
 
@@ -187,6 +187,7 @@ regions_df = pd.DataFrame(regions)
 print(regions_df)
 ```
 
+### Code explanation
 
 - **`boto3 as bt`**: Imports `boto3`, aliased as `bt`.
 - **`pandas as pd`**: Imports `pandas`, aliased as `pd`.
@@ -1186,6 +1187,7 @@ if __name__ == '__main__':
 ```
 
 ### Code Explanation
+
 - **`boto3.client('s3')`**: Initializes an S3 client for interacting with the S3 service.
   
 - **`json.load()`**: Reads and parses the `bucketpolicy.json` file into a Python dictionary.
@@ -1325,7 +1327,7 @@ Here’s the full JSON policy:
 }
 ```
 
-#### Code Explanation:
+#### Code Explanation
 - **Statement 1**: Grants full access (`kms:*`) to the root account (`arn:aws:iam::489389878001:root`) for all KMS operations on all resources.
 
 - **Statement 2**: The IAM user (`24188516@student.uwa.edu.au`) is granted permissions to perform key management tasks such as **creating, describing, enabling, disabling, tagging, and deleting** keys (`kms:Create`,`kms:Describe`,`kms:Enable`,`kms:List`,`kms:Put`,`kms:Update`,`kms:Revoke`,`kms:Disable`,`kms:Get`,
@@ -1650,7 +1652,7 @@ if __name__ == "__main__":
     process_files(BUCKET_NAME)
 ```
 
-### Code Explanation:
+### Code Explanation
 1. **`get_random_bytes()`**: This function generates a secure random byte sequence to use as the AES encryption key. In this case, we generate 32 bytes (256 bits) to match the AWS KMS key length.
   
 2. **`AES.new(AES_KEY, AES.MODE_EAX)`**: Initializes a new AES cipher object in EAX mode using the generated AES key. EAX mode provides both encryption and authentication, ensuring data integrity during decryption.
@@ -1823,7 +1825,7 @@ print(f"Load Balancer ARN: {LoadBalancerArn}")
 print(f"Target Group ARN: {TargetGroupArn}")
 ```
 
-### Code Explanation:
+### Code Explanation
 
 1. **`ec2.create_security_group()`**: Creates a new security group.
    - **GroupName**: Specifies the name of the security group, which is `24188516-sg-lab5`.
@@ -1960,11 +1962,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTM2NTcyNzM0LDEwNTE5MTg3MDgsODUyMz
-ExODM3LDQ4ODcwNjc2MSw4NzU2NzQ3NDEsLTE3ODUxMDA4Miw1
-MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOT
-QzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5
-OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNz
-Y0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4XX0=
+eyJoaXN0b3J5IjpbMTEzMDc4MTk2MSwxMDUxOTE4NzA4LDg1Mj
+MxMTgzNyw0ODg3MDY3NjEsODc1Njc0NzQxLC0xNzg1MTAwODIs
+NTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1OSw1MzUyMz
+k0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwz
+OTk2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mj
+c2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOF19
 
 -->
