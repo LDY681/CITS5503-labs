@@ -1776,7 +1776,6 @@ print(f"Target Group ARN: {TargetGroupArn}")
    - **Port**: Listens on port `80`.
    - **DefaultActions**: Forwards traffic to the target group.
 
-
 #### Verify in the AWS Console:
 After the script is executed, you can verify the creation of the **load balancer** and **target group** in the AWS console.
 
@@ -1814,11 +1813,6 @@ Once the key is converted, we can configure Putty to use the correct authenticat
 Now, click "Open" to initiate the SSH connection. You will be logged into the EC2 instance.
 
 ![SSH Connection Established](http://localhost/assets/lab5-8.png)
-
-### Key Points:
-- **Key Conversion**: We use PuttyGen to convert the `.pem` key into `.ppk` format for use in Putty.
-- **Putty Configuration**: The correct IP address and key are configured in Putty to establish the SSH connection.
-- **Successful Login**: After configuration, we can successfully SSH into both EC2 instances.
 
 ### 4. Install Apache & Access Results Using IP Addresses
 
@@ -1867,11 +1861,6 @@ Now that Apache is running and the HTML content has been updated, we can access 
 
 ![VM2 Display](http://localhost/assets/lab5-12.png)
 
-### Key Points:
-- **Apache Installation**: Apache is installed on each instance, allowing us to serve content from `/var/www/html/`.
-- **HTML Modification**: The title of the HTML page is updated to reflect the instance name, making it easy to distinguish between the two EC2 instances.
-- **Access via IP**: The public IP addresses are used to access each instance and verify that the HTML modifications are displayed.
-
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTExNjQ1NTY0MjEsLTYyNDM0Mzg3Nyw3Mz
 UyMDY5MjksLTEwMjQyMDU0NCwtMTQyMjM0NzE4MCwzNzM4OTQz
@@ -1879,11 +1868,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkzNjU1MzgzNSw4NzU2NzQ3NDEsLTE3OD
-UxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5
-LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyND
-EyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIz
-LDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MT
-MxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0
-MjddfQ==
+eyJoaXN0b3J5IjpbNDg4NzA2NzYxLDg3NTY3NDc0MSwtMTc4NT
+EwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTks
+NTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MT
+I0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMs
+OTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMz
+EwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQy
+N119
 -->
