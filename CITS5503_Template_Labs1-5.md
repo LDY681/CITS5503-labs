@@ -872,14 +872,21 @@ As expected, when trying to access the bucket resources under the user `24188516
 - **Console Check**: We visually confirm the policy through the AWS console.
 - **Testing Access Control**: By modifying the policy, we test and confirm that access is denied for unauthorized users.
 
+## AES Encryption Using KMS
 
+### 1. Policy to be Attached to the KMS Key
 
-## AES Encryption using KMS
+The following JSON file, `kmspolicy.json`, defines the access control policy to be attached to the KMS (Key Management Service) key. This policy grants permissions to both the root account and the IAM user (`24188516@student.uwa.edu.au`), ensuring appropriate access levels for key management and cryptographic operations.
 
-### [1] Policy to be attached to KMS key
-The following file `kmspolicy.json` contains the policy to be attached to the KMS key, which grants specific permissions to  root account and also IAM user which is me at 24188516@student.uwa.edu.au. First it grants the root user full access to all KMS operations `kms:*` on all resources `Resource: "*"`. Then it allows the IAM user to perform key management operations such as **creating, describing, enabling, disabling, tagging, and deleting** keys. Thirdly, it allows the IAM user to use the key for cryptographic operations like **encrypting, decrypting, re-encrypting, and generating data keys**. Lastly it allows the IAM user to manage grants (**create, list, revoke**) for the key only when the grant is for an AWS resource `kms:GrantIsForAWSResource`.
+#### Key Aspects of the Policy:
+- **Root Account Permissions**: The policy grants full access (`kms:*`) to the root account (`arn:aws:iam::489389878001:root`) for all KMS operations on all resources.
+- **Key Management for IAM User**: The IAM user (`24188516@student.uwa.edu.au`) is granted permissions to perform key management tasks such as **creating, describing, enabling, disabling, tagging, and deleting keys**.
+- **Cryptographic Operations**: The IAM user is also allowed to use the key for cryptographic functions like **encrypting, decrypting, re-encrypting, and generating data keys**.
+- **Grant Management**: The policy permits the IAM user to manage grants (e.g., **creating, listing, and revoking** grants) for the key, but only when the grant is for an AWS resource (`kms:GrantIsForAWSResource`).
 
-```
+Here’s the full JSON policy:
+
+```json
 # kmspolicy.json
 {
 	"Version": "2012-10-17",
@@ -955,41 +962,17 @@ The following file `kmspolicy.json` contains the policy to be attached to the KM
 }
 ```
 
-### [2] Attach a policy to the created KMS key
-The following code will create a symmetric encryption KMS key with KMS key material, applying the above policy from the `kmspolicy.json` JSON file, specifying that the key is for encryption and decryption and use. Then it assigns an alias based on the student's ID, the generated alias follows the pattern that starts with `alias/*` resulting `alias/24188516`. 
+#### Breakdown of the Policy:
+- **Version**: `"2012-10-17"` – This is the version of the policy language recognized by AWS, and it's required for policy documents.
+- **Statements**: The policy contains four key statements:
+  1. **Root Account Permissions**: Grants the root account full access to KMS operations.
+  2. **Key Administrators**: Grants the IAM user permissions for key management tasks.
+  3. **Use of the Key**: Grants the IAM user permissions to use the key for encryption, decryption, and other cryptographic operations.
+  4. **Grant Management**: Allows the IAM user to manage grants, with a condition ensuring that the grants are for AWS resources.
 
-```
-import  boto3
-import  json
+This policy is critical for securely managing the KMS key, ensuring that only authorized users can perform key management and cryptographic operations.
 
-STUDENT_NUMBER =  '24188516'
 
-def  create_kms_key():
-	# import the policy
-	with  open('kmspolicy.json', 'r') as  policy_file:
-		policy  =  json.load(policy_file)
-
-	# Create a new KMS key with kmspolicy.json
-	kms  =  boto3.client('kms')
-	key_response  =  kms.create_key(
-		Policy  =  json.dumps(policy),
-		KeyUsage='ENCRYPT_DECRYPT',
-		Origin='AWS_KMS'
-	)
-	key_id  =  key_response['KeyMetadata']['KeyId']
-
-	# Create an alias for the KMS key
-	alias_name  =  f'alias/{STUDENT_NUMBER}'
-	alias_response  =  kms.create_alias(
-		AliasName=alias_name,
-		TargetKeyId=key_id
-	)
-	print(f"Key and alias generated successfully!")
-
-	if  __name__  ==  "__main__":
-		create_kms_key()
-```
-![enter image description here](http://localhost/assets/lab4-6.png)
 
 ### [3] Check whether the script works
 Go to the KMS service in AWS console, as you can see the key is created with the alias of `24188516`, in the policy section,  	we can see that user 24188516@student.uwa.edu.au has been granted as the **Key Administrator** and **Key User**.
@@ -1324,11 +1307,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzNjE3OTYxMiw1MzMxNzMzODYsNDMwNz
-U3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgw
-OSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MT
-c0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEz
-OTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEyOTU2LD
-Y5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNiwtMTA4
-NzA5MjY0MF19
+eyJoaXN0b3J5IjpbLTE5MzE4MDc2NTQsNTMzMTczMzg2LDQzMD
+c1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4
+MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1ND
+E3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcx
+Mzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Ni
+w2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEw
+ODcwOTI2NDBdfQ==
 -->
