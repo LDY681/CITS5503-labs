@@ -635,12 +635,17 @@ To view the hosted HTML page, open a browser and navigate to `http://localhost` 
 ### 6. Other Docker Commands
 
 #### Check Running Containers
-To list all running containers, use:
+To list all running containers, use the following command:
+
 ```bash
 docker ps -a
 ```
 
-This command displays the properties of the running containers, such as **Container ID**, **STATUS**, **PORTS**, the assigned container name, and the image used.
+#### Key Parameters:
+- **`ps`**: Lists the currently running containers.
+- **`-a`**: Includes all containers, even those that are not running.
+
+This command displays the properties of the containers, such as **Container ID**, **STATUS**, **PORTS**, the container name, and the image used.
 
 ![Docker ps -a](http://127.0.0.1/assets/lab2-17.png)
 
@@ -651,7 +656,12 @@ docker stop my-app
 docker rm my-app
 ```
 
+#### Key Parameters:
+- **`stop`**: Stops the running container.
+- **`rm`**: Removes the container from the system.
+
 These commands stop the `my-app` container and then remove it from the system.
+
 
 <div  style="page-break-after: always;"></div>
 
@@ -1750,11 +1760,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NjYwMTk0OSw1MTc4NjgzNDAsLTIyMz
-UyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYs
-NDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4Nz
-A3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQz
-LDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1ND
-k4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEy
-OTU2XX0=
+eyJoaXN0b3J5IjpbMTM2MzQzMzAxLDUxNzg2ODM0MCwtMjIzNT
+IwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0
+MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MD
+cxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMs
+NTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OT
+g3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5
+NTZdfQ==
 -->
