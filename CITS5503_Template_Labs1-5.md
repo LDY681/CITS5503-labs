@@ -312,10 +312,10 @@ aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 2418
 
 #### Key Parameters:
 - **`--image-id`**: Specifies the Amazon Machine Image (AMI) ID to be used for the instance. This AMI ID refers to a pre-configured image with the required operating system and software. In this case, `ami-07a0715df72e58928` is used, which provides a ready-to-use environment.
-- **`--security-group-ids 24188516-sg`**: Links the instance to the previously created security group (`24188516-sg`). This security group defines the allowed inbound and outbound traffic rules, including SSH access on port 22.
-- **`--count 1`**: Specifies that only one instance will be created. This flag allows you to create multiple instances simultaneously if needed.
-- **`--instance-type t3.micro`**: Defines the type of EC2 instance to launch. The **t3.micro** instance type offers a small, low-cost instance with a balanced mix of compute, memory, and network resources. Originally, we planned to use **t2.micro**, but due to limitations at the time, **t3.micro** was chosen instead.
-- **`--key-name 24188516-key`**: Specifies the name of the key pair to associate with the instance. This key will be used to securely access the instance via SSH.
+- **`--security-group-ids`**: Links the instance to the previously created security group (`24188516-sg`). This security group defines the allowed inbound and outbound traffic rules, including SSH access on port 22.
+- **`--count`**: Specifies that only one instance will be created. This flag allows you to create multiple instances simultaneously if needed.
+- **`--instance-type`**: Defines the type of EC2 instance to launch. Due to limitations at the time, **t3.micro** was chosen instead of **t2.micro**.
+- **`--key-name`**: Specifies the name of the key pair (`24188516-key`) to associate with the instance. This key will be used to securely access the instance via SSH.
 - **`--query 'Instances[0].InstanceId'`**: This extracts and displays the **InstanceId** of the newly created EC2 instance. The **InstanceId** is the unique identifier for the instance, which can be used in subsequent AWS commands to manage or monitor the instance.
 
 Once the command is executed, the instance is successfully created, and the **InstanceId** is displayed. In this case, the instance ID returned is `i-0553e2ea0492e1c73`.
@@ -1653,11 +1653,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc2ODkxMzUwLDUzNTIzOTQzMiw1MzMxNz
-MzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5Miwt
-MTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMD
-Q4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEs
-LTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMT
-k1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4
-OTkzNl19
+eyJoaXN0b3J5IjpbLTEwMzAyMzI3MTAsNTM1MjM5NDMyLDUzMz
+E3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1Njky
+LC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1Mz
+MwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3
+MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC
+0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2
+OTg5OTM2XX0=
 -->
