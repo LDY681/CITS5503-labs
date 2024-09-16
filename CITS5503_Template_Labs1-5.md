@@ -9,16 +9,18 @@
 ## AWS Account and Log in
 ### [1] Reset and Login into IAM User Account
 To start with, I received an email with the initial login credentials for my IAM user account. After navigating to the AWS login portal, I successfully logged in using these credentials and promptly reset my password as instructed.
+
 ![enter image description here](http://127.0.0.1/assets/lab1-1.png)
 
 This step grants access to the AWS Management Console, which provides all necessary resources and services for managing AWS infrastructure.
 
 ### [2] Access Identity and Access Management (IAM)
-After logging in, I saw a clickable with my IAM user and Account ID information on the top-right corner. Once opened, I clicked on the top-right user panel to access `Security Credentials`.
-Clicked on the top-right panel to access `security cridentials`
+After logging in, I saw a clickable with my `IAM user` and `Account ID` information on the top-right corner. Once opened, I clicked on the top-right user panel to access `Security Credentials`.
+
 ![enter image description here](http://127.0.0.1/assets/lab1-2.png)
 
-Under the `access key` tab, create new access key and secret. Store the key and secret into somewhere private and secure.
+Within the `Access keys` tab, I created a new access key and secret. These credentials can be used for programmatic access to AWS services, allowing you to interact with AWS through command-line interfaces (CLI), SDKs, or APIs. It's important to securely store these credentials in a private location, as they grant significant access to your AWS resources.
+
 ![enter image description here](http://127.0.0.1/assets/lab1-3.png)
 
 ## Set up recent Linux OSes
@@ -1120,11 +1122,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMzg1MTcwNzMsMzk5NjY1NjkyLC0xMT
-g3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1
-NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMT
-U0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3
-MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OT
-M2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1Mywt
-MTEyODc1ODA0XX0=
+eyJoaXN0b3J5IjpbOTk4MjU5MjczLDM5OTY2NTY5MiwtMTE4Nz
+A3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQz
+LDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1ND
+k4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMTk1NzEy
+OTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4OTkzNi
+wtMTA4NzA5MjY0MCwtMjA3NDIxNzc4LDE0MTM1MDQ5NTMsLTEx
+Mjg3NTgwNF19
 -->
