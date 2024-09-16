@@ -44,7 +44,8 @@ sudo apt -y upgrade
 ```
 ![Updating System](http://127.0.0.1/assets/lab1-5.png)
 
-The first command updates the package lists for **Apt** package management. These package lists contain references to the latest versions of packages. 
+Since upgrading packages involves modifying the system, administrative privileges are required. This is why we prefix the command with `sudo`. The first command `update` updates the package lists for **Apt** package management. These package lists contain references to the latest versions of packages. In the second command, `-y` automatically answers "yes" to any prompts that might appear during the upgrade process
+
 #### Verify Python Version
 Once updated, verify the version of Python installed by using the command:
 ```bash
@@ -1559,11 +1560,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjQyNzEzODMsNTM1MjM5NDMyLDUzMz
-E3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1Njky
-LC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1Mz
-MwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3
-MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC
-0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2
-OTg5OTM2XX0=
+eyJoaXN0b3J5IjpbNzIyNzQ5Njk4LDUzNTIzOTQzMiw1MzMxNz
+MzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5Miwt
+MTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMD
+Q4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEs
+LTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMT
+k1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4
+OTkzNl19
 -->
