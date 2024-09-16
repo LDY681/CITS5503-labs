@@ -761,14 +761,23 @@ This command deletes the table, removing all data and schema. Only the defined s
 
 <div  style="page-break-after: always;"></div>
 
+
 # Lab 4
-## Apply a policy to restrict permissions on bucket
+## Apply a Policy to Restrict Permissions on Bucket
 
-### [1] Write a Python script
-Apply the access permission policy to the S3 bucket `24188516-cloudstorage` in the last lab to allow only your username to access the bucket. The following code means to create a statement with user defined **Sid**, that **DENY** actions which are all **s3.*** actions to access resources in ``arn:aws:s3:::24188516-cloudstorage/*``, meaning all files under `24188516-cloudstorage` bucket, if the requesting user **aws:username** is not `24188516@student.uwa.edu.au`
+### 1. Write a Python Script
+In this lab, we apply an access permission policy to the S3 bucket `24188516-cloudstorage` created in the previous lab. The policy restricts access to this bucket, allowing only the user with the username `24188516@student.uwa.edu.au` to access the contents. 
 
-The bucket policy as a JSON document, **Version** is the policy language recognized by AWS so we should keep it as `"2012-10-17"`, the **Statement** wraps our policy inside.
-```
+The policy is defined as a JSON document, where:
+- **Sid** is a unique identifier for the policy statement.
+- **Effect** is set to `"DENY"`, meaning the action is denied if the condition is met.
+- **Action** is `"s3:*"`, meaning all S3 actions are denied.
+- **Resource** specifies all objects in the `24188516-cloudstorage` bucket.
+- **Condition** checks if the `aws:username` is not `24188516@student.uwa.edu.au`. If this condition is true, access is denied.
+
+Here’s the bucket policy in JSON format:
+
+```json
 # bucketpolicy.json
 {
 	"Version": "2012-10-17",
@@ -780,55 +789,90 @@ The bucket policy as a JSON document, **Version** is the policy language recogni
 		"Resource": "arn:aws:s3:::24188516-cloudstorage/*",
 		"Condition": {
 			"StringNotLike": {
-				"aws:username":"24188516@student.uwa.edu.au"
+				"aws:username": "24188516@student.uwa.edu.au"
 			}
 		}
 	}
 }
 ```
 
-Because policy parameter only takes in JSON string, our policy is in JSON format. Open the `bucketpolicy.json`, load the json file with `json.load()` and then convert it into string with `json.dumps()`, finally call `s3.put_bucket_policy()` to apply the policy to our bucket.
+This JSON policy ensures that any user attempting to access the bucket, who is not `24188516@student.uwa.edu.au`, will be denied all actions related to S3.
 
-```
+#### Python Script to Apply the Policy
+Since the policy parameter in `s3.put_bucket_policy()` only accepts a JSON string, we load the JSON policy from `bucketpolicy.json`, convert it into a string using `json.dumps()`, and then apply it to the bucket using `s3.put_bucket_policy()`.
+
+Here’s the Python script to apply the policy:
+
+```python
 # addpolicy.py
 import boto3
 import json
 
-BUCKET_NAME =  '24188516-cloudstorage'
+BUCKET_NAME = '24188516-cloudstorage'
 
 # Create an S3 instance
 s3 = boto3.client('s3')
 
-def  apply_bucket_policy():
-	# Import the policy
-	with  open('bucketpolicy.json', 'r') as policy_file:
-		policy = json.load(policy_file)
-		
-	# stringify the policy to JSON document
-	policy_string = json.dumps(policy)
+def apply_bucket_policy():
+    # Import the policy from the JSON file
+    with open('bucketpolicy.json', 'r') as policy_file:
+        policy = json.load(policy_file)
+    
+    # Convert the policy to a JSON string
+    policy_string = json.dumps(policy)
 
-	# Apply the policy to the bucket
-	response = s3.put_bucket_policy(Bucket=BUCKET_NAME, Policy=policy_string)
-	print("Policy applied!", response)
+    # Apply the policy to the bucket
+    response = s3.put_bucket_policy(Bucket=BUCKET_NAME, Policy=policy_string)
+    print("Policy applied!", response)
 
-if  __name__  ==  '__main__':
-	apply_bucket_policy()
+if __name__ == '__main__':
+    apply_bucket_policy()
 ```
-![enter image description here](http://localhost/assets/lab4-1.png)
 
-### [2] Check whether the script works
-Test if the policy is applied with `aws s3api get-bucket-policy` on bucket `24188516-cloudstorage` and format the output the plain text
-`aws s3api get-bucket-policy --bucket 24188516-cloudstorage --query Policy --output text`
+This script does the following:
+1. Reads the JSON policy from `bucketpolicy.json`.
+2. Converts the policy into a string format.
+3. Applies the policy to the S3 bucket using `s3.put_bucket_policy()`.
 
-![enter image description here](http://localhost/assets/lab4-2.png)
+![Applying S3 Bucket Policy](http://localhost/assets/lab4-1.png)
 
-Now go to AWS console and see the result visually
-![enter image description here](http://localhost/assets/lab4-3.png)
+### Key Points:
+- **Policy Application**: The policy restricts access to the bucket based on the requesting user's username.
+- **Policy Format**: The policy is written in JSON format and applied to the bucket using Python and the `boto3` library.
 
-To check if the script works, assume I mess up the **username** and limit the access to only `12345678@student.uwa.edu.au`, now let's try to access the resources in the current user ~~`24188516@student.uwa.edu.au`~~. As expected, the access is **denied**.
-![enter image description here](http://localhost/assets/lab4-4.png)
+### 2. Check Whether the Script Works
+After applying the bucket policy, we test to ensure that the policy is working as intended.
 
-![enter image description here](http://localhost/assets/lab4-5.png)
+#### Verify the Policy Using AWS CLI
+To check whether the policy has been applied to the `24188516-cloudstorage` bucket, we use the following AWS CLI command:
+
+```bash
+aws s3api get-bucket-policy --bucket 24188516-cloudstorage --query Policy --output text
+```
+
+This command retrieves the policy attached to the S3 bucket and outputs it in plain text. The expected output is the JSON policy document we applied earlier.
+
+![Policy Check with AWS CLI](http://localhost/assets/lab4-2.png)
+
+#### Visual Confirmation via AWS Console
+Next, we navigate to the AWS console to visually confirm that the policy is in place for the `24188516-cloudstorage` bucket. The console should display the same policy, with the conditions we set for restricting access based on the username.
+
+![Policy Check in AWS Console](http://localhost/assets/lab4-3.png)
+
+#### Test Denied Access with Incorrect Username
+To test whether the policy is correctly restricting access, we deliberately alter the username in the policy. For example, we change the username condition to only allow access to `12345678@student.uwa.edu.au`, effectively denying access to the current user `24188516@student.uwa.edu.au`.
+
+As expected, when trying to access the bucket resources under the user `24188516@student.uwa.edu.au`, the access is denied.
+
+![Denied Access](http://localhost/assets/lab4-4.png)
+![Access Denied](http://localhost/assets/lab4-5.png)
+
+### Key Points:
+- **AWS CLI Check**: We use the AWS CLI to retrieve and verify the bucket policy in plain text.
+- **Console Check**: We visually confirm the policy through the AWS console.
+- **Testing Access Control**: By modifying the policy, we test and confirm that access is denied for unauthorized users.
+
+
 
 ## AES Encryption using KMS
 
@@ -1280,7 +1324,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4MDQ4MzU3Niw1MzMxNzMzODYsNDMwNz
+eyJoaXN0b3J5IjpbLTgzNjE3OTYxMiw1MzMxNzMzODYsNDMwNz
 U3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgw
 OSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MT
 c0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEz
