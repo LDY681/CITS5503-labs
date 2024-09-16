@@ -273,7 +273,7 @@ The screenshot shows the successful creation of the security rule allowing inbou
 
 ### 3. Create a Key Pair
 
-To securely connect to the EC2 instance, we generate a public and private key pair. The private key will be used to authenticate SSH connections, while the public key is associated with the EC2 instance.
+To securely connect to the EC2 instance, we generate a public and private key pair. The private key will be used to authenticate SSH connections, while the public key is associated with the EC2 instance. This step is crucial for securing the private key and ensuring that it can be used for SSH connections without exposing it to others.
 
 The following command creates a key pair:
 
@@ -295,25 +295,13 @@ chmod 400 24188516-key.pem
 
 - **`chmod 400`**: This changes the file’s permissions to **read-only** for the owner. It ensures that only the owner of the file can read it, which is necessary to secure the key and prevent unauthorized access.
 
-This step is crucial for securing the private key and ensuring that it can be used for SSH connections without exposing it to others.
-
 Below are the outputs after successfully creating the key and setting the appropriate permissions:
 
 ![Key Pair Creation](http://127.0.0.1/assets/lab2-3.png)
 ![Permission Change](http://127.0.0.1/assets/lab2-4.png)
 
 
-### 4. Create the Instance
-Since my student number is `24188516`, create an EC2 instance in the `eu-north-1` region. The `--image-id` specifies the AMI ID with preset configurations; in this case, the AMI ID is `ami-07a0715df72e58928`. The instance type is set to `t3.micro`, and we use the private key `24188516-key` for secure access.
 
-```bash
-aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 24188516-sg --count 1 --instance-type t3.micro --key-name 24188516-key --query 'Instances[0].InstanceId'
-```
-
-At the time of running the lab, the **t2.micro** instance type was not supported, so we switched to **t3.micro**. The instance was successfully created with the instance ID `i-0553e2ea0492e1c73`.
-
-![Create EC2 Instance](http://127.0.0.1/assets/lab2-6.png)
-![Instance ID](http://127.0.0.1/assets/lab2-5.png)
 
 ### 5. Add a Tag to the Instance
 Now that we have the instance ID `i-0553e2ea0492e1c73`, we add a tag to name the instance. The tag key is `Name`, and the value is our student number followed by `-vm`, so the tag is `24188516-vm`.
@@ -1642,11 +1630,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODY4OTA5NDIsNTM1MjM5NDMyLDUzMzE3Mz
-M4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0x
-MTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwND
-g1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwt
-MTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOT
-U3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5
-OTM2XX0=
+eyJoaXN0b3J5IjpbMTA2OTEzNjE2OCw1MzUyMzk0MzIsNTMzMT
+czMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIs
+LTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
+A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
+LC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLT
+E5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5
+ODk5MzZdfQ==
 -->
