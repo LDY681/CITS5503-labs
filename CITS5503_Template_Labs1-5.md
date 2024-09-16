@@ -704,6 +704,25 @@ We begin by creating the required files and directories. The following file stru
 
 The `cloudstorage.py` script is modified to create an S3 bucket named `24188516-cloudstorage` if it doesn’t already exist. The script then traverses all directories and subdirectories in the root directory and uploads any discovered files to the S3 bucket.
 
+### Workflow:
+
+This script performs the following steps:
+
+1. **Locate or Create the S3 Bucket**: 
+   - The script attempts to create an S3 bucket (`24188516-cloudstorage`) using `s3.create_bucket()`. 
+   - It passes the bucket name through the `Bucket` parameter and specifies the region (`eu-north-1`) using `CreateBucketConfiguration`. 
+   - If the bucket already exists or the creation fails, the script catches the exception and moves on.
+
+2. **Recursively Traverse the Local Directory**:
+   - The script uses `os.walk()` to recursively traverse the root directory (`.`) and its subdirectories. 
+   - For each file found, it captures the folder name and the file name, constructing the full path.
+
+3. **Format the File Key and Upload Files**:
+   - For each discovered file, the script generates a file key by concatenating the folder name and the file name using `os.path.join()`, ensuring compatibility across operating systems.
+   - The function `s3.upload_file()` is called to upload the file to the S3 bucket. It accepts the local file path, the bucket name, and the file key (which determines where the file is stored in the S3 bucket).
+   - The file is uploaded to the same folder structure in the S3 bucket as it exists on the local machine.
+
+Here is the script down below:
 ```python
 import os
 import boto3
@@ -1926,11 +1945,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA1MTkxODcwOCw4NTIzMTE4MzcsNDg4Nz
-A2NzYxLDg3NTY3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwt
-MjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3Mz
-M4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0x
-MTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwND
-g1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MV19
+eyJoaXN0b3J5IjpbLTE3NDY0OTY5LDEwNTE5MTg3MDgsODUyMz
+ExODM3LDQ4ODcwNjc2MSw4NzU2NzQ3NDEsLTE3ODUxMDA4Miw1
+MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOT
+QzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5
+OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNz
+Y0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4XX0=
 
 -->
