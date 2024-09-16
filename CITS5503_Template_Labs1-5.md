@@ -224,25 +224,52 @@ This table helps verify the connection to AWS and confirms that the Python envir
 
 ## Create an EC2 Instance Using AWS CLI
 
+
 ### 1. Create a Security Group
-We start by creating a security group with the name based on our student number, `24188516-sg`. The `--group-name` flag specifies the group name, and `--description` provides a description of the group.
+
+We begin by creating a security group with a unique name based on our student number, `24188516-sg`. A security group acts as a virtual firewall for our EC2 instances, controlling inbound and outbound traffic.
+
+The following command creates the security group:
+
 ```bash
 aws ec2 create-security-group --group-name 24188516-sg --description "security group for development environment"
 ```
 
-This command creates a new security group, and the response will return the `GroupId` for the created group.
+#### Key Parameters:
+- **`--group-name`**: Specifies the name of the security group. In this case, we use `24188516-sg` to uniquely identify the group based on our student number.
+  
+- **`--description`**: Provides a human-readable description of the security group’s purpose. Here, we describe it as "security group for development environment" to indicate the group will be used for development purposes.
+
+Once executed, this command will create the security group and return the **GroupId**, which is a unique identifier for the newly created security group. The **GroupId** is important because it will be used in future commands when modifying or referencing the security group.
 
 ![Create Security Group](http://127.0.0.1/assets/lab2-1.png)
 
+The screenshot shows the output of the command, displaying the **GroupId** for the newly created security group.
+
+
+
 ### 2. Authorize Inbound Traffic for SSH
-Next, we add a rule to allow SSH access via TCP. The `--protocol` flag specifies the internet protocol, `--port` indicates the port used for the connection, and `--cidr` defines the IP range allowed access (in this case, `0.0.0.0/0` allows access from any IP).
+
+Now that the security group is created, we need to add a rule to allow inbound SSH traffic. This is necessary to enable secure access to our EC2 instances using the SSH protocol on port 22.
+
+The following command authorizes inbound traffic for SSH:
+
 ```bash
 aws ec2 authorize-security-group-ingress --group-name 24188516-sg --protocol tcp --port 22 --cidr 0.0.0.0/0
 ```
 
-This command creates a rule allowing SSH traffic on port **22**, and the response will display the newly created rule along with specific rulesets.
+#### Key Parameters:
+- **`--group-name`**: Specifies the name of the security group to which the rule will be added. In this case, we are adding the rule to the `24188516-sg` security group created in the previous step.
+- **`--protocol`**: Defines the protocol for the rule. Here, we use **`tcp`** to specify the Transmission Control Protocol, which is the standard protocol used for SSH.
+- **`--port`**: Specifies the port number on which the traffic will be allowed. In this case, we set it to **`22`**, the default port for SSH connections.
+- **`--cidr`**: Defines the range of IP addresses allowed to access the instance via SSH. **`0.0.0.0/0`** means that traffic is allowed from any IP address, giving unrestricted access to SSH from anywhere in the world. This is common for testing purposes but should be restricted for production environments.
+
+Once executed, this command creates a rule allowing SSH access on port 22, and the response confirms the rule creation by displaying the details of the newly added rule.
 
 ![Authorize Inbound Traffic](http://127.0.0.1/assets/lab2-2.png)
+
+The screenshot shows the successful creation of the security rule allowing inbound SSH traffic to the security group.
+
 
 ### 3. Create a Key Pair
 To establish a secure, encrypted connection to the EC2 instance, we generate a private and public key pair. The generated private key is saved as plain text in the `24188516-key.pem` file.
@@ -1599,11 +1626,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTIwODMxNzY2LDUzNTIzOTQzMiw1MzMxNz
-MzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5Miwt
-MTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMD
-Q4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEs
-LTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3MSwtMT
-k1NzEyOTU2LDY5Njk3MjE1NiwtMTc4NDE2NTE1OCwtMTc2Njk4
-OTkzNl19
+eyJoaXN0b3J5IjpbLTgzNTMyODc2OCw1MzUyMzk0MzIsNTMzMT
+czMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIs
+LTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
+A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
+LC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLT
+E5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5
+ODk5MzZdfQ==
 -->
