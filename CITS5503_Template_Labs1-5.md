@@ -1313,22 +1313,21 @@ However since encryption/decrption are done on local machine, it doesn't scale w
 # Lab 5
 ## Application Load Balancer
 
-### [1] Create 2 EC2 instances & Add Application Load Balancer
-In the first part to create EC2 instances, we can replicate our code from **lab2** as an entry point. To differentiate some ARNs that were already declared in **lab2**, some resource names are hypenated with suffix "lab5" at the end, for example:
-```
-GroupName = '24188516-sg-lab5'
-KeyName = '24188516-key-lab5'
-```
-The only difference is that we need to create EC2 instances and specify their separated availbility zones (subnet). This can be done by using `ec2.describe_subnets()` to fetch the subnets in each dedicated availablity zones and add the parameter **SubnetId** when doing `ec2.run_instances(SubnetId=SubnetId)`.
+### 1-2. Create 2 EC2 Instances & Add Application Load Balancer
 
-Then we will create *load balancer* and *target group* step by step
- - Create load balancer: Use `elbv2.create_load_balancer()` with our choosen **Subnets**, created **SecurityGroups**, etc.
- - Create target group: Use `ec2.describe_vpcs()` to find the vpc that will host our instances and then use `elbv2.create_target_group()` with **Protocol**, **Port**, **VpcId**, etc.
-- Register instances as targets: Use `elbv2.register_targets()` with **TargetGroupArn** (return from `elbv2.create_target_group()`),**Targets** (Id as **InstanceId**), etc.
-- Add a listener to forward traffic from **port 80** to the **target group** (EC2 instance): Use `elbv2.create_listener()` with **LoadBalancerArn** (return from `elbv2.create_load_balancer()`), **DefaultActions** as **forward** to the **TargetGroupArn**, etc.
+In this section, we will replicate some of the steps from **Lab 2** to create two EC2 instances, but with a few changes to accommodate the new resources for **Lab 5**. We append the suffix `lab5` to resource names like **security group** and **key pair** to differentiate them from the resources in **Lab 2**.
 
-This is the full code script that perform the actions above.
-```
+#### Key Changes:
+- **Subnets and Availability Zones**: We will create the two EC2 instances in different **availability zones** by using `ec2.describe_subnets()` to fetch the subnets, and specifying the **SubnetId** parameter when launching the EC2 instances.
+- **Load Balancer and Target Group**: 
+  - **Create Load Balancer**: Using `elbv2.create_load_balancer()` with the required subnets, security groups, and settings.
+  - **Create Target Group**: Using `elbv2.create_target_group()` with the VPC ID, protocol, and port.
+  - **Register Targets**: Register the EC2 instances to the load balancer target group.
+  - **Create Listener**: Set up a listener to forward HTTP traffic from **port 80** to the **target group**.
+
+#### Python Script for Automation:
+
+```python
 import boto3 as bt
 import os
 
@@ -1371,17 +1370,17 @@ step2_response = ec2.authorize_security_group_ingress(
 # 3. Create key-pair
 step3_response = ec2.create_key_pair(KeyName=KeyName)
 PrivateKey = step3_response['KeyMaterial']
-## Save key-pair
+# Save key-pair
 with open(f'{KeyName}.pem', 'w') as file:
     file.write(PrivateKey)
-## Grant file permission
+# Grant file permission
 os.chmod(f'{KeyName}.pem', 0o400)
 
-# 4. Get two of subnets in availability zones
+# 4. Get two subnets in different availability zones
 step4_response = ec2.describe_subnets()['Subnets']
 Subnets = [subnet['SubnetId'] for subnet in step4_response[:2]]
 
-# 5. Create instances in these two availability zones
+# 5. Create instances in two availability zones
 Instances = []
 for idx, SubnetId in enumerate(Subnets):
     InstanceName = f"24188516-vm{idx + 1}"
@@ -1397,15 +1396,10 @@ for idx, SubnetId in enumerate(Subnets):
     InstanceId = step5_response['Instances'][0]['InstanceId']
     Instances.append(InstanceId)
     
-    # Tag instance with the appropriate name
+    # Tag instance with name
     ec2.create_tags(
         Resources=[InstanceId],
-        Tags=[
-            {
-                'Key': 'Name',
-                'Value': InstanceName
-            }
-        ]
+        Tags=[{'Key': 'Name', 'Value': InstanceName}]
     )
 
 # 6. Create application load balancer
@@ -1446,17 +1440,32 @@ elbv2.create_listener(
     }]
 )
 
-# Printouts
+# Print results
 print(f"Instance IDs: {Instances}")
 print(f"Load Balancer ARN: {LoadBalancerArn}")
 print(f"Target Group ARN: {TargetGroupArn}")
 ```
-After the execution, go to the console and confirm our *load balancer* and *target group* created.
-![enter image description here](http://localhost/assets/lab5-2.png)
-![enter image description here](http://localhost/assets/lab5-3.png)
 
-Record the public IPv4 addresses for both instances created.
-![enter image description here](http://localhost/assets/lab5-4.png)
+#### Steps Summary:
+1. **Security Group**: Creates a security group for **SSH (port 22)** and **HTTP (port 80)** access.
+2. **Key Pair**: Generates a key pair for accessing the instances.
+3. **Subnet Selection**: Fetches two subnets from different availability zones using `ec2.describe_subnets()`.
+4. **Create EC2 Instances**: Launches two EC2 instances in separate availability zones, and assigns names to each instance.
+5. **Load Balancer**: Creates an application load balancer that is internet-facing and linked to the security group and subnets.
+6. **Target Group**: Creates a target group for the EC2 instances, specifying the VPC and HTTP port 80.
+7. **Register Instances**: Registers the EC2 instances as targets for the load balancer.
+8. **Listener**: Sets up a listener to forward traffic from **port 80** to the target group.
+
+#### Verify in the AWS Console:
+After the script is executed, you can verify the creation of the **load balancer** and **target group** in the AWS console.
+
+![Load Balancer Created](http://localhost/assets/lab5-2.png)
+![Target Group Created](http://localhost/assets/lab5-3.png)
+
+#### Record Public IP Addresses:
+The public IPv4 addresses for both EC2 instances are recorded for verification.
+
+![EC2 Public IPs](http://localhost/assets/lab5-4.png)
 
 ### [3] SSH to our instances
 We need to install apache and start the application to see our load balancer in action.
@@ -1502,11 +1511,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0ODM3Njc5NTgsNTMzMTczMzg2LDQzMD
-c1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4
-MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1ND
-E3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcx
-Mzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcxMjk1Ni
-w2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5MzYsLTEw
-ODcwOTI2NDBdfQ==
+eyJoaXN0b3J5IjpbODU2OTUyMTU5LDUzMzE3MzM4Niw0MzA3NT
+cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
+LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
+Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
+NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNj
+k2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3
+MDkyNjQwXX0=
 -->
