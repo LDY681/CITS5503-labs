@@ -54,16 +54,13 @@ This should display the Python version as `3.10.12`.
 ![Check Python Version](http://127.0.0.1/assets/lab1-6.png)
 
 #### Install pip3
-To manage Python packages, install `pip3`, the most popular package installer for Python. Use the following command:
+To manage Python packages, install `pip3`, the most popular package installer for Python to install third-party libraries and dependencies. Use the following command:
 ```bash
 sudo apt install -y python3-pip
 ```
 This command installs `pip3` and confirms the installation.
 
 ![Installing pip3](http://127.0.0.1/assets/lab1-7.png)
-
-> **Note:** pip3 is essential for installing third-party libraries and dependencies that are required for various Python projects.
-
 
 ### [2] Install awscli
 To install AWS CLI and upgrade to latest version:
@@ -1143,7 +1140,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4ODQ2MDYzNSwtMTMyMjQxMjQ0OSwzOT
+eyJoaXN0b3J5IjpbLTUzNjg0NDkxOSwtMTMyMjQxMjQ0OSwzOT
 k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
 NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
 E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
