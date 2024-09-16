@@ -272,6 +272,7 @@ aws ec2 authorize-security-group-ingress --group-name 24188516-sg --protocol tcp
 ```
 
 #### Key Parameters:
+
 - **`--group-name`**: Specifies the name of the security group to which the rule will be added. In this case, we are adding the rule to the `24188516-sg` security group created in the previous step.
 - **`--protocol`**: Defines the protocol for the rule. Here, we use **`tcp`** to specify the Transmission Control Protocol, which is the standard protocol used for SSH.
 - **`--port`**: Specifies the port number on which the traffic will be allowed. In this case, we set it to **`22`**, the default port for SSH connections.
@@ -292,6 +293,7 @@ aws ec2 create-key-pair --key-name 24188516-key --query 'KeyMaterial' --output t
 ```
 
 #### Key Parameters:
+
 - **`--key-name`**: Specifies the name of the key pair being created. In this case, the key pair is named `24188516-key`, which is based on our student number for identification.
 - **`--query 'KeyMaterial'`**: This option extracts the private key (key material) from the response and outputs it as plain text. The key material is the private part of the key pair, which is required to authenticate SSH sessions.
 - **`--output text`**: Specifies that the output format should be plain text (instead of JSON). The output is redirected to a file using the `>` operator, which saves the private key as `24188516-key.pem`.
@@ -323,6 +325,7 @@ aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 2418
 > At the time of running the lab, the **t2.micro** instance type was not available, so I switched to **t3.micro**. The instance was successfully created with the instance ID `i-0553e2ea0492e1c73`.
 
 #### Key Parameters:
+
 - **`--image-id`**: Specifies the Amazon Machine Image (AMI) ID to be used for the instance. In this case, `ami-07a0715df72e58928` is used, refers to a pre-configured image for this class.
 - **`--security-group-ids`**: Links the instance to the previously created security group (`24188516-sg`). This security group defines the allowed inbound and outbound traffic rules, including SSH access on port 22.
 - **`--count`**: Specifies that only one instance will be created. This flag allows you to create multiple instances simultaneously if needed.
@@ -344,6 +347,7 @@ aws ec2 create-tags --resources i-0553e2ea0492e1c73 --tags Key=Name,Value=241885
 ```
 
 #### Key Parameters:
+
 - **`--resources`**: Specifies the ID of the resource to tag, in this case, the instance ID `i-0553e2ea0492e1c73`.
 - **`--tags`**: Defines the key-value pair for the tag. Here, the key is `Name`, and the value is `24188516-vm`, which labels the instance for identification purposes.
 
@@ -358,6 +362,7 @@ aws ec2 describe-instances --instance-ids i-0553e2ea0492e1c73 --query 'Reservati
 ```
 
 #### Key Parameters:
+
 - **`--instance-ids`**: Specifies the instance ID, which is `i-0553e2ea0492e1c73` in this case.
 - **`--query`**: Limits the output to the `PublicIpAddress` of the instance, providing the required IP address for SSH access.
 
@@ -373,6 +378,7 @@ ssh -i 24188516-key.pem ubuntu@16.171.151.20
 ```
 
 #### Key Parameters: 
+
 - **`-i`**: Specifies the identity file (private key) to use for SSH authentication, which is `24188516-key.pem`.
 - **`ubuntu@16.171.151.20`**: Connects to the instance as the `ubuntu` user, which is the default username.
 
@@ -1983,11 +1989,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkzMzc3MTU3LDEwNTE5MTg3MDgsODUyMz
-ExODM3LDQ4ODcwNjc2MSw4NzU2NzQ3NDEsLTE3ODUxMDA4Miw1
-MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOT
-QzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5
-OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNz
-Y0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4XX0=
-
+eyJoaXN0b3J5IjpbLTE4NTQ0NzQ2MjksMTA1MTkxODcwOCw4NT
+IzMTE4MzcsNDg4NzA2NzYxLDg3NTY3NDc0MSwtMTc4NTEwMDgy
+LDUxNzg2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1Mj
+M5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDks
+Mzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1Nz
+I3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDhd
+fQ==
 -->
