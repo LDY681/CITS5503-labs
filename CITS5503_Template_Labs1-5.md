@@ -8,7 +8,7 @@
 # Lab 1
 ## AWS Account and Log in
 ### [1] Log into an IAM user account created for you on AWS.
-After receiving the email with original login cridentials, I logged-in and reseted my password accordingly.
+To start with, I received an email with the initial login credentials for my IAM user account. After navigating to the AWS login portal, I successfully logged in using these credentials and promptly reset my password as instructed.
 ![enter image description here](http://127.0.0.1/assets/lab1-1.png)
 
 ### [2] Search and open Identity Access Management
@@ -1117,11 +1117,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0OD
-M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
-LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMT
-I1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcy
-MTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNj
-QwLC0yMDc0MjE3NzgsMTQxMzUwNDk1MywtMTEyODc1ODA0LC0y
-MDgwMjU3MDQyXX0=
+eyJoaXN0b3J5IjpbMTAxNTQ5NDQ0MiwzOTk2NjU2OTIsLTExOD
+cwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0
+Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNT
+Q5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcx
+Mjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5ODk5Mz
+YsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEzNTA0OTUzLC0x
+MTI4NzU4MDRdfQ==
 -->
