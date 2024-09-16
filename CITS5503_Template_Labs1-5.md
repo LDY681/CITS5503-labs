@@ -1094,10 +1094,18 @@ Here’s the bucket policy in JSON format:
 }
 ```
 
-This JSON policy ensures that any user attempting to access the bucket, who is not `24188516@student.uwa.edu.au`, will be denied all actions related to S3. The policy applies to all objects within the `24188516-cloudstorage` bucket, as specified by the **`Resource`**.
+This JSON policy ensures that any user attempting to access the bucket, who is not `24188516@student.uwa.edu.au`, will be denied all actions related to S3. It also applies to all objects within the `24188516-cloudstorage` bucket, as specified by the **`Resource`**.
 
 #### Python Script to Apply the Policy
+
 Since the policy parameter in `s3.put_bucket_policy()` only accepts a JSON string, we load the JSON policy from `bucketpolicy.json`, convert it into a string using `json.dumps()`, and then apply it to the bucket using `s3.put_bucket_policy()`.
+
+> ### Workflow:
+
+This script does the following:
+1. Reads the JSON policy from `bucketpolicy.json`.
+2. Converts the policy into a string format.
+3. Applies the policy to the S3 bucket using `s3.put_bucket_policy()`.
 
 Here’s the Python script to apply the policy:
 
@@ -1137,11 +1145,6 @@ if __name__ == '__main__':
 - **`s3.put_bucket_policy()`**: Applies the bucket policy to the specified S3 bucket.
   - **`Bucket`**: Specifies the name of the S3 bucket, here `24188516-cloudstorage`.
   - **`Policy`**: Accepts the policy as a JSON string, which defines the access control rules for the bucket.
-
-This script does the following:
-1. Reads the JSON policy from `bucketpolicy.json`.
-2. Converts the policy into a string format.
-3. Applies the policy to the S3 bucket using `s3.put_bucket_policy()`.
 
 ![Applying S3 Bucket Policy](http://localhost/assets/lab4-1.png)
 
@@ -1898,11 +1901,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyOTcwMzMxNCw0ODg3MDY3NjEsODc1Nj
-c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
-LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
-E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
-MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
-g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
-XX0=
+eyJoaXN0b3J5IjpbOTc5NDY1MzU1LDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
