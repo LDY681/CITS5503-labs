@@ -939,12 +939,14 @@ In this step, we write data into the `CloudFiles` table. First, we use `s3.list_
 
 After extracting all necessary attributes, we use `dynamodb_table.put_item()` to insert each object into the DynamoDB table. Since our designated region is `eu-north-1`, we populate the `owner` field with the owner's ID.
 
+### Workflow:
 
 This script performs the following:
 1. Lists all files in the S3 bucket using `s3.list_objects_v2`.
 2. Retrieves owner and permission information using `s3.get_object_acl`.
 3. Extracts file attributes like `userId`, `fileName`, `path`, `lastUpdated`, `owner`, and `permissions`.
 4. Inserts each file's attributes into the DynamoDB table using `put_item()`.
+
 Here’s the script:
 
 ```python
@@ -1050,17 +1052,18 @@ aws dynamodb delete-table --table-name CloudFiles --endpoint-url http://localhos
 - **`--table-name`**: Specifies the name of the DynamoDB table to delete, in this case, `CloudFiles`.
 - **`--endpoint-url`**: Specifies the endpoint URL for connecting to the local DynamoDB instance running on port **8001**.
 
-This command deletes the table, removing all data and schema. Only the defined schema (partition key and sort key) will be printed before deletion.
+This command deletes the table, removing all data and schema. Also the defined schema (partition key and sort key) will be printed before deletion.
 
 ![DynamoDB Delete Table](http://localhost/assets/lab2-26.png)
 
 <div  style="page-break-after: always;"></div>
 
-
 # Lab 4
+
 ## Apply a Policy to Restrict Permissions on Bucket
 
 ### 1. Write a Python Script
+
 In this lab, we apply an access permission policy to the S3 bucket `24188516-cloudstorage` created in the previous lab. The policy restricts access to this bucket, allowing only the user with the username `24188516@student.uwa.edu.au` to access the contents. 
 
 The policy is defined as a JSON document, where:
@@ -1895,11 +1898,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzUzNDU4Nyw0ODg3MDY3NjEsODc1Njc0Nz
-QxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3
-NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OS
-wtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4
-MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0ND
-QsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1XX0=
-
+eyJoaXN0b3J5IjpbLTMyOTcwMzMxNCw0ODg3MDY3NjEsODc1Nj
+c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
+LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
+E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
+MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
+g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
+XX0=
 -->
