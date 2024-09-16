@@ -569,13 +569,14 @@ docker --version
 ```
 
 #### Key Parameters:
-- **`--version`**: Prints the installed Docker version, confirming that Docker is functional.
+- **`--version`**: Prints the installed Docker version.
 
 This command outputs the installed Docker version, ensuring that Docker is ready to use.
 
 ![Docker Version Check](http://127.0.0.1/assets/lab2-13.png)
 
 ### 5. Build and Run an `httpd` Container
+
 In this step, we create an HTML file to be served via an Apache HTTP server running inside a Docker container.
 
 #### HTML File Creation
@@ -590,9 +591,10 @@ The file `index.html` is located inside the `html` directory and contains the fo
   </html>
 ```
 
-This file simply displays the message "Hello, World!" when accessed via a web browser.
+This file simply displays the message **"Hello, World!"** when accessed via a web browser.
 
 #### Create a Dockerfile
+
 Outside the `html` directory, we create a `Dockerfile` to define the configuration for our Docker container. The file contains the following:
 
 ```Dockerfile
@@ -605,7 +607,8 @@ COPY ./html/ /usr/local/apache2/htdocs/
 - **`COPY`**: Copies the contents of the `html` directory from the local system into the container’s web server directory (`/usr/local/apache2/htdocs/`), making the `index.html` file accessible via the web server.
 
 #### Add User to Docker Group
-We add our username (`liudayubob`) to the Docker group to grant permission to manage Docker containers, then reboot the system:
+
+We add our username (`liudayubob`) to the Docker group to grant permission to manage Docker containers, then reboot the uBuntu system:
 
 ```bash
 sudo usermod -a -G docker liudayubob
@@ -1889,11 +1892,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzNTIxMDQyNiw0ODg3MDY3NjEsODc1Nj
-c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
-LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
-E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
-MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
-g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
-XX0=
+eyJoaXN0b3J5IjpbNTkxNDQwNjczLDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
