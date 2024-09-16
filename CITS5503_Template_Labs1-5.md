@@ -78,16 +78,21 @@ Once installed, you can use `pip3` to install third-party Python packages
 ![Installing pip3](http://127.0.0.1/assets/lab1-7.png)
 
 ### 2. Install AWS CLI
-To interact with AWS services from the command line, the AWS CLI (Command Line Interface) tool is neccessary. Install and upgrade AWS CLI to the latest version using the following command:
+To interact with AWS services from the command line, we use the AWS CLI (Command Line Interface). Install and upgrade it to the latest version using:
+
 ```bash
 pip3 install awscli --upgrade
 ```
-This ensures that we have the most recent version of AWS CLI with latest features and updates, to interact with AWS resources such as EC2, S3, etc.
+
+- **`awscli`**: This installs the AWS Command Line Interface, enabling us to manage AWS services like EC2, S3, and more directly from the terminal.
+- **`--upgrade`**: Ensures that if an older version of AWS CLI is already installed, it will be replaced with the latest version, which includes new features, updates, and security patches.
+
+Once installed, we can execute AWS CLI commands to interact with various AWS resources such as EC2, S3, etc.
 
 ![Install AWS CLI](http://127.0.0.1/assets/lab1-8.png)
 
 ### 3. Configure AWS CLI
-After installation, configure the AWS CLI to connect to our Amazon EC2 instance. This is done by entering your credentials (Access Key ID, Secret Access Key, Region) using the following command:
+After installation, configure the AWS CLI to connect to our Amazon EC2 instance. This is done by entering your credentials **Access Key ID, Secret Access Key, Region** using the following command:
 ```bash
 aws configure
 ```
@@ -1573,7 +1578,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQwMzkyMDkxOCw1MzUyMzk0MzIsNTMzMT
+eyJoaXN0b3J5IjpbMTM5MjcxMzI1Myw1MzUyMzk0MzIsNTMzMT
 czMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIs
 LTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
 A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
