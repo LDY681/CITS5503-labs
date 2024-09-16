@@ -272,20 +272,36 @@ The screenshot shows the successful creation of the security rule allowing inbou
 
 
 ### 3. Create a Key Pair
-To establish a secure, encrypted connection to the EC2 instance, we generate a private and public key pair. The generated private key is saved as plain text in the `24188516-key.pem` file.
+
+To securely connect to the EC2 instance, we generate a public and private key pair. The private key will be used to authenticate SSH connections, while the public key is associated with the EC2 instance.
+
+The following command creates a key pair:
+
 ```bash
 aws ec2 create-key-pair --key-name 24188516-key --query 'KeyMaterial' --output text > 24188516-key.pem
 ```
 
-Once the key is created, we ensure it has the correct permissions by copying the file to the `~/.ssh` directory and granting permissions with `chmod`:
+#### Key Parameters:
+- **`--key-name`**: Specifies the name of the key pair being created. In this case, the key pair is named `24188516-key`, which is based on our student number for identification.
+- **`--query 'KeyMaterial'`**: This option extracts the private key (key material) from the response and outputs it as plain text. The key material is the private part of the key pair, which is required to authenticate SSH sessions.
+- **`--output text`**: Specifies that the output format should be plain text (instead of JSON). The output is redirected to a file using the `>` operator, which saves the private key as `24188516-key.pem`.
+
+#### Set Permissions for the Key:
+After the key is generated, we ensure it has the correct permissions using the following command:
+
 ```bash
 chmod 400 24188516-key.pem
 ```
 
-This command grants the owner of the file **read-only** permissions to secure the key. Below is the output after successfully creating and securing the key:
+- **`chmod 400`**: This changes the file’s permissions to **read-only** for the owner. It ensures that only the owner of the file can read it, which is necessary to secure the key and prevent unauthorized access.
+
+This step is crucial for securing the private key and ensuring that it can be used for SSH connections without exposing it to others.
+
+Below are the outputs after successfully creating the key and setting the appropriate permissions:
 
 ![Key Pair Creation](http://127.0.0.1/assets/lab2-3.png)
 ![Permission Change](http://127.0.0.1/assets/lab2-4.png)
+
 
 ### 4. Create the Instance
 Since my student number is `24188516`, create an EC2 instance in the `eu-north-1` region. The `--image-id` specifies the AMI ID with preset configurations; in this case, the AMI ID is `ami-07a0715df72e58928`. The instance type is set to `t3.micro`, and we use the private key `24188516-key` for secure access.
@@ -1626,11 +1642,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgzNTMyODc2OCw1MzUyMzk0MzIsNTMzMT
-czMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIs
-LTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
-A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
-LC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLT
-E5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5
-ODk5MzZdfQ==
+eyJoaXN0b3J5IjpbODY4OTA5NDIsNTM1MjM5NDMyLDUzMzE3Mz
+M4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0x
+MTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwND
+g1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwt
+MTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOT
+U3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5
+OTM2XX0=
 -->
