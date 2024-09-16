@@ -1467,42 +1467,89 @@ The public IPv4 addresses for both EC2 instances are recorded for verification.
 
 ![EC2 Public IPs](http://localhost/assets/lab5-4.png)
 
-### [3] SSH to our instances
-We need to install apache and start the application to see our load balancer in action.
-We already stored the generated private key as **24188516-key-lab5.pem** for both EC2 instances in step [3].
-Bacause I use Putty on Windows OS, first we need to use PuttyGen to convert pem key file to ppk format for later ssh actions.
-![enter image description here](http://localhost/assets/lab5-5.png)
+### 3. SSH to Our Instances
 
-Now configure the authentication credentials and host on Putty with our converted keys and Ip addresses we recorded from the last step.
-![enter image description here](http://localhost/assets/lab5-6.png)
-![enter image description here](http://localhost/assets/lab5-7.png)
+In this step, we will SSH into the EC2 instances to install Apache and start the web server, allowing us to see the load balancer in action.
 
-As you can see, now we are logged in. 
-![enter image description here](http://localhost/assets/lab5-8.png)
+#### Use Putty to Connect to EC2 Instances
+Since we are using Windows and Putty as our SSH client, we need to convert the private key (`24188516-key-lab5.pem`) to **PPK format** for Putty to use.
 
-### [4] Install apache & Access results using IP addresses
+#### 1. Convert PEM Key to PPK Format
+1. Open **PuttyGen** and load the `.pem` key file that was generated in step [3].
+2. Convert the file into `.ppk` format by saving it after loading.
 
-First, let's update each instance and install apache2 in each instance:
-```
+![PuttyGen Conversion](http://localhost/assets/lab5-5.png)
+
+#### 2. Configure Putty for SSH Access
+Once the key is converted, we can configure Putty to use the correct authentication credentials and the public IP addresses of the two EC2 instances we recorded in the last step.
+
+1. **Host**: Enter the public IP address of the EC2 instance you want to connect to.
+2. **Authentication**: Under "Connection -> SSH -> Auth", browse and load the `.ppk` file for the private key.
+
+![Putty Configuration](http://localhost/assets/lab5-6.png)
+![Putty Host Setup](http://localhost/assets/lab5-7.png)
+
+#### 3. SSH into the EC2 Instance
+Now, click "Open" to initiate the SSH connection. You will be logged into the EC2 instance.
+
+![SSH Connection Established](http://localhost/assets/lab5-8.png)
+
+### Key Points:
+- **Key Conversion**: We use PuttyGen to convert the `.pem` key into `.ppk` format for use in Putty.
+- **Putty Configuration**: The correct IP address and key are configured in Putty to establish the SSH connection.
+- **Successful Login**: After configuration, we can successfully SSH into both EC2 instances.
+
+### 4. Install Apache & Access Results Using IP Addresses
+
+In this step, we will install **Apache** on each EC2 instance, modify the HTML content, and verify the setup by accessing the instances via their public IP addresses.
+
+#### 1. Update and Install Apache
+On each EC2 instance, first update the package list and then install **Apache2** using the following commands:
+
+```bash
 sudo apt-get update
 sudo apt install apache2
 ```
-![enter image description here](http://localhost/assets/lab5-9.png)
 
-Now, edit the `<title>` and `</title>` tags inside the `/var/www/html/index.html` file to show the instance name.
-```
+Once the installation is complete, Apache will start serving content from the default directory `/var/www/html/`.
+
+![Apache Installation](http://localhost/assets/lab5-9.png)
+
+#### 2. Modify the HTML File to Display Instance Name
+To help us identify which EC2 instance is serving the content, we will edit the `<title>` tag of the default `index.html` file to include the instance name. Use the following command to edit the file:
+
+```bash
 sudo vi /var/www/html/index.html
+```
 
+Here’s an example of the modified HTML file for **VM1**:
+
+```html
 # index.html
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Hello, this is VM1!</title>
 <style type="text/css" media="screen">
 ```
-![enter image description here](http://localhost/assets/lab5-10.png)
 
-Now we can go the the IP addresses allocated to each instance and see that the new title names are applied
-![enter image description here](http://localhost/assets/lab5-11.png)
-![enter image description here](http://localhost/assets/lab5-12.png)
+You can repeat this step for the second instance (VM2) and modify the `<title>` tag accordingly.
+
+![HTML Modification](http://localhost/assets/lab5-10.png)
+
+#### 3. Access the EC2 Instances via Public IP Addresses
+Now that Apache is running and the HTML content has been updated, we can access each instance using its public IP address. Open your browser and visit the public IP addresses assigned to each instance.
+
+- **VM1** will display the title: "Hello, this is VM1!"
+  
+![VM1 Display](http://localhost/assets/lab5-11.png)
+
+- **VM2** will display the title: "Hello, this is VM2!"
+
+![VM2 Display](http://localhost/assets/lab5-12.png)
+
+### Key Points:
+- **Apache Installation**: Apache is installed on each instance, allowing us to serve content from `/var/www/html/`.
+- **HTML Modification**: The title of the HTML page is updated to reflect the instance name, making it easy to distinguish between the two EC2 instances.
+- **Access via IP**: The public IP addresses are used to access each instance and verify that the HTML modifications are displayed.
 
 <!--stackedit_data:
 eyJoaXN0b3J5IjpbLTExNjQ1NTY0MjEsLTYyNDM0Mzg3Nyw3Mz
@@ -1511,7 +1558,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODU2OTUyMTU5LDUzMzE3MzM4Niw0MzA3NT
+eyJoaXN0b3J5IjpbMTY5MTA5MTE4LDUzMzE3MzM4Niw0MzA3NT
 cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
 LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
 Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
