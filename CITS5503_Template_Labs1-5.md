@@ -996,10 +996,10 @@ After extracting all necessary attributes, we use `dynamodb_table.put_item()` to
 1. **Lists all files in the S3 Bucket**:
 The script uses `s3.list_objects_v2()` to retrieve the list of all objects in the specified S3 bucket (`24188516-cloudstorage`). The response contains metadata for each file, including the `Key` (file name) and `LastModified` timestamp.
 
-2. **Retrieves owner and permission information**:
+2. **Retrieves Owner and Permission Information**:
 For each file, the script calls `s3.get_object_acl()` to fetch the Access Control List (ACL) associated with the file. The ACL contains details about the file’s owner and permission settings, found in the **Grants** and **Owner** attributes.
 
-3. **Extracts file attributes**:
+3. **Extracts File Attributes**:
 The script extracts key attributes from each file, including:
    - **userId**: The ID of the user or entity who has permissions for the file.
    - **fileName**: The name of the file, extracted from the `Key` in the S3 response.
@@ -1008,7 +1008,7 @@ The script extracts key attributes from each file, including:
    - **owner**: The owner’s ID, retrieved from the ACL.
    - **permissions**: The file's access permissions, extracted from the ACL’s `Grants`.
 
-4. **Inserts file attributes into the DynamoDB table**:
+4. **Inserts File Attributes into the DynamoDB Table**:
 The extracted file attributes are then inserted into the DynamoDB `CloudFiles` table using `dynamodb_table.put_item()`. This operation stores each file’s metadata in the database, associating it with the appropriate `userId` and `fileName`.
 
 Here’s the script:
@@ -1446,12 +1446,12 @@ The following script, `cryptwithkms.py`, encrypts and decrypts files in the S3 b
 
 ### Workflow
 
-1. **Traverse all Files**:
+1. **Traverse all Files in the S3 Bucket**:
 The script first calls **`process_files()`** to list all files in the specified S3 bucket:
    - Lists all files in the specified S3 bucket.
    - Iterates through each file, calling `encrypt_file()` for encryption and subsequent decryption.
  
-2. **Encrypt each File**:
+2. **Encrypt original Files**:
 For each file, **`encrypt_file()`** function retrieves the file content from S3, encrypts it using the specified KMS key, and uploads the encrypted file back to the bucket with a new key that appends `.encrypted` to the original file name:
 	- Retrieves the file from the S3 bucket using `s3.get_object()`.
    - Encrypts the file content using the KMS key with `kms.encrypt()`.
@@ -1576,7 +1576,8 @@ The code is similar to the `cryptwithkms.py` script from the previous step, but 
 
 ### Workflow
 
-- **Import AES and Random Byte Generation**: We import `AES` from `pycryptodome` for encryption/decryption and `get_random_bytes` for random key generation. The **AES_KEY** is **32 bytes** (256 bits) long, aligning with the AWS KMS approach.
+1. **Import AES and Random Byte Generation**:
+We import `AES` from `pycryptodome` for encryption/decryption and `get_random_bytes` for random key generation. The **AES_KEY** is **32 bytes** (256 bits) long, aligning with the AWS KMS approach.
 
 ```python
 from Crypto.Cipher import AES
@@ -1585,7 +1586,7 @@ from Crypto.Random import get_random_bytes
 AES_KEY = get_random_bytes(32)  # 32 bytes = 256 bits-long key
 ```
 
-- **Encryption Process**:
+2. **Encryption Process**:
   - We initialize an AES cipher object in EAX mode with the generated `AES_KEY`: `AES.new(AES_KEY, AES.MODE_EAX)`.
   - The file content is encrypted using `cipher.encrypt_and_digest()`, which generates the ciphertext and an authentication tag for integrity verification.
   - We concatenate the **nonce**, **tag**, and **ciphertext** in that order to create the encrypted file content. The nonce is used to ensure unique ciphertexts for the same plaintext, preventing issues like hash collisions.
@@ -1993,11 +1994,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzQ3MTc1NzMzLC0xODU0NDc0NjI5LDEwNT
-E5MTg3MDgsODUyMzExODM3LDQ4ODcwNjc2MSw4NzU2NzQ3NDEs
-LTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mj
-c1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0x
-MzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNT
-I2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NF19
-
+eyJoaXN0b3J5IjpbLTQ5MzMwMDQxOSwtMTg1NDQ3NDYyOSwxMD
+UxOTE4NzA4LDg1MjMxMTgzNyw0ODg3MDY3NjEsODc1Njc0NzQx
+LC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3Nz
+I3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwt
+MTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4Mz
+UyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDRd
+fQ==
 -->
