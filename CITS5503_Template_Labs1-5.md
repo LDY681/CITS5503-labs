@@ -219,41 +219,51 @@ This command grants the owner of the file **read-only** permissions to secure th
 ![Key Pair Creation](http://127.0.0.1/assets/lab2-3.png)
 ![Permission Change](http://127.0.0.1/assets/lab2-4.png)
 
+### 4. Create the Instance
+Since my student number is `24188516`, create an EC2 instance in the `eu-north-1` region. The `--image-id` specifies the AMI ID with preset configurations; in this case, the AMI ID is `ami-07a0715df72e58928`. The instance type is set to `t3.micro`, and we use the private key `24188516-key` for secure access.
 
-### [4] Create the instance 
-Because my student number is `24188516`, let's create an ec2 instance in `eu-north-1` region. `--image-id` specifies ami id with preset configurations, mine is `ami-07a0715df72e58928`. `--instance-type` is set to t2.micro, and we are using the private key `24188516-key`
+```bash
+aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 24188516-sg --count 1 --instance-type t3.micro --key-name 24188516-key --query 'Instances[0].InstanceId'
 ```
- aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 24188516-sg --count 1 --instance-type t3.micro --key-name 24188516-key --query 'Instances[0].InstanceId'
- ```
 
-For some reason, at the moment I was working on the lab, **t2.micro** container is not supported so I switched to t3.micro. The instance is created with instance id `i-0553e2ea0492e1c73`
-![enter image description here](http://127.0.0.1/assets/lab2-6.png)
-![enter image description here](http://127.0.0.1/assets/lab2-5.png)
+At the time of running the lab, the **t2.micro** instance type was not supported, so we switched to **t3.micro**. The instance was successfully created with the instance ID `i-0553e2ea0492e1c73`.
 
-### [5] Add a tag to your Instance
-Now we have the instance id `i-0553e2ea0492e1c73`, add a tag that specifies the name, the value should be my student number with -vm `24188516-vm` for using single instance.
- ```
-  aws ec2 create-tags --resources i-0553e2ea0492e1c73 --tags Key=Name,Value=24188516-vm
- ```
+![Create EC2 Instance](http://127.0.0.1/assets/lab2-6.png)
+![Instance ID](http://127.0.0.1/assets/lab2-5.png)
 
-### [6] Get the public IP address
-**describe-instances** returns available information to the instance with `--instance-ids`, since we only want the IP address for ssh purpose, the query limits the output to only `Reservations[0].Instances[0].PublicIpAddress`
+### 5. Add a Tag to Your Instance
+Now that we have the instance ID `i-0553e2ea0492e1c73`, we add a tag to name the instance. The tag key is `Name`, and the value is our student number followed by `-vm`, so the tag is `24188516-vm`.
+
+```bash
+aws ec2 create-tags --resources i-0553e2ea0492e1c73 --tags Key=Name,Value=24188516-vm
 ```
+
+### 6. Get the Public IP Address
+To retrieve the public IP address of the instance, we use the `describe-instances` command. The query limits the output to only the `PublicIpAddress` of the instance:
+
+```bash
 aws ec2 describe-instances --instance-ids i-0553e2ea0492e1c73 --query 'Reservations[0].Instances[0].PublicIpAddress'
 ```
-![enter image description here](http://127.0.0.1/assets/lab2-7.png)
 
-### [7] Connect to the instance via ssh
-Use the stored pem key to connect to the public IP `16.171.151.20` of the instance via SSH
-```
+This IP address is needed for SSH access to the instance.
+
+![Public IP Address](http://127.0.0.1/assets/lab2-7.png)
+
+### 7. Connect to the Instance via SSH
+Now, we connect to the instance using the public IP address `16.171.151.20` via SSH. We use the previously generated `.pem` file to authenticate:
+
+```bash
 ssh -i 24188516-key.pem ubuntu@16.171.151.20
 ```
-Now that the server is connected, we can see system information on the console:
-![enter image description here](http://127.0.0.1/assets/lab2-8.png)
 
-### [8] List the created instance using the AWS console
-The original instance from step 1-7 was destoyed over night so you might see the instance id has changed because I had to create a new one. This is the screenshot:
-![enter image description here](http://127.0.0.1/assets/lab2-9.png)
+After connecting, we can see system information on the console, indicating that the connection was successful.
+
+![SSH Connection](http://127.0.0.1/assets/lab2-8.png)
+
+### 8. List the Created Instance Using the AWS Console
+The original instance created in steps 1-7 was destroyed overnight, so the instance ID might differ. Here is a screenshot of the newly created instance from the AWS console:
+
+![AWS Console](http://127.0.0.1/assets/lab2-9.png)
 
 ## Create an EC2 instance with Python Boto3
 
@@ -1182,7 +1192,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjAyNzU3NDExNywtMTMyMjQxMjQ0OSwzOT
+eyJoaXN0b3J5IjpbMjE0MDA2ODc0NCwtMTMyMjQxMjQ0OSwzOT
 k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
 NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
 E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
