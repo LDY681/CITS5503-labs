@@ -753,14 +753,13 @@ print("done")
   - **`Bucket`**: Specifies the destination S3 bucket, `24188516-cloudstorage`.
   - **`file_name`**: The key under which the file is stored in the S3 bucket, formed by concatenating the folder path and file name.
 
-Now our files are uploaded to the corresponding locations in out S3 bucket, maintaining the local directory structure.
+Now our files are uploaded to the corresponding locations in the S3 bucket, consistent with out local directory structure.
 
 ![S3 Upload](http://localhost/assets/lab2-19.png)
 
-
-
 ### 3. Restore from S3
-We create a new program, `restorefromcloud.py`, to restore files from the S3 bucket and write them to the appropriate directories. The program uses `s3.list_objects_v2` to list all files in the S3 bucket along with their attributes, such as **Key** and **Name**.
+
+We create a new program, `restorefromcloud.py`, to restore files from the S3 bucket and write them to the appropriate directories. The program uses `s3.list_objects_v2()` to list all files in the S3 bucket along with their attributes, such as **Key** and **Name**.
 
 We combine the local **ROOT_TARGET_DIR** with the **Key** to form the local file path. If the local directory does not exist, we create it using `os.makedirs()`. Finally, we download each file from the S3 bucket using `s3.download_file()`.
 
@@ -807,14 +806,14 @@ print("done")
 - **`boto3.client("s3")`**: Initializes the S3 client for interacting with the S3 bucket.
   
 - **`s3.list_objects_v2()`**: Lists all objects stored in the specified S3 bucket.
-  - **`Bucket`**: Specifies the S3 bucket name, here `24188516-cloudstorage`, from which we are retrieving files.
+  - **`Bucket`**: Specifies the S3 bucket name, which is `24188516-cloudstorage` in out case.
 
 - **`s3.download_file()`**: Downloads the specified file from S3 to the local directory.
   - **`Bucket`**: Specifies the S3 bucket name, `24188516-cloudstorage`.
   - **`s3_key`**: The key (path) of the file in the S3 bucket.
   - **`local_file_path`**: Specifies the destination file path on the local machine.
 
-- **`os.makedirs()`**: Creates the specified directory if it doesn’t already exist, ensuring the local directory structure mirrors the S3 directory structure.
+- **`os.makedirs()`**: Creates the specified directory if it doesn’t already exist, to the local directory structure the S3 directory structure.
 
 This script traverses the S3 bucket, restoring files to the local directory in the same structure they were uploaded.
 
@@ -1895,7 +1894,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwNDgzODY2NCw0ODg3MDY3NjEsODc1Nj
+eyJoaXN0b3J5IjpbMTg4NzU0OTI5NSw0ODg3MDY3NjEsODc1Nj
 c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
 LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
 E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
