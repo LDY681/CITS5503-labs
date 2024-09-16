@@ -30,21 +30,40 @@ Since I am running a Windows machine, I chose to set up `Ubuntu on Windows` via 
 
 By using WSL, I can run Linux-based commands and utilities without the need for a virtual machine or dual-boot setup, which saves both time and resources. This approach is ideal for development work where access to Linux-based tools is necessary while maintaining the flexibility of a Windows system.
 
-## Install Linux packages
-### [1] Install Python 3.10.x
-Because my ubuntu version is already `22.04`, I will get the lastest python version which is `3.10.12`.
-To update apt to latest version:
-```
+
+## Install Linux Packages
+
+### 1. Install Python 3.10.x
+Since my Ubuntu version is `22.04`, I automatically receive the latest stable Python version, which is `3.10.12`.
+
+#### Update Packages
+Before installing Python, let's ensure our system's packages are up to date. Run the following commands to update and upgrade packages:
+```bash
 sudo apt update
 sudo apt -y upgrade
 ```
-![enter image description here](http://127.0.0.1/assets/lab1-5.png)
-To check the latest version of python:
-`python3 -V`
-![enter image description here](http://127.0.0.1/assets/lab1-6.png)
-To install pip3:
-`sudo apt install -y python3-pip`
-![enter image description here](http://127.0.0.1/assets/lab1-7.png)
+![Updating System](http://127.0.0.1/assets/lab1-5.png)
+
+#### Verify Python Version
+Once updated, verify the version of Python installed by using the command:
+```bash
+python3 -V
+```
+This should display the Python version as `3.10.12`.
+
+![Check Python Version](http://127.0.0.1/assets/lab1-6.png)
+
+#### Install pip3
+To manage Python packages, install `pip3`, the most popular package installer for Python. Use the following command:
+```bash
+sudo apt install -y python3-pip
+```
+This command installs `pip3` and confirms the installation.
+
+![Installing pip3](http://127.0.0.1/assets/lab1-7.png)
+
+> **Note:** pip3 is essential for installing third-party libraries and dependencies that are required for various Python projects.
+
 
 ### [2] Install awscli
 To install AWS CLI and upgrade to latest version:
@@ -1124,11 +1143,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMT
-g3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1
-NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMT
-U0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3
-MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OT
-M2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQxMzUwNDk1Mywt
-MTEyODc1ODA0XX0=
+eyJoaXN0b3J5IjpbMTc4ODQ2MDYzNSwtMTMyMjQxMjQ0OSwzOT
+k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
+NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
+E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
+OTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNT
+gsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwx
+NDEzNTA0OTUzXX0=
 -->
