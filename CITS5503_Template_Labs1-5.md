@@ -1448,7 +1448,7 @@ This package provides AES encryption functionality similar to what AWS KMS offer
 #### 2. Modify the Code in `cryptwithpycryptodome.py`
 The code is similar to the `cryptwithkms.py` script from the previous step, but now we use `pycryptodome` for encryption and decryption.
 
-### Workflow Explanation:
+### Workflow:
 - **Import AES and Random Byte Generation**: We import `AES` from `pycryptodome` for encryption/decryption and `get_random_bytes` for random key generation. The **AES_KEY** is **32 bytes** (256 bits) long, aligning with the AWS KMS approach.
 
 ```python
@@ -1554,6 +1554,15 @@ def process_files(BUCKET_NAME):
 if __name__ == "__main__":
     process_files(BUCKET_NAME)
 ```
+
+### Code Explanation:
+1. **`get_random_bytes()`**: This function generates a secure random byte sequence to use as the AES encryption key. In this case, we generate 32 bytes (256 bits) to match the AWS KMS key length.
+  
+2. **`AES.new(AES_KEY, AES.MODE_EAX)`**: Initializes a new AES cipher object in EAX mode using the generated AES key. EAX mode provides both encryption and authentication, ensuring data integrity during decryption.
+  
+3. **`cipher.encrypt_and_digest(file_content)`**: Encrypts the provided file content and generates a cryptographic tag to verify the integrity of the encrypted data during decryption.
+
+. **`cipher.decrypt_and_verify(cipher_text, tag)`**: Decrypts the ciphertext using the AES key and verifies the integrity of the decrypted data with the provided tag.
 
 #### 3. See It in Action
 Now, let's run the script using:
@@ -1841,11 +1850,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzMzk2MjEyMyw4NzU2NzQ3NDEsLTE3OD
-UxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5
-LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyND
-EyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIz
-LDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MT
-MxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0
-MjddfQ==
+eyJoaXN0b3J5IjpbLTE2NjQxMDg5MjcsODc1Njc0NzQxLC0xNz
+g1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1
+OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMj
+QxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQy
+Myw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0Nz
+EzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYx
+NDI3XX0=
 -->
