@@ -42,7 +42,8 @@ Since my Ubuntu version is `22.04`, my system automatically comes with its corre
 
 #### Update Packages
 
-Before installing Python, ensure our system's packages are up to date. Run the following commands to update and upgrade packages: 
+First, we need to ensure our system's packages are up to date. Run the following commands to update and upgrade pre-installed packages: 
+
 ```bash
 sudo apt update
 sudo apt -y upgrade
@@ -50,12 +51,12 @@ sudo apt -y upgrade
 
 ![Updating System](http://127.0.0.1/assets/lab1-5.png)
 
-Since upgrading packages involves modifying the system, administrative privileges are required. This is why we prefix the command with `sudo`. 
+Since upgrading packages involves modifying the system, administrative privileges are required. Hence we need to prefix the command with `sudo`. 
 -  **`apt update`** updates the package lists from **Apt** package management tool. These package lists contain references to the latest versions of packages. 
--  **`apt upgrade`** upgrades all installed packages to their latest versions based on the information fetched from the update command, `-y` automatically answers **YES** to any prompts that might appear during the upgrade process.
+-  **`apt upgrade`** upgrades all installed packages to their latest versions based on the information retrieved from the update command, `-y` automatically answers **YES** to any prompts that might appear during the upgrade process.
 
 #### Verify Python Version
-To confirm that Python is installed and check the version, use the following command:
+To confirm that Python is installed and up to date, use the following command:
 
 ```bash
 python3 -V
@@ -1872,11 +1873,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjI0ODE2MzYyLDQ4ODcwNjc2MSw4NzU2Nz
-Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
-Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
-Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
-NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
-Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
-fQ==
+eyJoaXN0b3J5IjpbLTI2OTMxNDI1Nyw0ODg3MDY3NjEsODc1Nj
+c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
+LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
+E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
+MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
+g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
+XX0=
 -->
