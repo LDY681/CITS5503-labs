@@ -359,12 +359,12 @@ aws ec2 describe-instances --instance-ids i-0553e2ea0492e1c73 --query 'Reservati
 - **`--instance-ids`**: Specifies the instance ID, which is `i-0553e2ea0492e1c73` in this case.
 - **`--query`**: Limits the output to the `PublicIpAddress` of the instance, providing the required IP address for SSH access.
 
-This IP address is crucial for connecting to the instance via SSH.
+This IP address is printed after
 
 ![Public IP Address](http://127.0.0.1/assets/lab2-7.png)
 
 ### 7. Connect to the Instance via SSH
-Now, we connect to the instance using the public IP address `16.171.151.20` via SSH. We use the previously generated `.pem` file to authenticate:
+Now, we connect to the instance using the public IP address `16.171.151.20` via SSH. We need to use the previously generated `.pem` file to authenticate:
 
 ```bash
 ssh -i 24188516-key.pem ubuntu@16.171.151.20
@@ -1878,7 +1878,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE1Njg4MzU3Miw0ODg3MDY3NjEsODc1Nj
+eyJoaXN0b3J5IjpbLTUzMTU2MDgwMCw0ODg3MDY3NjEsODc1Nj
 c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
 LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
 E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
