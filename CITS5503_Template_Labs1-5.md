@@ -357,84 +357,109 @@ Let's verify the created instance in the AWS console:
 
 ![AWS Console Instance](http://127.0.0.1/assets/lab2-11.png)
 
+## Use Docker Inside a Linux OS
 
-## Use Docker inside a Linux OS
-
-### [1][2][3] Install and run Docker
-This command is used to install necessary packages for the Docker service.
-```
+### 1. Install Docker
+To install Docker, we first run the following command to install the necessary packages for the Docker service:
+```bash
 sudo apt install docker.io -y
 ```
-This command is used to start the Docker service immediately.
-```
+
+### 2. Start the Docker Service
+After installation, we start the Docker service immediately with:
+```bash
 sudo systemctl start docker
 ```
-This command is used to enable the Docker service to start automatically at boot time.
-```
+
+### 3. Enable Docker to Start on Boot
+To ensure Docker starts automatically at boot, we enable it using:
+```bash
 sudo systemctl enable docker
 ```
-![enter image description here](http://127.0.0.1/assets/lab2-12.png)
 
-### [4] Check the version
-After the Docker service is installed and enabled, run this command to check version and make sure it's working properly
-```
+![Docker Installation](http://127.0.0.1/assets/lab2-12.png)
+
+### 4. Check Docker Version
+After the Docker service is installed and enabled, we verify that Docker is working properly by checking its version:
+```bash
 docker --version
 ```
-![enter image description here](http://127.0.0.1/assets/lab2-13.png)
 
+This command prints out the installed version of Docker, confirming that it's working correctly.
 
-### [5] Build and run an httpd container
-The file index.html is located inside the html directory and add the following content, which does a single thing to display a paragraph with text **"Hello, World!"**.
-```
+![Docker Version Check](http://127.0.0.1/assets/lab2-13.png)
+
+### 5. Build and Run an `httpd` Container
+Next, we create an HTML file to be served via an Apache HTTP server running inside a Docker container. The file `index.html` is located inside the `html` directory and contains the following content:
+```html
   <html>
     <head> </head>
     <body>
-      <p>Hello World!</p>
+      <p>Hello, World!</p>
     </body>
   </html>
 ```
 
-Create a file called Dockerfile outside the html directory with the following content. This specifies Docker to use Apache HTTP Server version 2.4 and copy whatever inside **/html** folder to the destination directory inside the Docker container, which is **/usr/local/apache2/htdocs/**
-```
+#### Create a Dockerfile
+Outside the `html` directory, we create a `Dockerfile` with the following content:
+```Dockerfile
 FROM httpd:2.4
 COPY ./html/ /usr/local/apache2/htdocs/
 ```
 
-Add my current user **liudayubob** to the docker group to grant permission, reboot uBuntus console and build the docker image 
-```
+This Dockerfile specifies that we are using Apache HTTP Server version 2.4 and that the contents of the `html` folder should be copied to the appropriate directory inside the Docker container (`/usr/local/apache2/htdocs/`).
+
+#### Add User to Docker Group
+We add our user (`liudayubob`) to the Docker group to grant permission to manage Docker containers, then reboot the Ubuntu console:
+```bash
 sudo usermod -a -G docker <username>
 ```
 
-
-Build a docker image. This command tells docker to build the image under the current **/html** directory and add a tag called **my-apache2**
-```
+#### Build the Docker Image
+To build the Docker image, we navigate to the current directory (where the `Dockerfile` and `html` folder are located) and run the following command:
+```bash
 docker build -t my-apache2 .
 ```
-![enter image description here](http://127.0.0.1/assets/lab2-14.png)
-Run the image. First parameter maps ports between the host machine and the Docker container to **port 80**, second paramater **'-dit'** runs the container in detached mode, keeps STDIN open and allocates a pseudo-TTY to let docker image run in background and enables interaction with the container. The container is named as **my-app** and uses **my-apache2** image built earlier.
-```
+
+This command builds the image and tags it as `my-apache2`.
+
+![Docker Build](http://127.0.0.1/assets/lab2-14.png)
+
+#### Run the Docker Container
+Now, we run the image using the following command:
+```bash
 docker run -p 80:80 -dit --name my-app my-apache2
 ```
-![enter image description here](http://127.0.0.1/assets/lab2-15.png)
 
-Open a browser and access address: http://localhost or http://127.0.0.1. The html page is hosted and prints out "Hello World!"
-![enter image description here](http://127.0.0.1/assets/lab2-16.png)
+This command maps the host machine's port 80 to the Docker container's port 80, runs the container in detached mode with the name `my-app`, and uses the `my-apache2` image.
 
-### [6] Other docker commands
+![Docker Run](http://127.0.0.1/assets/lab2-15.png)
 
-To check what is running.
-```
+#### Access the Hosted HTML Page
+Open a browser and access `http://localhost` or `http://127.0.0.1`. The HTML page is hosted and displays "Hello, World!"
+
+![Docker Webpage](http://127.0.0.1/assets/lab2-16.png)
+
+### 6. Other Docker Commands
+
+#### Check Running Containers
+To list all running containers, use:
+```bash
 docker ps -a
 ```
-![enter image description here](http://127.0.0.1/assets/lab2-17.png)
 
-This prints out some properties of the running container such as **Container ID, STATUS, PORTS**, with the corresponding container name and image name that we assigned.
+This command displays the properties of the running containers, such as **Container ID**, **STATUS**, **PORTS**, the assigned container name, and the image used.
 
-To stop and remove the container
-```
+![Docker ps -a](http://127.0.0.1/assets/lab2-17.png)
+
+#### Stop and Remove the Container
+To stop and remove the running container, use the following commands:
+```bash
 docker stop my-app
 docker rm my-app
 ```
+
+These commands stop the `my-app` container and then remove it from the system.
 
 <div  style="page-break-after: always;"></div>
 
@@ -1204,11 +1229,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTkzNjY5NSwtMTMyMjQxMjQ0OSwzOTk2Nj
-U2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEs
-MTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OT
-g3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5
-NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLT
-E3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEz
-NTA0OTUzXX0=
+eyJoaXN0b3J5IjpbMTMzNDM4MjMwOCwtMTMyMjQxMjQ0OSwzOT
+k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
+NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
+E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
+OTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNT
+gsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwx
+NDEzNTA0OTUzXX0=
 -->
