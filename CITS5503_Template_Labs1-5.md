@@ -37,13 +37,14 @@ By using WSL, I can run Linux-based commands and utilities without the need for 
 Since my Ubuntu version is `22.04`, I automatically receive the latest stable Python version, which is `3.10.12`.
 
 #### Update Packages
-Before installing Python, let's ensure our system's packages are up to date. Run the following commands to update and upgrade packages:
+Before installing Python, let's ensure our system's packages are up to date. Run the following commands to update and upgrade packages: 
 ```bash
 sudo apt update
 sudo apt -y upgrade
 ```
 ![Updating System](http://127.0.0.1/assets/lab1-5.png)
 
+The first command updates the package lists for **Apt** package management. These package lists contain references to the latest versions of packages. 
 #### Verify Python Version
 Once updated, verify the version of Python installed by using the command:
 ```bash
@@ -1558,11 +1559,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NT
-cxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5
-LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNz
-Q4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MSwtMTU0OTg3MTM5
-NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC0xOTU3MTI5NTYsNj
-k2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2OTg5OTM2LC0xMDg3
-MDkyNjQwXX0=
+eyJoaXN0b3J5IjpbLTEzMjQyNzEzODMsNTM1MjM5NDMyLDUzMz
+E3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1Njky
+LC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1Mz
+MwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3
+MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC
+0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2
+OTg5OTM2XX0=
 -->
