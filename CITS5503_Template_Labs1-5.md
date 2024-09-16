@@ -1601,7 +1601,7 @@ encrypt_file_key = f"{file_key}.encrypted"
 file_body = cipher.nonce + tag + cipher_text
 ```
 
-- **Decryption Process**:
+3. **Decryption Process**:
   - We extract the **nonce**, **tag**, and **ciphertext** from the concatenated file content (`file_body`). The nonce is the first 16 bytes, the tag is the next 16 bytes, and the remaining content is the ciphertext.
   - Using the extracted nonce, we create a new AES cipher object to decrypt the file and verify its integrity with the tag.
 
@@ -1994,11 +1994,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ5MzMwMDQxOSwtMTg1NDQ3NDYyOSwxMD
-UxOTE4NzA4LDg1MjMxMTgzNyw0ODg3MDY3NjEsODc1Njc0NzQx
-LC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3Nz
-I3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwt
-MTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4Mz
-UyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDRd
-fQ==
+eyJoaXN0b3J5IjpbNjY5ODU1OTg3LC0xODU0NDc0NjI5LDEwNT
+E5MTg3MDgsODUyMzExODM3LDQ4ODcwNjc2MSw4NzU2NzQ3NDEs
+LTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mj
+c1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MTQ5LC0x
+MzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNT
+I2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NF19
+
 -->
