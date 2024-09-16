@@ -141,11 +141,11 @@ regions_df = pd.DataFrame(regions)
 print(regions_df)
 ```
 
-- **`boto3 as bt`**: We import `boto3`, aliased as `bt`, to interact with AWS services.
-- **`pandas as pd`**: We import `pandas`, aliased as `pd`, to structure our data into a table.
-- **`ec2 = bt.client('ec2')`**: We connect to the EC2 service.
-- **`response = ec2.describe_regions()`**: We retrieve the available AWS regions.
-- **`pd.DataFrame(regions)`**: We convert the regions data into a pandas DataFrame for structured output.
+- **`boto3 as bt`**: Import `boto3`, aliased as `bt`, to interact with AWS services.
+- **`pandas as pd`**: Import `pandas`, aliased as `pd`, to structure our data into a table.
+- **`ec2 = bt.client('ec2')`**: Connect to the EC2 service.
+- **`response = ec2.describe_regions()`**: Retrieve the available AWS regions.
+- **`pd.DataFrame(regions)`**: Convert the regions data into a pandas DataFrame for structured output.
 
 #### (3) Run the Script
 To execute the Python script, use the following command:
@@ -1173,11 +1173,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE5NjM4OTU2MiwtMTMyMjQxMjQ0OSwzOT
-k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
-NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
-E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
-OTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNT
-gsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwx
-NDEzNTA0OTUzXX0=
+eyJoaXN0b3J5IjpbNDMwMTU2ODQsLTEzMjI0MTI0NDksMzk5Nj
+Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
+LDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxND
+k4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4Mzkz
+OTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC
+0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3NzgsMTQx
+MzUwNDk1M119
 -->
