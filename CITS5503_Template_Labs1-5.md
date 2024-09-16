@@ -554,9 +554,12 @@ This command outputs the installed Docker version, ensuring that Docker is ready
 
 ![Docker Version Check](http://127.0.0.1/assets/lab2-13.png)
 
-
 ### 5. Build and Run an `httpd` Container
-Next, we create an HTML file to be served via an Apache HTTP server running inside a Docker container. The file `index.html` is located inside the `html` directory and contains the following content:
+In this step, we create an HTML file to be served via an Apache HTTP server running inside a Docker container.
+
+#### HTML File Creation
+The file `index.html` is located inside the `html` directory and contains the following content:
+
 ```html
   <html>
     <head></head>
@@ -566,28 +569,43 @@ Next, we create an HTML file to be served via an Apache HTTP server running insi
   </html>
 ```
 
+This file simply displays the message "Hello, World!" when accessed via a web browser.
+
 #### Create a Dockerfile
-Outside the `html` directory, we create a `Dockerfile` with the following content:
+Outside the `html` directory, we create a `Dockerfile` to define the configuration for our Docker container. The file contains the following:
+
 ```Dockerfile
 FROM httpd:2.4
 COPY ./html/ /usr/local/apache2/htdocs/
 ```
 
-This Dockerfile specifies that we are using Apache HTTP Server version 2.4 and that the contents of the `html` folder should be copied to the appropriate directory inside the Docker container (`/usr/local/apache2/htdocs/`).
+#### Key Parameters:
+- **`FROM httpd:2.4`**: Specifies the base image for the container. In this case, it uses Apache HTTP Server version 2.4.
+- **`COPY ./html/ /usr/local/apache2/htdocs/`**: Copies the contents of the `html` directory from the local system into the container’s web server directory (`/usr/local/apache2/htdocs/`), making the `index.html` file accessible via the web server.
 
 #### Add User to Docker Group
-We add our username (`liudayubob`) to the Docker group to grant permission to manage Docker containers, then reboot the Ubuntu console:
+We add our username (`liudayubob`) to the Docker group to grant permission to manage Docker containers, then reboot the system:
+
 ```bash
 sudo usermod -a -G docker liudayubob
 ```
 
+#### Key Parameters:
+- **`usermod -a -G docker`**: Adds the user `liudayubob` to the Docker group (`docker`), allowing them to manage Docker without using `sudo`.
+
 #### Build the Docker Image
-To build the Docker image, we navigate to the current directory (where the `Dockerfile` and `html` folder are located) and run the following command:
+Once the `Dockerfile` and `html` folder are in place, we build the Docker image using the following command:
+
 ```bash
 docker build -t my-apache2 .
 ```
 
-This command builds the image and tags it as `my-apache2`.
+#### Key Parameters:
+- **`build`**: Instructs Docker to build an image based on the `Dockerfile` in the current directory.
+- **`-t`**: Tags the image with the name `my-apache2` for easy reference.
+- **`.`**: Specifies the build context, indicating the current directory (where the `Dockerfile` and `html` folder are located).
+
+This command builds the Docker image, preparing it to run an Apache server that serves the `index.html` file.
 
 ![Docker Build](http://127.0.0.1/assets/lab2-14.png)
 
@@ -1724,7 +1742,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY4MjUzMDY0NywtMjIzNTIwMjk3LC03Nz
+eyJoaXN0b3J5IjpbMTI1NTE3NDE3MCwtMjIzNTIwMjk3LC03Nz
 cyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDks
 LTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0OD
 M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
