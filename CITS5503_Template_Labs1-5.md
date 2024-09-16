@@ -199,7 +199,7 @@ Next, we add a rule to allow SSH access via TCP. The `--protocol` flag specifies
 aws ec2 authorize-security-group-ingress --group-name 24188516-sg --protocol tcp --port 22 --cidr 0.0.0.0/0
 ```
 
-This command creates a rule allowing SSH traffic on port 22, and the response will display the newly created rule along with specific rulesets.
+This command creates a rule allowing SSH traffic on port **22**, and the response will display the newly created rule along with specific rulesets.
 
 ![Authorize Inbound Traffic](http://127.0.0.1/assets/lab2-2.png)
 
@@ -209,7 +209,7 @@ To establish a secure, encrypted connection to the EC2 instance, we generate a p
 aws ec2 create-key-pair --key-name 24188516-key --query 'KeyMaterial' --output text > 24188516-key.pem
 ```
 
-Once the key is created, we ensure it has the correct permissions by copying the file to the `~/.ssh` directory and adjusting the permissions:
+Once the key is created, we ensure it has the correct permissions by copying the file to the `~/.ssh` directory and granting permissions with `chmod`:
 ```bash
 chmod 400 24188516-key.pem
 ```
@@ -1182,7 +1182,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc5NDc3NzQ5MywtMTMyMjQxMjQ0OSwzOT
+eyJoaXN0b3J5IjpbLTg5MzMxMTU3MiwtMTMyMjQxMjQ0OSwzOT
 k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
 NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
 E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
