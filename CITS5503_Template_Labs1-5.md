@@ -389,8 +389,30 @@ The original instance created in steps 1-7 was destroyed overnight, so I had to 
 
 In this step, we create an EC2 instance using the **boto3** Python package instead of AWS CLI commands. While the method names and parameters differ, the outcome is the same as in the previous steps. To differentiate this instance from the previous one, we append `-2` to the **Group name**, **Key name**, and **Instance name**.
 
-### Python Script
-The following Python script uses `boto3` to create the EC2 **instance, security group, key pair, and instance tag**:
+### Workflow Explanation
+
+1. **Create Security Group**:  
+   The script starts by creating a security group (`24188516-sg-2`) using `ec2.create_security_group()`. This security group is essential for defining inbound and outbound traffic rules for the EC2 instance.
+   
+2. **Authorize SSH Inbound Rule**:  
+   Next, an SSH rule is added using `ec2.authorize_security_group_ingress()`. This allows SSH access on port **22** from all IP addresses (`0.0.0.0/0`).
+
+3. **Create Key Pair**:  
+   A key pair (`24188516-key-2`) is generated using `ec2.create_key_pair()`, and the private key is saved locally with restricted access permissions using `os.chmod()` to secure it.
+
+4. **Create EC2 Instance**:  
+   The script launches an EC2 instance in the specified security group using `ec2.run_instances()`. The **AMI ID** (`ami-07a0715df72e58928`), **instance type** (`t3.micro`), and **key name** (`24188516-key-2`) are provided as parameters.
+
+5. **Tag the Instance**:  
+   A name tag (`24188516-vm-2`) is created for the EC2 instance using `ec2.create_tags()`. This helps in identifying the instance easily within the AWS environment.
+
+6. **Retrieve Public IP Address**:  
+   The public IP address of the newly created EC2 instance is retrieved using `ec2.describe_instances()`. This IP address is needed for SSH access to the instance.
+
+7. **Print All Responses**:  
+   Finally, the responses from all the steps are printed to the console, including the security group creation, key pair, instance ID, and public IP address.
+
+
 
 ```python
 import boto3 as bt
@@ -1879,7 +1901,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM1Nzk1MDk5MCw0ODg3MDY3NjEsODc1Nj
+eyJoaXN0b3J5IjpbLTk1NjM0ODQzNCw0ODg3MDY3NjEsODc1Nj
 c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
 LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
 E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
