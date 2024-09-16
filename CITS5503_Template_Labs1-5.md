@@ -325,7 +325,6 @@ Once the command is executed, the instance is successfully created, and the **In
 
 The screenshots show the successful creation of the EC2 instance and the returned **InstanceId**.
 
-
 ### 5. Add a Tag to the Instance
 Now that we have the instance ID `i-0553e2ea0492e1c73`, we add a tag to name the instance. The tag key is `Name`, and the value is our student number followed by `-vm`, so the tag is `24188516-vm`.
 
@@ -1653,11 +1652,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMT
-czMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIs
-LTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
-A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
-LC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLT
-E5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5
-ODk5MzZdfQ==
+eyJoaXN0b3J5IjpbLTE1MTMxNTA2NjEsLTc3NzI3NTA1OSw1Mz
+UyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0
+OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5ND
+U3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAw
+OCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC
+05MjgzOTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQx
+NjUxNThdfQ==
 -->
