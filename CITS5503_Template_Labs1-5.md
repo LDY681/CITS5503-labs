@@ -1632,13 +1632,8 @@ What is the performance difference between using KMS and using the custom soluti
 ```
 ```
 Answer:
-I think KMS outperforms in its ease of maintainence and high scalability.
-It offers automated key management so we don't need to manually save our keys.
-KMS is also highly scalable because they are based on cloud infrastructure, which is critical under significant workload.
-**PyCryptodome** is better for its extensibility and low internet overhead. PyCryptodome offers more room of customization with more cryptography algorithms and combinations with different configurations.
-It doesn't rely on API calls which are subject to connectivetity and rate limits.
-However since encryption/decrption are done on local machine, it doesn't scale well with high workload.
-
+**KMS** outperforms in its ease of maintainence and high scalability. It offers automated key management so we don't need to manually save our keys. KMS is also highly scalable because they are based on cloud infrastructure, which is critical under significant workload.
+**PyCryptodome** is better for its extensibility and low internet overhead. PyCryptodome offers more room of customization with more cryptography algorithms and combinations with different configurations. It doesn't rely on API calls which are subject to connectivetity and rate limits. However since encryption/decrption are done on local machine, it doesn't scale well with high workload.
 ```
 <div  style="page-break-after: always;"></div>
 
@@ -1649,7 +1644,7 @@ However since encryption/decrption are done on local machine, it doesn't scale w
 
 In this section, we will replicate some of the steps from **Lab 2** to create two EC2 instances, but with a few changes to accommodate the new resources for **Lab 5**. We append the suffix `lab5` to resource names like **security group** and **key pair** to differentiate them from the resources in **Lab 2**.
 
-#### Key Changes:
+#### Key Changes compared to Lab 2:
 - **Subnets and Availability Zones**: We will create the two EC2 instances in different **availability zones** by using `ec2.describe_subnets()` to fetch the subnets, and specifying the **SubnetId** parameter when launching the EC2 instances.
 - **Load Balancer and Target Group**: 
   - **Create Load Balancer**: Using `elbv2.create_load_balancer()` with the required subnets, security groups, and settings.
@@ -1912,11 +1907,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc1MzgzNjcxMyw0ODg3MDY3NjEsODc1Nj
-c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
-LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
-E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
-MTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3ND
-g0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNTQ5ODcxMzk1
-XX0=
+eyJoaXN0b3J5IjpbMjk5NTc5NTE3LDQ4ODcwNjc2MSw4NzU2Nz
+Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
+Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
+Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
+NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
+Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
+fQ==
 -->
