@@ -344,7 +344,7 @@ print(f"{step1_response}\n{step2_response}\n{PrivateKey}\n{InstanceId}\n{step5_r
 1. **Security Group Creation**: We first create a security group with the name `24188516-sg-2` to manage inbound and outbound rules.
 2. **SSH Authorization**: An inbound rule is added to allow SSH access (TCP on port 22) for all IPs (`0.0.0.0/0`).
 3. **Key Pair Creation**: We generate a key pair (`24188516-key-2`), save the private key in a `.pem` file, and set the correct file permissions for security.
-4. **Instance Creation**: The script launches a `t3.micro` EC2 instance with the AMI ID `ami-07a0715df72e58928` and attaches the security group and key pair.
+4. **Instance Creation**: This step launches a `t3.micro` EC2 instance with the AMI ID `ami-07a0715df72e58928` and attaches the security group and key pair.
 5. **Tagging the Instance**: The instance is tagged with the name `24188516-vm-2` to identify it.
 6. **Retrieving the Public IP**: After the instance is created, the public IP address is retrieved for SSH access.
 
@@ -353,7 +353,7 @@ Once the script is executed, the responses from each step are printed, showing t
 
 ![Script Output](http://127.0.0.1/assets/lab2-10.png)
 
-You can also verify the created instance in the AWS console:
+Let's verify the created instance in the AWS console:
 
 ![AWS Console Instance](http://127.0.0.1/assets/lab2-11.png)
 
@@ -1204,11 +1204,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0MzU2MzM5OCwtMTMyMjQxMjQ0OSwzOT
-k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
-NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
-E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
-OTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNT
-gsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwx
-NDEzNTA0OTUzXX0=
+eyJoaXN0b3J5IjpbNTkzNjY5NSwtMTMyMjQxMjQ0OSwzOTk2Nj
+U2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEs
+MTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OT
+g3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5
+NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLT
+E3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwxNDEz
+NTA0OTUzXX0=
 -->
