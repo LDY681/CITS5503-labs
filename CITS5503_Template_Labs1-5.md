@@ -11,6 +11,8 @@
 
 ### [1] Reset and Login into IAM User Account
 
+
+
 To st- #### **Result**art with, I received an email with the initial login credentials for my IAM user account. After navigating to the AWS login portal, I successfully logged in using these credentials and reset my password as instructed.
 
 ![enter image description here](http://127.0.0.1/assets/lab1-1.png)
@@ -2005,11 +2007,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNjMyNjAyOTUsMzgyMTcwMTc1LDE2NT
-czMDY4MDEsLTE4NTQ0NzQ2MjksMTA1MTkxODcwOCw4NTIzMTE4
-MzcsNDg4NzA2NzYxLDg3NTY3NDc0MSwtMTc4NTEwMDgyLDUxNz
-g2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMy
-LDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5Nj
-Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
-XX0=
+eyJoaXN0b3J5IjpbMzU4Mjk5MTY1LDM4MjE3MDE3NSwxNjU3Mz
+A2ODAxLC0xODU0NDc0NjI5LDEwNTE5MTg3MDgsODUyMzExODM3
+LDQ4ODcwNjc2MSw4NzU2NzQ3NDEsLTE3ODUxMDA4Miw1MTc4Nj
+gzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQzMiw1
+MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NT
+Y5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MV19
+
 -->
