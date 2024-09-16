@@ -1241,9 +1241,22 @@ Here’s the full JSON policy:
 
 #### Key Parameters:
 - **Statement 1**: Grants full access (`kms:*`) to the root account (`arn:aws:iam::489389878001:root`) for all KMS operations on all resources.
-- **Statement 2**: The IAM user (`24188516@student.uwa.edu.au`) is granted permissions to perform key management tasks such as **creating, describing, enabling, disabling, tagging, and deleting keys**.
-- **Statement 3**: The IAM user can use the key for cryptographic functions like **encrypting, decrypting, re-encrypting, and generating data keys**.
-- **State**: Allows the IAM user to manage grants (e.g., **creating, listing, and revoking** grants) for the key, but only when the grant is for an AWS resource (`kms:GrantIsForAWSResource`).
+- **Statement 2**: The IAM user (`24188516@student.uwa.edu.au`) is granted permissions to perform key management tasks such as **creating, describing, enabling, disabling, tagging, and deleting** keys, indicating by "kms:Create*",
+				"kms:Describe*",
+				"kms:Enable*",
+				"kms:List*",
+				"kms:Put*",
+				"kms:Update*",
+				"kms:Revoke*",
+				"kms:Disable*",
+				"kms:Get*",
+				"kms:Delete*",
+				"kms:TagResource",
+				"kms:UntagResource",
+				"kms:ScheduleKeyDeletion",
+				"kms:CancelKeyDeletion"
+- **Statement 3**: The IAM user can use the key for cryptographic functions like **encrypting, decrypting, re-encrypting, and generating** data keys, indicating by `kms:Encrypt`,  `kms:Decrypt`  `kms:ReEncrypt`,  `kms:GenerateDataKey` and  `kms:DescribeKey`,
+- **Statement 4**: Allows the IAM user to manage grants (e.g., **creating, listing, and revoking** grants) for the key, but only when the grant is for an AWS resource (`kms:GrantIsForAWSResource`).
 
 This policy ensures secure management of the KMS key, allowing only authorized users to perform key management and cryptographic operations.
 
@@ -1834,11 +1847,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY2NjM0NDIsLTE3ODUxMDA4Miw1MTc4Nj
-gzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQzMiw1
-MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OTY2NT
-Y5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0MSwx
-NTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMTQ5OD
-c3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5Mzk3
-MV19
+eyJoaXN0b3J5IjpbMTk1ODQ5ODA1OSwtMTc4NTEwMDgyLDUxNz
+g2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMy
+LDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5Nj
+Y1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQx
+LDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxND
+k4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4Mzkz
+OTcxXX0=
 -->
