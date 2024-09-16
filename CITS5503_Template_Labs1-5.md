@@ -399,7 +399,7 @@ In this step, we create an EC2 instance using the **boto3** Python package inste
 
 The following Python script uses `boto3` to create the EC2 **instance, security group, key pair, and instance tag**:
 
-### Workflow:
+### Workflow
 
 1. **Create Security Group**:  
    The script starts by creating a security group (`24188516-sg-2`) using `ec2.create_security_group()`.
@@ -723,9 +723,7 @@ We begin by creating the required files and directories. The following file stru
 
 The `cloudstorage.py` script is modified to create an S3 bucket named `24188516-cloudstorage` if it doesn’t already exist. The script then traverses all directories and subdirectories in the root directory and uploads any discovered files to the S3 bucket.
 
-### Workflow:
-
-This script performs the following steps:
+### Workflow
 
 1. **Locate or Create the S3 Bucket**: 
    - The script attempts to create an S3 bucket (`24188516-cloudstorage`) using `s3.create_bucket()`. 
@@ -802,9 +800,7 @@ We create a new program, `restorefromcloud.py`, to restore files from the S3 buc
 
 We combine the local **ROOT_TARGET_DIR** with the **Key** to form the local file path. If the local directory does not exist, we create it using `os.makedirs()`. Finally, we download each file from the S3 bucket using `s3.download_file()`.
 
-### Workflow:
-
-This script performs the following steps:
+### Workflow
 
 1. **List Objects in the S3 Bucket**:
    - The script uses `s3.list_objects_v2()` to list all the files (objects) in the `24188516-cloudstorage` S3 bucket. The response contains details about each file, including its **Key**, which indicates the path of the file within the S3 bucket.
@@ -995,9 +991,7 @@ In this step, we write data into the `CloudFiles` table. First, we use `s3.list_
 After extracting all necessary attributes, we use `dynamodb_table.put_item()` to insert each object into the DynamoDB table. Since our designated region is `eu-north-1`, we populate the `owner` field with the owner's ID.
 
 
-### Workflow:
-
-This script performs the following steps:
+### Workflow
 
 1. **Lists all files in the S3 bucket**: The script uses `s3.list_objects_v2()` to retrieve the list of all objects in the specified S3 bucket (`24188516-cloudstorage`). The response contains metadata for each file, including the `Key` (file name) and `LastModified` timestamp.
 
@@ -1168,9 +1162,7 @@ This JSON policy ensures that any user attempting to access the bucket, who is n
 
 Since the policy parameter in `s3.put_bucket_policy()` only accepts a JSON string, we load the JSON policy from `bucketpolicy.json`, convert it into a string using `json.dumps()`, and then apply it to the bucket using `s3.put_bucket_policy()`.
 
-### Workflow:
-
-This script performs the following steps:
+### Workflow
 
 1. **Reads the JSON policy from File system**: The script uses `json.load()` to read the bucket policy from the `bucketpolicy.json` file. This policy outlines the permissions that will be applied to the S3 bucket.
 
@@ -1445,7 +1437,7 @@ In the **Policy** section of the KMS key, you should see that the user `24188516
 
 The following script, `cryptwithkms.py`, encrypts and decrypts files in the S3 bucket `24188516-cloudstorage` using the KMS key we created earlier (`alias/24188516`).
 
-### Workflow:
+### Workflow
 
 1. The script first calls **`process_files()`** to list all files in the specified S3 bucket:
    - Lists all files in the specified S3 bucket.
@@ -1570,7 +1562,7 @@ This package provides AES encryption functionality similar to what AWS KMS offer
 #### 2. Modify the Code in `cryptwithpycryptodome.py`
 The code is similar to the `cryptwithkms.py` script from the previous step, but now we use `pycryptodome` for encryption and decryption.
 
-### Workflow:
+### Workflow
 
 - **Import AES and Random Byte Generation**: We import `AES` from `pycryptodome` for encryption/decryption and `get_random_bytes` for random key generation. The **AES_KEY** is **32 bytes** (256 bits) long, aligning with the AWS KMS approach.
 
@@ -1989,11 +1981,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NTQ0NzQ2MjksMTA1MTkxODcwOCw4NT
-IzMTE4MzcsNDg4NzA2NzYxLDg3NTY3NDc0MSwtMTc4NTEwMDgy
-LDUxNzg2ODM0MCwtMjIzNTIwMjk3LC03NzcyNzUwNTksNTM1Mj
-M5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDks
-Mzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1Nz
-I3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDhd
-fQ==
+eyJoaXN0b3J5IjpbLTEyODIzNjI3NzEsLTE4NTQ0NzQ2MjksMT
+A1MTkxODcwOCw4NTIzMTE4MzcsNDg4NzA2NzYxLDg3NTY3NDc0
+MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNTIwMjk3LC03Nz
+cyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0MzA3NTcxNDks
+LTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MDcxODA5LDE0OD
+M1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0
+XX0=
 -->
