@@ -190,7 +190,7 @@ python3 lab1.py
 ```
 
 #### 4. Get the Results
-After running the script, the results are printed in a table format:
+After running the Python script, the results are printed in a table format. The table shows the available AWS regions along with the corresponding **Endpoint**, **RegionName**, and **OptInStatus**.
 
 | --- | Endpoint | RegionName | OptInStatus |
 | --- | --- | --- | --- |
@@ -211,6 +211,16 @@ After running the script, the results are printed in a table format:
 | 14 | ec2.us-east-2.amazonaws.com | us-east-2 | opt-in-not-required |
 | 15 | ec2.us-west-1.amazonaws.com | us-west-1 | opt-in-not-required |
 | 16 | ec2.us-west-2.amazonaws.com | us-west-2 | opt-in-not-required |
+
+#### Key Columns:
+- **Endpoint**: This is the public URL of the AWS service (EC2 in this case) for each region. It’s the endpoint through which API calls to EC2 are routed for that specific region. For example, `ec2.ap-south-1.amazonaws.com` is the endpoint for the **ap-south-1** region.
+  
+- **RegionName**: This represents the unique identifier (region code) for each AWS region. It is used when specifying a region in your AWS CLI commands, SDKs, or configurations. Each region is associated with a specific geographic location, such as `ap-south-1` for the Asia Pacific (Mumbai) region or `us-east-1` for the US East (N. Virginia) region.
+
+- **OptInStatus**: This column shows the status of whether a region requires users to opt-in before using it. `opt-in-not-required` means that the region is generally available for all AWS users without requiring any special opt-in process. Some regions, particularly newer ones, might require users to opt-in before they can start provisioning resources there, but in this case, all listed regions do not require opt-in.
+
+This table helps verify the connection to AWS and confirms that the Python environment is correctly configured to retrieve information from AWS services.
+
 
 <div  style="page-break-after: always;"></div>
 
@@ -1594,11 +1604,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMzcwMjc5MDAsNTM1MjM5NDMyLDUzMz
-E3MzM4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1Njky
-LC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1Mz
-MwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3
-MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4MzkzOTcxLC
-0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MTU4LC0xNzY2
-OTg5OTM2XX0=
+eyJoaXN0b3J5IjpbMjA5Nzg5NTkwNiw1MzUyMzk0MzIsNTMzMT
+czMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIs
+LTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMz
+A0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3Nzcx
+LC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLT
+E5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNTgsLTE3NjY5
+ODk5MzZdfQ==
 -->
