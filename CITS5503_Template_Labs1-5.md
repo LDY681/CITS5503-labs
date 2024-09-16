@@ -1102,10 +1102,16 @@ Since the policy parameter in `s3.put_bucket_policy()` only accepts a JSON strin
 
 ### Workflow:
 
-This script does the following:
-1. Reads the JSON policy from `bucketpolicy.json`.
-2. Converts the policy into a string format.
-3. Applies the policy to the S3 bucket using `s3.put_bucket_policy()`.
+This script performs the following steps:
+
+1. **Reads the JSON policy**: The script uses `json.load()` to read the bucket policy from the `bucketpolicy.json` file. This policy outlines the permissions that will be applied to the S3 bucket.
+
+2. **Converts the policy to a string**: The policy is converted into a string format using `json.dumps()`, as the `s3.put_bucket_policy()` function requires the policy to be passed as a JSON string.
+
+3. **Applies the policy to the S3 bucket**: The script uses `s3.put_bucket_policy()` to attach the policy to the specified S3 bucket (`24188516-cloudstorage`). This method takes in two key parameters:
+   - **Bucket**: The name of the S3 bucket (`24188516-cloudstorage`).
+   - **Policy**: The policy in JSON string format that will govern access to the bucket.
+
 
 Here’s the Python script to apply the policy:
 
@@ -1910,11 +1916,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODUyMzExODM3LDQ4ODcwNjc2MSw4NzU2Nz
-Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
-Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
-Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
-NDgzNTI2NDIzLDk0NTcyNzY0MSwxNTMzMDQ4NTQzLDU0MTc0OD
-Q0NCwxMzQ3MTMxMDA4LDEyMTQ5ODc3NzEsLTE1NDk4NzEzOTVd
-fQ==
+eyJoaXN0b3J5IjpbLTg0NDgwMTQxNCw4NTIzMTE4MzcsNDg4Nz
+A2NzYxLDg3NTY3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwt
+MjIzNTIwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3Mz
+M4Niw0MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0x
+MTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwND
+g1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMTIxNDk4Nzc3MV19
+
 -->
