@@ -72,11 +72,11 @@ This ensures that we have the most recent version of AWS CLI with latest feature
 ![Install AWS CLI](http://127.0.0.1/assets/lab1-8.png)
 
 ### 3. Configure AWS CLI
-After installation, configure the AWS CLI to connect to your Amazon EC2 instance. This is done by entering your credentials (Access Key ID, Secret Access Key, region, and output format) using the following command:
+After installation, configure the AWS CLI to connect to our Amazon EC2 instance. This is done by entering your credentials (Access Key ID, Secret Access Key, Region) using the following command:
 ```bash
 aws configure
 ```
-Proper configuration is essential for securely accessing AWS services, ensuring that your AWS environment is set up for easy interaction with AWS resources.
+These credentials can be found from step [3]. These configuration is essential for securely accessing AWS services, ensuring that your AWS environment is set up for easy interaction with AWS resources.
 
 ![Configure AWS CLI](http://127.0.0.1/assets/lab1-9.png)
 
@@ -1154,7 +1154,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1OTQwNDIwNzQsLTEzMjI0MTI0NDksMz
+eyJoaXN0b3J5IjpbLTE2ODAxMTQ3MzgsLTEzMjI0MTI0NDksMz
 k5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3
 NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMT
 IxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4
