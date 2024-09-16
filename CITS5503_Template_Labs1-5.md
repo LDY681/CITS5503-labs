@@ -118,8 +118,6 @@ Our credentials can be found from step [3]. These configurations help us to corr
 
 ![Configure AWS CLI](http://127.0.0.1/assets/lab1-9.png)
 
-
-
 ### 4. Install boto3
 Although `botocore` is included with the AWS CLI package, `boto3` is the Python SDK for AWS, and can be used to send API requests and automate tasks via Python scripts, such as launching EC2 instances in the next step. Install `boto3` using the following command:
 ```bash
@@ -431,7 +429,7 @@ The following Python script uses `boto3` to create the EC2 **instance, security 
 
 6. **Retrieve Public IP Address**:  
    The public IP address of the newly created EC2 instance is retrieved using `ec2.describe_instances()`.
-   
+
 ```python
 import boto3 as bt
 import os
@@ -2007,11 +2005,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY1NzMwNjgwMSwtMTg1NDQ3NDYyOSwxMD
-UxOTE4NzA4LDg1MjMxMTgzNyw0ODg3MDY3NjEsODc1Njc0NzQx
-LC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcsLTc3Nz
-I3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1NzE0OSwt
-MTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDksMTQ4Mz
-UyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDRd
+eyJoaXN0b3J5IjpbMzgyMTcwMTc1LDE2NTczMDY4MDEsLTE4NT
+Q0NzQ2MjksMTA1MTkxODcwOCw4NTIzMTE4MzcsNDg4NzA2NzYx
+LDg3NTY3NDc0MSwtMTc4NTEwMDgyLDUxNzg2ODM0MCwtMjIzNT
+IwMjk3LC03NzcyNzUwNTksNTM1MjM5NDMyLDUzMzE3MzM4Niw0
+MzA3NTcxNDksLTEzMjI0MTI0NDksMzk5NjY1NjkyLC0xMTg3MD
+cxODA5LDE0ODM1MjY0MjMsOTQ1NzI3NjQxLDE1MzMwNDg1NDNd
 fQ==
 -->
