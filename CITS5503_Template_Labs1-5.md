@@ -7,13 +7,13 @@
 
 # Lab 1
 ## AWS Account and Log in
-### [1] Logging into My IAM User Account
+### [1] Reset and Login into IAM User Account
 To start with, I received an email with the initial login credentials for my IAM user account. After navigating to the AWS login portal, I successfully logged in using these credentials and promptly reset my password as instructed.
 ![enter image description here](http://127.0.0.1/assets/lab1-1.png)
 
-This stepgrants access to the AWS Management Console, which provides all necessary resources and services for managing AWS infrastructure.
+This step grants access to the AWS Management Console, which provides all necessary resources and services for managing AWS infrastructure.
 
-### [2] Search and open Identity Access Management
+### [2] Access Identity and Access Management (IAM)
 Clicked on the top-right panel to access `security cridentials`
 ![enter image description here](http://127.0.0.1/assets/lab1-2.png)
 
@@ -1119,7 +1119,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkxMDk5NTM5OCwzOTk2NjU2OTIsLTExOD
+eyJoaXN0b3J5IjpbMTU5Mjk1NjU0OCwzOTk2NjU2OTIsLTExOD
 cwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEsMTUzMzA0ODU0
 Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OTg3NzcxLC0xNT
 Q5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5NzEsLTE5NTcx
