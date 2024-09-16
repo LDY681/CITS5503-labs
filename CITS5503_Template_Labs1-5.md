@@ -1029,6 +1029,7 @@ This command deletes the table, removing all data and schema. Only the defined s
 
 <div  style="page-break-after: always;"></div>
 
+
 # Lab 4
 ## Apply a Policy to Restrict Permissions on Bucket
 
@@ -1036,11 +1037,11 @@ This command deletes the table, removing all data and schema. Only the defined s
 In this lab, we apply an access permission policy to the S3 bucket `24188516-cloudstorage` created in the previous lab. The policy restricts access to this bucket, allowing only the user with the username `24188516@student.uwa.edu.au` to access the contents. 
 
 The policy is defined as a JSON document, where:
-- **Sid** is a unique identifier for the policy statement.
-- **Effect** is set to `"DENY"`, meaning the action is denied if the condition is met.
-- **Action** is `"s3:*"`, meaning all S3 actions are denied.
-- **Resource** specifies all objects in the `24188516-cloudstorage` bucket.
-- **Condition** checks if the `aws:username` is not `24188516@student.uwa.edu.au`. If this condition is true, access is denied.
+- **`Sid`**: A unique identifier for the policy statement.
+- **`Effect`**: Specifies the result of the policy, set to `"DENY"`, meaning the action is denied if the condition is met.
+- **`Action`**: Specifies the S3 actions being denied, in this case, `"s3:*"` to deny all S3 actions.
+- **`Resource`**: Specifies the resources affected by the policy, here all objects in the `24188516-cloudstorage` bucket.
+- **`Condition`**: Specifies a condition that checks if the `aws:username` is not `24188516@student.uwa.edu.au`. If true, access is denied.
 
 Here’s the bucket policy in JSON format:
 
@@ -1063,49 +1064,9 @@ Here’s the bucket policy in JSON format:
 }
 ```
 
-This JSON policy ensures that any user attempting to access the bucket, who is not `24188516@student.uwa.edu.au`, will be denied all actions related to S3.
+This JSON policy ensures that any user attempting to access the bucket, who is not `24188516@student.uwa.edu.au`, will be denied all actions related to S3. The policy applies to all objects within the `24188516-cloudstorage` bucket, as specified by the **`Resource`**.
 
-#### Python Script to Apply the Policy
-Since the policy parameter in `s3.put_bucket_policy()` only accepts a JSON string, we load the JSON policy from `bucketpolicy.json`, convert it into a string using `json.dumps()`, and then apply it to the bucket using `s3.put_bucket_policy()`.
 
-Here’s the Python script to apply the policy:
-
-```python
-# addpolicy.py
-import boto3
-import json
-
-BUCKET_NAME = '24188516-cloudstorage'
-
-# Create an S3 instance
-s3 = boto3.client('s3')
-
-def apply_bucket_policy():
-    # Import the policy from the JSON file
-    with open('bucketpolicy.json', 'r') as policy_file:
-        policy = json.load(policy_file)
-    
-    # Convert the policy to a JSON string
-    policy_string = json.dumps(policy)
-
-    # Apply the policy to the bucket
-    response = s3.put_bucket_policy(Bucket=BUCKET_NAME, Policy=policy_string)
-    print("Policy applied!", response)
-
-if __name__ == '__main__':
-    apply_bucket_policy()
-```
-
-This script does the following:
-1. Reads the JSON policy from `bucketpolicy.json`.
-2. Converts the policy into a string format.
-3. Applies the policy to the S3 bucket using `s3.put_bucket_policy()`.
-
-![Applying S3 Bucket Policy](http://localhost/assets/lab4-1.png)
-
-### Key Points:
-- **Policy Application**: The policy restricts access to the bucket based on the requesting user's username.
-- **Policy Format**: The policy is written in JSON format and applied to the bucket using Python and the `boto3` library.
 
 ### 2. Check Whether the Script Works
 After applying the bucket policy, we test to ensure that the policy is working as intended.
@@ -1825,11 +1786,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTAzMjM4OTEsLTE3ODUxMDA4Miw1MT
-c4NjgzNDAsLTIyMzUyMDI5NywtNzc3Mjc1MDU5LDUzNTIzOTQz
-Miw1MzMxNzMzODYsNDMwNzU3MTQ5LC0xMzIyNDEyNDQ5LDM5OT
-Y2NTY5MiwtMTE4NzA3MTgwOSwxNDgzNTI2NDIzLDk0NTcyNzY0
-MSwxNTMzMDQ4NTQzLDU0MTc0ODQ0NCwxMzQ3MTMxMDA4LDEyMT
-Q5ODc3NzEsLTE1NDk4NzEzOTUsLTEyNTEzNjE0MjcsLTkyODM5
-Mzk3MV19
+eyJoaXN0b3J5IjpbNzA4ODUwNDYzLC0xNzg1MTAwODIsNTE3OD
+Y4MzQwLC0yMjM1MjAyOTcsLTc3NzI3NTA1OSw1MzUyMzk0MzIs
+NTMzMTczMzg2LDQzMDc1NzE0OSwtMTMyMjQxMjQ0OSwzOTk2Nj
+U2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2NDEs
+MTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMjE0OT
+g3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05MjgzOTM5
+NzFdfQ==
 -->
