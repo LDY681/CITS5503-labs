@@ -608,16 +608,17 @@ COPY ./html/ /usr/local/apache2/htdocs/
 
 #### Add User to Docker Group
 
-We add our username (`liudayubob`) to the Docker group to grant permission to manage Docker containers, then reboot the uBuntu system:
+We add our username (`liudayubob`) to the Docker group to grant permission to manage Docker containers, then reboot the system:
 
 ```bash
 sudo usermod -a -G docker liudayubob
 ```
 
 #### Key Parameters:
-- **`usermod -a -G`**: Adds the user `liudayubob` to the Docker group (`docker`), allowing them to manage Docker without using `sudo`.
+- **`usermod -a -G`**: Adds the user `liudayubob` to the Docker group (`docker`), allowing us to manage Docker without administrative permissions.
 
 #### Build the Docker Image
+
 Once the `Dockerfile` and `html` folder are in place, we build the Docker image using the following command:
 
 ```bash
@@ -629,7 +630,7 @@ docker build -t my-apache2 .
 - **`-t`**: Tags the image with the name `my-apache2` for easy reference.
 - **`.`**: Specifies the build context, indicating the current directory (where the `Dockerfile` and `html` folder are located).
 
-This command builds the Docker image, preparing it to run an Apache server that serves the `index.html` file.
+This command builds the Docker image alias as `my-apache2`, preparing it to run an Apache server that serves the `index.html` file.
 
 ![Docker Build](http://127.0.0.1/assets/lab2-14.png)
 
@@ -1892,7 +1893,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTkxNDQwNjczLDQ4ODcwNjc2MSw4NzU2Nz
+eyJoaXN0b3J5IjpbMzQ2NDk2NDUwLDQ4ODcwNjc2MSw4NzU2Nz
 Q3NDEsLTE3ODUxMDA4Miw1MTc4NjgzNDAsLTIyMzUyMDI5Nywt
 Nzc3Mjc1MDU5LDUzNTIzOTQzMiw1MzMxNzMzODYsNDMwNzU3MT
 Q5LC0xMzIyNDEyNDQ5LDM5OTY2NTY5MiwtMTE4NzA3MTgwOSwx
