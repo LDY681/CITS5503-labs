@@ -62,20 +62,34 @@ This command installs `pip3` and confirms the installation.
 
 ![Installing pip3](http://127.0.0.1/assets/lab1-7.png)
 
-### [2] Install awscli
-To install AWS CLI and upgrade to latest version:
-`pip3 install awscli --upgrade`
-![enter image description here](http://127.0.0.1/assets/lab1-8.png)
+### 2. Install AWS CLI
+To interact with AWS services from the command line, the AWS CLI (Command Line Interface) tool is neccessary. Install and upgrade AWS CLI to the latest version using the following command:
+```bash
+pip3 install awscli --upgrade
+```
+This ensures that we have the most recent version of AWS CLI with all the latest features and updates, allowing you to interact with AWS resources such as EC2, S3, and others directly from your terminal.
 
-### [3] Configure AWS
-To configure and connect to Amazon EC2:
-`aws configure`
-![enter image description here](http://127.0.0.1/assets/lab1-9.png)
+![Install AWS CLI](http://127.0.0.1/assets/lab1-8.png)
 
-### [4] Install boto3
-I find this step redundant as `botocore` is already inluded in AWS Cli package, but just for the spirit:
-`pip3 install boto3`
-![enter image description here](http://127.0.0.1/assets/lab1-10.png)
+### 3. Configure AWS CLI
+After installation, configure the AWS CLI to connect to your Amazon EC2 instance. This is done by entering your credentials (Access Key ID, Secret Access Key, region, and output format) using the following command:
+```bash
+aws configure
+```
+Proper configuration is essential for securely accessing AWS services, ensuring that your AWS environment is set up for easy interaction with AWS resources.
+
+![Configure AWS CLI](http://127.0.0.1/assets/lab1-9.png)
+
+> **Important:** Make sure to store your access keys securely and avoid exposing them in scripts or public repositories.
+
+### 4. Install boto3
+Although `botocore` is included with the AWS CLI package, `boto3`, the AWS SDK for Python, simplifies API requests and makes it easier to automate tasks such as launching EC2 instances or managing S3 buckets via Python scripts. Install it using the following command:
+```bash
+pip3 install boto3
+```
+
+![Install boto3](http://127.0.0.1/assets/lab1-10.png)
+
 
 ## Test the installed environment
 ### [1] Test the AWS environment
@@ -1140,11 +1154,11 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTUzNjg0NDkxOSwtMTMyMjQxMjQ0OSwzOT
-k2NjU2OTIsLTExODcwNzE4MDksMTQ4MzUyNjQyMyw5NDU3Mjc2
-NDEsMTUzMzA0ODU0Myw1NDE3NDg0NDQsMTM0NzEzMTAwOCwxMj
-E0OTg3NzcxLC0xNTQ5ODcxMzk1LC0xMjUxMzYxNDI3LC05Mjgz
-OTM5NzEsLTE5NTcxMjk1Niw2OTY5NzIxNTYsLTE3ODQxNjUxNT
-gsLTE3NjY5ODk5MzYsLTEwODcwOTI2NDAsLTIwNzQyMTc3OCwx
-NDEzNTA0OTUzXX0=
+eyJoaXN0b3J5IjpbLTExOTUyNzg4NjEsLTEzMjI0MTI0NDksMz
+k5NjY1NjkyLC0xMTg3MDcxODA5LDE0ODM1MjY0MjMsOTQ1NzI3
+NjQxLDE1MzMwNDg1NDMsNTQxNzQ4NDQ0LDEzNDcxMzEwMDgsMT
+IxNDk4Nzc3MSwtMTU0OTg3MTM5NSwtMTI1MTM2MTQyNywtOTI4
+MzkzOTcxLC0xOTU3MTI5NTYsNjk2OTcyMTU2LC0xNzg0MTY1MT
+U4LC0xNzY2OTg5OTM2LC0xMDg3MDkyNjQwLC0yMDc0MjE3Nzgs
+MTQxMzUwNDk1M119
 -->
