@@ -302,16 +302,16 @@ After the key is generated, we ensure it has the correct permissions by using th
 chmod 400 24188516-key.pem
 ```
 
-- **`chmod 400`**: This changes the file’s permissions to **read-only** for the file owner. It ensures that only the owner of the file can read it, which is necessary to secure the key and prevent unauthorized access.
+- **`chmod 400`**: This changes the file’s permissions to **read-only** for the file owner. It ensures that only the owner of the file can read it and prevent unauthorized access.
 
-Below are the outputs after successfully creating the key and setting the appropriate permissions:
+Below are the outputs of successfully created key:
 
 ![Key Pair Creation](http://127.0.0.1/assets/lab2-3.png)
 ![Permission Change](http://127.0.0.1/assets/lab2-4.png)
 
-
 ### 4. Create the Instance
-Now, we create an EC2 instance using the `aws ec2 run-instances` command. Since my student number is `24188516`, create an EC2 instance in the `eu-north-1` region.
+
+Now, let's create an EC2 instance using the `aws ec2 run-instances` command. Since my student number is `24188516`, create an EC2 instance in the `eu-north-1` region.
 
 ```bash
 aws ec2 run-instances --image-id ami-07a0715df72e58928 --security-group-ids 24188516-sg --count 1 --instance-type t3.micro --key-name 24188516-key --query 'Instances[0].InstanceId'
@@ -1877,7 +1877,7 @@ NTAsLTIwNTAwMTIxMzIsLTk0ODE4NzQsNTYwODU5NDE2LDE0Mz
 YzODQzNjYsLTkxMTY0MDYyMCwtMjA4ODc0NjYxMl19 
 -->
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyMDQ1NDc5OSw0ODg3MDY3NjEsODc1Nj
+eyJoaXN0b3J5IjpbMjEwMDAwMDQ1NCw0ODg3MDY3NjEsODc1Nj
 c0NzQxLC0xNzg1MTAwODIsNTE3ODY4MzQwLC0yMjM1MjAyOTcs
 LTc3NzI3NTA1OSw1MzUyMzk0MzIsNTMzMTczMzg2LDQzMDc1Nz
 E0OSwtMTMyMjQxMjQ0OSwzOTk2NjU2OTIsLTExODcwNzE4MDks
