@@ -2,8 +2,8 @@
 
   <h2>Labs 6-9</h2>
   
-  <p>Student ID: [Student ID]</p>
-  <p>Student Name: [First and Surname]</p>
+  <p>Student ID: [Student ID]24188516</p>
+  <p>Student Name: [First and Surname]Dayu Liu</p>
 
 </div>
 
@@ -87,3 +87,6 @@
 
 # Lab 9
 
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbMTA5NTY1NDAyMV19
+-->
