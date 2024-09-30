@@ -262,7 +262,7 @@ This command sets up the Nginx web server, which can be used as a reverse proxy,
 
 ### [7] Configure nginx
 
-To configure Nginx to work as a reverse proxy for your Django application, go to the Nginx configuration folder located at `/etc/nginx/sites-enabled`, create a new file called `django-conf` and add the following.
+To configure Nginx to work as a reverse proxy for your Django application, go to the Nginx configuration file located at `/etc/nginx/sites-enabled/default` and add the following.
 
 ```
 server {
@@ -402,9 +402,9 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOT
-I2OTE0MjQ4LDE5MjY5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIx
-NzQyLDEwMTkwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMT
-k2OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1
-NzIsMTA5NTY1NDAyMV19
+eyJoaXN0b3J5IjpbLTE4Mjc0Mjg0NzUsLTE3NzA5Njc2NDMsMT
+g3MzkwMzI0NSwxOTI2OTE0MjQ4LDE5MjY5MTQyNDgsMTkxMjIx
+NzM4NywtNzQ1MTIxNzQyLDEwMTkwNjg1MTAsMTA0NDgyNDIyNS
+wxMDIzOTU1MDcsMTk2OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIy
+NDAzLC0xMTQ3OTY1NzIsMTA5NTY1NDAyMV19
 -->
