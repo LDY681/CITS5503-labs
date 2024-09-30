@@ -100,7 +100,9 @@ sudo bash
 ### [3] Access a directory  
 
 Create a directory with a path `/opt/wwc/mysites` and `cd` into the directory.
-
+```
+sudo mkdir -p 
+```
 ### [4] Set up a virtual environment
 
 ```
@@ -250,6 +252,6 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTMwODc4Njk3LDk4OTkyMjQwMywtMTE0Nz
-k2NTcyLDEwOTU2NTQwMjFdfQ==
+eyJoaXN0b3J5IjpbLTMxNTY2NjUxNiw1MzA4Nzg2OTcsOTg5OT
+IyNDAzLC0xMTQ3OTY1NzIsMTA5NTY1NDAyMV19
 -->
