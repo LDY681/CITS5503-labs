@@ -379,22 +379,80 @@ Access the polls index page with `Hello,World` message by visiting `http://13.61
 
 ## Set up an ALB
 
-### [1] Create an application load balancer
-
+### [1] Create an application load balancer & Health Check
 Specify the region subnet where your EC2 instance resides.
-
 Create a listener with a default rule Protocol: HTTP and Port 80 forwarding.
-
 Choose the security group, allowing HTTP traffic. 
-
 Add your instance as a registered target.
-
-### [2] Health check
-
 For the target group, specify /polls/ for a path for the health check.
-
 Confirm the health check fetch the /polls/ page every 30 seconds.
 
+```
+import boto3 as bt
+import os
+
+GroupName = '24188516-sg-1'
+KeyName = '24188516-key-lab6'
+InstanceId = 'i-039c0b853dc14f418'
+LoadBalancerName = '24188516-elb'
+TargetGroupName = '24188516-tg'
+
+# Initialize EC2 and ELBv2 clients
+ec2 = bt.client('ec2', region_name='eu-north-1')
+elbv2 = bt.client('elbv2')
+
+subnet_response = ec2.describe_subnets()['Subnets']
+Subnets = [subnet['SubnetId'] for subnet in subnet_response[:2]]
+
+# 6. Create application load balancer
+loadbalancer_response = elbv2.create_load_balancer(
+    Name=LoadBalancerName,
+    Subnets=Subnets,
+    SecurityGroups=[GroupName],
+    Scheme='internet-facing',
+    Type='application'
+)
+LoadBalancerArn = loadbalancer_response['LoadBalancers'][0]['LoadBalancerArn']
+LoadBalancerDnsName = loadbalancer_response['LoadBalancers'][0]['DNSName']
+
+# 7. Create target group
+VpcId = ec2.describe_vpcs()['Vpcs'][0]['VpcId']
+targetgroup_response = elbv2.create_target_group(
+    Name=TargetGroupName,
+    Protocol='HTTP',
+    Port=80,
+    VpcId=VpcId,
+    TargetType='instance',
+    HealthCheckProtocol='HTTP',
+    HealthCheckPort='80',
+    HealthCheckPath='/polls/',
+    HealthCheckIntervalSeconds=30
+)
+TargetGroupArn = targetgroup_response['TargetGroups'][0]['TargetGroupArn']
+
+# 8. Register instances as targets
+elbv2.register_targets(
+    TargetGroupArn=TargetGroupArn,
+    Targets=[{'Id': InstanceId}]
+)
+
+# 9. Create a listener for the load balancer
+elbv2.create_listener(
+    LoadBalancerArn=LoadBalancerArn,
+    Protocol='HTTP',
+    Port=80,
+    DefaultActions=[{
+        'Type': 'forward',
+        'TargetGroupArn': TargetGroupArn
+    }]
+)
+
+# Printouts
+print(f"Instance ID: {InstanceId}")
+print(f"Load Balancer ARN: {LoadBalancerArn}")
+print(f"Target Group ARN: {TargetGroupArn}")
+
+```
 ### [3] Access
 
 Access the URL: http://\<load balancer dns name>/polls/, and output what you've got.
@@ -413,11 +471,11 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3Njg3NTY4MzMsLTE5NDI1NDEyNzcsMT
-g1MTk2NDQ4OCwtMTY3NTgzOTc3NSwtMTgyNzQyODQ3NSwtMTc3
-MDk2NzY0MywxODczOTAzMjQ1LDE5MjY5MTQyNDgsMTkyNjkxND
-I0OCwxOTEyMjE3Mzg3LC03NDUxMjE3NDIsMTAxOTA2ODUxMCwx
-MDQ0ODI0MjI1LDEwMjM5NTUwNywxOTY5OTM3OTI5LDUzMDg3OD
-Y5Nyw5ODk5MjI0MDMsLTExNDc5NjU3MiwxMDk1NjU0MDIxXX0=
-
+eyJoaXN0b3J5IjpbLTg5Njg4MjQ2LC0xNzY4NzU2ODMzLC0xOT
+QyNTQxMjc3LDE4NTE5NjQ0ODgsLTE2NzU4Mzk3NzUsLTE4Mjc0
+Mjg0NzUsLTE3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOTI2OTE0Mj
+Q4LDE5MjY5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNzQyLDEw
+MTkwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OTkzNz
+kyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5
+NTY1NDAyMV19
 -->
