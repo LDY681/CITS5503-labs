@@ -108,7 +108,7 @@ public_ip_address = step6_response['Reservations'][0]['Instances'][0]['PublicIpA
 print(f"{public_ip_address}\n")
 ```
 
-> ### Key parameters
+> ### Code Breakdown
 
 1. **`ec2.create_security_group()`**:
    - **`Description`**: Describes the purpose of the security group, here labeled as "security group for development environment".
@@ -378,8 +378,8 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkxMjIxNzM4NywtNzQ1MTIxNzQyLDEwMT
-kwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OTkzNzky
-OSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5NT
-Y1NDAyMV19
+eyJoaXN0b3J5IjpbMTkyNjkxNDI0OCwxOTEyMjE3Mzg3LC03ND
+UxMjE3NDIsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMjM5NTUw
+NywxOTY5OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMsLTExND
+c5NjU3MiwxMDk1NjU0MDIxXX0=
 -->
