@@ -239,8 +239,6 @@ Once the commands are executed, Django creates the following structure for your 
 
 The files and structure created by Django provide a foundation for organizing and developing the project. As we progress, we will work on these files to build the application and understand their specific roles and functionalities.
 
-
-
 ### [6] Install nginx
 
 ```
@@ -368,7 +366,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc4NzkzNDU3NiwxMDE5MDY4NTEwLDEwND
+eyJoaXN0b3J5IjpbMTMxMDE0NzE0OCwxMDE5MDY4NTEwLDEwND
 Q4MjQyMjUsMTAyMzk1NTA3LDE5Njk5Mzc5MjksNTMwODc4Njk3
 LDk4OTkyMjQwMywtMTE0Nzk2NTcyLDEwOTU2NTQwMjFdfQ==
 -->
