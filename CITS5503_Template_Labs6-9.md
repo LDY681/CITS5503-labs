@@ -494,7 +494,8 @@ print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")
     -   **`DefaultActions`**: Defines actions for forwarding requests to the target group.
 
 ### [3] Access
-Get the ALB DNS URLfrom `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`,  now access its URL: http://24188516-elb-920225157.eu-north-1.elb.amazonaws.com/polls/, and output what you've got.
+Get the ALB DNS url from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`,  now access its url with path `/polls/` to see health check results: http://24188516-elb-920225157.eu-north-1.elb.amazonaws.com/polls/
+![enter image description here](http://127.0.0.1/assets/lab6-12.png)
 
 **NOTE**: When you are done, delete the instance and ALB you created.
 <div style="page-break-after: always;"></div>
@@ -510,11 +511,11 @@ Get the ALB DNS URLfrom `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTc1MzQ4NjYwLDE1OTA3MDgwOSwtMTU0MD
-M2NjM4NiwtMTA5ODM2OTQ2OSwtMTQzMjkwMzEwOCwtMzc0Mjkz
-NjY3LC0xNzY4NzU2ODMzLC0xOTQyNTQxMjc3LDE4NTE5NjQ0OD
-gsLTE2NzU4Mzk3NzUsLTE4Mjc0Mjg0NzUsLTE3NzA5Njc2NDMs
-MTg3MzkwMzI0NSwxOTI2OTE0MjQ4LDE5MjY5MTQyNDgsMTkxMj
-IxNzM4NywtNzQ1MTIxNzQyLDEwMTkwNjg1MTAsMTA0NDgyNDIy
-NSwxMDIzOTU1MDddfQ==
+eyJoaXN0b3J5IjpbLTIxMTY1NzkzMTksMTU5MDcwODA5LC0xNT
+QwMzY2Mzg2LC0xMDk4MzY5NDY5LC0xNDMyOTAzMTA4LC0zNzQy
+OTM2NjcsLTE3Njg3NTY4MzMsLTE5NDI1NDEyNzcsMTg1MTk2ND
+Q4OCwtMTY3NTgzOTc3NSwtMTgyNzQyODQ3NSwtMTc3MDk2NzY0
+MywxODczOTAzMjQ1LDE5MjY5MTQyNDgsMTkyNjkxNDI0OCwxOT
+EyMjE3Mzg3LC03NDUxMjE3NDIsMTAxOTA2ODUxMCwxMDQ0ODI0
+MjI1LDEwMjM5NTUwN119
 -->
