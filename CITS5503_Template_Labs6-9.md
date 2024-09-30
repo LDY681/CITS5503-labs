@@ -12,9 +12,9 @@
 ## Set up an EC2 instance
 
 ### [1] Create an EC2 micro instance with Ubuntu and SSH into it. 
-In the first step, we will use the  code in lab2 to create a EC2 instance, stored the access private key, printed out the 
+In the first step, we will use the  code in lab2 to create a EC2 instance, stored the access private key, printed out the public IP address. Then we will SSH into the instance by providing the IP address and private key.
 ```
-# createInstance.py
+# createinstance.py
 import boto3 as bt
 import os
 
@@ -250,6 +250,6 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTkwMTYyNTY3OCwtMTE0Nzk2NTcyLDEwOT
-U2NTQwMjFdfQ==
+eyJoaXN0b3J5IjpbOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5NT
+Y1NDAyMV19
 -->
