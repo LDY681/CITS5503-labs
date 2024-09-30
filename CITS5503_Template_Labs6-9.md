@@ -200,6 +200,7 @@ django-admin startproject lab
 cd lab
 python3 manage.py startapp polls
 ```
+### Workflow
 1. **Activate Virtual Environment**:
    - **`source myvenv/bin/activate`**: Activates the virtual environment `myvenv`, setting the environment for isolated Python package management.
 
@@ -217,7 +218,27 @@ python3 manage.py startapp polls
 
 ![enter image description here](http://127.0.0.1/assets/lab6-6.png)
 ![enter image description here](http://127.0.0.1/assets/lab6-7.png)
-**NOTE**: Stop and look at the files that have been created – the project files are to do with the running of the application. We will deal with the files as we go through.
+
+Once the commands are executed, Django creates the following structure for your project:
+
+- **`lab/`**: The project directory containing the settings and configurations for the entire Django project.
+  - **`__init__.py`**: Marks the directory as a Python package.
+  - **`settings.py`**: Contains project settings such as installed apps, middleware, and database configurations.
+  - **`urls.py`**: The project's URL declarations for routing HTTP requests.
+  - **`wsgi.py`**: The entry point for WSGI-compatible web servers to serve your project.
+  - **`asgi.py`**: The entry point for ASGI-compatible servers for asynchronous support.
+- **`manage.py`**: A command-line utility to interact with the Django project (e.g., running the server, creating migrations).
+
+- **`polls/`**: The app directory that houses the `polls` app created using `startapp`.
+  - **`migrations/`**: Directory for database migrations files.
+  - **`admin.py`**: For registering models with the Django admin.
+  - **`apps.py`**: Configuration for the app itself.
+  - **`models.py`**: Where database models are defined.
+  - **`tests.py`**: Houses unit tests for the app.
+  - **`views.py`**: Where request-handling functions and classes are defined.
+
+The files and structure created by Django provide a foundation for organizing and developing the project. As we progress, we will work on these files to build the application and understand their specific roles and functionalities.
+
 
 
 ### [6] Install nginx
@@ -347,7 +368,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMj
-M5NTUwNywxOTY5OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMs
-LTExNDc5NjU3MiwxMDk1NjU0MDIxXX0=
+eyJoaXN0b3J5IjpbMTc4NzkzNDU3NiwxMDE5MDY4NTEwLDEwND
+Q4MjQyMjUsMTAyMzk1NTA3LDE5Njk5Mzc5MjksNTMwODc4Njk3
+LDk4OTkyMjQwMywtMTE0Nzk2NTcyLDEwOTU2NTQwMjFdfQ==
 -->
