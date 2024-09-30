@@ -173,6 +173,13 @@ Create a directory with a path `/opt/wwc/mysites` and `cd` into the directory.
 sudo mkdir -p /opt/wwc/mysites
 cd /opt/wwc/mysites
 ```
+### Workflow
+1. **Create Directories Using `mkdir`**:
+   - **`sudo mkdir -p /opt/wwc/mysites`**: Creates the specified directory path (`/opt/wwc/mysites`). The `-p` option ensures that parent directories are created as needed without error if they already exist.
+
+2. **Navigate to the Created Directory**:
+   - **`cd /opt/wwc/mysites`**: Changes the working directory to `/opt/wwc/mysites`. This is the directory where subsequent files or projects will be managed.
+
 ![enter image description here](http://127.0.0.1/assets/lab6-4.png)
 
 ### [4] Set up a virtual environment
@@ -327,7 +334,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTgyODM1MiwxMDQ0ODI0MjI1LDEwMjM5NT
-UwNywxOTY5OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMsLTEx
-NDc5NjU3MiwxMDk1NjU0MDIxXX0=
+eyJoaXN0b3J5IjpbLTExNDM4ODM2OTQsMTA0NDgyNDIyNSwxMD
+IzOTU1MDcsMTk2OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAz
+LC0xMTQ3OTY1NzIsMTA5NTY1NDAyMV19
 -->
