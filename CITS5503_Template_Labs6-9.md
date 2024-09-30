@@ -138,6 +138,7 @@ python3 manage.py startapp polls
 ```
 apt install nginx
 ```
+![enter image description here](http://127.0.0.1/assets/lab6-8.png)
 
 ### [7] Configure nginx
 
@@ -259,7 +260,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAyMzk1NTA3LDE5Njk5Mzc5MjksNTMwOD
-c4Njk3LDk4OTkyMjQwMywtMTE0Nzk2NTcyLDEwOTU2NTQwMjFd
-fQ==
+eyJoaXN0b3J5IjpbMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OT
+kzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIs
+MTA5NTY1NDAyMV19
 -->
