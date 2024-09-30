@@ -154,11 +154,13 @@ sudo apt-get install python3-venv
 
 sudo bash
 ```
-### Key Parameters:
--   **`update`**: Updates the package index on your system to ensure you have information on the latest versions of packages.
--   **`upgrade`**: Upgrades all packages to their latest versions based on the updated package index.
--   **`install python3-venv`**: Installs the `python3-venv` package, which enables the creation of isolated Python environments.
--   **`sudo bash`**: Switches to a root shell, granting the user administrative privileges for subsequent commands.
+1.  **Update and Upgrade System Packages**:
+    -   **`sudo apt-get update`**: Updates the package lists for available or new versions of packages and their dependencies.
+    -   **`sudo apt-get upgrade`**: Upgrades the installed packages to the latest versions.
+2.  **Install `python3-venv`**:
+    -   **`sudo apt-get install python3-venv`**: Installs the `venv` package for Python 3, which is used to create isolated Python environments.
+3.  **Switch to Superuser Mode**:
+    -   **`sudo bash`**: Elevates the command line session to superuser mode, ensuring all subsequent commands are executed with `sudo` privileges without needing to prepend `sudo` each time. This is helpful when performing multiple operations requiring root access.
   
 ![enter image description here](http://127.0.0.1/assets/lab6-3.png)
 
@@ -376,8 +378,8 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwOTQ5NTYzOTgsMTkyNjkxNDI0OCwxOT
-EyMjE3Mzg3LC03NDUxMjE3NDIsMTAxOTA2ODUxMCwxMDQ0ODI0
-MjI1LDEwMjM5NTUwNywxOTY5OTM3OTI5LDUzMDg3ODY5Nyw5OD
-k5MjI0MDMsLTExNDc5NjU3MiwxMDk1NjU0MDIxXX0=
+eyJoaXN0b3J5IjpbMTkyNjkxNDI0OCwxOTI2OTE0MjQ4LDE5MT
+IyMTczODcsLTc0NTEyMTc0MiwxMDE5MDY4NTEwLDEwNDQ4MjQy
+MjUsMTAyMzk1NTA3LDE5Njk5Mzc5MjksNTMwODc4Njk3LDk4OT
+kyMjQwMywtMTE0Nzk2NTcyLDEwOTU2NTQwMjFdfQ==
 -->
