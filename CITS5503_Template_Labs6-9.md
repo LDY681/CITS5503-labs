@@ -19,7 +19,7 @@ import boto3 as bt
 import os
 
 GroupName = '24188516-sg-1'
-KeyName = '24188516-key-1'
+KeyName = '24188516-key-lab6'
 InstanceName= '24188516-vm-1'
 
 ec2 = bt.client('ec2')
@@ -250,6 +250,6 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5NT
-Y1NDAyMV19
+eyJoaXN0b3J5IjpbNTMwODc4Njk3LDk4OTkyMjQwMywtMTE0Nz
+k2NTcyLDEwOTU2NTQwMjFdfQ==
 -->
