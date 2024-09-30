@@ -21,19 +21,19 @@ The following Python script uses `boto3` to create the EC2 **instance, security 
 ### Workflow
 
 1. **Create Security Group**:  
-   The script starts by creating a security group (`24188516-sg-2`) using `ec2.create_security_group()`.
+   The script starts by creating a security group (`24188516-sg-1`) using `ec2.create_security_group()`.
    
 2. **Authorize SSH Inbound Rule**:  
    Next, an SSH rule is added using `ec2.authorize_security_group_ingress()`. This allows SSH access on port **22** from all IP addresses (`0.0.0.0/0`).
 
 3. **Create Key Pair**:  
-   A key pair (`24188516-key-2`) is generated using `ec2.create_key_pair()`, and the private key is saved locally with restricted access permissions using `os.chmod()` to secure it.
+   A key pair (`24188516-key-lab6`) is generated using `ec2.create_key_pair()`, and the private key is saved locally with restricted access permissions using `os.chmod()` to secure it.
 
 4. **Create EC2 Instance**:  
-   The script launches an EC2 instance in the specified security group using `ec2.run_instances()`. The **AMI ID** (`ami-07a0715df72e58928`), **instance type** (`t3.micro`), and **key name** (`24188516-key-2`) are provided as parameters.
+   The script launches an EC2 instance in the specified security group using `ec2.run_instances()`. The **AMI ID** (`ami-07a0715df72e58928`), **instance type** (`t3.micro`), and **key name** (`24188516-key-1`) are provided as parameters.
 
 5. **Tag EC2 Instance**:  
-   A name tag (`24188516-vm-2`) is created for the EC2 instance using `ec2.create_tags()`, which helps in identifying the instance easily.
+   A name tag (`24188516-vm-1`) is created for the EC2 instance using `ec2.create_tags()`, which helps in identifying the instance easily.
 
 6. **Retrieve Public IP Address**:  
    The public IP address of the newly created EC2 instance is retrieved using `ec2.describe_instances()`.
@@ -112,31 +112,31 @@ print(f"{public_ip_address}\n")
 
 1. **`ec2.create_security_group()`**:
    - **`Description`**: Describes the purpose of the security group, here labeled as "security group for development environment".
-   - **`GroupName`**: Defines the name of the security group, in this case, `24188516-sg-2`.
+   - **`GroupName`**: Defines the name of the security group, in this case, `24188516-sg-1`.
   
 2. **`ec2.authorize_security_group_ingress()`**:
-   - **`GroupName`**: Specifies the security group where the rule will be added, in this case, `24188516-sg-2`.
+   - **`GroupName`**: Specifies the security group where the rule will be added, in this case, `24188516-sg-1`.
    - **`IpPermissions`**: This parameter contains the rules that specify what type of inbound traffic is allowed. 
      - **`IpProtocol`**: Defines the protocol, here set to `tcp` for SSH access.
      - **`FromPort` and `ToPort`**: Both set to `22`, defining the SSH port.
      - **`IpRanges`**: Defines the IP range allowed to access the instance. Here, `0.0.0.0/0` allows access from any IP.
 
 3. **`ec2.create_key_pair()`**:
-   - **`KeyName`**: Specifies the name of the key pair, here `24188516-key-2`,  generates a new key pair and returns the private key.
+   - **`KeyName`**: Specifies the name of the key pair, here `24188516-key-1`,  generates a new key pair and returns the private key.
 
 4. **`file.write()`**:
    - The private key is saved to a `.pem` file using Python’s built-in File library with the `open()` function, and **`os.chmod()`** is used to set the file’s permission to `400` (read-only).
 
 5. **`ec2.run_instances()`**:
    - **`ImageId`**: Specifies the Amazon Machine Image (AMI) ID, in this case, `ami-07a0715df72e58928`, which contains pre-configured software and settings.
-   - **`SecurityGroupIds`**: Lists the security group IDs that will be associated with the instance. Here, the security group is `24188516-sg-2`.
+   - **`SecurityGroupIds`**: Lists the security group IDs that will be associated with the instance. Here, the security group is `24188516-sg-1`.
    - **`MinCount` and `MaxCount`**: Define how many instances to launch. only one instance will be created in our case.
    - **`InstanceType`**: Defines the type of instance to launch, in this case, `t3.micro`.
-   - **`KeyName`**: Specifies the name of the key pair, `24188516-key-2`, used for SSH access.
+   - **`KeyName`**: Specifies the name of the key pair, `24188516-key-1`, used for SSH access.
 
 6. **`ec2.create_tags()`**:
    - **`Resources`**: Specifies the resources to tag, in this case, the instance ID.
-   - **`Tags`**: Defines the key-value pairs for tagging. Here, the tag key is `Name` and the value is `24188516-vm-2`, which labels the instance for easier identification.
+   - **`Tags`**: Defines the key-value pairs for tagging. Here, the tag key is `Name` and the value is `24188516-vm-lab6`, which labels the instance for easier identification.
 
 7. **`ec2.describe_instances()`**:
    - **`InstanceIds`**: Specifies the instance ID to describe details on.
@@ -154,8 +154,6 @@ sudo apt-get install python3-venv
 
 sudo bash
 ```
-### Workflow
-
 1.  **Update and Upgrade System Packages**:
     -   **`sudo apt-get update`**: Updates the package lists for available or new versions of packages and their dependencies.
     -   **`sudo apt-get upgrade`**: Upgrades the installed packages to the latest versions.
@@ -173,7 +171,7 @@ Create a directory with a path `/opt/wwc/mysites` and `cd` into the directory.
 sudo mkdir -p /opt/wwc/mysites
 cd /opt/wwc/mysites
 ```
-### Workflow
+
 1. **Create Directories Using `mkdir`**:
    - **`sudo mkdir -p /opt/wwc/mysites`**: Creates the specified directory path (`/opt/wwc/mysites`). The `-p` option ensures that parent directories are created as needed without error if they already exist.
 
@@ -334,7 +332,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDM4ODM2OTQsMTA0NDgyNDIyNSwxMD
-IzOTU1MDcsMTk2OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAz
-LC0xMTQ3OTY1NzIsMTA5NTY1NDAyMV19
+eyJoaXN0b3J5IjpbMjc3MjMyMzAyLDEwNDQ4MjQyMjUsMTAyMz
+k1NTA3LDE5Njk5Mzc5MjksNTMwODc4Njk3LDk4OTkyMjQwMywt
+MTE0Nzk2NTcyLDEwOTU2NTQwMjFdfQ==
 -->
