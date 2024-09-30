@@ -64,6 +64,12 @@ step2_response = ec2.authorize_security_group_ingress(
             'FromPort': 22,
             'ToPort': 22,
             'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+        },
+          {
+            'IpProtocol': 'http',
+            'FromPort': 80,
+            'ToPort': 80,
+            'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
         }
     ]
 )
@@ -186,7 +192,7 @@ cd /opt/wwc/mysites
 To create a new isolated Python environment, run the following command:
 
 ```bash
-c
+python3 -m venv myvenv
 ```
 
 #### Key Parameters:
@@ -402,10 +408,10 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NzU4Mzk3NzUsLTE4Mjc0Mjg0NzUsLT
-E3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOTI2OTE0MjQ4LDE5MjY5
-MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNzQyLDEwMTkwNjg1MT
-AsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OTkzNzkyOSw1MzA4
-Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5NTY1NDAyMV
-19
+eyJoaXN0b3J5IjpbLTE0MzUyMjcxMzYsLTE2NzU4Mzk3NzUsLT
+E4Mjc0Mjg0NzUsLTE3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOTI2
+OTE0MjQ4LDE5MjY5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNz
+QyLDEwMTkwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2
+OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1Nz
+IsMTA5NTY1NDAyMV19
 -->
