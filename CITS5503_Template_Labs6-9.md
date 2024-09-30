@@ -292,7 +292,7 @@ server {
 This configuration ensures that all incoming traffic to your server's port **80** is passed to the Django app running locally on port **8000**.
 
 ### [8] Restart nginx
-To restart the Nginx service, run the following command:
+To apply our new configuration, we need to restart the Nginx service, run the following command:
 ```
 service nginx restart
 ```
@@ -306,13 +306,16 @@ This command ensures that any updates or changes made to the Nginx configuration
 
 ### [9] Access your EC2 instance
 
-In your app directory: `/opt/wwc/mysites/lab`, run:
+In the app directory `/opt/wwc/mysites/lab`, run the following command to start your Django application server on port **8000**:
 
 ```
 python3 manage.py runserver 8000
 ```
 
-Open a browser and enter the IP address of your EC2 instance. Take a screenshot of what you see and stop your server with CONTROL-C
+1.  **Start Django Server**:
+    -   **`python3 manage.py runserver 8000`**: Executes the Django development server, binding it to port **8000**. This allows you to access the web app through your EC2 instance’s IP address and port **8000**.
+
+The application is now accessible from the browser via `http://<your-ec2-instance-ip>:8000`.
 
 
 ## Set up Django inside the created EC2 instance
@@ -399,9 +402,9 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjg5MDk2OTk2LDE4NzM5MDMyNDUsMTkyNj
-kxNDI0OCwxOTI2OTE0MjQ4LDE5MTIyMTczODcsLTc0NTEyMTc0
-MiwxMDE5MDY4NTEwLDEwNDQ4MjQyMjUsMTAyMzk1NTA3LDE5Nj
-k5Mzc5MjksNTMwODc4Njk3LDk4OTkyMjQwMywtMTE0Nzk2NTcy
-LDEwOTU2NTQwMjFdfQ==
+eyJoaXN0b3J5IjpbMTUwMjMzNjY0OSwxODczOTAzMjQ1LDE5Mj
+Y5MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mzg3LC03NDUxMjE3
+NDIsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMjM5NTUwNywxOT
+Y5OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMsLTExNDc5NjU3
+MiwxMDk1NjU0MDIxXX0=
 -->
