@@ -510,61 +510,50 @@ After the load balancer is initialized and up in action, we can go to AWS consol
 
 We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`,  now access its url with path `/polls/` to see if the mapping works properly: http://24188516-elb-920225157.eu-north-1.elb.amazonaws.com/polls/
 ![enter image description here](http://127.0.0.1/assets/lab6-12.png)
-![enter image description here](http://127.0.0.1/assets/lab6-13.png)Set up a virtual environment
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [5] Activate the virtual environment
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [6] Install nginx
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [7] Configure nginx
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [8] Restart nginx
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [9] Access your EC2 instance
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-## Set up Django inside the created EC2 instance
-
-### [1] Edit the following files (create them if not exist)
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [2] Run the web server again
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [3] Access the EC2 instance
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-## Set up an ALB
-
-### [1] Create an application load balancer
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [2] Health check
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [3] Access
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
+![enter image description here](http://127.0.0.1/assets/lab6-13.png)
 
 <div style="page-break-after: always;"></div>
 
 # Lab 7
+### Install and configure Fabric 
+The easiest way to install fabric is to:
+
+```
+pip install fabric
+```
+
+You will need to create a config file in ~/.ssh with the contents:
+
+```
+Host <your EC2 instance name>
+	Hostname <your EC2 instance public IPv4 DNS>
+	User ubuntu
+	UserKnownHostsFile /dev/null
+	StrictHostKeyChecking no
+	PasswordAuthentication no
+	IdentityFile <path to your private key>
+```
+
+Replace `<your EC2 instance name>` and `<your EC2 instance public IPv4 DNS>` above with your real ones.
+
+Rely on the fabric code below to connect to you instance.
+
+```
+python3
+>>> from fabric import Connection
+>>> c = Connection('<your EC2 instance name>')
+>>> result = c.run('uname -s')
+Linux
+>>>
+```
+
+### Use Fabric for automation
+
+Write a python script where you first need to automate the setup of a Python 3 virtual environment, nginx and a Django app within the EC2 instance you just created. Then, you should run the Django development server on port 8000 in the background.
+
+From your local OS environment, access the URL: `http://<ip address of your EC2 instance>/polls/`, and output what you've got. 
+
+**NOTE**:  this python script basically needs you to convert instructions (in `Set up an EC2 instance` and `Set up Django inside the created EC2 instance`) in Lab 6 to Fabric commands. The documentation for Fabric is [here](http://docs.fabfile.org/en/2.0/).
 
 <div style="page-break-after: always;"></div>
 
@@ -575,11 +564,11 @@ We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalance
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMj
-ExNjU3OTMxOSwxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgz
-Njk0NjksLTE0MzI5MDMxMDgsLTM3NDI5MzY2NywtMTc2ODc1Nj
-gzMywtMTk0MjU0MTI3NywxODUxOTY0NDg4LC0xNjc1ODM5Nzc1
-LC0xODI3NDI4NDc1LC0xNzcwOTY3NjQzLDE4NzM5MDMyNDUsMT
-kyNjkxNDI0OCwxOTI2OTE0MjQ4LDE5MTIyMTczODcsLTc0NTEy
-MTc0MiwxMDE5MDY4NTEwXX0=
+eyJoaXN0b3J5IjpbLTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMT
+M0MTQ4NDA1MiwtMjExNjU3OTMxOSwxNTkwNzA4MDksLTE1NDAz
+NjYzODYsLTEwOTgzNjk0NjksLTE0MzI5MDMxMDgsLTM3NDI5Mz
+Y2NywtMTc2ODc1NjgzMywtMTk0MjU0MTI3NywxODUxOTY0NDg4
+LC0xNjc1ODM5Nzc1LC0xODI3NDI4NDc1LC0xNzcwOTY3NjQzLD
+E4NzM5MDMyNDUsMTkyNjkxNDI0OCwxOTI2OTE0MjQ4LDE5MTIy
+MTczODcsLTc0NTEyMTc0Ml19
 -->
