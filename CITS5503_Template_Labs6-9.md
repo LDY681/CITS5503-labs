@@ -368,13 +368,14 @@ Now we can apply the changes and restart the server to see the changes.
 ```
 python3 manage.py runserver 8000
 ```
-Access the polls index page with `Hello,World` message by visiting `http://13.61.7.212/polls/`. Access the built-in admin module by visiting `http://13.61.7.212/admin/`
+
 
 ### [3] Access the EC2 instance
 
-Access the URL: http://\<ip address of your EC2 instance>/polls/, and output what you've got. 
+Access the polls index page with `Hello,World` message by visiting `http://13.61.7.212/polls/`. Access the built-in admin module by visiting `http://13.61.7.212/admin/`
+![enter image description here](http://127.0.0.1/assets/lab6-10.png)
 
-**NOTE**: remember to put the /polls/ on the end and you may need to restart nginx if it does not work.
+![enter image description here](http://127.0.0.1/assets/lab6-11.png)
 
 ## Set up an ALB
 
@@ -412,7 +413,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Nzg1MDU3NzQsMTg1MTk2NDQ4OCwtMT
+eyJoaXN0b3J5IjpbLTE5NDI1NDEyNzcsMTg1MTk2NDQ4OCwtMT
 Y3NTgzOTc3NSwtMTgyNzQyODQ3NSwtMTc3MDk2NzY0MywxODcz
 OTAzMjQ1LDE5MjY5MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mz
 g3LC03NDUxMjE3NDIsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEw
