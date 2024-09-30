@@ -418,8 +418,8 @@ TargetGroupName = '24188516-tg'
 ec2 = bt.client('ec2', region_name='eu-north-1')
 elbv2 = bt.client('elbv2')
 
-subnet_response = ec2.describe_subnets(Filters=[{'Name': 'availability-zone', 'Values': ['eu-north-1b']}])['Subnets']
-Subnets = [subnet['SubnetId'] for subnet in subnet_response[:2]]
+subnet_response = ec2.describe_subnets()['Subnets']
+Subnets = [subnet['SubnetId'] for subnet in subnet_response]
 
 # 6. Create application load balancer
 loadbalancer_response = elbv2.create_load_balancer(
@@ -509,11 +509,11 @@ Get the ALB DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NDAzNjYzODYsLTEwOTgzNjk0NjksLT
-E0MzI5MDMxMDgsLTM3NDI5MzY2NywtMTc2ODc1NjgzMywtMTk0
-MjU0MTI3NywxODUxOTY0NDg4LC0xNjc1ODM5Nzc1LC0xODI3ND
-I4NDc1LC0xNzcwOTY3NjQzLDE4NzM5MDMyNDUsMTkyNjkxNDI0
-OCwxOTI2OTE0MjQ4LDE5MTIyMTczODcsLTc0NTEyMTc0MiwxMD
-E5MDY4NTEwLDEwNDQ4MjQyMjUsMTAyMzk1NTA3LDE5Njk5Mzc5
-MjksNTMwODc4Njk3XX0=
+eyJoaXN0b3J5IjpbMTU5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMD
+k4MzY5NDY5LC0xNDMyOTAzMTA4LC0zNzQyOTM2NjcsLTE3Njg3
+NTY4MzMsLTE5NDI1NDEyNzcsMTg1MTk2NDQ4OCwtMTY3NTgzOT
+c3NSwtMTgyNzQyODQ3NSwtMTc3MDk2NzY0MywxODczOTAzMjQ1
+LDE5MjY5MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mzg3LC03ND
+UxMjE3NDIsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMjM5NTUw
+NywxOTY5OTM3OTI5XX0=
 -->
