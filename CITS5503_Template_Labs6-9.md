@@ -13,6 +13,31 @@
 
 ### [1] Create an EC2 micro instance with Ubuntu and SSH into it. 
 In the first step, we will use the  code in lab2 to create a EC2 instance, stored the access private key, printed out the public IP address. Then we will SSH into the instance by providing the IP address and private key.
+
+In this step, we create an EC2 instance using the **boto3** Python package instead of AWS CLI commands. While the method names and parameters differ, the outcome is the same as in the previous steps. To differentiate this instance from the previous one, we append `-2` to the **Group name**, **Key name**, and **Instance name**.
+
+The following Python script uses `boto3` to create the EC2 **instance, security group, key pair, and instance tag**:
+
+### Workflow
+
+1. **Create Security Group**:  
+   The script starts by creating a security group (`24188516-sg-2`) using `ec2.create_security_group()`.
+   
+2. **Authorize SSH Inbound Rule**:  
+   Next, an SSH rule is added using `ec2.authorize_security_group_ingress()`. This allows SSH access on port **22** from all IP addresses (`0.0.0.0/0`).
+
+3. **Create Key Pair**:  
+   A key pair (`24188516-key-2`) is generated using `ec2.create_key_pair()`, and the private key is saved locally with restricted access permissions using `os.chmod()` to secure it.
+
+4. **Create EC2 Instance**:  
+   The script launches an EC2 instance in the specified security group using `ec2.run_instances()`. The **AMI ID** (`ami-07a0715df72e58928`), **instance type** (`t3.micro`), and **key name** (`24188516-key-2`) are provided as parameters.
+
+5. **Tag EC2 Instance**:  
+   A name tag (`24188516-vm-2`) is created for the EC2 instance using `ec2.create_tags()`, which helps in identifying the instance easily.
+
+6. **Retrieve Public IP Address**:  
+   The public IP address of the newly created EC2 instance is retrieved using `ec2.describe_instances()`.
+
 ```
 # createinstance.py
 import boto3 as bt
@@ -260,7 +285,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OT
-kzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIs
-MTA5NTY1NDAyMV19
+eyJoaXN0b3J5IjpbLTExOTY5MDc5NzcsMTA0NDgyNDIyNSwxMD
+IzOTU1MDcsMTk2OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAz
+LC0xMTQ3OTY1NzIsMTA5NTY1NDAyMV19
 -->
