@@ -380,12 +380,9 @@ Access the polls index page with `Hello,World` message by visiting `http://13.61
 ## Set up an ALB
 
 ### [1] Create an application load balancer & Health Check
-Specify the region subnet where your EC2 instance resides.
-Create a listener with a default rule Protocol: HTTP and Port 80 forwarding.
-Choose the security group, allowing HTTP traffic. 
-Add your instance as a registered target.
-For the target group, specify /polls/ for a path for the health check.
-Confirm the health check fetch the /polls/ page every 30 seconds.
+We will use the code in `lab5` as a start to create the load balancer, the only difference is this time we apply a health check on the `/polls/` path.
+
+The following Python script sets up an Application Load Balancer (ALB) for your EC2 instance, with health checks on the `/polls/` path every 30 seconds.
 
 ```
 import boto3 as bt
@@ -471,11 +468,11 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5Njg4MjQ2LC0xNzY4NzU2ODMzLC0xOT
-QyNTQxMjc3LDE4NTE5NjQ0ODgsLTE2NzU4Mzk3NzUsLTE4Mjc0
-Mjg0NzUsLTE3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOTI2OTE0Mj
-Q4LDE5MjY5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNzQyLDEw
-MTkwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OTkzNz
-kyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5
-NTY1NDAyMV19
+eyJoaXN0b3J5IjpbMTkwNDMxOSwtMTc2ODc1NjgzMywtMTk0Mj
+U0MTI3NywxODUxOTY0NDg4LC0xNjc1ODM5Nzc1LC0xODI3NDI4
+NDc1LC0xNzcwOTY3NjQzLDE4NzM5MDMyNDUsMTkyNjkxNDI0OC
+wxOTI2OTE0MjQ4LDE5MTIyMTczODcsLTc0NTEyMTc0MiwxMDE5
+MDY4NTEwLDEwNDQ4MjQyMjUsMTAyMzk1NTA3LDE5Njk5Mzc5Mj
+ksNTMwODc4Njk3LDk4OTkyMjQwMywtMTE0Nzk2NTcyLDEwOTU2
+NTQwMjFdfQ==
 -->
