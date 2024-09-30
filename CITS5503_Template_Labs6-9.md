@@ -145,17 +145,24 @@ print(f"{public_ip_address}\n")
 ![enter image description here](http://127.0.0.1/assets/lab6-2.png)
 
 ### [2] Install the Python 3 virtual environment package
-
+In this step, we will run the following commands to install virtual environmen
 ```
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install python3-venv
-```
-It is easier now if you change the bash to operate as sudo
 
-```
 sudo bash
 ```
+### Workflow
+
+1.  **Update and Upgrade System Packages**:
+    -   **`sudo apt-get update`**: Updates the package lists for available or new versions of packages and their dependencies.
+    -   **`sudo apt-get upgrade`**: Upgrades the installed packages to the latest versions.
+2.  **Install `python3-venv`**:
+    -   **`sudo apt-get install python3-venv`**: Installs the `venv` package for Python 3, which is used to create isolated Python environments.
+3.  **Switch to Superuser Mode**:
+    -   **`sudo bash`**: Elevates the command line session to superuser mode, ensuring all subsequent commands are executed with `sudo` privileges without needing to prepend `sudo` each time. This is helpful when performing multiple operations requiring root access.
+  
 ![enter image description here](http://127.0.0.1/assets/lab6-3.png)
 
 ### [3] Access a directory  
@@ -319,7 +326,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODcxOTk0NzkzLDEwNDQ4MjQyMjUsMTAyMz
-k1NTA3LDE5Njk5Mzc5MjksNTMwODc4Njk3LDk4OTkyMjQwMywt
-MTE0Nzk2NTcyLDEwOTU2NTQwMjFdfQ==
+eyJoaXN0b3J5IjpbLTIwOTM3MTMyNjUsMTA0NDgyNDIyNSwxMD
+IzOTU1MDcsMTk2OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAz
+LC0xMTQ3OTY1NzIsMTA5NTY1NDAyMV19
 -->
