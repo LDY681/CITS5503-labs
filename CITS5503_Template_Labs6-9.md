@@ -12,8 +12,76 @@
 ## Set up an EC2 instance
 
 ### [1] Create an EC2 micro instance with Ubuntu and SSH into it. 
+In the first step, we will use the  code in lab2 to create a EC2 instance, stored the access private key, printed out the 
+```
+# createInstance.py
+import boto3 as bt
+import os
 
-[Refer to the marking rubrics for sufficient step-by-step description.]
+GroupName = '24188516-sg-1'
+KeyName = '24188516-key-1'
+InstanceName= '24188516-vm-1'
+
+ec2 = bt.client('ec2')
+
+# 1 create security group
+step1_response = ec2.create_security_group(
+    Description="security group for development environment",
+    GroupName=GroupName
+)
+
+# 2 authorise ssh inbound rule
+step2_response = ec2.authorize_security_group_ingress(
+    GroupName=GroupName,
+    IpPermissions=[
+        {
+            'IpProtocol': 'tcp',
+            'FromPort': 22,
+            'ToPort': 22,
+            'IpRanges': [{'CidrIp': '0.0.0.0/0'}]
+        }
+    ]
+)
+
+# 3 create key-pair
+step3_response = ec2.create_key_pair(KeyName=KeyName)
+PrivateKey = step3_response['KeyMaterial']
+## save key-pair
+with open(f'{KeyName}.pem', 'w') as file:
+    file.write(PrivateKey)
+## grant file permission
+os.chmod(f'{KeyName}.pem', 0o400)
+
+# 4 create instance
+step4_response = ec2.run_instances(
+    ImageId='ami-07a0715df72e58928',
+    SecurityGroupIds=[GroupName],
+    MinCount=1,
+    MaxCount=1,
+    InstanceType='t3.micro',
+    KeyName=KeyName
+)
+InstanceId = step4_response['Instances'][0]['InstanceId']
+
+# 5 create tag
+step5_repsonse = ec2.create_tags(
+    Resources=[InstanceId],
+    Tags=[
+        {
+            'Key': 'Name',
+            'Value': InstanceName
+        }
+    ]
+)
+
+# 6 get IP address
+step6_response = ec2.describe_instances(InstanceIds=[InstanceId])
+
+# Extract the public IP address
+public_ip_address = step6_response['Reservations'][0]['Instances'][0]['PublicIpAddress']
+
+print(f"{public_ip_address}\n")
+```
 
 
 ### [2] Install the Python 3 virtual environment package
@@ -182,5 +250,6 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDc5NjU3MiwxMDk1NjU0MDIxXX0=
+eyJoaXN0b3J5IjpbLTkwMTYyNTY3OCwtMTE0Nzk2NTcyLDEwOT
+U2NTQwMjFdfQ==
 -->
