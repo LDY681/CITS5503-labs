@@ -108,7 +108,7 @@ public_ip_address = step6_response['Reservations'][0]['Instances'][0]['PublicIpA
 print(f"{public_ip_address}\n")
 ```
 
-> ### Code Breakdown
+> ### Key parameters
 
 1. **`ec2.create_security_group()`**:
    - **`Description`**: Describes the purpose of the security group, here labeled as "security group for development environment".
@@ -248,7 +248,7 @@ apt install nginx
 
 ### [7] Configure nginx
 
-edit `/etc/nginx/sites-enabled/default` and replace the contents of the file with
+To configure Nginx to work as a reverse proxy for your Django application, edit the Nginx configuration file located at `/etc/nginx/sites-enabled/default`. Replace its contents with the following configuration:
 
 ```
 server {
@@ -263,6 +263,18 @@ server {
   }
 }
 ```
+
+#### Key Parameters:
+
+- **`listen`**: Specifies the port Nginx listens on. Here, **80** is the default HTTP port for web traffic. The second `listen` line is for IPv6.
+  
+- **`proxy_set_header X-Forwarded-Host $host;`**: Sets the `X-Forwarded-Host` header to the host of the original request. This header preserves the original `Host` header sent by the client.
+
+- **`proxy_set_header X-Real-IP $remote_addr;`**: Sets the `X-Real-IP` header to the real client IP address. This header helps in passing the original client's IP address to the proxied server.
+
+- **`proxy_pass http://127.0.0.1:8000;`**: Forwards incoming traffic to `http://127.0.0.1:8000`, where your Django application is running. This allows Nginx to act as a reverse proxy, handling requests and passing them to your Django server.
+
+This configuration ensures that all incoming traffic to your server's port **80** is passed to the Django app running locally on port **8000**.
 
 ### [8] Restart nginx
 
@@ -366,7 +378,8 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc0NTEyMTc0MiwxMDE5MDY4NTEwLDEwND
-Q4MjQyMjUsMTAyMzk1NTA3LDE5Njk5Mzc5MjksNTMwODc4Njk3
-LDk4OTkyMjQwMywtMTE0Nzk2NTcyLDEwOTU2NTQwMjFdfQ==
+eyJoaXN0b3J5IjpbMTkxMjIxNzM4NywtNzQ1MTIxNzQyLDEwMT
+kwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OTkzNzky
+OSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5NT
+Y1NDAyMV19
 -->
