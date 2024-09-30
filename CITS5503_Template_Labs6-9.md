@@ -187,7 +187,6 @@ To create a new isolated Python environment, run the following command:
 
 ```bash
 python3 -m venv myvenv
-
 ```
 
 #### Key Parameters:
@@ -403,7 +402,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3ODU4MTc0MTcsMTg3MzkwMzI0NSwxOT
+eyJoaXN0b3J5IjpbLTE3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOT
 I2OTE0MjQ4LDE5MjY5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIx
 NzQyLDEwMTkwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMT
 k2OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1
