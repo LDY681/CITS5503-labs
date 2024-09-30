@@ -145,7 +145,8 @@ print(f"{public_ip_address}\n")
 ![enter image description here](http://127.0.0.1/assets/lab6-2.png)
 
 ### [2] Install the Python 3 virtual environment package
-In this step, we will run the following commands to install virtual environmen
+In this step, we will run the following commands to install virtual environment package and grant sudo permissions to bash operations.
+
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -326,7 +327,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTM3MTMyNjUsMTA0NDgyNDIyNSwxMD
-IzOTU1MDcsMTk2OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAz
-LC0xMTQ3OTY1NzIsMTA5NTY1NDAyMV19
+eyJoaXN0b3J5IjpbOTgyODM1MiwxMDQ0ODI0MjI1LDEwMjM5NT
+UwNywxOTY5OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMsLTEx
+NDc5NjU3MiwxMDk1NjU0MDIxXX0=
 -->
