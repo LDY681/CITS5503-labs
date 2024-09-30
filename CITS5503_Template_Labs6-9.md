@@ -321,8 +321,8 @@ python3 manage.py runserver 8000
 -   **`runserver`**: Starts the Django development server.
 -   **`8000`**: Specifies the port on which the server will listen for requests. In this case, it's **8000**.
 
-We can now access the web app via `http://<your-ec2-instance-ip>:8000`.
-
+We can now access the web app via `http://13.61.7.212:8000`.
+![enter image description here](http://127.0.0.1/assets/lab6-9.png)
 
 ## Set up Django inside the created EC2 instance
 
@@ -408,10 +408,10 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2MzI0NDUyNywtMTY3NTgzOTc3NSwtMT
-gyNzQyODQ3NSwtMTc3MDk2NzY0MywxODczOTAzMjQ1LDE5MjY5
-MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mzg3LC03NDUxMjE3ND
-IsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMjM5NTUwNywxOTY5
-OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMsLTExNDc5NjU3Mi
-wxMDk1NjU0MDIxXX0=
+eyJoaXN0b3J5IjpbLTExNDU1MTcwOTEsLTE2NzU4Mzk3NzUsLT
+E4Mjc0Mjg0NzUsLTE3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOTI2
+OTE0MjQ4LDE5MjY5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNz
+QyLDEwMTkwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2
+OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1Nz
+IsMTA5NTY1NDAyMV19
 -->
