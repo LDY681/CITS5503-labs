@@ -380,9 +380,7 @@ Access the polls index page with `Hello,World` message by visiting `http://13.61
 ## Set up an ALB
 
 ### [1] Create an application load balancer & Health Check
-We will use the code in `lab5` as a start to create the load balancer, the only difference is this time we apply a health check on the `/polls/` path.
-
-The following Python script sets up an Application Load Balancer (ALB) for your EC2 instance, with health checks on the `/polls/` path every 30 seconds.
+We will use the code in `lab5` as a start to create the load balancer, the only difference is this time we apply a health check on the `/polls/` path of our hosted website every 30 seconds.
 
 ### Workflow
 1. **Initialize Clients and Define Variables**:
@@ -398,7 +396,7 @@ The following Python script sets up an Application Load Balancer (ALB) for your 
 4. **Create Target Group for Health Checks**:
    - Uses **`elbv2.create_target_group()`** to create a target group for the EC2 instance.
    - Specifies HTTP as the protocol and port 80 for forwarding.
-   - Sets up a health check on the `/polls/` path to be performed every 30 seconds.
+   - Sets up a DNS health check on the `/polls/` path to be performed every 30 seconds.
 
 5. **Register EC2 Instances as Targets**:
    - Registers the EC2 instance to the target group using **`elbv2.register_targets()`**.
@@ -511,11 +509,11 @@ Get the ALB DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MzI5MDMxMDgsLTM3NDI5MzY2NywtMT
-c2ODc1NjgzMywtMTk0MjU0MTI3NywxODUxOTY0NDg4LC0xNjc1
-ODM5Nzc1LC0xODI3NDI4NDc1LC0xNzcwOTY3NjQzLDE4NzM5MD
-MyNDUsMTkyNjkxNDI0OCwxOTI2OTE0MjQ4LDE5MTIyMTczODcs
-LTc0NTEyMTc0MiwxMDE5MDY4NTEwLDEwNDQ4MjQyMjUsMTAyMz
-k1NTA3LDE5Njk5Mzc5MjksNTMwODc4Njk3LDk4OTkyMjQwMywt
-MTE0Nzk2NTcyXX0=
+eyJoaXN0b3J5IjpbLTEwOTgzNjk0NjksLTE0MzI5MDMxMDgsLT
+M3NDI5MzY2NywtMTc2ODc1NjgzMywtMTk0MjU0MTI3NywxODUx
+OTY0NDg4LC0xNjc1ODM5Nzc1LC0xODI3NDI4NDc1LC0xNzcwOT
+Y3NjQzLDE4NzM5MDMyNDUsMTkyNjkxNDI0OCwxOTI2OTE0MjQ4
+LDE5MTIyMTczODcsLTc0NTEyMTc0MiwxMDE5MDY4NTEwLDEwND
+Q4MjQyMjUsMTAyMzk1NTA3LDE5Njk5Mzc5MjksNTMwODc4Njk3
+LDk4OTkyMjQwM119
 -->
