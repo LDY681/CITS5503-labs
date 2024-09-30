@@ -292,11 +292,17 @@ server {
 This configuration ensures that all incoming traffic to your server's port **80** is passed to the Django app running locally on port **8000**.
 
 ### [8] Restart nginx
-
+To restart the Nginx service, run the following command:
 ```
 service nginx restart
 ```
+#### Key Parameters:
 
+-   **`service`**: Manages system services.
+-   **`nginx`**: Specifies the Nginx service to be managed.
+-   **`restart`**: Restarts the Nginx service, stopping it if running and then starting it again to apply any configuration changes.
+
+This command ensures that any updates or changes made to the Nginx configuration are applied.
 
 ### [9] Access your EC2 instance
 
@@ -393,9 +399,9 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjIxNjQwMDU3LDE5MjY5MTQyNDgsMTkyNj
-kxNDI0OCwxOTEyMjE3Mzg3LC03NDUxMjE3NDIsMTAxOTA2ODUx
-MCwxMDQ0ODI0MjI1LDEwMjM5NTUwNywxOTY5OTM3OTI5LDUzMD
-g3ODY5Nyw5ODk5MjI0MDMsLTExNDc5NjU3MiwxMDk1NjU0MDIx
-XX0=
+eyJoaXN0b3J5IjpbMTg3MzkwMzI0NSwxOTI2OTE0MjQ4LDE5Mj
+Y5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNzQyLDEwMTkwNjg1
+MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OTkzNzkyOSw1Mz
+A4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5NTY1NDAy
+MV19
 -->
