@@ -335,9 +335,9 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Hello, world.")
 ```
-**`HttpResponse`**: A Django class that returns a simple HTTP response containing the string `"Hello, world."`.
+-   **`HttpResponse`**: A Django class that returns a simple HTTP response containing the string `"Hello, world."`.
 
-In lab/urls.py, map the URL pattern to the view created above:
+In `polls/urls.py`, map the URL pattern to the view created above:
 
 ```
 from django.urls import path
@@ -348,9 +348,9 @@ urlpatterns = [
 ]
 ```
 
-**`path('', views.index, name='index')`**: Routes the root URL of the `polls` app to the `index` view function.
+-   **`path('', views.index, name='index')`**: Routes the root URL of the `polls` app to the `index` view function.
 
-In lab/urls.py, map the URL pattern to the view created above:
+In `lab/urls.py`, include the `polls` app URLs and set up the admin interface:
 ```
 from django.urls import include, path
 from django.contrib import admin
@@ -360,10 +360,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 ```
-
+-   **`include('polls.urls')`**: Includes the `polls` app's URL configurations under the path `polls/`.
+-   **`admin.site.urls`**: Sets up the admin interface under the path `admin/`.
 
 ### [2] Run the web server again
-
+Now we can apply the changes and restart the server to see the changes
 ```
 python3 manage.py runserver 8000
 ```
@@ -410,7 +411,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY1NDUwOTY0OCwtMTY3NTgzOTc3NSwtMT
+eyJoaXN0b3J5IjpbMTg1MTk2NDQ4OCwtMTY3NTgzOTc3NSwtMT
 gyNzQyODQ3NSwtMTc3MDk2NzY0MywxODczOTAzMjQ1LDE5MjY5
 MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mzg3LC03NDUxMjE3ND
 IsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMjM5NTUwNywxOTY5
