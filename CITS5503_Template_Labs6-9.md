@@ -185,21 +185,36 @@ cd /opt/wwc/mysites
 ```
 python3 -m venv myvenv
 ```
+
+1. **Set Up Virtual Environment**:
+   - **`python3 -m venv myvenv`**: Uses Python 3's `venv` module to create a virtual environment named `myvenv` in the current directory (`/opt/wwc/mysites`). This environment will have its own Python interpreter and package directory, isolated from the system's global Python environment.
+
 ![enter image description here](http://127.0.0.1/assets/lab6-5.png)
 
 ### [5] Activate the virtual environment
 
 ```
 source myvenv/bin/activate
-
 pip install django
-
 django-admin startproject lab
-
 cd lab
-
 python3 manage.py startapp polls
 ```
+1. **Activate Virtual Environment**:
+   - **`source myvenv/bin/activate`**: Activates the virtual environment `myvenv`, setting the environment for isolated Python package management.
+
+2. **Install Django**:
+   - **`pip install django`**: Installs Django into the virtual environment. `pip` is used to fetch the latest version of the Django package.
+
+3. **Start a New Django Project**:
+   - **`django-admin startproject lab`**: Uses `django-admin` to create a new Django project named `lab` in the current directory. This generates necessary project files like `manage.py` and a folder structure to build the web application.
+
+4. **Navigate to the Project Directory**:
+   - **`cd lab`**: Moves into the project directory to begin working with the Django project files.
+
+5. **Create a New Django App**:
+   - **`python3 manage.py startapp polls`**: Uses Django's `manage.py` utility to create a new app called `polls`. The app will have its own views, models, and URLs, encapsulated within the `lab` project.
+
 ![enter image description here](http://127.0.0.1/assets/lab6-6.png)
 ![enter image description here](http://127.0.0.1/assets/lab6-7.png)
 **NOTE**: Stop and look at the files that have been created – the project files are to do with the running of the application. We will deal with the files as we go through.
@@ -332,7 +347,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc3MjMyMzAyLDEwNDQ4MjQyMjUsMTAyMz
-k1NTA3LDE5Njk5Mzc5MjksNTMwODc4Njk3LDk4OTkyMjQwMywt
-MTE0Nzk2NTcyLDEwOTU2NTQwMjFdfQ==
+eyJoaXN0b3J5IjpbMTg2OTk0NDc1NiwxMDQ0ODI0MjI1LDEwMj
+M5NTUwNywxOTY5OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMs
+LTExNDc5NjU3MiwxMDk1NjU0MDIxXX0=
 -->
