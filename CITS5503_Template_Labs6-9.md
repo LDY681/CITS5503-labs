@@ -186,7 +186,7 @@ cd /opt/wwc/mysites
 To create a new isolated Python environment, run the following command:
 
 ```bash
-python3 -m venv myvenv
+c
 ```
 
 #### Key Parameters:
@@ -402,9 +402,10 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4Mjc0Mjg0NzUsLTE3NzA5Njc2NDMsMT
-g3MzkwMzI0NSwxOTI2OTE0MjQ4LDE5MjY5MTQyNDgsMTkxMjIx
-NzM4NywtNzQ1MTIxNzQyLDEwMTkwNjg1MTAsMTA0NDgyNDIyNS
-wxMDIzOTU1MDcsMTk2OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIy
-NDAzLC0xMTQ3OTY1NzIsMTA5NTY1NDAyMV19
+eyJoaXN0b3J5IjpbLTE2NzU4Mzk3NzUsLTE4Mjc0Mjg0NzUsLT
+E3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOTI2OTE0MjQ4LDE5MjY5
+MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNzQyLDEwMTkwNjg1MT
+AsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OTkzNzkyOSw1MzA4
+Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5NTY1NDAyMV
+19
 -->
