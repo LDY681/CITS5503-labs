@@ -83,6 +83,7 @@ public_ip_address = step6_response['Reservations'][0]['Instances'][0]['PublicIpA
 print(f"{public_ip_address}\n")
 ```
 ![enter image description here](http://127.0.0.1/assets/lab6-1.png)
+![enter image description here](http://127.0.0.1/assets/lab6-2.png)
 
 ### [2] Install the Python 3 virtual environment package
 
@@ -96,7 +97,7 @@ It is easier now if you change the bash to operate as sudo
 ```
 sudo bash
 ```
-![enter image description here](http://127.0.0.1/assets/lab6-2.png)
+![enter image description here](http://127.0.0.1/assets/lab6-3.png)
 
 ### [3] Access a directory  
 
@@ -105,14 +106,14 @@ Create a directory with a path `/opt/wwc/mysites` and `cd` into the directory.
 sudo mkdir -p /opt/wwc/mysites
 cd /opt/wwc/mysites
 ```
-![enter image description here](http://127.0.0.1/assets/lab6-3.png)
+![enter image description here](http://127.0.0.1/assets/lab6-4.png)
 
 ### [4] Set up a virtual environment
 
 ```
 python3 -m venv myvenv
 ```
-![enter image description here](http://127.0.0.1/assets/lab6-4.png)
+![enter image description here](http://127.0.0.1/assets/lab6-5.png)
 
 ### [5] Activate the virtual environment
 
@@ -127,6 +128,7 @@ cd lab
 
 python3 manage.py startapp polls
 ```
+![enter image description here](http://127.0.0.1/assets/lab6-6.png)
 
 **NOTE**: Stop and look at the files that have been created – the project files are to do with the running of the application. We will deal with the files as we go through.
 
@@ -257,7 +259,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3MjM0NjAwMSwxOTY5OTM3OTI5LDUzMD
-g3ODY5Nyw5ODk5MjI0MDMsLTExNDc5NjU3MiwxMDk1NjU0MDIx
-XX0=
+eyJoaXN0b3J5IjpbLTE3NDMyNjA3MjQsMTk2OTkzNzkyOSw1Mz
+A4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5NTY1NDAy
+MV19
 -->
