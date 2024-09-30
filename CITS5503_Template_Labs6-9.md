@@ -23,8 +23,8 @@ The following Python script uses `boto3` to create the EC2 **instance, security 
 1. **Create Security Group**:  
    The script starts by creating a security group (`24188516-sg-1`) using `ec2.create_security_group()`.
    
-2. **Authorize SSH Inbound Rule**:  
-   Next, an SSH rule is added using `ec2.authorize_security_group_ingress()`. This allows SSH access on port **22** from all IP addresses (`0.0.0.0/0`).
+2. **Authorize SSH/HTTP Inbound Rule**:  
+   Next, an SSH/HTTP rule is added using `ec2.authorize_security_group_ingress()`. This allows SSH access on port **22** and HTTP access on port **80** from all IP addresses (`0.0.0.0/0`).
 
 3. **Create Key Pair**:  
    A key pair (`24188516-key-lab6`) is generated using `ec2.create_key_pair()`, and the private key is saved locally with restricted access permissions using `os.chmod()` to secure it.
@@ -123,8 +123,8 @@ print(f"{public_ip_address}\n")
 2. **`ec2.authorize_security_group_ingress()`**:
    - **`GroupName`**: Specifies the security group where the rule will be added, in this case, `24188516-sg-1`.
    - **`IpPermissions`**: This parameter contains the rules that specify what type of inbound traffic is allowed. 
-     - **`IpProtocol`**: Defines the protocol, here set to `tcp` for SSH access.
-     - **`FromPort` and `ToPort`**: Both set to `22`, defining the SSH port.
+     - **`IpProtocol`**: Defines the protocol, here set to `tcp` for SSH access, and `http` for HTTP access.
+     - **`FromPort` and `ToPort`**: Set to `22` for the SSH port and `80` for the HTTP port.
      - **`IpRanges`**: Defines the IP range allowed to access the instance. Here, `0.0.0.0/0` allows access from any IP.
 
 3. **`ec2.create_key_pair()`**:
@@ -408,10 +408,10 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MzUyMjcxMzYsLTE2NzU4Mzk3NzUsLT
-E4Mjc0Mjg0NzUsLTE3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOTI2
-OTE0MjQ4LDE5MjY5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNz
-QyLDEwMTkwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2
-OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1Nz
-IsMTA5NTY1NDAyMV19
+eyJoaXN0b3J5IjpbMTE2MzI0NDUyNywtMTY3NTgzOTc3NSwtMT
+gyNzQyODQ3NSwtMTc3MDk2NzY0MywxODczOTAzMjQ1LDE5MjY5
+MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mzg3LC03NDUxMjE3ND
+IsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMjM5NTUwNywxOTY5
+OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMsLTExNDc5NjU3Mi
+wxMDk1NjU0MDIxXX0=
 -->
