@@ -180,14 +180,22 @@ cd /opt/wwc/mysites
 
 ![enter image description here](http://127.0.0.1/assets/lab6-4.png)
 
-### [4] Set up a virtual environment
 
-```
+### Set Up a Virtual Environment
+
+To create a new isolated Python environment, run the following command:
+
+```bash
 python3 -m venv myvenv
+
 ```
 
-1. **Set Up Virtual Environment**:
-   - **`python3 -m venv myvenv`**: Uses Python 3's `venv` module to create a virtual environment named `myvenv` in the current directory (`/opt/wwc/mysites`). This environment will have its own Python interpreter and package directory, isolated from the system's global Python environment.
+#### Key Parameters:
+
+-   **`-m venv`**: Uses the `venv` module to create a new virtual environment.
+-   **`myvenv`**: Specifies the name of the directory to store the virtual environment. You can replace `myvenv` with any directory name of your choice.
+
+This command will create a new directory called `myvenv` containing the Python interpreter, standard library, and other resources, allowing you to manage dependencies separately from the global Python environment.
 
 ![enter image description here](http://127.0.0.1/assets/lab6-5.png)
 
@@ -200,7 +208,7 @@ django-admin startproject lab
 cd lab
 python3 manage.py startapp polls
 ```
-### Workflow
+
 1. **Activate Virtual Environment**:
    - **`source myvenv/bin/activate`**: Activates the virtual environment `myvenv`, setting the environment for isolated Python package management.
 
@@ -378,8 +386,9 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkyNjkxNDI0OCwxOTI2OTE0MjQ4LDE5MT
-IyMTczODcsLTc0NTEyMTc0MiwxMDE5MDY4NTEwLDEwNDQ4MjQy
-MjUsMTAyMzk1NTA3LDE5Njk5Mzc5MjksNTMwODc4Njk3LDk4OT
-kyMjQwMywtMTE0Nzk2NTcyLDEwOTU2NTQwMjFdfQ==
+eyJoaXN0b3J5IjpbMTEzMDYxOTk4OSwxOTI2OTE0MjQ4LDE5Mj
+Y5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNzQyLDEwMTkwNjg1
+MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OTkzNzkyOSw1Mz
+A4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5NTY1NDAy
+MV19
 -->
