@@ -328,16 +328,16 @@ We can now access the web app via `http://13.61.7.212:8000`.
 
 ### [1] Edit the following files (create them if not exist)
 
-edit polls/views.py
-
+In `polls/views.py`, create a view that returns a simple HTTP response "Hello World":
 ```
 from django.http import HttpResponse
 
 def index(request):
     return HttpResponse("Hello, world.")
 ```
+**`HttpResponse`**: A Django class that returns a simple HTTP response containing the string `"Hello, world."`.
 
-edit polls/urls.py 
+In lab/urls.py, map the URL pattern to the view created above:
 
 ```
 from django.urls import path
@@ -348,8 +348,9 @@ urlpatterns = [
 ]
 ```
 
-edit lab/urls.py
+**`path('', views.index, name='index')`**: Routes the root URL of the `polls` app to the `index` view function.
 
+In lab/urls.py, map the URL pattern to the view created above:
 ```
 from django.urls import include, path
 from django.contrib import admin
@@ -359,6 +360,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 ```
+
 
 ### [2] Run the web server again
 
@@ -408,10 +410,10 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNDU1MTcwOTEsLTE2NzU4Mzk3NzUsLT
-E4Mjc0Mjg0NzUsLTE3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOTI2
-OTE0MjQ4LDE5MjY5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNz
-QyLDEwMTkwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2
-OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1Nz
-IsMTA5NTY1NDAyMV19
+eyJoaXN0b3J5IjpbLTY1NDUwOTY0OCwtMTY3NTgzOTc3NSwtMT
+gyNzQyODQ3NSwtMTc3MDk2NzY0MywxODczOTAzMjQ1LDE5MjY5
+MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mzg3LC03NDUxMjE3ND
+IsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMjM5NTUwNywxOTY5
+OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMsLTExNDc5NjU3Mi
+wxMDk1NjU0MDIxXX0=
 -->
