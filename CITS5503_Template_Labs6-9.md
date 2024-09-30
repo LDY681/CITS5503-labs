@@ -364,10 +364,11 @@ urlpatterns = [
 -   **`admin.site.urls`**: Sets up the admin interface under the path `admin/`.
 
 ### [2] Run the web server again
-Now we can apply the changes and restart the server to see the changes
+Now we can apply the changes and restart the server to see the changes.
 ```
 python3 manage.py runserver 8000
 ```
+Access the polls index page with `Hello,World` message by visiting `http://13.61.7.212/polls/`. Access the built-in admin module by visiting `http://13.61.7.212/admin/`
 
 ### [3] Access the EC2 instance
 
@@ -411,10 +412,10 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg1MTk2NDQ4OCwtMTY3NTgzOTc3NSwtMT
-gyNzQyODQ3NSwtMTc3MDk2NzY0MywxODczOTAzMjQ1LDE5MjY5
-MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mzg3LC03NDUxMjE3ND
-IsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMjM5NTUwNywxOTY5
-OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMsLTExNDc5NjU3Mi
-wxMDk1NjU0MDIxXX0=
+eyJoaXN0b3J5IjpbLTE5Nzg1MDU3NzQsMTg1MTk2NDQ4OCwtMT
+Y3NTgzOTc3NSwtMTgyNzQyODQ3NSwtMTc3MDk2NzY0MywxODcz
+OTAzMjQ1LDE5MjY5MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mz
+g3LC03NDUxMjE3NDIsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEw
+MjM5NTUwNywxOTY5OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MD
+MsLTExNDc5NjU3MiwxMDk1NjU0MDIxXX0=
 -->
