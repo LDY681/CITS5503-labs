@@ -192,7 +192,7 @@ python3 -m venv myvenv
 ![enter image description here](http://127.0.0.1/assets/lab6-5.png)
 
 ### [5] Activate the virtual environment
-
+In this step, we will activate our virtual environment, install and start Django project and create a Django app
 ```
 source myvenv/bin/activate
 pip install django
@@ -347,7 +347,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2OTk0NDc1NiwxMDQ0ODI0MjI1LDEwMj
+eyJoaXN0b3J5IjpbMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMj
 M5NTUwNywxOTY5OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMs
 LTExNDc5NjU3MiwxMDk1NjU0MDIxXX0=
 -->
