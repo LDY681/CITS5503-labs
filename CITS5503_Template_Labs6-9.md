@@ -388,7 +388,7 @@ We will use the code in `lab5` as a start to create the load balancer, the only 
    - Defines constants for security group, key pair, instance ID, load balancer name, and target group name.
 
 2. **Fetch Subnets for the EC2 Instance**:
-   - Retrieves two subnets in the region for the load balancer.
+   - Retrieves subnets in the `eu-north-1` region for the load balancer.
 
 3. **Create Application Load Balancer**:
    - Uses **`elbv2.create_load_balancer()`** to create an ALB in the specified subnets, using the security group to allow HTTP traffic.
@@ -492,8 +492,9 @@ print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")
     -   **`LoadBalancerArn`**: ARN of the load balancer to attach the listener.
     -   **`Protocol`** and **`Port`**: Specifies HTTP protocol and port 80 for listening.
     -   **`DefaultActions`**: Defines actions for forwarding requests to the target group.
+
 ### [3] Access
-Get the ALB DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`,  access the URL: http://\<load balancer dns name>/polls/, and output what you've got.
+Get the ALB DNS URLfrom `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`,  now access its URL: http://24188516-elb-920225157.eu-north-1.elb.amazonaws.com/polls/, and output what you've got.
 
 **NOTE**: When you are done, delete the instance and ALB you created.
 <div style="page-break-after: always;"></div>
@@ -509,11 +510,11 @@ Get the ALB DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMD
-k4MzY5NDY5LC0xNDMyOTAzMTA4LC0zNzQyOTM2NjcsLTE3Njg3
-NTY4MzMsLTE5NDI1NDEyNzcsMTg1MTk2NDQ4OCwtMTY3NTgzOT
-c3NSwtMTgyNzQyODQ3NSwtMTc3MDk2NzY0MywxODczOTAzMjQ1
-LDE5MjY5MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mzg3LC03ND
-UxMjE3NDIsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMjM5NTUw
-NywxOTY5OTM3OTI5XX0=
+eyJoaXN0b3J5IjpbNTc1MzQ4NjYwLDE1OTA3MDgwOSwtMTU0MD
+M2NjM4NiwtMTA5ODM2OTQ2OSwtMTQzMjkwMzEwOCwtMzc0Mjkz
+NjY3LC0xNzY4NzU2ODMzLC0xOTQyNTQxMjc3LDE4NTE5NjQ0OD
+gsLTE2NzU4Mzk3NzUsLTE4Mjc0Mjg0NzUsLTE3NzA5Njc2NDMs
+MTg3MzkwMzI0NSwxOTI2OTE0MjQ4LDE5MjY5MTQyNDgsMTkxMj
+IxNzM4NywtNzQ1MTIxNzQyLDEwMTkwNjg1MTAsMTA0NDgyNDIy
+NSwxMDIzOTU1MDddfQ==
 -->
