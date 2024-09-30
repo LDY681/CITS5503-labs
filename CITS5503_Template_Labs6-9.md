@@ -247,11 +247,18 @@ Once the commands are executed, Django creates the following structure for your 
 
 The files and structure created by Django provide a foundation for organizing and developing the project. As we progress, we will work on these files to build the application and understand their specific roles and functionalities.
 
-### [6] Install nginx
+
+### [6] Install Nginx
+
 To install the Nginx web server, run the following command:
-```
+
+```bash
 apt install nginx
 ```
+#### Key Parameters:
+-   **`install nginx`**: Downloads and installs the `nginx` package from the repository, including all necessary dependencies.
+
+This command sets up the Nginx web server, which can be used as a reverse proxy, load balancer, or HTTP cache for your applications.
 ![enter image description here](http://127.0.0.1/assets/lab6-8.png)
 
 ### [7] Configure nginx
@@ -386,9 +393,9 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzMDYxOTk4OSwxOTI2OTE0MjQ4LDE5Mj
-Y5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNzQyLDEwMTkwNjg1
-MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OTkzNzkyOSw1Mz
-A4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5NTY1NDAy
-MV19
+eyJoaXN0b3J5IjpbNjIxNjQwMDU3LDE5MjY5MTQyNDgsMTkyNj
+kxNDI0OCwxOTEyMjE3Mzg3LC03NDUxMjE3NDIsMTAxOTA2ODUx
+MCwxMDQ0ODI0MjI1LDEwMjM5NTUwNywxOTY5OTM3OTI5LDUzMD
+g3ODY5Nyw5ODk5MjI0MDMsLTExNDc5NjU3MiwxMDk1NjU0MDIx
+XX0=
 -->
