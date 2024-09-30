@@ -129,7 +129,7 @@ cd lab
 python3 manage.py startapp polls
 ```
 ![enter image description here](http://127.0.0.1/assets/lab6-6.png)
-
+![enter image description here](http://127.0.0.1/assets/lab6-7.png)
 **NOTE**: Stop and look at the files that have been created – the project files are to do with the running of the application. We will deal with the files as we go through.
 
 
@@ -259,7 +259,7 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDMyNjA3MjQsMTk2OTkzNzkyOSw1Mz
-A4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5NTY1NDAy
-MV19
+eyJoaXN0b3J5IjpbMTAyMzk1NTA3LDE5Njk5Mzc5MjksNTMwOD
+c4Njk3LDk4OTkyMjQwMywtMTE0Nzk2NTcyLDEwOTU2NTQwMjFd
+fQ==
 -->
