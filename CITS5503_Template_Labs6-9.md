@@ -311,11 +311,12 @@ In the app directory `/opt/wwc/mysites/lab`, run the following command to start 
 ```
 python3 manage.py runserver 8000
 ```
+#### Key Parameters:
 
-1.  **Start Django Server**:
-    -   **`python3 manage.py runserver 8000`**: Executes the Django development server, binding it to port **8000**. This allows you to access the web app through your EC2 instance’s IP address and port **8000**.
+-   **`runserver`**: Starts the Django development server.
+-   **`8000`**: Specifies the port on which the server will listen for requests. In this case, it's **8000**.
 
-The application is now accessible from the browser via `http://<your-ec2-instance-ip>:8000`.
+We can now access the web app via `http://<your-ec2-instance-ip>:8000`.
 
 
 ## Set up Django inside the created EC2 instance
@@ -402,9 +403,9 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwMjMzNjY0OSwxODczOTAzMjQ1LDE5Mj
-Y5MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mzg3LC03NDUxMjE3
-NDIsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEwMjM5NTUwNywxOT
-Y5OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MDMsLTExNDc5NjU3
-MiwxMDk1NjU0MDIxXX0=
+eyJoaXN0b3J5IjpbLTE3ODU4MTc0MTcsMTg3MzkwMzI0NSwxOT
+I2OTE0MjQ4LDE5MjY5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIx
+NzQyLDEwMTkwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMT
+k2OTkzNzkyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1
+NzIsMTA5NTY1NDAyMV19
 -->
