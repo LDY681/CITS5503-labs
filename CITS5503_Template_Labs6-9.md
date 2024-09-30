@@ -379,7 +379,7 @@ Access the polls index page with `Hello,World` message by visiting `http://13.61
 
 ## Set up an ALB
 
-### [1] Create an application load balancer & Health Check
+### [1] Create an application load balancer & Health check
 We will use the code in `lab5` as a start to create the load balancer, the only difference is this time we apply a health check on the `/polls/` path of our hosted website every 30 seconds.
 
 ### Workflow
@@ -493,11 +493,15 @@ print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")
     -   **`Protocol`** and **`Port`**: Specifies HTTP protocol and port 80 for listening.
     -   **`DefaultActions`**: Defines actions for forwarding requests to the target group.
 
-### [3] Access
-Get the ALB DNS url from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`,  now access its url with path `/polls/` to see health check results: http://24188516-elb-920225157.eu-north-1.elb.amazonaws.com/polls/
-![enter image description here](http://127.0.0.1/assets/lab6-12.png)
+After the load balancer is initialized and up in action, we can go to AWS console and see the result of health check.
+![enter image description here](http://127.0.0.1/assets/lab6-14.png)
 
-**NOTE**: When you are done, delete the instance and ALB you created.
+### [3] Access
+
+We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`,  now access its url with path `/polls/` to see if the mapping works properly: http://24188516-elb-920225157.eu-north-1.elb.amazonaws.com/polls/
+![enter image description here](http://127.0.0.1/assets/lab6-12.png)
+![enter image description here](http://127.0.0.1/assets/lab6-13.png)
+
 <div style="page-break-after: always;"></div>
 
 # Lab 7
@@ -511,11 +515,11 @@ Get the ALB DNS url from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}"
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMTY1NzkzMTksMTU5MDcwODA5LC0xNT
-QwMzY2Mzg2LC0xMDk4MzY5NDY5LC0xNDMyOTAzMTA4LC0zNzQy
-OTM2NjcsLTE3Njg3NTY4MzMsLTE5NDI1NDEyNzcsMTg1MTk2ND
-Q4OCwtMTY3NTgzOTc3NSwtMTgyNzQyODQ3NSwtMTc3MDk2NzY0
-MywxODczOTAzMjQ1LDE5MjY5MTQyNDgsMTkyNjkxNDI0OCwxOT
-EyMjE3Mzg3LC03NDUxMjE3NDIsMTAxOTA2ODUxMCwxMDQ0ODI0
-MjI1LDEwMjM5NTUwN119
+eyJoaXN0b3J5IjpbMTM0MTQ4NDA1MiwtMjExNjU3OTMxOSwxNT
+kwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgzNjk0NjksLTE0MzI5
+MDMxMDgsLTM3NDI5MzY2NywtMTc2ODc1NjgzMywtMTk0MjU0MT
+I3NywxODUxOTY0NDg4LC0xNjc1ODM5Nzc1LC0xODI3NDI4NDc1
+LC0xNzcwOTY3NjQzLDE4NzM5MDMyNDUsMTkyNjkxNDI0OCwxOT
+I2OTE0MjQ4LDE5MTIyMTczODcsLTc0NTEyMTc0MiwxMDE5MDY4
+NTEwLDEwNDQ4MjQyMjVdfQ==
 -->
