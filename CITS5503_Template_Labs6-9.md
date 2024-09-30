@@ -470,18 +470,17 @@ elbv2.create_listener(
 print(f"Instance ID: {InstanceId}")
 print(f"Load Balancer ARN: {LoadBalancerArn}")
 print(f"Target Group ARN: {TargetGroupArn}")
+print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")
 ```
 ### Code Explanation
 
 1.  **`elbv2.create_load_balancer()`**: Creates an internet-facing application load balancer.
-    
     -   **`Name`**: Specifies the name of the load balancer.
     -   **`Subnets`**: Provides the subnets across which the load balancer will distribute traffic.
     -   **`SecurityGroups`**: Attaches the security group to the load balancer for traffic control.
     -   **`Scheme`**: Specifies that the load balancer is internet-facing.
     -   **`Type`**: Sets the type of load balancer as `application`.
 2.  **`elbv2.create_target_group()`**: Sets up a target group for the load balancer with a health check.
-    
     -   **`Name`**: The name of the target group.
     -   **`Protocol`** and **`Port`**: Specifies HTTP and port 80 for forwarding requests.
     -   **`VpcId`**: ID of the VPC that hosts the EC2 instances.
@@ -489,17 +488,14 @@ print(f"Target Group ARN: {TargetGroupArn}")
     -   **`HealthCheckPath`**: The path for health checks (`/polls/`).
     -   **`HealthCheckIntervalSeconds`**: Interval for health checks (30 seconds).
 3.  **`elbv2.register_targets()`**: Registers the specified EC2 instance to the target group.
-    
     -   **`TargetGroupArn`**: ARN of the target group to register targets.
     -   **`Targets`**: List of target instance IDs to be registered.
 4.  **`elbv2.create_listener()`**: Creates a listener to route incoming HTTP traffic on port 80.
-    
     -   **`LoadBalancerArn`**: ARN of the load balancer to attach the listener.
     -   **`Protocol`** and **`Port`**: Specifies HTTP protocol and port 80 for listening.
     -   **`DefaultActions`**: Defines actions for forwarding requests to the target group.
 ### [3] Access
-
-Access the URL: http://\<load balancer dns name>/polls/, and output what you've got.
+Get the ALB DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`,  access the URL: http://\<load balancer dns name>/polls/, and output what you've got.
 
 **NOTE**: When you are done, delete the instance and ALB you created.
 <div style="page-break-after: always;"></div>
@@ -515,11 +511,11 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjM1OTU0NTE1LC0xNzY4NzU2ODMzLC0xOT
-QyNTQxMjc3LDE4NTE5NjQ0ODgsLTE2NzU4Mzk3NzUsLTE4Mjc0
-Mjg0NzUsLTE3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOTI2OTE0Mj
-Q4LDE5MjY5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNzQyLDEw
-MTkwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OTkzNz
-kyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5
-NTY1NDAyMV19
+eyJoaXN0b3J5IjpbLTM3NDI5MzY2NywtMTc2ODc1NjgzMywtMT
+k0MjU0MTI3NywxODUxOTY0NDg4LC0xNjc1ODM5Nzc1LC0xODI3
+NDI4NDc1LC0xNzcwOTY3NjQzLDE4NzM5MDMyNDUsMTkyNjkxND
+I0OCwxOTI2OTE0MjQ4LDE5MTIyMTczODcsLTc0NTEyMTc0Miwx
+MDE5MDY4NTEwLDEwNDQ4MjQyMjUsMTAyMzk1NTA3LDE5Njk5Mz
+c5MjksNTMwODc4Njk3LDk4OTkyMjQwMywtMTE0Nzk2NTcyLDEw
+OTU2NTQwMjFdfQ==
 -->
