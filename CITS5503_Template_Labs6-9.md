@@ -150,7 +150,17 @@ print(f"{public_ip_address}\n")
 ![enter image description here](http://127.0.0.1/assets/lab6-1.png)
 ![enter image description here](http://127.0.0.1/assets/lab6-2.png)
 
-### [2] Install the Python 3 virtual environment package
+### [2[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [2] Install the Python 3 virtual environment package. 
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [3] Access a directory 
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [24] Install the Python 3 virtual environment package
 In this step, we will run the following commands to install virtual environment package and grant sudo permissions to bash operations.
 
 ```
@@ -500,7 +510,57 @@ After the load balancer is initialized and up in action, we can go to AWS consol
 
 We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`,  now access its url with path `/polls/` to see if the mapping works properly: http://24188516-elb-920225157.eu-north-1.elb.amazonaws.com/polls/
 ![enter image description here](http://127.0.0.1/assets/lab6-12.png)
-![enter image description here](http://127.0.0.1/assets/lab6-13.png)
+![enter image description here](http://127.0.0.1/assets/lab6-13.png)Set up a virtual environment
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [5] Activate the virtual environment
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [6] Install nginx
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [7] Configure nginx
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [8] Restart nginx
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [9] Access your EC2 instance
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+## Set up Django inside the created EC2 instance
+
+### [1] Edit the following files (create them if not exist)
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [2] Run the web server again
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [3] Access the EC2 instance
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+## Set up an ALB
+
+### [1] Create an application load balancer
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [2] Health check
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
+
+### [3] Access
+
+[Refer to the marking rubrics for sufficient step-by-step description.]
 
 <div style="page-break-after: always;"></div>
 
@@ -515,11 +575,11 @@ We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalance
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM0MTQ4NDA1MiwtMjExNjU3OTMxOSwxNT
-kwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgzNjk0NjksLTE0MzI5
-MDMxMDgsLTM3NDI5MzY2NywtMTc2ODc1NjgzMywtMTk0MjU0MT
-I3NywxODUxOTY0NDg4LC0xNjc1ODM5Nzc1LC0xODI3NDI4NDc1
-LC0xNzcwOTY3NjQzLDE4NzM5MDMyNDUsMTkyNjkxNDI0OCwxOT
-I2OTE0MjQ4LDE5MTIyMTczODcsLTc0NTEyMTc0MiwxMDE5MDY4
-NTEwLDEwNDQ4MjQyMjVdfQ==
+eyJoaXN0b3J5IjpbLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMj
+ExNjU3OTMxOSwxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgz
+Njk0NjksLTE0MzI5MDMxMDgsLTM3NDI5MzY2NywtMTc2ODc1Nj
+gzMywtMTk0MjU0MTI3NywxODUxOTY0NDg4LC0xNjc1ODM5Nzc1
+LC0xODI3NDI4NDc1LC0xNzcwOTY3NjQzLDE4NzM5MDMyNDUsMT
+kyNjkxNDI0OCwxOTI2OTE0MjQ4LDE5MTIyMTczODcsLTc0NTEy
+MTc0MiwxMDE5MDY4NTEwXX0=
 -->
