@@ -30,7 +30,7 @@ The following Python script uses `boto3` to create the EC2 **instance, security 
    A key pair (`24188516-key-lab6`) is generated using `ec2.create_key_pair()`, and the private key is saved locally with restricted access permissions using `os.chmod()` to secure it.
 
 4. **Create EC2 Instance**:  
-   The script launches an EC2 instance in the specified security group using `ec2.run_instances()`. The **AMI ID** (`ami-07a0715df72e58928`), **instance type** (`t3.micro`), and **key name** (`24188516-key-1`) are provided as parameters.
+   The script launches an EC2 instance in the specified security group using `ec2.run_instances()`. The **AMI ID** (`ami-07a0715df72e58928`), **instance type** (`t3.micro`), and **key name** (`24188516-key-lab6`) are provided as parameters.
 
 5. **Tag EC2 Instance**:  
    A name tag (`24188516-vm-1`) is created for the EC2 instance using `ec2.create_tags()`, which helps in identifying the instance easily.
@@ -128,7 +128,7 @@ print(f"{public_ip_address}\n")
      - **`IpRanges`**: Defines the IP range allowed to access the instance. Here, `0.0.0.0/0` allows access from any IP.
 
 3. **`ec2.create_key_pair()`**:
-   - **`KeyName`**: Specifies the name of the key pair, here `24188516-key-1`,  generates a new key pair and returns the private key.
+   - **`KeyName`**: Specifies the name of the key pair, here `24188516-key-lab6`,  generates a new key pair and returns the private key.
 
 4. **`file.write()`**:
    - The private key is saved to a `.pem` file using Python’s built-in File library with the `open()` function, and **`os.chmod()`** is used to set the file’s permission to `400` (read-only).
@@ -138,7 +138,7 @@ print(f"{public_ip_address}\n")
    - **`SecurityGroupIds`**: Lists the security group IDs that will be associated with the instance. Here, the security group is `24188516-sg-1`.
    - **`MinCount` and `MaxCount`**: Define how many instances to launch. only one instance will be created in our case.
    - **`InstanceType`**: Defines the type of instance to launch, in this case, `t3.micro`.
-   - **`KeyName`**: Specifies the name of the key pair, `24188516-key-1`, used for SSH access.
+   - **`KeyName`**: Specifies the name of the key pair, `24188516-key-lab6`, used for SSH access.
 
 6. **`ec2.create_tags()`**:
    - **`Resources`**: Specifies the resources to tag, in this case, the instance ID.
@@ -413,10 +413,11 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NDI1NDEyNzcsMTg1MTk2NDQ4OCwtMT
-Y3NTgzOTc3NSwtMTgyNzQyODQ3NSwtMTc3MDk2NzY0MywxODcz
-OTAzMjQ1LDE5MjY5MTQyNDgsMTkyNjkxNDI0OCwxOTEyMjE3Mz
-g3LC03NDUxMjE3NDIsMTAxOTA2ODUxMCwxMDQ0ODI0MjI1LDEw
-MjM5NTUwNywxOTY5OTM3OTI5LDUzMDg3ODY5Nyw5ODk5MjI0MD
-MsLTExNDc5NjU3MiwxMDk1NjU0MDIxXX0=
+eyJoaXN0b3J5IjpbLTE3Njg3NTY4MzMsLTE5NDI1NDEyNzcsMT
+g1MTk2NDQ4OCwtMTY3NTgzOTc3NSwtMTgyNzQyODQ3NSwtMTc3
+MDk2NzY0MywxODczOTAzMjQ1LDE5MjY5MTQyNDgsMTkyNjkxND
+I0OCwxOTEyMjE3Mzg3LC03NDUxMjE3NDIsMTAxOTA2ODUxMCwx
+MDQ0ODI0MjI1LDEwMjM5NTUwNywxOTY5OTM3OTI5LDUzMDg3OD
+Y5Nyw5ODk5MjI0MDMsLTExNDc5NjU3MiwxMDk1NjU0MDIxXX0=
+
 -->
