@@ -384,6 +384,28 @@ We will use the code in `lab5` as a start to create the load balancer, the only 
 
 The following Python script sets up an Application Load Balancer (ALB) for your EC2 instance, with health checks on the `/polls/` path every 30 seconds.
 
+### Workflow
+1. **Initialize Clients and Define Variables**:
+   - Uses **boto3** to initialize EC2 and Elastic Load Balancing (ELBv2) clients.
+   - Defines constants for security group, key pair, instance ID, load balancer name, and target group name.
+
+2. **Fetch Subnets for the EC2 Instance**:
+   - Retrieves two subnets in the region for the load balancer.
+
+3. **Create Application Load Balancer**:
+   - Uses **`elbv2.create_load_balancer()`** to create an ALB in the specified subnets, using the security group to allow HTTP traffic.
+   
+4. **Create Target Group for Health Checks**:
+   - Uses **`elbv2.create_target_group()`** to create a target group for the EC2 instance.
+   - Specifies HTTP as the protocol and port 80 for forwarding.
+   - Sets up a health check on the `/polls/` path to be performed every 30 seconds.
+
+5. **Register EC2 Instances as Targets**:
+   - Registers the EC2 instance to the target group using **`elbv2.register_targets()`**.
+
+6. **Create Listener for the Load Balancer**:
+   - Sets up a listener on port 80 to forward HTTP requests to the target group using **`elbv2.create_listener()`**.
+ 
 ```
 import boto3 as bt
 import os
@@ -448,8 +470,33 @@ elbv2.create_listener(
 print(f"Instance ID: {InstanceId}")
 print(f"Load Balancer ARN: {LoadBalancerArn}")
 print(f"Target Group ARN: {TargetGroupArn}")
-
 ```
+### Code Explanation
+
+1.  **`elbv2.create_load_balancer()`**: Creates an internet-facing application load balancer.
+    
+    -   **`Name`**: Specifies the name of the load balancer.
+    -   **`Subnets`**: Provides the subnets across which the load balancer will distribute traffic.
+    -   **`SecurityGroups`**: Attaches the security group to the load balancer for traffic control.
+    -   **`Scheme`**: Specifies that the load balancer is internet-facing.
+    -   **`Type`**: Sets the type of load balancer as `application`.
+2.  **`elbv2.create_target_group()`**: Sets up a target group for the load balancer with a health check.
+    
+    -   **`Name`**: The name of the target group.
+    -   **`Protocol`** and **`Port`**: Specifies HTTP and port 80 for forwarding requests.
+    -   **`VpcId`**: ID of the VPC that hosts the EC2 instances.
+    -   **`HealthCheckProtocol`** and **`HealthCheckPort`**: Specifies HTTP protocol and port 80 for health checks.
+    -   **`HealthCheckPath`**: The path for health checks (`/polls/`).
+    -   **`HealthCheckIntervalSeconds`**: Interval for health checks (30 seconds).
+3.  **`elbv2.register_targets()`**: Registers the specified EC2 instance to the target group.
+    
+    -   **`TargetGroupArn`**: ARN of the target group to register targets.
+    -   **`Targets`**: List of target instance IDs to be registered.
+4.  **`elbv2.create_listener()`**: Creates a listener to route incoming HTTP traffic on port 80.
+    
+    -   **`LoadBalancerArn`**: ARN of the load balancer to attach the listener.
+    -   **`Protocol`** and **`Port`**: Specifies HTTP protocol and port 80 for listening.
+    -   **`DefaultActions`**: Defines actions for forwarding requests to the target group.
 ### [3] Access
 
 Access the URL: http://\<load balancer dns name>/polls/, and output what you've got.
@@ -468,11 +515,11 @@ Access the URL: http://\<load balancer dns name>/polls/, and output what you've 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTkwNDMxOSwtMTc2ODc1NjgzMywtMTk0Mj
-U0MTI3NywxODUxOTY0NDg4LC0xNjc1ODM5Nzc1LC0xODI3NDI4
-NDc1LC0xNzcwOTY3NjQzLDE4NzM5MDMyNDUsMTkyNjkxNDI0OC
-wxOTI2OTE0MjQ4LDE5MTIyMTczODcsLTc0NTEyMTc0MiwxMDE5
-MDY4NTEwLDEwNDQ4MjQyMjUsMTAyMzk1NTA3LDE5Njk5Mzc5Mj
-ksNTMwODc4Njk3LDk4OTkyMjQwMywtMTE0Nzk2NTcyLDEwOTU2
-NTQwMjFdfQ==
+eyJoaXN0b3J5IjpbMjM1OTU0NTE1LC0xNzY4NzU2ODMzLC0xOT
+QyNTQxMjc3LDE4NTE5NjQ0ODgsLTE2NzU4Mzk3NzUsLTE4Mjc0
+Mjg0NzUsLTE3NzA5Njc2NDMsMTg3MzkwMzI0NSwxOTI2OTE0Mj
+Q4LDE5MjY5MTQyNDgsMTkxMjIxNzM4NywtNzQ1MTIxNzQyLDEw
+MTkwNjg1MTAsMTA0NDgyNDIyNSwxMDIzOTU1MDcsMTk2OTkzNz
+kyOSw1MzA4Nzg2OTcsOTg5OTIyNDAzLC0xMTQ3OTY1NzIsMTA5
+NTY1NDAyMV19
 -->
