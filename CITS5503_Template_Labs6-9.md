@@ -410,7 +410,7 @@ The following Python script sets up an Application Load Balancer (ALB) for your 
 import boto3 as bt
 import os
 
-GroupName = '24188516-sg-1'
+GroupId = 'sg-0ef7af6d7bf260d42'
 KeyName = '24188516-key-lab6'
 InstanceId = 'i-039c0b853dc14f418'
 LoadBalancerName = '24188516-elb'
@@ -427,7 +427,7 @@ Subnets = [subnet['SubnetId'] for subnet in subnet_response[:2]]
 loadbalancer_response = elbv2.create_load_balancer(
     Name=LoadBalancerName,
     Subnets=Subnets,
-    SecurityGroups=[GroupName],
+    SecurityGroups=[GroupId],
     Scheme='internet-facing',
     Type='application'
 )
@@ -511,11 +511,11 @@ Get the ALB DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM3NDI5MzY2NywtMTc2ODc1NjgzMywtMT
-k0MjU0MTI3NywxODUxOTY0NDg4LC0xNjc1ODM5Nzc1LC0xODI3
-NDI4NDc1LC0xNzcwOTY3NjQzLDE4NzM5MDMyNDUsMTkyNjkxND
-I0OCwxOTI2OTE0MjQ4LDE5MTIyMTczODcsLTc0NTEyMTc0Miwx
-MDE5MDY4NTEwLDEwNDQ4MjQyMjUsMTAyMzk1NTA3LDE5Njk5Mz
-c5MjksNTMwODc4Njk3LDk4OTkyMjQwMywtMTE0Nzk2NTcyLDEw
-OTU2NTQwMjFdfQ==
+eyJoaXN0b3J5IjpbLTE0MzI5MDMxMDgsLTM3NDI5MzY2NywtMT
+c2ODc1NjgzMywtMTk0MjU0MTI3NywxODUxOTY0NDg4LC0xNjc1
+ODM5Nzc1LC0xODI3NDI4NDc1LC0xNzcwOTY3NjQzLDE4NzM5MD
+MyNDUsMTkyNjkxNDI0OCwxOTI2OTE0MjQ4LDE5MTIyMTczODcs
+LTc0NTEyMTc0MiwxMDE5MDY4NTEwLDEwNDQ4MjQyMjUsMTAyMz
+k1NTA3LDE5Njk5Mzc5MjksNTMwODc4Njk3LDk4OTkyMjQwMywt
+MTE0Nzk2NTcyXX0=
 -->
