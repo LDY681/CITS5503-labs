@@ -543,79 +543,7 @@ We will bscially convert the command lines we use in lab6 to fabric by wrapping 
 Write a python script where you first need to automate the setup of a Python 3 virtual environment, nginx and a Django app within the EC2 instance you just created. Then, you should run the Django development server on port 8000 in the background.
 This is the code down below;
 ```
-from fabric import Connection
 
-# Constants
-EC2_INSTANCE_NAME = '24188516-vm-1'
-PROJECT_DIR = '/opt/wwc/mysites/lab'
-
-def install_prerequisites(c):
-    # Update and upgrade system packages
-    c.run('sudo apt-get update -y')
-    c.run('sudo apt-get upgrade -y')
-
-    # Install Python 3 virtual environment package
-    c.run('sudo apt-get install python3-venv -y')
-
-    # Install Nginx
-    c.run('sudo apt install nginx -y')
-
-def set_virtual_env(c):
-    # Create project directory and navigate to it
-    c.run(f'sudo mkdir -p {PROJECT_DIR}')
-    c.run(f'cd {PROJECT_DIR}')
-
-    # Create a virtual environment
-    c.run('python3 -m venv myvenv')
-
-    # Activate virtual environment and install Django
-    c.run('source myvenv/bin/activate && pip install django')
-
-def setup_django_app(c):
-    # Start a new Django project and app within the virtual environment
-    c.run('source myvenv/bin/activate && django-admin startproject lab .')
-    c.run('source myvenv/bin/activate && python3 manage.py startapp polls')
-
-    # Modify the Django project settings and URLs
-    c.run('echo "from django.http import HttpResponse" > polls/views.py')
-    c.run('echo "def index(request): return HttpResponse(\'Hello, world.\')" >> polls/views.py')
-
-    c.run('echo "from django.urls import path\nfrom . import views\nurlpatterns = [path(\'\', views.index, name=\'index\')]" > polls/urls.py')
-    c.run('echo "from django.urls import include, path\nfrom django.contrib import admin\nurlpatterns = [path(\'polls/\', include(\'polls.urls\')), path(\'admin/\', admin.site.urls)]" > lab/urls.py')
-
-def configure_nginx(c):
-    # Configure Nginx to proxy requests to Django
-    # double $$ to skip be picking up by python formatting
-    nginx_config = '''
-    server {
-      listen 80 default_server;
-      listen [::]:80 default_server;
-
-      location / {
-        proxy_set_header X-Forwarded-Host $$host;
-        proxy_set_header X-Real-IP $$remote_addr;
-
-        proxy_pass http://127.0.0.1:8000;
-      }
-    }
-    '''
-    c.run('echo "{}" | sudo tee /etc/nginx/sites-enabled/default'.format(nginx_config))
-
-    # Restart Nginx to apply changes
-    c.sudo('service nginx restart')
-
-def run_django_server(c):
-    # Start Django development server in the background
-    c.run('source myvenv/bin/activate && nohup python3 manage.py runserver 0.0.0.0:8000 &', pty=False)
-
-if __name__ == "__main__":
-    conn = Connection(EC2_INSTANCE_NAME)
-
-    install_prerequisites(conn)
-    set_virtual_env(conn)
-    setup_django_app(conn)
-    configure_nginx(conn)
-    run_django_server(conn)
 ```
 
 From your local OS environment, access the URL: `http://<ip address of your EC2 instance>/polls/`, and output what you've got. 
@@ -631,11 +559,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOT
-Q1MDU3MiwtODUwMjY5NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5
-LDU2MzY4NDE0MCw1MjA5MTI2NjYsLTEyMjA4OTc4OTksNDg4OD
-Y4ODgwLC05NjMwODY5OTgsLTE5NTg3NDMzOTcsLTIwODA1Nzgw
-MzksMTM0MTQ4NDA1MiwtMjExNjU3OTMxOSwxNTkwNzA4MDksLT
-E1NDAzNjYzODYsLTEwOTgzNjk0NjksLTE0MzI5MDMxMDgsLTM3
-NDI5MzY2N119
+eyJoaXN0b3J5IjpbLTM3MzA4OTM1MywxNjkxMjgzNDUzLDEwOD
+MwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4
+LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
+g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
+NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LD
+E1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQz
+MjkwMzEwOF19
 -->
