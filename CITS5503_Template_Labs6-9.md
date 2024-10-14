@@ -836,10 +836,10 @@ boto3.Session().resource("s3").Bucket(bucket).Object(
     os.path.join(prefix, "validation/validation.csv")
 ).upload_file("validation.csv")
 ``` 
-#### Code Explanation:
--   **`get_dummies()`**: Converts categorical variables into dummy (binary) variables.
+> #### Code Breakdown:
+-   **`pd.get_dummies()`**: Converts categorical variables into dummy (binary) variables.
 -   **`np.where()`**: Adds indicator columns based on conditions (e.g., whether a customer was previously contacted).
--   **`split()`**: Splits data into training, validation, and test sets.
+-   **`np.split()`**: Splits data into training, validation, and test sets.
 -   **`upload_file()`**: Uploads the prepared CSV files to S3 for SageMaker to use in training.
 
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-6.png)
@@ -1186,11 +1186,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYyODM2NTcxLDExOTU2NTE3MTAsLTYxMj
-g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
-MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
-A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
-NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMj
-IwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQz
-Mzk3XX0=
+eyJoaXN0b3J5IjpbMTUwMjQ0NjY5NywxMTk1NjUxNzEwLC02MT
+I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
+ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
+EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
+OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
+IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
+MzM5N119
 -->
