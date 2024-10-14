@@ -1100,13 +1100,12 @@ for text in texts:
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-5.png)
 
 ## AWS Rekognition
-In this task, we will leverage AWS Rekognition to analyze image for **Label Recognition**, **Image Moderation**, **Facial Analysis** and **Extract Text from an image**.
+In this task, we will leverage AWS Rekognition to analyze image for **Label Recognition**, **Image Moderation**, **Facial Analysis** and **Text Extraction**.
 
 ### Step1: Setting up instances and Uploading Images
 #### Workflow
 1.  **Create the Bucket/Rekognition Client**: First, we create an S3 bucket and rekognition client using `boto3` in the region `eu-north-1`. The bucket has a unique bucket name that follows the format `24188516-lab9`
 2.  **Upload Images**: After the bucket is created, we upload the four images (`urban.jpg`, `beach.jpg`, `faces.jpg`, `text.jpg`) to this S3 bucket for AWS Rekognition to analyze.
-
 ```
 import boto3
 
@@ -1138,6 +1137,7 @@ def upload_images():
 2.  **`create_bucket()`**: Creates an S3 bucket in the specified region, using the student's ID as part of the bucket name.
 3.  **`upload_file()`**: Uploads the specified images to the bucket.
 
+These are the files prepared for the 
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-6.png)
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-7.png)
 
@@ -1215,11 +1215,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzYzMDcyMzgzLC0zODc5OTgwMzMsMTE5NT
-Y1MTcxMCwtNjEyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTEx
-NywtMTU1MzQxNDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMT
-Y5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5
-NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1Mj
-A5MTI2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5
-OThdfQ==
+eyJoaXN0b3J5IjpbLTE3OTE5ODY4ODEsLTM4Nzk5ODAzMywxMT
+k1NjUxNzEwLC02MTI4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIx
+MTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOS
+wxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAy
+Njk1NTgsNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLD
+UyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4
+Njk5OF19
 -->
