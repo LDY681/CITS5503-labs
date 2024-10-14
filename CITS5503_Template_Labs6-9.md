@@ -349,7 +349,6 @@ We can access the built-in admin module by visiting `http://13.61.7.212/admin/`
 ![enter image description here](http://127.0.0.1/assets/lab6-11.png)
 
 ## Set up an ALB
-
 ### [1] Create an application load balancer & Health check
 We will use the code in `lab5` as a start to create the load balancer, the only difference is this time we apply a health check on the `/polls/` path of our hosted website every 30 seconds.
 
@@ -357,21 +356,16 @@ We will use the code in `lab5` as a start to create the load balancer, the only 
 1. **Initialize Clients and Define Variables**:
    - Uses **boto3** to initialize EC2 and Elastic Load Balancing (ELBv2) clients.
    - Defines constants for security group, key pair, instance ID, load balancer name, and target group name.
-
 2. **Fetch Subnets for the EC2 Instance**:
    - Retrieves subnets in the `eu-north-1` region for the load balancer.
-
 3. **Create Application Load Balancer**:
    - Uses **`elbv2.create_load_balancer()`** to create an ALB in the specified subnets, using the security group to allow HTTP traffic.
-   
 4. **Create Target Group for Health Checks**:
    - Uses **`elbv2.create_target_group()`** to create a target group for the EC2 instance.
    - Specifies HTTP as the protocol and port 80 for forwarding.
    - Sets up a DNS health check on the `/polls/` path to be performed every 30 seconds.
-
 5. **Register EC2 Instances as Targets**:
    - Registers the EC2 instance to the target group using **`elbv2.register_targets()`**.
-
 6. **Create Listener for the Load Balancer**:
    - Sets up a listener on port 80 to forward HTTP requests to the target group using **`elbv2.create_listener()`**.
  
@@ -441,8 +435,7 @@ print(f"Load Balancer ARN: {LoadBalancerArn}")
 print(f"Target Group ARN: {TargetGroupArn}")
 print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")
 ```
-### Code Explanation
-
+> ### Code Breakdown
 1.  **`elbv2.create_load_balancer()`**: Creates an internet-facing application load balancer.
     -   **`Name`**: Specifies the name of the load balancer.
     -   **`Subnets`**: Provides the subnets across which the load balancer will distribute traffic.
@@ -467,9 +460,8 @@ print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")
 After the load balancer is initialized and up in action, we can go to AWS console and see the result of health check.
 ![enter image description here](http://127.0.0.1/assets/lab6-14.png)
 
-### [3] Access
-
-We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`,  now access its url with path `/polls/` to see if the mapping works properly: http://24188516-elb-920225157.eu-north-1.elb.amazonaws.com/polls/
+### [3] Access the DNS address
+We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`, 
 ![enter image description here](http://127.0.0.1/assets/lab6-12.png)
 ![enter image description here](http://127.0.0.1/assets/lab6-13.png)
 
@@ -1206,7 +1198,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDE1NDE1MzYsMTE5NTY1MTcxMCwtNj
+eyJoaXN0b3J5IjpbLTE4MDA4NzE3OTcsMTE5NTY1MTcxMCwtNj
 EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
 NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
 wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
