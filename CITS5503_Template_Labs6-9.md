@@ -612,7 +612,7 @@ def configure_nginx(c):
 
 def run_django_server(c):
     # Start Django development server in the background
-    c.run(f'cd {PROJECT_DIR} && source myvenv/bin/activate && python3 manage.py runserver 8000', pty=False)
+    c.run(f'cd {PROJECT_DIR} && source myvenv/bin/activate && python3 manage.py runserver 8000')
 
 if __name__ == "__main__":
     fabric = Connection(EC2_INSTANCE_NAME)
@@ -633,9 +633,9 @@ if __name__ == "__main__":
     -   **`python3 -m venv myvenv`**: Creates a virtual environment.
     -   **`pip install django`**: Installs Django in the virtual environment.
 3.  **`Setup_django_app()`**:
-    -   **`django-admin startproject lab`**: Starts the Django project.
+    -   **`django-admin startproject lab`**: Creates the Django project named `lab`.
     -   **`python3 manage.py startapp polls`**: Creates the `polls` app.
-    -   **`echo XXX`**: Writes the `views.py`, `urls.py`, and `lab/urls.py` with proper Django routes for displaying "Hello, world."
+    -   **`echo XXX`**: Writes the `views.py`, `urls.py`, and `lab/urls.py` with proper HTML contents and routings for displaying "Hello, world" page and admin app.
 4.  **`Configure_nginx()`**:
     -   **Nginx config file**: Writes a configuration file to forward requests to Django on port 8000.
     -   **`service nginx restart`**: Restarts Nginx to apply the changes.
@@ -1198,11 +1198,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDg1Mjc1MjAsMTE5NTY1MTcxMCwtNj
-EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
-NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
-wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
-Njk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLT
-EyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3
-NDMzOTddfQ==
+eyJoaXN0b3J5IjpbLTYwMzEzNjA3NSwxMTk1NjUxNzEwLC02MT
+I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
+ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
+EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
+OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
+IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
+MzM5N119
 -->
