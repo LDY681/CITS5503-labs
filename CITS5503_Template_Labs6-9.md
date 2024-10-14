@@ -1037,7 +1037,7 @@ for text in texts:
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-2.png)
 
 ### Step 3: Entity Detection
-Entities are key elements or items (e.g., persons, organizations) found in text.
+**Answer**: Entities are some key elements or items that helps to define an object (e.g., persons, organizations) found in text.
 ```
 def detect_entities(text, language_code='en'):
     response = client.detect_entities(Text=text, LanguageCode=language_code)
@@ -1212,11 +1212,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg4MzE3OTk3MywtMzg3OTk4MDMzLDExOT
-U2NTE3MTAsLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjEx
-MTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LD
-E2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2
-OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNT
-IwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2
-OTk4XX0=
+eyJoaXN0b3J5IjpbOTcxNjk5MTY4LC0zODc5OTgwMzMsMTE5NT
+Y1MTcxMCwtNjEyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTEx
+NywtMTU1MzQxNDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMT
+Y5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5
+NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1Mj
+A5MTI2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5
+OThdfQ==
 -->
