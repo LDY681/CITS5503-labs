@@ -136,21 +136,21 @@ print(f"{public_ip_address}\n")
    - **`InstanceIds`**: Specifies the instance ID to describe details on.
    
 ![enter image description here](http://127.0.0.1/assets/lab6-1.png)
+
+Now we can SSH into our instance by accessing `ubuntu@13.61.7.212` and using our generated pem private key.
 ![enter image description here](http://127.0.0.1/assets/lab6-2.png)
 
 ### [2] Install the Python 3 virtual environment package
 In this step, we will run the following commands to install virtual environment package and grant sudo permissions to bash operations.
-
 ```
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install python3-venv
-
 sudo bash
 ```
 1.  **Update and Upgrade System Packages**:
-    -   **`sudo apt-get update`**: Updates the package lists for available or new versions of packages and their dependencies.
-    -   **`sudo apt-get upgrade`**: Upgrades the installed packages to the latest versions.
+    -   **`update`**: Updates the package lists for available or new versions of packages and their dependencies.
+    -   **`upgrade`**: Upgrades the installed packages to the latest versions.
 2.  **Install `python3-venv`**:
     -   **`sudo apt-get install python3-venv`**: Installs the `venv` package for Python 3, which is used to create isolated Python environments.
 3.  **Switch to Superuser Mode**:
@@ -1224,11 +1224,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQxMDUxOTQ4OSwxMTk1NjUxNzEwLC02MT
-I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
-ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
-EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
-OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
-IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
-MzM5N119
+eyJoaXN0b3J5IjpbMzY5MjMxODIxLDExOTU2NTE3MTAsLTYxMj
+g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
+MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
+A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
+NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMj
+IwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQz
+Mzk3XX0=
 -->
