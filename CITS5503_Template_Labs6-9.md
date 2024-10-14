@@ -711,7 +711,22 @@ pip install ipykernel
 ![enter image description here](http://127.0.0.1/assets/lab8-2.png)
 1. **Install ipykernel**: - This package allows Jupyter to communicate with the Python interpreter. 
 
-## Fine-tuning Jupiter Notebook
+## AI Training Code to change
+In the notebook, we already have pre-written code, here we need to chanage constant variables to make sure we create our own environement for the job. In the nest step, I will explain the code in the Jupiter notebook
+```
+region = 'eu-north-1'  # use the region you are mapped to
+student_id = "24188516"  # use your student id
+bucket = '24188516-lab8'  # use <studentid-lab8> as your bucket name
+```
+We also need to create the bucket for storeing our train/testing dataset.
+```
+s3 = boto3.client('s3', region_name=region)
+bucket_config = {'LocationConstraint': region}
+s3.create_bucket(Bucket=bucket, CreateBucketConfiguration=bucket_config) # create the bucket in our region
+s3.put_object(Bucket=bucket, Key=f"{prefix}/") # create a folder object with the prefix
+```
+
+## Ai
 In the notebook, we already have pre-written code, here we need to chanage constant variables to make sure we create our own environement for the job. In the nest step, I will explain the code in the Jupiter notebook
 ```
 region = 'eu-north-1'  # use the region you are mapped to
@@ -728,7 +743,7 @@ After changing the code, we can run the notebook by `Run` menu.
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0NjY4MjA5MCw0MDY1MjExMTcsLTE1NT
+eyJoaXN0b3J5IjpbMTA1ODI1MTM3Nyw0MDY1MjExMTcsLTE1NT
 M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
 NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
 Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
