@@ -245,9 +245,7 @@ This command sets up the Nginx web server, which can be used as a reverse proxy 
 ![enter image description here](http://127.0.0.1/assets/lab6-8.png)
 
 ### [7] Configure nginx
-
 To configure Nginx to work as a reverse proxy for our Django application, go to the Nginx configuration file located at `/etc/nginx/sites-enabled/default` and add the following.
-
 ```
 server {
   listen 80 default_server;
@@ -261,19 +259,14 @@ server {
   }
 }
 ```
-
 #### Key Parameters:
-
-- **`listen`**: Specifies the port Nginx listens on. Here, **80** is the default HTTP port for web traffic. The second `listen` line is for IPv6.
-  
+- **`listen 80`**: Specifies the port Nginx listens on. Here, **80** is the default HTTP port for web traffic. The second `listen` line is for IPv6.
 - **`proxy_set_header X-Forwarded-Host $host;`**: Sets the `X-Forwarded-Host` header to the host of the original request. This header preserves the original `Host` header sent by the client.
-
 - **`proxy_set_header X-Real-IP $remote_addr;`**: Sets the `X-Real-IP` header to the real client IP address. This header helps in passing the original client's IP address to the proxied server.
-
 - **`proxy_pass http://127.0.0.1:8000;`**: Forwards incoming traffic to `http://127.0.0.1:8000`, where our Django application is running. This allows Nginx to act as a reverse proxy, handling requests and passing them to our Django server.
 
 This configuration ensures that all incoming traffic to our server's port **80** is passed to the Django app running locally on port **8000**.
-
+![enter image description here](http://127.0.0.1/assets/lab6-9.png)
 ### [8] Restart nginx
 To apply our new configuration, we need to restart the Nginx service, run the following command:
 ```
@@ -1213,7 +1206,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg4ODc3MTQzMCwxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbLTY2NzIxNDU5MywxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
