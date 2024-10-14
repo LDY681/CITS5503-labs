@@ -537,14 +537,13 @@ Host 24188516-vm-1
 	IdentityFile /home/liudayubob/cits5503/lab7/24188516-key-lab7.pem
 ```
 
-Rely on the fabric code below to connect to you instance. this will look up the host file, find the connection configuration from the host 24188516-vm-1 and made a connection. We can see that the term
+Rely on the fabric code below to connect to you instance. this will look up the host file, find the connection configuration from the host 24188516-vm-1 and made a connection. We can see that the terminal will output "Linux" from c.run('uname -s') to verify that we have established a connection and able to perform commands on the instance.
 
 ```
 python3
 >>> from fabric import Connection
 >>> c = Connection('24188516-vm-1')
 >>> result = c.run('uname -s')
-Linux
 >>>
 ```
 
@@ -565,7 +564,7 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODQxMzkyNTg2LC0xMjIwODk3ODk5LDQ4OD
+eyJoaXN0b3J5IjpbNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4OD
 g2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4
 MDM5LDEzNDE0ODQwNTIsLTIxMTY1NzkzMTksMTU5MDcwODA5LC
 0xNTQwMzY2Mzg2LC0xMDk4MzY5NDY5LC0xNDMyOTAzMTA4LC0z
