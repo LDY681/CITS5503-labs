@@ -1058,7 +1058,7 @@ for text in texts:
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-3.png)
 
 ### Step 4: Key Phrase Detection
-**Answer**: Key phrases are sub-groups of words that are extracted from the whole sentence, which serves as classifiers and provide important concepts in the text.
+**Answer**: Key phrases are sub-groups of words that are extracted from the whole sentence, which serves as classifiers and provide important concepts to the text.
 
 ```
 def detect_key_phrases(text, language_code='en'):
@@ -1068,7 +1068,9 @@ def detect_key_phrases(text, language_code='en'):
     for phrase in key_phrases:
         print(f"Key Phrase: {phrase['Text']} with {round(phrase['Score']*100, 2)}% confidence")
 
-# Test key phrase detection for text in texts: detect_key_phrases(text)
+# Test key phrase detection
+for text in texts:
+	detect_key_phrases(text)
 ```
 
 > ### Code Breakdown:
@@ -1213,11 +1215,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEzNTc0MjAxMSwtMzg3OTk4MDMzLDExOT
-U2NTE3MTAsLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjEx
-MTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LD
-E2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2
-OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNT
-IwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2
-OTk4XX0=
+eyJoaXN0b3J5IjpbLTIwMjE2NTQ0MjUsLTM4Nzk5ODAzMywxMT
+k1NjUxNzEwLC02MTI4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIx
+MTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOS
+wxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAy
+Njk1NTgsNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLD
+UyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4
+Njk5OF19
 -->
