@@ -604,7 +604,7 @@ def configure_nginx(c):
     }
     '''
     
-    # Write the configuration locally
+    # Write the nginx config locally and upload ($placholder were messed up with echo)
     with open("nginx_temp.conf", "w") as f:
         f.write(nginx_config)
     
@@ -619,15 +619,15 @@ def run_django_server(c):
     c.run(f'cd {PROJECT_DIR} && source myvenv/bin/activate && python3 manage.py runserver 8000', pty=False)
 
 if __name__ == "__main__":
-    conn = Connection(EC2_INSTANCE_NAME)
+    fabric = Connection(EC2_INSTANCE_NAME)
 
-    install_prerequisites(conn)
-    set_virtual_env(conn)
-    setup_django_app(conn)
-    configure_nginx(conn)
-    run_django_server(conn)
+    install_prerequisites(fabric)
+    set_virtual_env(fabric)
+    setup_django_app(fabric)
+    configure_nginx(fabric)
+    run_django_server(fabric)
 ```
-### Code Explanation:
+> ### Code Breakdown:
 1.  **Install Prerequisites**:
     -   **`apt-get update`** and **`apt-get upgrade`**: Updates and upgrades system packages.
     -   **`apt-get install python3-venv`**: Installs Python 3's virtual environment tool.
@@ -1202,11 +1202,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Mjk0ODIwMzMsMTE5NTY1MTcxMCwtNj
-EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
-NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
-wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
-Njk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLT
-EyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3
-NDMzOTddfQ==
+eyJoaXN0b3J5IjpbMTA0NDE1NTc2OCwxMTk1NjUxNzEwLC02MT
+I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
+ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
+EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
+OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
+IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
+MzM5N119
 -->
