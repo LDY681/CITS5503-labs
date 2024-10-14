@@ -516,7 +516,7 @@ Here's the output from the script:
 
 ![enter image description here](http://127.0.0.1/assets/lab7-1.png)
 
-### Install and Configure Fabric
+### Install Fabric
 
 In this step, we install the **Fabric** package, which is used for automating SSH-based tasks such as managing remote servers.
 
@@ -532,13 +532,13 @@ This command installs the Fabric package, preparing our environment for remote c
 ![enter image description here](http://127.0.0.1/assets/lab7-2.png)
 
 
-### Test Fabric Connection
+### Configure Fabric
 To enable Fabric to connect to your EC2 instance, we need to configure an SSH connection by creating a config file at `~/.ssh/config`. This configuration file stores connection details such as the host, IP address, and identity file. Use the following command to open the config file for editing:
 
 `vi ~/.ssh/config` 
 ```
 Host 24188516-vm-1
-	Hostname 16.170.252.129
+	Hostname 16.171.206.115
 	User ubuntu
 	UserKnownHostsFile /dev/null
 	StrictHostKeyChecking no
@@ -546,8 +546,7 @@ Host 24188516-vm-1
 	IdentityFile /home/liudayubob/cits5503/lab7/24188516-key-lab7.pem
 ``` 
 
-#### Key Configuration Parameters:
-
+#### Key Parameters:
 1.  **`Host 24188516-vm-1`**: Defines the alias for your EC2 instance, which will be used when establishing a Fabric connection.
 2.  **`Hostname`**: Specifies the public IP address (in this case, `16.170.252.129`) of your EC2 instance.
 3.  **`User ubuntu`**: The default username for EC2 instances based on Ubuntu AMIs.
@@ -555,9 +554,9 @@ Host 24188516-vm-1
 5.  **`UserKnownHostsFile /dev/null` and `StrictHostKeyChecking no`**: These disable SSH host key checking, preventing the need for manual approval when connecting.
 
 This configuration allows Fabric to connect to the EC2 instance without needing to specify credentials on every connection.
-
 ![enter image description here](http://127.0.0.1/assets/lab7-3.png)
 
+### 
 Rely on the fabric code below to connect to you instance. this will look up the host file, find the connection configuration from the host 24188516-vm-1 and made a connection. We can see that the terminal will output "Linux" from c.run('uname -s') to verify that we have established a connection and able to perform commands on the instance. For some reason the source virtual environment doesn't work in the next command run, so we will source it again before running the real command in each c.run().
 ```
 python3
@@ -664,11 +663,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0Mzg2ODk1NTUsMTY5MTI4MzQ1MywxMD
-gzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYxNjk2
-OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLTEyMj
-A4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3NDMz
-OTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3OTMxOS
-wxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgzNjk0NjksLTE0
-MzI5MDMxMDhdfQ==
+eyJoaXN0b3J5IjpbMTc1MjQ4NTY3NiwxNjkxMjgzNDUzLDEwOD
+MwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4
+LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
+g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
+NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LD
+E1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQz
+MjkwMzEwOF19
 -->
