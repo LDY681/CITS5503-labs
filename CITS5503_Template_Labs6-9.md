@@ -694,22 +694,21 @@ jupyter notebook
 2. **Launch Jupyter Notebook**: - **`jupyter notebook`**: Starts the Jupyter Notebook server and opens a web interface in your browser, allowing you to create and manage notebooks. After running the above commands, Jupyter Notebook will launch in the browser at ` http://127.0.0.1:8888` by default.
 
 ## Install ipykernel
-
-It can be installed using pip:
-
+In this step, we will install the `ipykernel` package, which enables you to run Python code in Jupyter Notebooks. This package allows Jupyter to communicate with the Python interpreter. 
 ```
 pip install ipykernel
 ```
+
 <div style="page-break-after: always;"></div>
 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5ODE4NzI2MDMsMjc0NDM4MTM5LDE2OT
-EyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1
-OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOT
-EyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4
-LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLT
-IxMTY1NzkzMTksMTU5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMDk4
-MzY5NDY5XX0=
+eyJoaXN0b3J5IjpbOTQzNjM4MzMxLDI3NDQzODEzOSwxNjkxMj
+gzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgs
+NjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMj
+Y2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwt
+MTk1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMT
+E2NTc5MzE5LDE1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2
+OTQ2OV19
 -->
