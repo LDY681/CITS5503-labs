@@ -974,9 +974,8 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 ## AWS Comprehend
 In this task, we will leverage AWS Comprehend to analyze text for language detection, sentiment detection, entity detection, key phrase detection and syntax detection.
 
-### Language Detection
+### 1. Language Detection
 We'll start by using AWS Comprehend's `detect_dominant_language` method to identify the language in given texts and display the confidence of the prediction.
-
 #### Workflow
 1.  **Set Up AWS Comprehend Client**:
     -   Create an AWS Comprehend client using `boto3` with a specific region (`ap-southeast-2` in this case).
@@ -987,6 +986,7 @@ We'll start by using AWS Comprehend's `detect_dominant_language` method to ident
     -   Use a dictionary to map language codes (such as `'en'`, `'fr'`, `'es'`, `'it'`) to their corresponding language names (English, French, Spanish, Italian).
 4.  **Calculate Confidence and Print Results**:
     -   Round the confidence score to two decimal places and print the language name along with the confidence percentage.
+
 ```
 import boto3
 
@@ -1024,9 +1024,39 @@ texts = [
 # Loop through the texts and detect the language
 for text in texts:
     detect_language(text)
- ```
+```
+#### Code Explanation:
+
+-   **`client = boto3.client('comprehend', region_name=REGION)`**:
+    
+    -   Creates an AWS Comprehend client in the specified region (`ap-southeast-2`), allowing you to make requests to the AWS Comprehend service.
+-   **`response = client.detect_dominant_language(Text=text)`**:
+    
+    -   Calls the `detect_dominant_language` API to detect the dominant language in the provided text.
+-   **`lang = response['Languages'][0]`**:
+    
+    -   Extracts the first (most confident) language from the list of detected languages.
+-   **`language_map = {...}`**:
+    
+    -   A dictionary that maps language codes to human-readable language names. If the detected language is in the map, it prints the corresponding language name (e.g., `'en'` -> `'English'`). Otherwise, it defaults to printing the language code.
+-   **`confidence = round(lang['Score'] * 100, 2)`**:
+    
+    -   Extracts the confidence score, multiplies it by 100 to convert it to a percentage, and rounds it to two decimal places.
+-   **`print(f"{language_name} detected with {confidence}% confidence")`**:
+    
+    -   Prints out the detected language and the confidence level in a human-readable format.
+
+This script can now be tested with different texts in English, Spanish, French, and Italian, and the result will show the detected language with a confidence percentage.
+
+### Step 2: Sentiment Analysis
+
+Sentiment analysis determines if a text expresses positive, negative, neutral, or mixed sentiment.
+
+1.  **Call `detect_sentiment` API**: Pass the text to the Comprehend API to detect sentiment.
+2.  **Process Response**: Extract the sentiment type and confidence scores.
+3.  **Print the Result**: Print the sentiment and associated confidence level.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTIyMDIwMTM4NCwtMjA2MjQ0MDc0OCw0MD
+eyJoaXN0b3J5IjpbMTM1NjEwNjk2MiwtMjA2MjQ0MDc0OCw0MD
 Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
 MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
 g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
