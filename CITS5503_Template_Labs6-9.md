@@ -651,16 +651,13 @@ Now with the Django App started and the server is online, we can go to `/admin/`
 # Lab 8
 ## Install and Run Jupyter Notebooks
 In this step, we will install Jupyter Notebooks and use it for AI training. Jupyter Notebooks provide an interactive environment to run Python code on the go.
-1. **Install Jupyter Notebook**:
-	- Run the following command to install the Jupyter Notebook package: 
-2. **Launch Jupyter Notebook**:
-	-   Run the command to start the Jupyter Notebook server:
+
 ```bash
 pip install notebook
 jupyter notebook
 ```
-
--   **`jupyter notebook`**: This command starts the Jupyter Notebook server and opens a web interface in our browser. By default, it launches at `http://127.0.0.1:8889` in our case , because the default port is already in use.
+- **`pip install notebook`**: Installs the Jupyter Notebook package
+-   **`jupyter notebook`**: Starts the Jupyter Notebook server and opens a web interface in our browser. By default, it launches at `http://127.0.0.1:8889` in our case , because the default port is already in use.
 ![enter image description here](http://127.0.0.1/assets/lab8-1.png)
 
 After running the above commands,  we can see that the Jupyter server has launched, and the `labAI.ipynb` notebook file is visible on the file server interface.
@@ -1198,11 +1195,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNjA2MzU2ODI0LDExOTU2NTE3MTAsLTYxMj
-g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
-MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
-A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
-NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMj
-IwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQz
-Mzk3XX0=
+eyJoaXN0b3J5IjpbLTk2MjE4NjU4NCwxMTk1NjUxNzEwLC02MT
+I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
+ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
+EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
+OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
+IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
+MzM5N119
 -->
