@@ -527,7 +527,7 @@ Host 24188516-vm-1
 ```
 ![enter image description here](http://127.0.0.1/assets/lab7-3.png)
 
-Rely on the fabric code below to connect to you instance. this will look up the host file, find the connection configuration from the host 24188516-vm-1 and made a connection. We can see that the terminal will output "Linux" from c.run('uname -s') to verify that we have established a connection and able to perform commands on the instance.
+Rely on the fabric code below to connect to you instance. this will look up the host file, find the connection configuration from the host 24188516-vm-1 and made a connection. We can see that the terminal will output "Linux" from c.run('uname -s') to verify that we have established a connection and able to perform commands on the instance. For some reason the source virtual environment doesn't work in the next command run, so we will source it again before running the real command in each c.run().
 ```
 python3
 >>> from fabric import Connection
@@ -631,11 +631,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MD
-I2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAs
-NTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMD
-g2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQw
-NTIsLTIxMTY1NzkzMTksMTU5MDcwODA5LC0xNTQwMzY2Mzg2LC
-0xMDk4MzY5NDY5LC0xNDMyOTAzMTA4LC0zNzQyOTM2NjcsLTE3
-Njg3NTY4MzNdfQ==
+eyJoaXN0b3J5IjpbMTY5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOT
+Q1MDU3MiwtODUwMjY5NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5
+LDU2MzY4NDE0MCw1MjA5MTI2NjYsLTEyMjA4OTc4OTksNDg4OD
+Y4ODgwLC05NjMwODY5OTgsLTE5NTg3NDMzOTcsLTIwODA1Nzgw
+MzksMTM0MTQ4NDA1MiwtMjExNjU3OTMxOSwxNTkwNzA4MDksLT
+E1NDAzNjYzODYsLTEwOTgzNjk0NjksLTE0MzI5MDMxMDgsLTM3
+NDI5MzY2N119
 -->
