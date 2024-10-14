@@ -785,7 +785,7 @@ We will prepare the dataset for training by converting categorical data to binar
 1.  **Load and Process Data**:
     -   Load the dataset into Pandas and create new indicator columns for specific variables.
 2.  **Convert to Dummy Variables**:
-    -   Convert categorical variables into binary columns using `pd.get_dummies()`.
+    -   Convert categorical variables into sets of indicators using `pd.get_dummies()`.
 3.  **Split Data**:
     -   Split the data into training (70%), validation (20%), and test (10%) datasets.
 4.  **Fix Non-Numeric Data**:
@@ -1186,11 +1186,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ1MDA0NTYyNywxMTk1NjUxNzEwLC02MT
-I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
-ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
-EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
-OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
-IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
-MzM5N119
+eyJoaXN0b3J5IjpbMTYyODM2NTcxLDExOTU2NTE3MTAsLTYxMj
+g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
+MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
+A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
+NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMj
+IwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQz
+Mzk3XX0=
 -->
