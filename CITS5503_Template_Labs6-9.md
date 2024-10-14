@@ -781,15 +781,23 @@ The dataset has been downloaded and uncompressed.
 ### 3. Data Preparation and Processing
 We will prepare the dataset for training by converting categorical data to binary indicators and splitting the data into training, validation, and test sets.
 
+
 #### Workflow
 1.  **Load and Process Data**:
-    -   Load the dataset into Pandas and create new indicator columns for specific variables.
+    -   Load the dataset into Pandas for analysis.
+    -   Add indicator columns to capture specific conditions.
 2.  **Convert to Dummy Variables**:
-    -   Convert categorical variables into sets of indicators using `pd.get_dummies()`.
-3.  **Split Data**:
-    -   Split the data into training (70%), validation (20%), and test (10%) datasets.
+    -   Convert categorical variables into binary indicators using `pd.get_dummies()`.
+3.  **Remove Unnecessary Columns**:
+    -   Drop economic variables and duration from the dataset to avoid bias in future predictions.
 4.  **Fix Non-Numeric Data**:
-    -   Replace `True/False` values with `1/0` to avoid non-numeric errors in SageMaker.
+    -   Replace `True/False` values with `1/0` to ensure all data is numeric.
+5.  **Split Data**:
+    -   Split the dataset into training (70%), validation (20%), and test (10%) datasets for model training and evaluation.
+6.  **Save Split Datasets as CSV Files**:
+    -   Save each split as a CSV file, removing headers and adjusting the first column to be the target variable.
+7.  **Upload the Datasets to S3**:
+    -   Upload the processed datasets to S3 to allow SageMaker to access them during training.
 
 ```
 # Load dataset into Pandas
@@ -837,10 +845,15 @@ boto3.Session().resource("s3").Bucket(bucket).Object(
 ).upload_file("validation.csv")
 ``` 
 > #### Code Breakdown:
--   **`pd.get_dummies()`**: Converts categorical variables into dummy (binary) variables.
--   **`np.where()`**: Adds indicator columns based on conditions (e.g., whether a customer was previously contacted).
--   **`np.split()`**: Splits data into training, validation, and test sets.
--   **`upload_file()`**: Uploads the prepared CSV files to S3 for SageMaker to use in training.
+1.  **`pd.read_csv()`**: Reads the dataset into a Pandas DataFrame from the given file.
+2.  **`np.where()`**: Adds indicator columns based on specific conditions (e.g., checking if a customer was previously contacted).
+3.  **`pd.get_dummies()`**: Converts categorical variables into dummy variables, making them suitable for machine learning models.
+4.  **`model_data.drop()`**: Removes unnecessary columns that could introduce bias or noise into the model.
+5.  **`model_data.replace()`**: Replaces `True/False` values with `1/0` to avoid non-numeric errors during SageMaker training.
+6.  **`np.split()`**: Randomly splits the dataset into training, validation, and test sets based on specified proportions.
+7.  **`pd.concat()`**: Combines the target column (`y_yes`) with the remaining feature columns and saves them as CSV files for each split.
+8.  **`os.path.join()`**: Combines the bucket name and the prefix to create the correct path for uploading files to S3.
+9.  **`upload_file()`**: Uploads the prepared training and validation CSV files to the specified S3 bucket for SageMaker to use during training.
 
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-6.png)
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-7.png)
@@ -1186,11 +1199,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM4Nzk5ODAzMywxMTk1NjUxNzEwLC02MT
-I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
-ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
-EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
-OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
-IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
-MzM5N119
+eyJoaXN0b3J5IjpbLTEzMDA2MzY1MjUsLTM4Nzk5ODAzMywxMT
+k1NjUxNzEwLC02MTI4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIx
+MTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOS
+wxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAy
+Njk1NTgsNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLD
+UyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4
+Njk5OF19
 -->
