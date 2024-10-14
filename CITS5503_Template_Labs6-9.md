@@ -694,13 +694,13 @@ In this step, we will install Jupyter Notebooks and launch it to interact with a
 2. **Launch Jupyter Notebook**:
 	-   Run the command to start the Jupyter Notebook server:
 ```bash
-jupyter notebook
+	jupyter notebook
 ```
 
--   **`jupyter notebook`**: This command starts the Jupyter Notebook server and opens a web interface in your browser. By default, it launches at `http://127.0.0.1:8888`, where you can create and manage notebooks.
+-   **`jupyter notebook`**: This command starts the Jupyter Notebook server and opens a web interface in your browser. By default, it launches at `http://127.0.0.1:8888`, in our case in
 ![enter image description here](http://127.0.0.1/assets/lab8-1.png)
 
-Now we can see that jupyter server ha launched and we can see `labAI.ipynb` in the file server.
+After running the above commands, Jupyter Notebook will launch in the browser, allowing you to work with your notebook files interactively. Now we can see that the Jupyter server has launched, and the `labAI.ipynb` notebook file is visible on the file server interface.
 ![enter image description here](http://127.0.0.1/assets/lab8-3.png)
 
 ## Install ipykernel
@@ -723,11 +723,11 @@ bucket  =  '24188516-lab8'  # use <studentid-lab8> as your bucket name
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDk5ODI5NjEyLDI3NDQzODEzOSwxNjkxMj
-gzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgs
-NjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMj
-Y2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwt
-MTk1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMT
-E2NTc5MzE5LDE1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2
-OTQ2OV19
+eyJoaXN0b3J5IjpbMTYzNDM5MTQ2NiwyNzQ0MzgxMzksMTY5MT
+I4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4
+LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MT
+I2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgs
+LTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMj
+ExNjU3OTMxOSwxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgz
+Njk0NjldfQ==
 -->
