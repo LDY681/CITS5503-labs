@@ -711,6 +711,10 @@ pip install ipykernel
 ![enter image description here](http://127.0.0.1/assets/lab8-2.png)
 1. **Install ipykernel**: - This package allows Jupyter to communicate with the Python interpreter. 
 
+
+## Jupiter Notebook Job description
+
+
 ## Fine-tuning Jupiter Notebook
 In the notebook, we already have pre-written code, here we need to chanage constant variables to make sure we create our own environement for the job. In the nest step, I will explain the code in the Jupiter notebook
 ```
@@ -718,6 +722,7 @@ region = 'eu-north-1'  # use the region you are mapped to
 student_id = "24188516"  # use your student id
 bucket = '24188516-lab8'  # use <studentid-lab8> as your bucket name
 ```
+
 
 After changing the code, we can run the notebook by `Run` menu.
 ![enter image description here](http://127.0.0.1/assets/lab8-4.png)
@@ -728,11 +733,11 @@ After changing the code, we can run the notebook by `Run` menu.
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI0NjY4MjA5MCwyNzQ0MzgxMzksMTY5MT
-I4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4
-LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MT
-I2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgs
-LTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMj
-ExNjU3OTMxOSwxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgz
-Njk0NjldfQ==
+eyJoaXN0b3J5IjpbLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OT
+EyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1
+OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOT
+EyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4
+LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLT
+IxMTY1NzkzMTksMTU5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMDk4
+MzY5NDY5XX0=
 -->
