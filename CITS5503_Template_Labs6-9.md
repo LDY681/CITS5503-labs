@@ -649,7 +649,7 @@ Now with the Django App started and the server is online, we can go to `/admin/`
 <div style="page-break-after: always;"></div>
 
 # Lab 8
-## [1] Install and Run Jupyter Notebooks
+## Install and Run Jupyter Notebooks
 In this step, we will install Jupyter Notebooks and use it for AI training. Jupyter Notebooks provide an interactive environment to run Python code on the go.
 
 ```bash
@@ -664,7 +664,7 @@ jupyter notebook
 After running the above commands,  we can see that the Jupyter server has launched, and the `labAI.ipynb` notebook file is visible on the file server interface.
 ![enter image description here](http://127.0.0.1/assets/lab8-3.png)
 
-## [2] Install ipykernel
+## Install ipykernel
 In this step, we will install the `ipykernel` package, this is the kernel package for Python coding in Jupyter Notebooks. 
 ```
 pip install ipykernel
@@ -676,14 +676,14 @@ pip install ipykernel
 ## Necessary Changes
 In this section, we will modify the provided code `LabAI.ipynb` within the Jupyter notebook to make it work in our environment.
 
-### 1. Modify Region, Student ID, and Bucket Name
+### [1] Modify Region, Student ID, and Bucket Name
 Let's update the constants for the AWS region, our student ID, and the name of the S3 bucket where the dataset will be stored. This creates a personalized setup for the job.
 ```
 region = 'eu-north-1'  # use the region us are mapped to
 student_id = "24188516"  # use our student ID
 bucket = '24188516-lab8'  # use <studentid-lab8> as our bucket name
 ```
-### 2. Create an S3 Bucket
+### [2] Create an S3 Bucket
 We will also create an S3 bucket to store the training and testing datasets. Here, we use the `boto3` library to create a bucket in the specified region `eu-north-1` and add an object with the prefix for our folder destination.
 ```
 s3 = boto3.client('s3', region_name=region)
@@ -692,14 +692,14 @@ s3.create_bucket(Bucket=bucket, CreateBucketConfiguration=bucket_config)  # Crea
 s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder object with the prefix
 ```
 
-### 3. Convert Non-numerical Values (True/False to 1/0)
+### [3] Convert Non-numerical Values (True/False to 1/0)
 Because our tunning job can't handle non-numerical values, after reading the dataset and before splitting it into training/testing set, we will traverse the model_data and convert all datas to numeric ones.
 ```
 # Change True/False to 1/0
 model_data = model_data.replace({True: 1, False: 0})
 ```
 
-### 4. Running the Notebook
+### [4] Running the Notebook
 After making the necessary changes to the notebook, we can execute the notebook by navigating to the **Run** menu and selecting **Run All Cells/ Run Selected Cells**.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-4.png)
 
@@ -716,7 +716,7 @@ After inspecting the dataframe, we can get the following conclusions:
 ## AI Training
 In ``LabAI.ipynb``, we will set up a tuning job using Amazon SageMaker. Steps involve installing the necessary libraries, preparing data, and running a hyperparameter tuning job using XGBoost. The final objective is to use SageMaker for training a model on the Bank Marketing dataset.
 
-### 1. Install Required Libraries
+###  [1]  Install Required Libraries
 To begin, we need to install several essential libraries such as SageMaker, Pandas, and Numpy for machine learning and data processing.
 1.  **Install SageMaker**:
     -   SageMaker is required to create and manage training jobs, models, and endpoints in AWS.
@@ -731,7 +731,7 @@ To begin, we need to install several essential libraries such as SageMaker, Pand
 !pip install numpy
 ```
 
-### 2. Prepare SageMaker Session and S3 Bucket
+###  [2] Prepare SageMaker Session and S3 Bucket
 We need to set up a SageMaker session, IAM role, and S3 bucket to store the training data.
 
 #### Workflow
@@ -778,7 +778,7 @@ We can see that our folder has been created in the S3 bucket.
 The dataset has been downloaded and uncompressed.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-9.png)
 
-### 3. Data Preparation and Processing
+###  [3] Data Preparation and Processing
 We will prepare the dataset for training by converting categorical data to binary indicators and splitting the data into training, validation, and test sets.
 
 
@@ -858,7 +858,7 @@ We can see that the dataset have been created and uploaded to our designated dir
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-6.png)
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-7.png)
 
-### 4. Set Up Hyperparameter Tuning Job
+###  [4]  Set Up Hyperparameter Tuning Job
 Next, we'll configure and launch a hyperparameter tuning job using SageMaker's XGBoost algorithm.
 
 #### Workflow
@@ -939,7 +939,7 @@ training_job_definition = {
     -   **`StaticHyperParameters`**: Sets fixed hyperparameters that are not tuned, such as `objective` (binary classification) and `eval_metric` (AUC).
 4.  **`create_hyper_parameter_tuning_job()`**: Launches the tuning job using the defined configuration.
 
-### 5. Monitor Hyperparameter Tuning Job
+###  [5]  Monitor Hyperparameter Tuning Job
 After launching the hyperparameter tuning job, we can monitor its progress in the AWS console.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-8.png)
 
@@ -947,10 +947,10 @@ After launching the hyperparameter tuning job, we can monitor its progress in th
 <div style="page-break-after: always;"></div>
 
 # Lab 9
-## [1] AWS Comprehend
+## AWS Comprehend
 In this task, we will leverage AWS Comprehend to analyze text for language detection, sentiment detection, entity detection, key phrase detection and syntax detection.
 
-### Step 1. Client Setup & Language Detection
+###  [1]  Client Setup & Language Detection
 We'll start by using AWS Comprehend's `detect_dominant_language` method to identify the language in given texts and display the confidence of the prediction.
 
 #### Workflow
@@ -1015,7 +1015,7 @@ for text in texts:
 
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-1.png)
 
-### Step 2: Sentiment Detection
+###  [2] Sentiment Detection
 Sentiment analysis determines if a text expresses positive, negative, neutral, or mixed sentiment.
 ```
 def detect_sentiment(text, language_code='en'):
@@ -1036,7 +1036,7 @@ for text in texts:
 
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-2.png)
 
-### Step 3: Entity Detection
+###  [3]  Entity Detection
 **Answer**: Entities are some key element or item classes with different types, that helps to identify and classify an object.
 ```
 def detect_entities(text, language_code='en'):
@@ -1057,7 +1057,7 @@ for text in texts:
 
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-3.png)
 
-### Step 4: Key Phrase Detection
+###  [4] Key Phrase Detection
 **Answer**: Key phrases are sub-groups of words that are extracted from the whole sentence, which serves as classifiers and provide important concepts to the text.
 
 ```
@@ -1078,7 +1078,7 @@ for text in texts:
 2.  **`response['KeyPhrases']`**: Extracts the list of key phrases detected.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-4.png)
 
-### Step 5: Syntax Detection
+###  [5]  Syntax Detection
 **Answer**: Syntax assigns a token to each letter called parts of speech (POS), such as nouns, verbs, adjectives, etc.
 ```
 def detect_syntax(text, language_code='en'):
@@ -1217,7 +1217,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI0MTM5OTExMCwtMzg3OTk4MDMzLDExOT
+eyJoaXN0b3J5IjpbLTE3NjY1NDQ5MiwtMzg3OTk4MDMzLDExOT
 U2NTE3MTAsLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjEx
 MTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LD
 E2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2
