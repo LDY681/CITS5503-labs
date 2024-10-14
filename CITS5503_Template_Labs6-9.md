@@ -541,10 +541,85 @@ python3
 We will bscially convert the command lines we use in lab6 to fabric by wrapping with c.run(). For admin priviledges command, we will convert them to c.sudo() instead. As you can see, some commands will use "-y" for automatically answering yes to the prompt because we are automating. We would use echo for editing, when we create our Dajango poll app and configuration nginx files
 
 Write a python script where you first need to automate the setup of a Python 3 virtual environment, nginx and a Django app within the EC2 instance you just created. Then, you should run the Django development server on port 8000 in the background.
+This is the code down below;
+```
+from fabric import Connection
 
+# Constants
+EC2_INSTANCE_NAME = '24188516-vm-1'
+PROJECT_DIR = '/opt/wwc/mysites/lab'
+
+def install_prerequisites(c):
+    # Update and upgrade system packages
+    c.run('sudo apt-get update -y')
+    c.run('sudo apt-get upgrade -y')
+
+    # Install Python 3 virtual environment package
+    c.run('sudo apt-get install python3-venv -y')
+
+    # Install Nginx
+    c.run('sudo apt install nginx -y')
+
+def set_virtual_env(c):
+    # Create project directory and navigate to it
+    c.run(f'sudo mkdir -p {PROJECT_DIR}')
+    c.run(f'cd {PROJECT_DIR}')
+
+    # Create a virtual environment
+    c.run('python3 -m venv myvenv')
+
+    # Activate virtual environment and install Django
+    c.run('source myvenv/bin/activate && pip install django')
+
+def setup_django_app(c):
+    # Start a new Django project and app within the virtual environment
+    c.run('source myvenv/bin/activate && django-admin startproject lab .')
+    c.run('source myvenv/bin/activate && python3 manage.py startapp polls')
+
+    # Modify the Django project settings and URLs
+    c.run('echo "from django.http import HttpResponse" > polls/views.py')
+    c.run('echo "def index(request): return HttpResponse(\'Hello, world.\')" >> polls/views.py')
+
+    c.run('echo "from django.urls import path\nfrom . import views\nurlpatterns = [path(\'\', views.index, name=\'index\')]" > polls/urls.py')
+    c.run('echo "from django.urls import include, path\nfrom django.contrib import admin\nurlpatterns = [path(\'polls/\', include(\'polls.urls\')), path(\'admin/\', admin.site.urls)]" > lab/urls.py')
+
+def configure_nginx(c):
+    # Configure Nginx to proxy requests to Django
+    # double $$ to skip be picking up by python formatting
+    nginx_config = '''
+    server {
+      listen 80 default_server;
+      listen [::]:80 default_server;
+
+      location / {
+        proxy_set_header X-Forwarded-Host $$host;
+        proxy_set_header X-Real-IP $$remote_addr;
+
+        proxy_pass http://127.0.0.1:8000;
+      }
+    }
+    '''
+    c.run('echo "{}" | sudo tee /etc/nginx/sites-enabled/default'.format(nginx_config))
+
+    # Restart Nginx to apply changes
+    c.sudo('service nginx restart')
+
+def run_django_server(c):
+    # Start Django development server in the background
+    c.run('source myvenv/bin/activate && nohup python3 manage.py runserver 0.0.0.0:8000 &', pty=False)
+
+if __name__ == "__main__":
+    conn = Connection(EC2_INSTANCE_NAME)
+
+    install_prerequisites(conn)
+    set_virtual_env(conn)
+    setup_django_app(conn)
+    configure_nginx(conn)
+    run_django_server(conn)
+```
 From your local OS environment, access the URL: `http://<ip address of your EC2 instance>/polls/`, and output what you've got. 
 
-**NOTE**:  this python script basically needs you to convert instructions (in `Set up an EC2 instance` and `Set up Django inside the created EC2 instance`) in Lab 6 to Fabric commands. The documentation for Fabric is [here](http://docs.fabfile.org/en/2.0/).
+
 
 <div style="page-break-after: always;"></div>
 
@@ -555,11 +630,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MD
-I5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5
-LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMD
-gwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1NzkzMTksMTU5MDcw
-ODA5LC0xNTQwMzY2Mzg2LC0xMDk4MzY5NDY5LC0xNDMyOTAzMT
-A4LC0zNzQyOTM2NjcsLTE3Njg3NTY4MzMsLTE5NDI1NDEyNzcs
-MTg1MTk2NDQ4OF19
+eyJoaXN0b3J5IjpbMTU5NTI1MDY4MiwtODUwMjY5NTU4LDY2Nj
+YxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYs
+LTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NT
+g3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3
+OTMxOSwxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgzNjk0Nj
+ksLTE0MzI5MDMxMDgsLTM3NDI5MzY2NywtMTc2ODc1NjgzMywt
+MTk0MjU0MTI3N119
 -->
