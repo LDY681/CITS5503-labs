@@ -538,6 +538,7 @@ python3
 ![enter image description here](http://127.0.0.1/assets/lab7-4.png)
 
 ### Use Fabric for automation
+We will bscially convert the command lines we use in lab6 to fabric by wrapping with c.run() and c.sudo(), some commands will use "-y" for automatically answering yes to the prompt because we are automating.
 
 Write a python script where you first need to automate the setup of a Python 3 virtual environment, nginx and a Django app within the EC2 instance you just created. Then, you should run the Django development server on port 8000 in the background.
 
@@ -554,11 +555,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOT
-EyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4
-LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLT
-IxMTY1NzkzMTksMTU5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMDk4
-MzY5NDY5LC0xNDMyOTAzMTA4LC0zNzQyOTM2NjcsLTE3Njg3NT
-Y4MzMsLTE5NDI1NDEyNzcsMTg1MTk2NDQ4OCwtMTY3NTgzOTc3
-NSwtMTgyNzQyODQ3NV19
+eyJoaXN0b3J5IjpbNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNj
+g0MTQwLDUyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAs
+LTk2MzA4Njk5OCwtMTk1ODc0MzM5NywtMjA4MDU3ODAzOSwxMz
+QxNDg0MDUyLC0yMTE2NTc5MzE5LDE1OTA3MDgwOSwtMTU0MDM2
+NjM4NiwtMTA5ODM2OTQ2OSwtMTQzMjkwMzEwOCwtMzc0MjkzNj
+Y3LC0xNzY4NzU2ODMzLC0xOTQyNTQxMjc3LDE4NTE5NjQ0ODgs
+LTE2NzU4Mzk3NzVdfQ==
 -->
