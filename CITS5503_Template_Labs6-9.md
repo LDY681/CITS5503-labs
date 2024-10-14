@@ -685,10 +685,19 @@ if __name__ == "__main__":
 
 # Lab 8
 ## Install and run jupyter notebooks
-In this step, we will install Jupyter Notebooks and launch it to interact with a dataset using Pandas. Jupyter Notebooks provide an interactive environment for running Python code and exploring data. Follow these steps: 1. **Install Jupyter Notebook**: - Run the following command to install the Jupyter Notebook package: 
+In this step, we will install Jupyter Notebooks and launch it to interact with a dataset using Pandas. Jupyter Notebooks provide an interactive environment for running Python code and exploring data. Follow these steps: 
+1. **Install Jupyter Notebook**:
+	- Run the following command to install the Jupyter Notebook package: 
 ```bash
 	pip install notebook
 ```
+2. **Launch Jupyter Notebook**:
+	-   Run the command to start the Jupyter Notebook server:
+```bash
+jupyter notebook
+```
+
+-   **`jupyter notebook`**: This command starts the Jupyter Notebook server and opens a web interface in your browser. By default, it launches at `http://127.0.0.1:8888`, where you can create and manage notebooks.
 ![enter image description here](http://127.0.0.1/assets/lab8-1.png)
 
 Now we can see that jupyter server ha launched and we can see `labAI.ipynb` in the file server.
@@ -714,11 +723,11 @@ bucket  =  '24188516-lab8'  # use <studentid-lab8> as your bucket name
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTgwODYyNTkyMywyNzQ0MzgxMzksMTY5MT
-I4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4
-LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MT
-I2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgs
-LTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMj
-ExNjU3OTMxOSwxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgz
-Njk0NjldfQ==
+eyJoaXN0b3J5IjpbNDk5ODI5NjEyLDI3NDQzODEzOSwxNjkxMj
+gzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgs
+NjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMj
+Y2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwt
+MTk1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMT
+E2NTc5MzE5LDE1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2
+OTQ2OV19
 -->
