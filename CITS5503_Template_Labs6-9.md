@@ -690,27 +690,28 @@ In this step, we will install Jupyter Notebooks, and launch it to interact with 
 pip install notebook
 jupyter notebook
 ```
-1. **Install Jupyter Notebooks**: - **`pip install notebook`**: This command installs the `notebook` package, which  is for Jupyter Notebooks. 
-2. **Launch Jupyter Notebook**: - **`jupyter notebook`**: Starts the Jupyter Notebook server and opens a web interface in your browser, allowing you to create and manage notebooks. After running the above commands, Jupyter Notebook will launch in the browser at ` http://127.0.0.1:8888` by default.
+1. `pip install notebook`: This command installs the `notebook` package, which  is for Jupyter Notebooks. 
+2. `jupyter notebook`: - Starts the Jupyter Notebook server and opens a web interface in your browser, allowing you to create and manage notebooks. After running the above commands, Jupyter Notebook will launch in the browser at ` http://127.0.0.1:8888` by default.
 ![enter image description here](http://127.0.0.1/assets/lab8-1.png)
+
 ## Install ipykernel
 In this step, we will install the `ipykernel` package, which enables you to run Python code in Jupyter Notebooks. 
 ```
 pip install ipykernel
 ```
 ![enter image description here](http://127.0.0.1/assets/lab8-2.png)
-1. **Install ipykernel**: - **`pip install notebook`**: This package allows Jupyter to communicate with the Python interpreter. 
+1. **Install ipykernel**: - This package allows Jupyter to communicate with the Python interpreter. 
 
 <div style="page-break-after: always;"></div>
 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4NDIzNTc4NSwyNzQ0MzgxMzksMTY5MT
-I4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4
-LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MT
-I2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgs
-LTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMj
-ExNjU3OTMxOSwxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgz
-Njk0NjldfQ==
+eyJoaXN0b3J5IjpbLTEzMjc4ODk0NDYsMjc0NDM4MTM5LDE2OT
+EyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1
+OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOT
+EyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4
+LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLT
+IxMTY1NzkzMTksMTU5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMDk4
+MzY5NDY5XX0=
 -->
