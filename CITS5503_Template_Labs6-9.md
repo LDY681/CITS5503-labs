@@ -971,13 +971,15 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 <div style="page-break-after: always;"></div>
 
 # Lab 9
+In this task, we will leverage AWS Comprehend to analyze text for language detection and sentiment analysis. AWS Comprehend is a powerful NLP service that can detect the dominant language, perform sentiment analysis, extract key entities, and much more.
 
+We'll start by using AWS Comprehend's `detect_dominant_language` method to identify the language in various pieces of text and display the confidence of the prediction. We will only print the first detected language for simplicity, and ensure that AWS Comprehend is set up in the correct region before proceeding.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNT
-UzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgz
-NDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNj
-Y2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2
-NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMT
-k1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2
-NTc5MzE5XX0=
+eyJoaXN0b3J5IjpbMTMzMTgxNTcwOCwtMjA2MjQ0MDc0OCw0MD
+Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
+MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
+g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
+NDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOT
+YzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0
+ODQwNTJdfQ==
 -->
