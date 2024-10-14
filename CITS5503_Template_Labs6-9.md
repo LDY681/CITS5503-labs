@@ -690,10 +690,13 @@ In this step, we will install Jupyter Notebooks, and launch it to interact with 
 pip install notebook
 jupyter notebook
 ```
-1. `pip install notebook`: This command installs the `notebook` package, which  is for Jupyter Notebooks. 
-2. `jupyter notebook`: - Starts the Jupyter Notebook server and opens a web interface in your browser, allowing you to create and manage notebooks. After running the above commands, Jupyter Notebook will launch in the browser at ` http://127.0.0.1:8888` by default.
+1. **Install Jupyter Notebooks**: First command installs the `notebook` package, which  is for Jupyter Notebooks. 
+2. **Launch Jupyter Notebook**: - Second command starts the Jupyter Notebook server and opens a web interface in your browser, allowing you to create and manage notebooks. After running the above commands, Jupyter Notebook will launch in the browser at ` http://127.0.0.1:8888` by default.
 ![enter image description here](http://127.0.0.1/assets/lab8-1.png)
-![enter image description here](http://127.0.0.1/assets/lab8-1.png)
+
+Now we can see that jupyter server ha launched and we can see `labAI.ipynb` in the file server.
+![enter image description here](http://127.0.0.1/assets/lab8-3.png)
+
 ## Install ipykernel
 In this step, we will install the `ipykernel` package, which enables you to run Python code in Jupyter Notebooks. 
 ```
@@ -714,7 +717,7 @@ bucket  =  '24188516-lab8'  # use <studentid-lab8> as your bucket name
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1Mzk2MDMyMywyNzQ0MzgxMzksMTY5MT
+eyJoaXN0b3J5IjpbLTI1NzA2MDg5MSwyNzQ0MzgxMzksMTY5MT
 I4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4
 LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MT
 I2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgs
