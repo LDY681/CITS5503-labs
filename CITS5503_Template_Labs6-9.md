@@ -841,6 +841,7 @@ boto3.Session().resource("s3").Bucket(bucket).Object(
 -   **`np.where()`**: Adds indicator columns based on conditions (e.g., whether a customer was previously contacted).
 -   **`split()`**: Splits data into training, validation, and test sets.
 -   **`upload_file()`**: Uploads the prepared CSV files to S3 for SageMaker to use in training.
+
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-6.png)
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-7.png)
 
@@ -1185,7 +1186,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYxODAwNDcxMywxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbMTQ1MDA0NTYyNywxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
