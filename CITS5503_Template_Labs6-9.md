@@ -529,10 +529,13 @@ Linux
 ![enter image description here](http://127.0.0.1/assets/lab7-4.png)
 
 ## Automation for creating Django App
-In this section, we will automate the process of setting up a Python virtual environment, configuring Nginx, and creating a Django app within the EC2 instance using Fabric. The commands from **Lab 6** will be converted to Fabric's `c.run()` for regular commands and `c.sudo()` for commands requiring admin privileges. Additionally, file editing will be handled using `echo`. We will use file I/O to write Nginx configuration to avoid issues with `$` placeholders. Due to the fact that each  `c.run()` command is runned isolately, to persist the sourced virtual environment, we will re-source the environment each time before running further commands.
+In this section, we will automate the process of setting up a Python virtual environment, configuring Nginx, and creating a Django app within the EC2 instance using Fabric.
+The commands from **Lab 6** will be converted to Fabric's `c.run()` for regular commands and `c.sudo()` for commands requiring admin privileges.
+Additionally, file editing will be handled using `echo`. We will use file I/O to write Nginx configuration to avoid issues with `$` placeholders.
+Due to the fact that each  `c.run()` command is runned isolately, to persist the sourced virtual environment, we will re-source the environment before running further commands.
 
 ### Workflow:
-1. **Install Prerequisites**:
+1. **Install Packages**:
    - Update and upgrade system packages.
    - Install the Python virtual environment package (`python3-venv`).
    - Install Nginx web server.
@@ -542,7 +545,7 @@ In this section, we will automate the process of setting up a Python virtual env
 3. **Create Django Project and App**:
    - Start a new Django project and app (`polls`) inside the virtual environment.
    - Modify the views, URLs, and settings to display "Hello, world" from the `polls` app.
-4. **Configure Nginx**:
+4. **Configure Nginx Server**:
    - Write a new Nginx configuration file to act as a reverse proxy, forwarding traffic from port 80 to the Django app running on port 8000.
 5. **Run Django Server**:
    - Run the Django development server in the background, ensuring the app is accessible on port 8000.
@@ -601,7 +604,7 @@ def configure_nginx(c):
     }
     '''
     
-    # Write the configuration to a temp file and move it into place
+    # Write the configuration locally
     with open("nginx_temp.conf", "w") as f:
         f.write(nginx_config)
     
@@ -1199,11 +1202,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ4ODk4MDg2NCwxMTk1NjUxNzEwLC02MT
-I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
-ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
-EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
-OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
-IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
-MzM5N119
+eyJoaXN0b3J5IjpbLTE5Mjk0ODIwMzMsMTE5NTY1MTcxMCwtNj
+EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
+NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
+wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
+Njk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLT
+EyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3
+NDMzOTddfQ==
 -->
