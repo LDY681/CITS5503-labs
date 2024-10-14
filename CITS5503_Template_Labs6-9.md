@@ -711,23 +711,36 @@ pip install ipykernel
 ![enter image description here](http://127.0.0.1/assets/lab8-2.png)
 1. **Install ipykernel**: - This package allows Jupyter to communicate with the Python interpreter. 
 
-## Code to change
-In the notebook, we already have pre-written code, here we need to chanage constant variables to make sure we create our own environement for the job. In the nest step, I will explain the code in the Jupiter notebook
+
+## Code to Change
+
+In this section, we will modify certain constant variables in the pre-written code within the Jupyter notebook. This ensures that we create our own environment for the SageMaker job.
+
+### 1. Modify Region, Student ID, and Bucket Name
+
+You need to update the constants for the AWS region, your student ID, and the name of the S3 bucket where the dataset will be stored. This creates a personalized setup for the job.
 ```
 region = 'eu-north-1'  # use the region you are mapped to
-student_id = "24188516"  # use your student id
+student_id = "24188516"  # use your student ID
 bucket = '24188516-lab8'  # use <studentid-lab8> as your bucket name
 ```
-We also need to create the bucket for storeing our train/testing dataset.
+### 2. Create an S3 Bucket
+
+We will also create an S3 bucket to store the training and testing datasets. Here, we use the `boto3` library to create a bucket in the specified region and add an object with the prefix to organize the data properly.
 ```
 s3 = boto3.client('s3', region_name=region)
 bucket_config = {'LocationConstraint': region}
-s3.create_bucket(Bucket=bucket, CreateBucketConfiguration=bucket_config) # create the bucket in our region
-s3.put_object(Bucket=bucket, Key=f"{prefix}/") # create a folder object with the prefix
+s3.create_bucket(Bucket=bucket, CreateBucketConfiguration=bucket_config)  # Create the bucket in our region
+s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder object with the prefix
 ```
 
-After changing the code, we can run the notebook by `Run` menu.
-![enter image description here](http://127.0.0.1/assets/lab8-4.png)
+### 3. Convert True/False to 1/0
+
+
+### 4. Running the Notebook
+After making the necessary changes to the notebook, you can execute the notebook by navigating to the **Run** menu and selecting **Run All Cells/ Run Selected Cells**.
+
+![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-4.png)
 
 ## AI training
 
@@ -958,11 +971,11 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTYzNjg0Njg0Miw0MDY1MjExMTcsLTE1NT
-M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
-NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
-Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
-LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOT
-U4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1
-NzkzMTldfQ==
+eyJoaXN0b3J5IjpbNDE0OTM1ODM3LDQwNjUyMTExNywtMTU1Mz
+QxNDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1
+MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2Nj
+YxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYs
+LTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NT
+g3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3
+OTMxOV19
 -->
