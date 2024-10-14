@@ -723,7 +723,6 @@ student_id = "24188516"  # use your student id
 bucket = '24188516-lab8'  # use <studentid-lab8> as your bucket name
 ```
 
-
 After changing the code, we can run the notebook by `Run` menu.
 ![enter image description here](http://127.0.0.1/assets/lab8-4.png)
 
@@ -733,11 +732,11 @@ After changing the code, we can run the notebook by `Run` menu.
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMj
-c0NDM4MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1
-NzIsLTg1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1Nj
-M2ODQxNDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4
-MCwtOTYzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LD
-EzNDE0ODQwNTIsLTIxMTY1NzkzMTksMTU5MDcwODA5LC0xNTQw
-MzY2Mzg2XX0=
+eyJoaXN0b3J5IjpbNDA2NTIxMTE3LC0xNTUzNDE0ODM3LC0xNT
+UzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLDEwODMwMzUx
+MSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4LDExND
+AyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMDg5Nzg5
+OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5NywtMj
+A4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LDE1OTA3
+MDgwOV19
 -->
