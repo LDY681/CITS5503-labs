@@ -1211,13 +1211,13 @@ if  __name__  ==  "__main__":
     -   Detects inappropriate content, `Non-explicit Nudity` is detected in `beach.jpg` for example
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-9.png)
 3.  **`rekognition.detect_faces()`**:
-    -   Analyzes face details such as age ranges, emotions(run only on `faces.jpg`).
+    -   Analyzes face details such as age ranges and emotions(run only on `faces.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-10.png)
 4.  **`rekognition.detect_text()`**:
-    -   Extracts text from images that contain written content (run only on `text.jpg`).
+    -   OCR scan and extract text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5MDczMTU3NSwtMzg3OTk4MDMzLDExOT
+eyJoaXN0b3J5IjpbMTg2NTIxMjM3MSwtMzg3OTk4MDMzLDExOT
 U2NTE3MTAsLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjEx
 MTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LD
 E2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2
