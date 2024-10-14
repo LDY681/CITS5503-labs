@@ -757,18 +757,195 @@ To begin, we need to install several essential libraries such as SageMaker, Pand
 -   **`!pip install pandas`**: Installs Pandas, a library for data manipulation.
 -   **`!pip install numpy`**: Installs Numpy, a library for numerical operations.
 
+### 2. Prepare SageMaker Session and S3 Bucket
 
+We need to set up a SageMaker session, IAM role, and S3 bucket to store the training data.
 
+#### Workflow
+
+1.  **Set up SageMaker Session**:
+    
+    -   Initialize the SageMaker and IAM clients, set the region, and get the ARN of the SageMaker role.
+2.  **Create an S3 Bucket**:
+    
+    -   Create an S3 bucket to store training data.
+3.  **Download Dataset**:
+    
+    -   Download and unzip the Bank Marketing dataset from UCI ML repository.
+```
+import sagemaker
+import boto3
+import numpy as np
+import pandas as pd
+
+region = 'eu-north-1'  # Set your AWS region
+smclient = boto3.Session(region_name=region).client("sagemaker")
+iam = boto3.client('iam', region_name=region)
+sagemaker_role = iam.get_role(RoleName='SageMakerRole')['Role']['Arn']
+student_id = "24188516"  # Use your student ID
+bucket = '24188516-lab8'  # Use your student ID for bucket name
+prefix = f"sagemaker/{student_id}-hpo-xgboost-dm"
+
+# Create an S3 bucket and folder
+s3 = boto3.client('s3', region_name=region)
+bucket_config = {'LocationConstraint': region}
+s3.create_bucket(Bucket=bucket, CreateBucketConfiguration=bucket_config)  # Create bucket
+s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder in S3
+
+# Download dataset
+!wget -N https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip
+!unzip -o bank-additional.zip
+```
+#### Code Explanation:
+
+-   **`sagemaker.Session()`**: Initializes a SageMaker session to interact with AWS SageMaker services.
+-   **`boto3.client('s3')`**: Creates an S3 client to interact with S3 services.
+-   **`create_bucket()`**: Creates an S3 bucket in the specified region.
+-   **`put_object()`**: Creates a folder inside the S3 bucket for storing data.
+-   **`!wget`** and **`!unzip`**: Downloads and unzips the dataset.
+
+### 3. Data Preparation and Processing
+
+We will prepare the dataset for training by converting categorical data to binary indicators and splitting the data into training, validation, and test sets.
+
+#### Workflow
+
+1.  **Load and Process Data**:
+    
+    -   Load the dataset into Pandas and create new indicator columns for specific variables.
+2.  **Convert to Dummy Variables**:
+    
+    -   Convert categorical variables into binary columns using `pd.get_dummies()`.
+3.  **Split Data**:
+    
+    -   Split the data into training (70%), validation (20%), and test (10%) datasets.
+4.  **Fix Non-Numeric Data**:
+    
+    -   Replace `True/False` values with `1/0` to avoid non-numeric errors in SageMaker.
+```
+# Load dataset into Pandas
+data = pd.read_csv("./bank-additional/bank-additional-full.csv", sep=";")
+
+# Add new indicator columns
+data["no_previous_contact"] = np.where(data["pdays"] == 999, 1, 0)
+data["not_working"] = np.where(np.in1d(data["job"], ["student", "retired", "unemployed"]), 1, 0)
+
+# Convert categorical variables to dummy variables
+model_data = pd.get_dummies(data)
+
+# Remove unnecessary columns
+model_data = model_data.drop(
+    ["duration", "emp.var.rate", "cons.price.idx", "cons.conf.idx", "euribor3m", "nr.employed"],
+    axis=1,
+)
+
+# Replace True/False with 1/0
+model_data = model_data.replace({True: 1, False: 0})
+
+# Split data into training, validation, and test datasets
+train_data, validation_data, test_data = np.split(
+    model_data.sample(frac=1, random_state=1729),
+    [int(0.7 * len(model_data)), int(0.9 * len(model_data))],
+)
+
+# Save datasets as CSV files
+pd.concat([train_data["y_yes"], train_data.drop(["y_no", "y_yes"], axis=1)], axis=1).to_csv(
+    "train.csv", index=False, header=False
+)
+pd.concat([validation_data["y_yes"], validation_data.drop(["y_no", "y_yes"], axis=1)], axis=1).to_csv(
+    "validation.csv", index=False, header=False
+)
+pd.concat([test_data["y_yes"], test_data.drop(["y_no", "y_yes"], axis=1)], axis=1).to_csv(
+    "test.csv", index=False, header=False
+)
+
+# Upload the datasets to S3
+boto3.Session().resource("s3").Bucket(bucket).Object(
+    os.path.join(prefix, "train/train.csv")
+).upload_file("train.csv")
+boto3.Session().resource("s3").Bucket(bucket).Object(
+    os.path.join(prefix, "validation/validation.csv")
+).upload_file("validation.csv")
+
+``` 
+#### Code Explanation:
+
+-   **`get_dummies()`**: Converts categorical variables into dummy (binary) variables.
+-   **`np.where()`**: Adds indicator columns based on conditions (e.g., whether a customer was previously contacted).
+-   **`split()`**: Splits data into training, validation, and test sets.
+-   **`upload_file()`**: Uploads the prepared CSV files to S3 for SageMaker to use in training.
+
+### 4. Set Up Hyperparameter Tuning Job
+
+Next, we'll configure and launch a hyperparameter tuning job using SageMaker's XGBoost algorithm.
+
+#### Workflow
+
+1.  **Configure Hyperparameters**:
+    
+    -   Define the range of hyperparameters (e.g., `eta`, `max_depth`) for tuning.
+2.  **Specify Training Job**:
+    
+    -   Configure the input data, algorithm, and resources for the training job.
+3.  **Launch Hyperparameter Tuning**:
+    
+    -   Start the tuning job to find the optimal model parameters.
+```
+from time import gmtime, strftime, sleep
+from sagemaker.image_uris import retrieve
+
+# Set up a unique tuning job name
+tuning_job_name = f"{student_id}-xgboost-tuningjob-01"
+print(tuning_job_name)
+
+# Hyperparameter ranges for tuning
+tuning_job_config = {
+    "ParameterRanges": {
+        "ContinuousParameterRanges": [
+            {"Name": "eta", "MinValue": "0", "MaxValue": "1"},
+            {"Name": "min_child_weight", "MinValue": "1", "MaxValue": "10"},
+            {"Name": "alpha", "MinValue": "0", "MaxValue": "2"},
+        ],
+        "IntegerParameterRanges": [{"Name": "max_depth", "MinValue": "1", "MaxValue": "10"}],
+    },
+    "ResourceLimits": {"MaxNumberOfTrainingJobs": 2, "MaxParallelTrainingJobs": 2},
+    "Strategy": "Bayesian",
+    "HyperParameterTuningJobObjective": {"MetricName": "validation:auc", "Type": "Maximize"},
+}
+
+# Specify XGBoost algorithm for training
+training_image = retrieve(framework="xgboost", region=region, version="latest")
+s3_input_train = f"s3://{bucket}/{prefix}/train"
+s3_input_validation = f"s3://{bucket}/{prefix}/validation/"
+
+training_job_definition = {
+    "AlgorithmSpecification": {"TrainingImage": training_image, "TrainingInputMode": "File"},
+    "InputDataConfig": [
+        {
+            "ChannelName": "train",
+            "DataSource": {"S3DataSource": {"S3Uri": s3_input_train, "S3DataType": "S3Prefix"}},
+        },
+        {
+            "ChannelName": "validation",
+            "DataSource": {"S3DataSource": {"S3Uri": s3_input_validation, "S3DataType": "S3Prefix"}},
+        },
+    ],
+    "OutputDataConfig": {"S3OutputPath": f"s3://{bucket}/{prefix}/output"},
+    "ResourceConfig": {"InstanceCount": 1, "InstanceType": "ml.m5.xlarge", "VolumeSizeInGB": 10},
+    "RoleArn": sagemaker_role,
+    "StoppingCondition": {"MaxRuntimeInSeconds": 43200}, "StaticHyperParameters": {"eval_metric": "auc", "num_round": "1", "objective": "binary:logistic"}, } # Launch the hyperparameter tuning job smclient.create_hyper_parameter_tuning_job( HyperParameterTuningJobName=tuning_job_name, HyperParameterTuningJobConfig=tuning_job_config, TrainingJobDefinition=training_job_definition, )
+
+```  
 <div style="page-break-after: always;"></div>
 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTExOTQ2NDIwOCw0MDY1MjExMTcsLTE1NT
-M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
-NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
-Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
-LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOT
-U4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1
-NzkzMTldfQ==
+eyJoaXN0b3J5IjpbLTEyNDYyMTI5NDIsNDA2NTIxMTE3LC0xNT
+UzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgz
+NDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNj
+Y2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2
+NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMT
+k1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2
+NTc5MzE5XX0=
 -->
