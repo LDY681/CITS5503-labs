@@ -1092,7 +1092,7 @@ def detect_syntax(text, language_code='en'):
 for text in texts:
 	detect_syntax(text)
 ```
-### Code Explanation:
+> ### Code Breakdown:
 
 1.  **`client.detect_syntax()`**: Analyzes the text for syntactical elements like nouns, verbs, etc.
 2.  **`response['SyntaxTokens']`**: Extracts each word and its corresponding part of speech.
@@ -1102,7 +1102,7 @@ for text in texts:
 ## AWS Rekognition
 In this task, we will leverage AWS Rekognition to analyze image for **Label Recognition**, **Image Moderation**, **Facial Analysis** and **Text Extraction**.
 
-### Step1: Setting up instances and Uploading Images
+###  [1]  Setting up instances and Uploading Images
 #### Workflow
 1.  **Create the Bucket/Rekognition Client**: First, we create an S3 bucket and rekognition client using `boto3` in the region `eu-north-1`. The bucket has a unique bucket name that follows the format `24188516-lab9`
 2.  **Upload Images**: After the bucket is created, we upload the four images (`urban.jpg`, `beach.jpg`, `faces.jpg`, `text.jpg`) to this S3 bucket for AWS Rekognition to analyze.
@@ -1131,7 +1131,7 @@ def upload_images():
         s3.upload_file(image, BUCKET_NAME, image)
     print(f"Images uploaded to {BUCKET_NAME}")
 ```
-### Code Explanation:
+> ### Code Breakdown:
 
 1.  **`boto3.client()`**: Initializes the client to interact with the AWS S3 service or AWS Rekognition service.
 2.  **`create_bucket()`**: Creates an S3 bucket in the specified region, using the student's ID as part of the bucket name.
@@ -1143,7 +1143,7 @@ These are the files prepared to be uploaded
 Inspect the S3 bucket interface to verify succesful uploads.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-7.png)
 
-### Step2: Testing AWS Rekognition for Task Analysis
+### [2] Testing AWS Rekognition for Task Analysis
 
 #### Workflow
 1.  **Label Recognition**: Recognize objects, scenes, or actions from the uploaded images.
@@ -1203,11 +1203,11 @@ if  __name__  ==  "__main__":
 	upload_images()
 	run_analyses()
 ```
-### Code Explanation:
-1.  **Label Recognition (`detect_labels`)**:
+> ### Code Breakdown:
+1.  **`rekognition.detect_labels()`**:
     -   Detects objects, concepts, and actions in the image with confidence levels.
    ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-8.png)
-2.  **Image Moderation (`detect_moderation_labels`)**:
+2.  **`rekognition.detect_moderation_labels`**:
     -   Detects inappropriate content, such as adult or violent themes.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-9.png)
 3.  **Facial Analysis (`detect_faces`)**:
@@ -1217,7 +1217,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NjY1NDQ5MiwtMzg3OTk4MDMzLDExOT
+eyJoaXN0b3J5IjpbLTQyNzYwNTQxMSwtMzg3OTk4MDMzLDExOT
 U2NTE3MTAsLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjEx
 MTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LD
 E2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2
