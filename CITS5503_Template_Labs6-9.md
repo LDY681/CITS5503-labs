@@ -692,16 +692,15 @@ s3.create_bucket(Bucket=bucket, CreateBucketConfiguration=bucket_config)  # Crea
 s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder object with the prefix
 ```
 
-### 3. Convert N
-Because our tunning job can't handle non-numerical values, we will traverse the model_data and convert all datas to numeric ones.
+### 3. Convert Non-numerical Values (True/False to 1/0)
+Because our tunning job can't handle non-numerical values, after reading the dataset and before splitting it into training/testing set, we will traverse the model_data and convert all datas to numeric ones.
 ```
 # Change True/False to 1/0
 model_data = model_data.replace({True: 1, False: 0})
 ```
 
 ### 4. Running the Notebook
-After making the necessary changes to the notebook, us can execute the notebook by navigating to the **Run** menu and selecting **Run All Cells/ Run Selected Cells**.
-
+After making the necessary changes to the notebook, we can execute the notebook by navigating to the **Run** menu and selecting **Run All Cells/ Run Selected Cells**.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-4.png)
 
 ## Dataset Q&A
@@ -1194,11 +1193,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbODU2Mzg0NDQxLDExOTU2NTE3MTAsLTYxMj
-g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
-MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
-A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
-NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMj
-IwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQz
-Mzk3XX0=
+eyJoaXN0b3J5IjpbLTEyNzI2NzYyOCwxMTk1NjUxNzEwLC02MT
+I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
+ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
+EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
+OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
+IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
+MzM5N119
 -->
