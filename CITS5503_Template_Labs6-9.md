@@ -287,16 +287,15 @@ In the app directory `/opt/wwc/mysites/lab`, run the following command to start 
 python3 manage.py runserver 8000
 ```
 #### Key Parameters:
--   **`manage.py runserver`**: Starts the Django development server.
--   **`8000`**: Specifies the port on which the server will listen for requests. In this case, it's **8000**.
+-   **`python3 manage.py `**: Runs the script to launch the Django server.
+-   **`runserver 8000`**: Specifies the port on which the server will listen for requests. In this case, it's **8000**.
 
-We can now access the web app via `http://13.61.7.212:8000`.
+We can now access the web app via `http://13.61.7.212`.
 ![enter image description here](http://127.0.0.1/assets/lab6-9.png)
 
 ## Set up Django inside the created EC2 instance
 
-### [1] Edit the following files (create them if not exist)
-
+### [1] Edit `polls/view.py`
 In `polls/views.py`, create a view that returns a simple HTTP response "Hello World":
 ```
 from django.http import HttpResponse
@@ -304,7 +303,7 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Hello, world.")
 ```
--   **`HttpResponse`**: A Django class that returns a simple HTTP response containing the string `"Hello, world."`.
+-   **`HttpResponse`**: Returns a simple HTTP response containing the string `"Hello, world."`.
 
 In `polls/urls.py`, map the URL pattern to the view created above:
 
@@ -1204,7 +1203,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5OTM3NTMzMiwxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbLTI0Nzk0NzU5MiwxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
