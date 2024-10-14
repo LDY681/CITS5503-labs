@@ -711,7 +711,7 @@ pip install ipykernel
 ![enter image description here](http://127.0.0.1/assets/lab8-2.png)
 1. **Install ipykernel**: - This package allows Jupyter to communicate with the Python interpreter. 
 
-## AI Training Code to change
+## Code to change
 In the notebook, we already have pre-written code, here we need to chanage constant variables to make sure we create our own environement for the job. In the nest step, I will explain the code in the Jupiter notebook
 ```
 region = 'eu-north-1'  # use the region you are mapped to
@@ -958,7 +958,7 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUzMTMxNDg5Miw0MDY1MjExMTcsLTE1NT
+eyJoaXN0b3J5IjpbMTYzNjg0Njg0Miw0MDY1MjExMTcsLTE1NT
 M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
 NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
 Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
