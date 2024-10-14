@@ -649,17 +649,17 @@ Now with the Django App started and the server is online, we can go to `/admin/`
 <div style="page-break-after: always;"></div>
 
 # Lab 8
-## Install and run jupyter notebooks
-In this step, we will install Jupyter Notebooks and launch it to interact with a dataset using Pandas. Jupyter Notebooks provide an interactive environment for running Python code and exploring data. Follow these steps: 
+## Install and Run Jupyter Notebooks
+In this step, we will install Jupyter Notebooks and use it for trai. Jupyter Notebooks provide an interactive environment for running Python code and exploring data. Follow these steps: 
 1. **Install Jupyter Notebook**:
 	- Run the following command to install the Jupyter Notebook package: 
 ```bash
-	pip install notebook
+pip install notebook
 ```
 2. **Launch Jupyter Notebook**:
 	-   Run the command to start the Jupyter Notebook server:
 ```bash
-	jupyter notebook
+jupyter notebook
 ```
 
 -   **`jupyter notebook`**: This command starts the Jupyter Notebook server and opens a web interface in our browser. By default, it launches at `http://127.0.0.1:8888`, in our case in `8889` because the default port is already in use.
@@ -702,7 +702,7 @@ s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder object with th
 Because our tunning job can't handle non-numerical values, we will traverse the model_data and convert all datas to numeric ones.
 ```
 # Change True/False to 1/0
-model_data  =  model_data.replace({True: 1, False: 0})
+model_data = model_data.replace({True: 1, False: 0})
 ```
 
 ### 4. Running the Notebook
@@ -1200,7 +1200,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzk4MzU1NDQ3LDExOTU2NTE3MTAsLTYxMj
+eyJoaXN0b3J5IjpbMzgwMTA3NDg1LDExOTU2NTE3MTAsLTYxMj
 g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
 MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
 A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
