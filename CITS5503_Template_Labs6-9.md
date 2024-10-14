@@ -1077,19 +1077,45 @@ def detect_entities(text, language_code='en'):
     entities = response['Entities']
     
     for entity in entities:
-        print(f"Entity: {entity['Text']}, Type: {entity['Type']}, Confidence: {round(entity['Score']*100, 2)}%")
+        print(f"Entity: {entity['Text']}, Type: {entity['Type']} with {round(entity['Score']*100, 2)}% confidence")
+
 
 # Test entity detection
 for text in texts:
     detect_entities(text)
+```
+### Code Explanation:
+1.  **`client.detect_entities()`**: Detects entities (e.g., PERSON, ORGANIZATION) from the input text.
+2.  **`response['Entities']`**: Extracts the detected entities and their types.
+
+### Step 4: Key Phrase Detection
+Key phrases are groups of words that represent important concepts in the text.
+```
+def detect_key_phrases(text, language_code='en'):
+    response = client.detect_key_phrases(Text=text, LanguageCode=language_code)
+    key_phrases = response['KeyPhrases']
+    
+    for phrase in key_phrases:
+        print(f"Key Phrase: {phrase['Text']} with {round(phrase['Score']*100, 2)}% confidence")
+
+# Test key phrase detection for text in texts: detect_key_phrases(text)
+```
+
+### Code Explanation:
+1.  **`client.detect_key_phrases()`**: Identifies key phrases within the text.
+2.  **`response['KeyPhrases']`**: Extracts the list of key phrases detected.
+
+### Step 5: Syntax Detection
+Syntax detection identifies parts of speech (POS) such as nouns, verbs, adjectives, etc.
+```
 
 ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1NjgxNDc3MTUsLTIwNjI0NDA3NDgsND
-A2NTIxMTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQz
-ODEzOSwxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC
-04NTAyNjk1NTgsNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0
-MTQwLDUyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLT
-k2MzA4Njk5OCwtMTk1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQx
-NDg0MDUyXX0=
+eyJoaXN0b3J5IjpbLTY5NjYyNzk4MiwtMjA2MjQ0MDc0OCw0MD
+Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
+MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
+g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
+NDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOT
+YzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0
+ODQwNTJdfQ==
 -->
