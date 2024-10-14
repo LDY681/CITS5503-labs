@@ -470,6 +470,7 @@ Now we can access its url with path `/polls/` to see if the mapping works proper
 <div style="page-break-after: always;"></div>
 
 # Lab 7
+## Set up Fabric Connection
 ### [1] Create EC2 Instance
 In the first step, we use our script from **Lab 6** to create a new EC2 instance. We will not elaborate on the code base because it's already covered in previous lab. Run the following command in our local Ubuntu machine:
 ```
@@ -510,7 +511,7 @@ By creating a host configuration, we can use Fabric to connect to the EC2 instan
 ![enter image description here](http://127.0.0.1/assets/lab7-3.png)
 
 
-### Test Fabric Connection
+### [4] Test Fabric Connection
 We will use the following Fabric code to establish a connection to the EC2 instance. Fabric looks up the host file and uses the connection configuration for `24188516-vm-1`. After establishing the connection, we will run a simple command to verify it.
 
 The command `c.run('uname -s')` will return "Linux" as output, confirming that the connection is successful and commands can be executed on the instance. 
@@ -523,12 +524,11 @@ Linux
 ``` 
 #### Key Parameters:
 -   **`Connection()`**: Uses the SSH configuration to connect to the EC2 instance using the alias `24188516-vm-1`.
--   **`c.run('uname -s')`**: The `uname -s` command confirms the operating system on the remote instance is Linux.
+-   **`c.run('uname -s')`**: Runs the `uname -s` command, confirming the operating system on the remote instance is Linux.
 
 ![enter image description here](http://127.0.0.1/assets/lab7-4.png)
 
-### Automation for creating Django App
-
+## Automation for creating Django App
 In this section, we will automate the process of setting up a Python virtual environment, configuring Nginx, and creating a Django app within the EC2 instance using Fabric. The commands from **Lab 6** will be converted to Fabric's `c.run()` for regular commands and `c.sudo()` for commands requiring admin privileges. Additionally, file editing will be handled using `echo`. We will use file I/O to write Nginx configuration to avoid issues with `$` placeholders. Due to the fact that each  `c.run()` command is runned isolately, to persist the sourced virtual environment, we will re-source the environment each time before running further commands.
 
 ### Workflow:
@@ -1199,11 +1199,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTQ5ODk2MTM2LDExOTU2NTE3MTAsLTYxMj
-g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
-MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
-A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
-NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMj
-IwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQz
-Mzk3XX0=
+eyJoaXN0b3J5IjpbLTQ4ODk4MDg2NCwxMTk1NjUxNzEwLC02MT
+I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
+ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
+EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
+OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
+IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
+MzM5N119
 -->
