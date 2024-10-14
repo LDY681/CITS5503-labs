@@ -986,8 +986,7 @@ We'll start by using AWS Comprehend's `detect_dominant_language` method to ident
 3.  **Map Language Codes to Language Names**:
     -   Use a dictionary to map language codes (such as `'en'`, `'fr'`, `'es'`, `'it'`) to their corresponding language names (English, French, Spanish, Italian).
 4.  **Extract Confidence and Print Results**:
-    -   Extract the confidence level Round the confidence score to two decimal places and print the language name along with the confidence percentage.
-
+    -   Extract the confidence level in target language and print the language name along with its confidence percentage.
 ```
 import boto3
 
@@ -1026,28 +1025,19 @@ texts = [
 for text in texts:
     detect_language(text)
 ```
-#### Code Explanation:
-
+#### Code Explanation
 -   **`client = boto3.client('comprehend', region_name=REGION)`**:
-    
     -   Creates an AWS Comprehend client in the specified region (`ap-southeast-2`), allowing you to make requests to the AWS Comprehend service.
 -   **`response = client.detect_dominant_language(Text=text)`**:
-    
     -   Calls the `detect_dominant_language` API to detect the dominant language in the provided text.
 -   **`lang = response['Languages'][0]`**:
-    
     -   Extracts the first (most confident) language from the list of detected languages.
 -   **`language_map = {...}`**:
-    
     -   A dictionary that maps language codes to human-readable language names. If the detected language is in the map, it prints the corresponding language name (e.g., `'en'` -> `'English'`). Otherwise, it defaults to printing the language code.
 -   **`confidence = round(lang['Score'] * 100, 2)`**:
-    
     -   Extracts the confidence score, multiplies it by 100 to convert it to a percentage, and rounds it to two decimal places.
--   **`print(f"{language_name} detected with {confidence}% confidence")`**:
-    
-    -   Prints out the detected language and the confidence level in a human-readable format.
 
-This script can now be tested with different texts in English, Spanish, French, and Italian, and the result will show the detected language with a confidence percentage.
+![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-1.png)
 
 ### Step 2: Sentiment Detection
 Sentiment analysis determines if a text expresses positive, negative, neutral, or mixed sentiment.
@@ -1064,10 +1054,11 @@ for text in texts:
     detect_sentiment(text)
 ```
 ### Code Explanation:
-
 1.  **`client.detect_sentiment()`**: Calls AWS Comprehend to detect the sentiment of the input text.
 2.  **`response['Sentiment']`**: Extracts the detected sentiment (Positive, Negative, Neutral, or Mixed).
 3.  **`response['SentimentScore']`**: Retrieves the confidence scores for each sentiment type.
+
+![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-2.png)
 
 ### Step 3: Entity Detection
 Entities are key elements or items (e.g., persons, organizations) found in text.
@@ -1088,6 +1079,8 @@ for text in texts:
 1.  **`client.detect_entities()`**: Detects entities (e.g., PERSON, ORGANIZATION) from the input text.
 2.  **`response['Entities']`**: Extracts the detected entities and their types.
 
+![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-3.png)
+
 ### Step 4: Key Phrase Detection
 Key phrases are groups of words that represent important concepts in the text.
 ```
@@ -1104,6 +1097,7 @@ def detect_key_phrases(text, language_code='en'):
 ### Code Explanation:
 1.  **`client.detect_key_phrases()`**: Identifies key phrases within the text.
 2.  **`response['KeyPhrases']`**: Extracts the list of key phrases detected.
+![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-4.png)
 
 ### Step 5: Syntax Detection
 Syntax detection identifies parts of speech (POS) such as nouns, verbs, adjectives, etc.
@@ -1124,11 +1118,11 @@ for text in texts:
 1.  **`client.detect_syntax()`**: Analyzes the text for syntactical elements like nouns, verbs, etc.
 2.  **`response['SyntaxTokens']`**: Extracts each word and its corresponding part of speech.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjE0ODUzNTksLTIwNjI0NDA3NDgsND
-A2NTIxMTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQz
-ODEzOSwxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC
-04NTAyNjk1NTgsNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0
-MTQwLDUyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLT
-k2MzA4Njk5OCwtMTk1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQx
-NDg0MDUyXX0=
+eyJoaXN0b3J5IjpbLTg5MDk0MDM3MCwtMjA2MjQ0MDc0OCw0MD
+Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
+MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
+g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
+NDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOT
+YzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0
+ODQwNTJdfQ==
 -->
