@@ -726,16 +726,46 @@ s3.create_bucket(Bucket=bucket, CreateBucketConfiguration=bucket_config) # creat
 s3.put_object(Bucket=bucket, Key=f"{prefix}/") # create a folder object with the prefix
 ```
 
-## Ai
-In the notebook, we already have pre-written code, here we need to chanage constant variables to make sure we create our own environement for the job. In the nest step, I will explain the code in the Jupiter notebook
-```
-region = 'eu-north-1'  # use the region you are mapped to
-student_id = "24188516"  # use your student id
-bucket = '24188516-lab8'  # use <studentid-lab8> as your bucket name
-```
-
 After changing the code, we can run the notebook by `Run` menu.
 ![enter image description here](http://127.0.0.1/assets/lab8-4.png)
+
+## AI training
+
+This section demonstrates how to set up an end-to-end machine learning pipeline using Amazon SageMaker. We'll cover steps for installing the necessary libraries, preparing data, and running a hyperparameter tuning job using XGBoost. The final objective is to use SageMaker for training a model on the Bank Marketing dataset.
+
+----------
+
+### 1. Install Required Libraries
+
+In this step, we will install essential Python libraries, such as SageMaker, Pandas, and Numpy.
+
+#### 1. **Install SageMaker**:
+
+-   Use the following command to install the SageMaker SDK, which allows you to create and manage training jobs, models, and endpoints in AWS.
+
+
+
+`!pip install sagemaker` 
+
+-   **`!pip install sagemaker`**: This command installs the `sagemaker` package, which provides APIs for managing SageMaker resources like training jobs, models, and endpoints.
+
+#### 2. **Install Pandas**:
+
+-   Pandas is used for data manipulation and analysis. Install it using the command below:
+
+
+
+`!pip install pandas` 
+
+#### 3. **Install Numpy**:
+
+-   Numpy is used for numerical operations. Install it using the command below:
+
+
+
+`!pip install numpy`
+
+
 
 
 <div style="page-break-after: always;"></div>
@@ -743,11 +773,11 @@ After changing the code, we can run the notebook by `Run` menu.
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA1ODI1MTM3Nyw0MDY1MjExMTcsLTE1NT
-M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
-NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
-Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
-LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOT
-U4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1
-NzkzMTldfQ==
+eyJoaXN0b3J5IjpbLTE2NTAxNDQ1NTksNDA2NTIxMTE3LC0xNT
+UzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgz
+NDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNj
+Y2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2
+NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMT
+k1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2
+NTc5MzE5XX0=
 -->
