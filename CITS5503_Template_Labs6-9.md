@@ -772,8 +772,10 @@ s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder in S3
 -   **`put_object()`**: Creates a folder inside the S3 bucket for storing data.
 -   **`!wget`** and **`!unzip`**: Downloads and unzips the dataset to our local folder.
 
-We
+We can see that our folder has been created in the S3 bucket.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-5.png)
+
+The dataset has been downloaded and uncompressed.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-9.png)
 
 ### 3. Data Preparation and Processing
@@ -788,6 +790,7 @@ We will prepare the dataset for training by converting categorical data to binar
     -   Split the data into training (70%), validation (20%), and test (10%) datasets.
 4.  **Fix Non-Numeric Data**:
     -   Replace `True/False` values with `1/0` to avoid non-numeric errors in SageMaker.
+
 ```
 # Load dataset into Pandas
 data = pd.read_csv("./bank-additional/bank-additional-full.csv", sep=";")
@@ -832,7 +835,6 @@ boto3.Session().resource("s3").Bucket(bucket).Object(
 boto3.Session().resource("s3").Bucket(bucket).Object(
     os.path.join(prefix, "validation/validation.csv")
 ).upload_file("validation.csv")
-
 ``` 
 #### Code Explanation:
 -   **`get_dummies()`**: Converts categorical variables into dummy (binary) variables.
@@ -1183,7 +1185,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0ODM0MDI5MCwxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbMTYxODAwNDcxMywxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
