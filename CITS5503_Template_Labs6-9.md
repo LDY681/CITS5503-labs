@@ -537,7 +537,7 @@ Host 24188516-vm-1
 	IdentityFile /home/liudayubob/cits5503/lab7/24188516-key-lab7.pem
 ```
 
-Rely on the fabric code below to connect to you instance. this will look up the host file, find the connection configuration from the host 24188516-vm-1 and made a connection.
+Rely on the fabric code below to connect to you instance. this will look up the host file, find the connection configuration from the host 24188516-vm-1 and made a connection. We can see that the term
 
 ```
 python3
@@ -565,11 +565,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwMDIyMjMxMTUsLTEyMjA4OTc4OTksND
-g4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3NDMzOTcsLTIwODA1
-NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3OTMxOSwxNTkwNzA4MD
-ksLTE1NDAzNjYzODYsLTEwOTgzNjk0NjksLTE0MzI5MDMxMDgs
-LTM3NDI5MzY2NywtMTc2ODc1NjgzMywtMTk0MjU0MTI3NywxOD
-UxOTY0NDg4LC0xNjc1ODM5Nzc1LC0xODI3NDI4NDc1LC0xNzcw
-OTY3NjQzLDE4NzM5MDMyNDVdfQ==
+eyJoaXN0b3J5IjpbODQxMzkyNTg2LC0xMjIwODk3ODk5LDQ4OD
+g2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4
+MDM5LDEzNDE0ODQwNTIsLTIxMTY1NzkzMTksMTU5MDcwODA5LC
+0xNTQwMzY2Mzg2LC0xMDk4MzY5NDY5LC0xNDMyOTAzMTA4LC0z
+NzQyOTM2NjcsLTE3Njg3NTY4MzMsLTE5NDI1NDEyNzcsMTg1MT
+k2NDQ4OCwtMTY3NTgzOTc3NSwtMTgyNzQyODQ3NSwtMTc3MDk2
+NzY0MywxODczOTAzMjQ1XX0=
 -->
