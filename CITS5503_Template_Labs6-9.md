@@ -604,7 +604,6 @@ def configure_nginx(c):
     # Write the nginx config locally and upload ($placholder were messed up with echo)
     with open("nginx_temp.conf", "w") as f:
         f.write(nginx_config)
-    
     c.put("nginx_temp.conf", "/tmp/nginx_temp.conf")
     c.sudo('mv /tmp/nginx_temp.conf /etc/nginx/sites-enabled/default')
     
@@ -1199,7 +1198,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzNTYwNjUxMzgsMTE5NTY1MTcxMCwtNj
+eyJoaXN0b3J5IjpbLTE2MDg1Mjc1MjAsMTE5NTY1MTcxMCwtNj
 EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
 NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
 wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
