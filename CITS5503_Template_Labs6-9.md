@@ -606,7 +606,6 @@ Here is the script that automates these steps:
 ```python
 from fabric import Connection
 
-
 EC2_INSTANCE_NAME = '24188516-vm-1'
 PROJECT_DIR = '/opt/wwc/mysites/lab'
 
@@ -679,9 +678,29 @@ if __name__ == "__main__":
     setup_django_app(conn)
     configure_nginx(conn)
     run_django_server(conn)
-
-
-
+```
+### Code Explanation:
+1.  **Install Prerequisites**:
+    -   **`apt-get update`** and **`apt-get upgrade`**: Updates and upgrades system packages.
+    -   **`apt-get install python3-venv`**: Installs Python 3's virtual environment tool.
+    -   **`apt install nginx`**: Installs the Nginx web server for handling HTTP traffic.
+2.  **Set Virtual Environment**:
+    -   **`mkdir -p`**: Creates the project directory.
+    -   **`chown`**: Changes ownership of the directory to the `ubuntu` user.
+    -   **`python3 -m venv myvenv`**: Creates a virtual environment.
+    -   **`pip install django`**: Installs Django in the virtual environment.
+3.  **Setup Django App**:
+    -   **`django-admin startproject lab`**: Creates the Django project.
+    -   **`python3 manage.py startapp polls`**: Creates the `polls` app.
+    -   **`echo`**: Writes the `views.py`, `urls.py`, and `lab/urls.py` with proper Django routes for displaying "Hello, world."
+4.  **Configure Nginx**:
+    -   **Nginx config file**: Writes a configuration file to forward requests to Django on port 8000.
+    -   **`service nginx restart`**: Restarts Nginx to apply the changes.
+5.  **Run Django Server**:
+    -   **`manage.py runserver`**: Runs the Django development server on port 8000.
+![enter image description here](http://127.0.0.1/assets/lab7-5.png)
+![enter image description here](http://127.0.0.1/assets/lab7-6.png)
+![enter image description here](http://127.0.0.1/assets/lab7-7.png)
 <div style="page-break-after: always;"></div>
 
 # Lab 8
@@ -691,11 +710,11 @@ if __name__ == "__main__":
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc2NTEyNDAyMiwxNjkxMjgzNDUzLDEwOD
-MwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4
-LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
-g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
-NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LD
-E1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQz
-MjkwMzEwOF19
+eyJoaXN0b3J5IjpbLTE3NDkxNzM5NTcsMTY5MTI4MzQ1MywxMD
+gzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYxNjk2
+OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLTEyMj
+A4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3NDMz
+OTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3OTMxOS
+wxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgzNjk0NjksLTE0
+MzI5MDMxMDhdfQ==
 -->
