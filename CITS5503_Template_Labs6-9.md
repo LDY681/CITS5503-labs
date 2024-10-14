@@ -169,12 +169,12 @@ cd /opt/wwc/mysites
    - **` mkdir -p`**: Creates the specified directory path (`/opt/wwc/mysites`). The `-p` option ensures that parent directories are created as needed without error if they already exist.
 
 2. **Navigate to the Created Directory**:
-   - **`cd /opt/wwc/mysites`**: Changes the working directory to `/opt/wwc/mysites`. This is the directory where subsequent files or projects will be managed.
+   - **`cd /opt/wwc/mysites`**: Changes the working directory to `/opt/wwc/mysites`. This is the directory where our project will be stored.
 
 ![enter image description here](http://127.0.0.1/assets/lab6-4.png)
 
 
-### Set Up a Virtual Environment
+### [4] Set Up a Virtual Environment
 
 To create a new isolated Python environment, run the following command:
 
@@ -185,10 +185,9 @@ python3 -m venv myvenv
 #### Key Parameters:
 
 -   **`-m venv`**: Uses the `venv` module to create a new virtual environment.
--   **`myvenv`**: Specifies the name of the directory to store the virtual environment. You can replace `myvenv` with any directory name of your choice.
+-   **`myvenv`**: Specifies the name of the directory to store the virtual environment. 
 
-This command will create a new directory called `myvenv` containing the Python interpreter, standard library, and other resources, allowing you to manage dependencies separately from the global Python environment.
-
+This command will create a new directory called `myvenv` containing the Python interpreter, standard library, and other resources, allowing us to manage dependencies separately from the global Python environment.
 ![enter image description here](http://127.0.0.1/assets/lab6-5.png)
 
 ### [5] Activate the virtual environment
@@ -1223,11 +1222,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzU2ODI0MTI4LDExOTU2NTE3MTAsLTYxMj
-g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
-MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
-A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
-NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMj
-IwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQz
-Mzk3XX0=
+eyJoaXN0b3J5IjpbMTMwODgxMDYzOCwxMTk1NjUxNzEwLC02MT
+I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
+ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
+EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
+OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
+IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
+MzM5N119
 -->
