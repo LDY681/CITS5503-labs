@@ -1079,7 +1079,7 @@ for text in texts:
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-4.png)
 
 ### Step 5: Syntax Detection
-Syntax detection identifies parts of speech (POS) such as nouns, verbs, adjectives, etc.
+**Answer**: Syntax assigns a token to each letter called parts of speech (POS), such as nouns, verbs, adjectives, etc.
 ```
 def detect_syntax(text, language_code='en'):
     response = client.detect_syntax(Text=text, LanguageCode=language_code)
@@ -1215,11 +1215,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMjE2NTQ0MjUsLTM4Nzk5ODAzMywxMT
-k1NjUxNzEwLC02MTI4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIx
-MTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOS
-wxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAy
-Njk1NTgsNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLD
-UyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4
-Njk5OF19
+eyJoaXN0b3J5IjpbNzYzMDcyMzgzLC0zODc5OTgwMzMsMTE5NT
+Y1MTcxMCwtNjEyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTEx
+NywtMTU1MzQxNDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMT
+Y5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5
+NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1Mj
+A5MTI2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5
+OThdfQ==
 -->
