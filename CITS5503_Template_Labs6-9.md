@@ -526,7 +526,6 @@ pip install fabric
 ```
 ![enter image description here](http://127.0.0.1/assets/lab7-2.png)
 You will need to create a config file in ~/.ssh with the contents, by `vi ~/.ssh/config`. Then we will input our instance name as host key, IP address as host name and our genrated pem key as identifyFile, the user is ubuntu by default because the AMI image is a ubuntu image.
-![enter image description here](http://127.0.0.1/assets/lab7-2.png)
 ```
 Host 24188516-vm-1
 	Hostname 16.170.252.129
@@ -536,9 +535,9 @@ Host 24188516-vm-1
 	PasswordAuthentication no
 	IdentityFile /home/liudayubob/cits5503/lab7/24188516-key-lab7.pem
 ```
+![enter image description here](http://127.0.0.1/assets/lab7-3.png)
 
 Rely on the fabric code below to connect to you instance. this will look up the host file, find the connection configuration from the host 24188516-vm-1 and made a connection. We can see that the terminal will output "Linux" from c.run('uname -s') to verify that we have established a connection and able to perform commands on the instance.
-
 ```
 python3
 >>> from fabric import Connection
@@ -546,6 +545,7 @@ python3
 >>> result = c.run('uname -s')
 >>>
 ```
+![enter image description here](http://127.0.0.1/assets/lab7-4.png)
 
 ### Use Fabric for automation
 
@@ -564,7 +564,7 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE2MDUxNjc2LDUyMDkxMjY2NiwtMTIyMD
+eyJoaXN0b3J5IjpbNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
 g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
 NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LD
 E1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQz
