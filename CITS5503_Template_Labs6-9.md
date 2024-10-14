@@ -1123,9 +1123,9 @@ for text in texts:
 ## AWS Rekognition
 In this task, we will leverage AWS Rekognition to analyze image for **Label Recognition**, **Image Moderation**, **Facial Analysis** and **Extract Text from an image**.
 
-### Step1: Setting up the S3 Bucket and Uploading Images
+### Step1: Setting up instances and Uploading Images
 #### Workflow
-1.  **Create the S3 Bucket**: First, we create an S3 bucket using `boto3` with a unique bucket name that follows the format `24188516-lab9` in the region `eu-north-1`.
+1.  **Create the Bucket/Rekognition Client**: First, we create an S3 bucket and rekognition clien using `boto3` with a unique bucket name that follows the format `24188516-lab9` in the region `eu-north-1`.
 2.  **Upload Images**: After the bucket is created, we upload the four images (`urban.jpg`, `beach.jpg`, `faces.jpg`, `text.jpg`) to this S3 bucket for AWS Rekognition to analyze.
 
 ```
@@ -1138,6 +1138,7 @@ BUCKET_NAME = f"{STUDENT_ID}-lab9"
 
 # Initialize S3 client & Rekognition client
 s3 = boto3.client('s3', region_name=REGION)
+rekognition = boto3.client('rekognition', region_name=REGION)
 
 # List of images to upload
 images = ['urban.jpg', 'beach.jpg', 'faces.jpg', 'text.jpg']
@@ -1159,6 +1160,7 @@ def upload_images():
 3.  **`upload_file()`**: Uploads the specified images to the bucket.
 
 ### Step2: Testing AWS Rekognition for Task Analysis
+
 #### Workflow
 1.  **Label Recognition**: Recognize objects, scenes, or actions from the uploaded images.
 2.  **Image Moderation**: Check the images for explicit or inappropriate content.
@@ -1166,9 +1168,6 @@ def upload_images():
 4.  **Text Extraction**: Extract and analyze text from the image containing text.
 
 ```
-# Initialize Rekognition client
-rekognition = boto3.client('rekognition', region_name=REGION)
-
 def label_recognition(image):
     response = rekognition.detect_labels(
         Image={'S3Object': {'Bucket': BUCKET_NAME, 'Name': image}},
@@ -1207,13 +1206,14 @@ def text_extraction(image):
         print(f"  {text['DetectedText']} (Confidence: {round(text['Confidence'], 2)}%)")
 
 # Run the analyses on each image
-for image in images:
-    label_recognition(image)
-    image_moderation(image)
-    if image == 'faces.jpg':
-        facial_analysis(image)
-    if image == 'text.jpg':
-        text_extraction(image)
+def run_analyses():
+    for image in images:
+        label_recognition(image)
+        image_moderation(image)
+        if image == 'faces.jpg':
+            facial_analysis(image)
+        if image == 'text.jpg':
+            text_extraction(image)
 
 if  __name__  ==  "__main__":
 	upload_images()
@@ -1229,11 +1229,11 @@ if  __name__  ==  "__main__":
 4.  **Text Extraction (`detect_text`)**:
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY2Mjk3NjA1LC02MTI4NTA0MTAsLTIwNj
-I0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0
-ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLDEwODMwMzUxMSwxND
-I5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4LDExNDAyOTA3
-NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0OD
-g4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5NywtMjA4MDU3
-ODAzOV19
+eyJoaXN0b3J5IjpbMTA4NTkwMzIzNywtNjEyODUwNDEwLC0yMD
+YyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQxNDgzNywtMTU1MzQx
+NDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1MywxMDgzMDM1MTEsMT
+QyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYxNjk2OCwxMTQwMjkw
+NzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLTEyMjA4OTc4OTksND
+g4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3NDMzOTcsLTIwODA1
+NzgwMzldfQ==
 -->
