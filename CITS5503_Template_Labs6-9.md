@@ -867,10 +867,10 @@ Next, we'll configure and launch a hyperparameter tuning job using SageMaker's X
     -   Define a set of hyperparameter ranges that will be tuned using SageMaker. These include parameters like `eta` (learning rate), `min_child_weight`, `alpha` and `max_depth`.
     -   Set the resource limits and specify that the objective is to maximize the area under the curve (AUC) for validation data.
 2.  **Specify Training Job**:
-    -   Specify the training algorithm (XGBoost), input data (from S3), and the resource attr(instance type, count, and storage) for the training job.
+    -   Specify the training algorithm (XGBoost), input data (from S3), and the resource attributes (instance type, count, and storage).
     -   Set a stopping condition to ensure the training job doesn't run indefinitely and define static hyperparameters like `eval_metric` and `objective`.
 3.  **Launch Hyperparameter Tuning**:
-    -   Use the SageMaker API to launch the hyperparameter tuning job, which will train multiple models and return the best one based on the defined metric (`validation:auc`).
+    -   Use the SageMaker APIs to launch the hyperparameter tuning job, train multiple models and return the best one based on the defined metric (`validation:auc`).
 
 ```
 from time import gmtime, strftime, sleep
@@ -924,11 +924,22 @@ training_job_definition = {
 	TrainingJobDefinition=training_job_definition,
 )
 ```  
-#### Code Explanation:
-
--   **`tuning_job_config`**: Specifies the parameters to optimize, such as `eta`, `min_child_weight`, and `max_depth`.
--   **`training_job_definition`**: Defines the algorithm, input data, and resources for the training job.
--   **`create_hyper_parameter_tuning_job()`**: Launches the tuning job on SageMaker to optimize model performance.
+> #### Code Breakdown:
+1.  **`tuning_job_name`**: Creates a unique name for the tuning job, which is required for tracking and managing the job on SageMaker.
+2.  **`tuning_job_config`**:
+    -   **`ParameterRanges`**: Defines the range of hyperparameters to be optimized. The ranges for `eta`, `min_child_weight`, and `alpha` (continuous parameters) and `max_depth` (integer parameter) are set.
+    -   **`ResourceLimits`**: Restricts the number of training jobs to 2, both for maximum jobs and parallel jobs.
+    -   **`Strategy`**: Specifies that SageMaker will use Bayesian optimization to explore the hyperparameter space.
+    -   **`HyperParameterTuningJobObjective`**: Sets the objective to maximize the area under the ROC curve (AUC) on the validation dataset.
+3.  **`retrieve()`**: Retrieves the latest version of the XGBoost container image from SageMaker for the specified region.
+4.  **`training_job_definition`**:
+    -   **`AlgorithmSpecification`**: Specifies the XGBoost algorithm and the input mode (File-based input).
+    -   **`InputDataConfig`**: Specifies the paths in S3 where the training and validation data are stored.
+    -   **`OutputDataConfig`**: Defines the S3 location where the training job outputs (such as model artifacts) will be saved.
+    -   **`ResourceConfig`**: Configures the compute resources for the training job, including the instance type, instance count, and storage.
+    -   **`StoppingCondition`**: Limits the maximum run time of the training job to 12 hours (43,200 seconds).
+    -   **`StaticHyperParameters`**: Sets fixed hyperparameters that are not tuned, such as `objective` (binary classification) and `eval_metric` (AUC).
+5.  **`create_hyper_parameter_tuning_job()`**: Launches the tuning job using the defined configuration, which SageMaker will execute to train multiple models, evaluate them, and return the best configuration.
 
 ### 5. Monitor Hyperparameter Tuning Job
 After launching the hyperparameter tuning job, us can monitor its progress in the AWS console.
@@ -1203,11 +1214,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTM4ODkzNzcsLTM4Nzk5ODAzMywxMT
-k1NjUxNzEwLC02MTI4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIx
-MTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOS
-wxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAy
-Njk1NTgsNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLD
-UyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4
-Njk5OF19
+eyJoaXN0b3J5IjpbLTc5Nzc3MDY1LC0zODc5OTgwMzMsMTE5NT
+Y1MTcxMCwtNjEyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTEx
+NywtMTU1MzQxNDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMT
+Y5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5
+NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1Mj
+A5MTI2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5
+OThdfQ==
 -->
