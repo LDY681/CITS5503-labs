@@ -525,7 +525,7 @@ First, we will install fabric by:
 pip install fabric
 ```
 
-You will need to create a config file in ~/.ssh with the contents, by `vi ~/.ssh/config`. Then will 
+You will need to create a config file in ~/.ssh with the contents, by `vi ~/.ssh/config`. Then we will input our instance name as host key, IP address as host name and our genrated pem key as identifyFile, the user is ubuntu by default because the AMI image is a ubuntu image.
 
 ```
 Host <your EC2 instance name>
@@ -567,7 +567,7 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU1MDA2Mzg0OSwtMTIyMDg5Nzg5OSw0OD
+eyJoaXN0b3J5IjpbMTM1MjI4MTAwNSwtMTIyMDg5Nzg5OSw0OD
 g4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5NywtMjA4MDU3
 ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LDE1OTA3MDgwOS
 wtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQzMjkwMzEwOCwt
