@@ -768,8 +768,8 @@ s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder in S3
 > #### Code Breakdown:
 -   **`sagemaker.Session()`**: Initializes a SageMaker session to interact with AWS SageMaker services.
 -   **`boto3.client('s3')`**: Creates an S3 client to interact with S3 services.
--   **`create_bucket()`**: Creates an S3 bucket in the specified region.
--   **`put_object()`**: Creates a folder inside the S3 bucket for storing data.
+-   **`s3.create_bucket()`**: Creates an S3 bucket in the specified region.
+-   **`s3.put_object()`**: Creates a folder inside the S3 bucket for storing data.
 -   **`!wget`** and **`!unzip`**: Downloads and unzips the dataset to our local folder.
 
 We can see that our folder has been created in the S3 bucket.
@@ -1186,7 +1186,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUwMjQ0NjY5NywxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbLTM4Nzk5ODAzMywxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
