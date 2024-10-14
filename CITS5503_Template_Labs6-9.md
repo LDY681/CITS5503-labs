@@ -854,7 +854,7 @@ boto3.Session().resource("s3").Bucket(bucket).Object(
 - **`os.path.join()`**: Combines the bucket name and the prefix to create the correct path for uploading files to S3.
 - **`Object.upload_file()`**: Uploads the prepared training and validation CSV files to the specified S3 bucket to use during training.
 
-We can
+We can see that the dataset have been created and uploaded to our designated directories in the S3 bucket.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-6.png)
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-7.png)
 
@@ -1199,7 +1199,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MDkyODU0MzMsLTM4Nzk5ODAzMywxMT
+eyJoaXN0b3J5IjpbLTE4NDg0NTk1MTEsLTM4Nzk5ODAzMywxMT
 k1NjUxNzEwLC02MTI4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIx
 MTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOS
 wxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAy
