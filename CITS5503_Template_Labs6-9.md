@@ -666,14 +666,13 @@ if __name__ == "__main__":
     -   **`apt-get install python3-venv`**: Installs Python 3's virtual environment tool.
     -   **`apt install nginx`**: Installs the Nginx web server for handling HTTP traffic.
 2.  **Set Virtual Environment**:
-    -   **`mkdir -p`**: Creates the project directory.
-    -   **`chown`**: Changes ownership of the directory to the `ubuntu` user.
+    -   **`mkdir -p`**: Creates the project directory to store our virtual environment settings and django app.
     -   **`python3 -m venv myvenv`**: Creates a virtual environment.
     -   **`pip install django`**: Installs Django in the virtual environment.
 3.  **Setup Django App**:
     -   **`django-admin startproject lab`**: Creates the Django project.
     -   **`python3 manage.py startapp polls`**: Creates the `polls` app.
-    -   **`echo`**: Writes the `views.py`, `urls.py`, and `lab/urls.py` with proper Django routes for displaying "Hello, world."
+    -   **`echo XXX`**: Writes the `views.py`, `urls.py`, and `lab/urls.py` with proper Django routes for displaying "Hello, world."
 4.  **Configure Nginx**:
     -   **Nginx config file**: Writes a configuration file to forward requests to Django on port 8000.
     -   **`service nginx restart`**: Restarts Nginx to apply the changes.
@@ -691,11 +690,11 @@ if __name__ == "__main__":
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ0MTE0Njg5NCwxNjkxMjgzNDUzLDEwOD
-MwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4
-LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
-g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
-NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LD
-E1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQz
-MjkwMzEwOF19
+eyJoaXN0b3J5IjpbMjc0NDM4MTM5LDE2OTEyODM0NTMsMTA4Mz
+AzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5Njgs
+MTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMjIwOD
+k3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQzMzk3
+LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1NzkzMTksMT
+U5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMDk4MzY5NDY5LC0xNDMy
+OTAzMTA4XX0=
 -->
