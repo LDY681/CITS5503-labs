@@ -293,8 +293,8 @@ python3 manage.py runserver 8000
 We can now access the web app via `http://13.61.7.212`.
 ![enter image description here](http://127.0.0.1/assets/lab6-9.png)
 
-## Set up Django inside the created EC2 instance
-In this step, rather than running on local machine, we will set up our Django App in the EC2 instance.
+## Set up Django App
+In this step, we will modify the Django App to display a simple "Hello, World" message when visiting `/polls` page and display the admin interface when vist
 ### [1] Edit `polls/view.py`
 In `polls/views.py`, create a view that returns a simple HTTP response "Hello World":
 ```
@@ -1205,7 +1205,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTk0OTY3NzU3NiwxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbLTczNzI1MzcyNSwxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
