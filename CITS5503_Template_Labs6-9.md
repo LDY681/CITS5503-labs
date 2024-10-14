@@ -933,19 +933,36 @@ training_job_definition = {
     "OutputDataConfig": {"S3OutputPath": f"s3://{bucket}/{prefix}/output"},
     "ResourceConfig": {"InstanceCount": 1, "InstanceType": "ml.m5.xlarge", "VolumeSizeInGB": 10},
     "RoleArn": sagemaker_role,
-    "StoppingCondition": {"MaxRuntimeInSeconds": 43200}, "StaticHyperParameters": {"eval_metric": "auc", "num_round": "1", "objective": "binary:logistic"}, } # Launch the hyperparameter tuning job smclient.create_hyper_parameter_tuning_job( HyperParameterTuningJobName=tuning_job_name, HyperParameterTuningJobConfig=tuning_job_config, TrainingJobDefinition=training_job_definition, )
+    "StoppingCondition": {"MaxRuntimeInSeconds": 43200},
+    "StaticHyperParameters": {"eval_metric": "auc", "num_round": "1", "objective": "binary:logistic"}, }
 
+# Launch the hyperparameter tuning jobsmclient.create_hyper_parameter_tuning_job(
+	HyperParameterTuningJobName=tuning_job_name,
+	HyperParameterTuningJobConfig=tuning_job_config,
+	TrainingJobDefinition=training_job_definition,
+)
 ```  
+#### Code Explanation:
+
+-   **`tuning_job_config`**: Specifies the parameters to optimize, such as `eta`, `min_child_weight`, and `max_depth`.
+-   **`training_job_definition`**: Defines the algorithm, input data, and resources for the training job.
+-   **`create_hyper_parameter_tuning_job()`**: Launches the tuning job on SageMaker to optimize model performance.
+
+### 5. Monitor Hyperparameter Tuning Job
+After launching the hyperparameter tuning job, you can monitor its progress in the AWS console.
+
+
+
 <div style="page-break-after: always;"></div>
 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNDYyMTI5NDIsNDA2NTIxMTE3LC0xNT
-UzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgz
-NDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNj
-Y2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2
-NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMT
-k1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2
-NTc5MzE5XX0=
+eyJoaXN0b3J5IjpbMTUzMTMxNDg5Miw0MDY1MjExMTcsLTE1NT
+M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
+NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
+Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
+LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOT
+U4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1
+NzkzMTldfQ==
 -->
