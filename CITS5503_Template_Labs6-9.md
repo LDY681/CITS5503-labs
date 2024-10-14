@@ -934,14 +934,14 @@ training_job_definition = {
 3.  **`training_job_definition = {}`**:
     -   **`AlgorithmSpecification`**: Specifies the XGBoost algorithm and the input mode (File-based input).
     -   **`InputDataConfig`**: Specifies the paths in S3 where the training and validation data are stored.
-    -   **`OutputDataConfig`**: Defines the S3 location where the training job outputs (such as model artifacts) will be saved.
+    -   **`OutputDataConfig`**: Defines the S3 location where the training job outputs will be saved.
     -   **`ResourceConfig`**: Configures the compute resources for the training job, including the instance type, instance count, and storage.
     -   **`StoppingCondition`**: Limits the maximum run time of the training job to 12 hours (43,200 seconds).
     -   **`StaticHyperParameters`**: Sets fixed hyperparameters that are not tuned, such as `objective` (binary classification) and `eval_metric` (AUC).
-4.  **`create_hyper_parameter_tuning_job()`**: Launches the tuning job using the defined configuration, which SageMaker will execute to train multiple models, evaluate them, and return the best configuration.
+4.  **`create_hyper_parameter_tuning_job()`**: Launches the tuning job using the defined configuration.
 
 ### 5. Monitor Hyperparameter Tuning Job
-After launching the hyperparameter tuning job, us can monitor its progress in the AWS console.
+After launching the hyperparameter tuning job, we can monitor its progress in the AWS console.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-8.png)
 
 
@@ -1213,11 +1213,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDgyMDYzMjAzLC0zODc5OTgwMzMsMTE5NT
-Y1MTcxMCwtNjEyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTEx
-NywtMTU1MzQxNDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMT
-Y5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5
-NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1Mj
-A5MTI2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5
-OThdfQ==
+eyJoaXN0b3J5IjpbMTE4NDY0MTM2NywtMzg3OTk4MDMzLDExOT
+U2NTE3MTAsLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjEx
+MTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LD
+E2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2
+OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNT
+IwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2
+OTk4XX0=
 -->
