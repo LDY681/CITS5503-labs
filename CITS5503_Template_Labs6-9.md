@@ -1123,13 +1123,52 @@ for text in texts:
 ## AWS Rekognition
 In this task, we will leverage AWS Rekognition to analyze image for **Label Recognition**, **Image Moderation**, **Facial Analysis** and **Extract Text from an image**.
 
+### Step1: Setting up the S3 Bucket and Uploading Images
+#### Workflow
+1.  **Create the S3 Bucket**: First, we create an S3 bucket using `boto3` with a unique bucket name that follows the format `24188516-lab9` in the region `eu-north-1`.
+2.  **Upload Images**: After the bucket is created, we upload the four images (`urban.jpg`, `beach.jpg`, `faces.jpg`, `text.jpg`) to this S3 bucket for AWS Rekognition to analyze.
 
+```
+import boto3
+
+# Constants
+REGION = "ap-southeast-2"
+STUDENT_ID = "24188516"
+BUCKET_NAME = f"{STUDENT_ID}-lab9"
+
+# Initialize S3 client
+s3 = boto3.client('s3', region_name=REGION)
+
+# Create the S3 bucket
+bucket_config = {'LocationConstraint': REGION}
+s3.create_bucket(Bucket=BUCKET_NAME, CreateBucketConfiguration=bucket_config)
+
+# List of images to upload
+images = ['urban.jpg', 'beach.jpg', 'faces.jpg', 'text.jpg']
+
+# Upload images to the bucket
+for image in images:
+    s3.upload_file(image, BUCKET_NAME, image)
+print(f"Images uploaded to {BUCKET_NAME}")
+```
+### Code Explanation:
+
+1.  **`boto3.client('s3')`**: Initializes the S3 client to interact with the AWS S3 service.
+2.  **`create_bucket()`**: Creates an S3 bucket in the specified region, using the student's ID as part of the bucket name.
+3.  **`upload_file()`**: Uploads the specified images to the bucket.
+
+### Workflow: Testing AWS Rekognition for Different Analyses
+
+1.  **Label Recognition**: Recognize objects, scenes, or actions from the uploaded images.
+2.  **Image Moderation**: Check the images for explicit or inappropriate content.
+3.  **Facial Analysis**: Analyze facial attributes in the images, such as emotions, gender, and age.
+4.  **Text Extraction**: Extract and analyze text from the image containing text.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTA0Nzk4ODM3LC0yMDYyNDQwNzQ4LDQwNj
-UyMTExNywtMTU1MzQxNDgzNywtMTU1MzQxNDgzNywyNzQ0Mzgx
-MzksMTY5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtOD
-UwMjY5NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0
-MCw1MjA5MTI2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05Nj
-MwODY5OTgsLTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4
-NDA1Ml19
+eyJoaXN0b3J5IjpbMTA1NzU4MDk1MywtMjA2MjQ0MDc0OCw0MD
+Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
+MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
+g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
+NDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOT
+YzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0
+ODQwNTJdfQ==
 -->
