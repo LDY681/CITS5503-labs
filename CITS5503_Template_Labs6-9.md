@@ -735,7 +735,7 @@ s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder object with th
 ```
 
 ### 3. Convert True/False to 1/0
-Because our tunning job can't handle non-numerical values, we will traverse the model_data and convert all datas tonumeric ones
+Because our tunning job can't handle non-numerical values, we will traverse the model_data and convert all datas to numeric ones.
 ```
 # Change True/False to 1/0
 model_data  =  model_data.replace({True: 1, False: 0})
@@ -768,11 +768,6 @@ To begin, we need to install several essential libraries such as SageMaker, Pand
 !pip install pandas
 !pip install numpy
 ```
-#### Code Explanation:
-
--   **`!pip install sagemaker`**: Installs the `sagemaker` SDK for AWS machine learning tasks.
--   **`!pip install pandas`**: Installs Pandas, a library for data manipulation.
--   **`!pip install numpy`**: Installs Numpy, a library for numerical operations.
 
 ### 2. Prepare SageMaker Session and S3 Bucket
 
@@ -975,11 +970,11 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwODAxMTUyNDQsNDA2NTIxMTE3LC0xNT
-UzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgz
-NDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNj
-Y2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2
-NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMT
-k1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2
-NTc5MzE5XX0=
+eyJoaXN0b3J5IjpbLTczNTkyMjQxMSw0MDY1MjExMTcsLTE1NT
+M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
+NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
+Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
+LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOT
+U4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1
+NzkzMTldfQ==
 -->
