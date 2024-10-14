@@ -580,14 +580,14 @@ def setup_django_app(c):
 
     # Polls app
     c.run(f'echo "from django.http import HttpResponse" > {PROJECT_DIR}/polls/views.py')
-    c.run(f'echo "def index(request): return HttpResponse(\'Hello, world.\')" >> {PROJECT_DIR}/polls/views.py')
+	c.run(f'echo "def index(request): return HttpResponse(\'Hello, world.\')" >> {PROJECT_DIR}/polls/views.py')
     
-	# Admin app
+	# Admin app and routing
     c.run(f'echo "from django.urls import path\nfrom . import views\nurlpatterns = [path(\'\', views.index, name=\'index\')]" > {PROJECT_DIR}/polls/urls.py')
     c.run(f'echo "from django.urls import include, path\nfrom django.contrib import admin\nurlpatterns = [path(\'polls/\', include(\'polls.urls\')), path(\'admin/\', admin.site.urls)]" > {PROJECT_DIR}/lab/urls.py')
 
 def configure_nginx(c):
-    # Double $ to e
+    # Double $ to escape
     nginx_config = '''
     server {
       listen 80 default_server;
@@ -1200,7 +1200,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQyNTkwODEzLDExOTU2NTE3MTAsLTYxMj
+eyJoaXN0b3J5IjpbLTkzMzk4NzY2LDExOTU2NTE3MTAsLTYxMj
 g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
 MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
 A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
