@@ -218,13 +218,13 @@ python3 manage.py startapp polls
 ![enter image description here](http://127.0.0.1/assets/lab6-6.png)
 ![enter image description here](http://127.0.0.1/assets/lab6-7.png)
 
-Once the commands are executed, Django creates the following structure for your project:
+Once the commands are executed, Django creates the following structure for our project:
 
 - **`lab/`**: The project directory containing the settings and configurations for the entire Django project.
   - **`__init__.py`**: Marks the directory as a Python package.
   - **`settings.py`**: Contains project settings such as installed apps, middleware, and database configurations.
   - **`urls.py`**: The project's URL declarations for routing HTTP requests.
-  - **`wsgi.py`**: The entry point for WSGI-compatible web servers to serve your project.
+  - **`wsgi.py`**: The entry point for WSGI-compatible web servers to serve our project.
   - **`asgi.py`**: The entry point for ASGI-compatible servers for asynchronous support.
 - **`manage.py`**: A command-line utility to interact with the Django project (e.g., running the server, creating migrations).
 
@@ -249,12 +249,12 @@ apt install nginx
 #### Key Parameters:
 -   **`install nginx`**: Downloads and installs the `nginx` package from the repository, including all necessary dependencies.
 
-This command sets up the Nginx web server, which can be used as a reverse proxy, load balancer, or HTTP cache for your applications.
+This command sets up the Nginx web server, which can be used as a reverse proxy, load balancer, or HTTP cache for our applications.
 ![enter image description here](http://127.0.0.1/assets/lab6-8.png)
 
 ### [7] Configure nginx
 
-To configure Nginx to work as a reverse proxy for your Django application, go to the Nginx configuration file located at `/etc/nginx/sites-enabled/default` and add the following.
+To configure Nginx to work as a reverse proxy for our Django application, go to the Nginx configuration file located at `/etc/nginx/sites-enabled/default` and add the following.
 
 ```
 server {
@@ -278,9 +278,9 @@ server {
 
 - **`proxy_set_header X-Real-IP $remote_addr;`**: Sets the `X-Real-IP` header to the real client IP address. This header helps in passing the original client's IP address to the proxied server.
 
-- **`proxy_pass http://127.0.0.1:8000;`**: Forwards incoming traffic to `http://127.0.0.1:8000`, where your Django application is running. This allows Nginx to act as a reverse proxy, handling requests and passing them to your Django server.
+- **`proxy_pass http://127.0.0.1:8000;`**: Forwards incoming traffic to `http://127.0.0.1:8000`, where our Django application is running. This allows Nginx to act as a reverse proxy, handling requests and passing them to our Django server.
 
-This configuration ensures that all incoming traffic to your server's port **80** is passed to the Django app running locally on port **8000**.
+This configuration ensures that all incoming traffic to our server's port **80** is passed to the Django app running locally on port **8000**.
 
 ### [8] Restart nginx
 To apply our new configuration, we need to restart the Nginx service, run the following command:
@@ -295,9 +295,9 @@ service nginx restart
 
 This command ensures that any updates or changes made to the Nginx configuration are applied.
 
-### [9] Access your EC2 instance
+### [9] Access our EC2 instance
 
-In the app directory `/opt/wwc/mysites/lab`, run the following command to start your Django application server on port **8000**:
+In the app directory `/opt/wwc/mysites/lab`, run the following command to start our Django application server on port **8000**:
 
 ```
 python3 manage.py runserver 8000
@@ -510,7 +510,7 @@ In this step, we install the **Fabric** package, which is used for automating SS
 
 
 ### Configure Fabric
-To enable Fabric to connect to your EC2 instance, we need to configure an SSH connection by creating a config file at `~/.ssh/config`. This configuration file stores connection details such as the host, IP address, and identity file. Use the following command to open the config file for editing:
+To enable Fabric to connect to our EC2 instance, we need to configure an SSH connection by creating a config file at `~/.ssh/config`. This configuration file stores connection details such as the host, IP address, and identity file. Use the following command to open the config file for editing:
 ```
 Host 24188516-vm-1
 	Hostname 16.171.206.115
@@ -521,10 +521,10 @@ Host 24188516-vm-1
 	IdentityFile /home/liudayubob/cits5503/lab7/24188516-key-lab7.pem
 ``` 
 #### Key Parameters:
-1.  **`Host 24188516-vm-1`**: Defines the alias for your EC2 instance, which will be used when establishing a Fabric connection.
-2.  **`Hostname`**: Specifies the public IP address (in this case, `16.170.252.129`) of your EC2 instance.
+1.  **`Host 24188516-vm-1`**: Defines the alias for our EC2 instance, which will be used when establishing a Fabric connection.
+2.  **`Hostname`**: Specifies the public IP address (in this case, `16.170.252.129`) of our EC2 instance.
 3.  **`User ubuntu`**: The default username for EC2 instances based on our Ubuntu AMI image.
-4.  **`IdentityFile`**: The path to your private key file (generated during instance creation) for password-less authentication.
+4.  **`IdentityFile`**: The path to our private key file (generated during instance creation) for password-less authentication.
 5.  **`UserKnownHostsFile /dev/null` and `StrictHostKeyChecking no`**: These disable SSH host key checking, preventing the need for manual approval when connecting.
 
 This configuration allows Fabric to connect to the EC2 instance without needing to specify credentials on every connection.
@@ -683,14 +683,14 @@ In this step, we will install Jupyter Notebooks and launch it to interact with a
 	jupyter notebook
 ```
 
--   **`jupyter notebook`**: This command starts the Jupyter Notebook server and opens a web interface in your browser. By default, it launches at `http://127.0.0.1:8888`, in our case in `8889` because the default port is already in use.
+-   **`jupyter notebook`**: This command starts the Jupyter Notebook server and opens a web interface in our browser. By default, it launches at `http://127.0.0.1:8888`, in our case in `8889` because the default port is already in use.
 ![enter image description here](http://127.0.0.1/assets/lab8-1.png)
 
 After running the above commands,  we can see that the Jupyter server has launched, and the `labAI.ipynb` notebook file is visible on the file server interface.
 ![enter image description here](http://127.0.0.1/assets/lab8-3.png)
 
 ## Install ipykernel
-In this step, we will install the `ipykernel` package, which enables you to run Python code in Jupyter Notebooks. 
+In this step, we will install the `ipykernel` package, which enables us to run Python code in Jupyter Notebooks. 
 ```
 pip install ipykernel
 ```
@@ -703,12 +703,11 @@ pip install ipykernel
 In this section, we will modify the provided code within the Jupyter notebook to make it work in our environment.
 
 ### 1. Modify Region, Student ID, and Bucket Name
-
-You need to update the constants for the AWS region, your student ID, and the name of the S3 bucket where the dataset will be stored. This creates a personalized setup for the job.
+Let's update the constants for the AWS region, our student ID, and the name of the S3 bucket where the dataset will be stored. This creates a personalized setup for the job.
 ```
-region = 'eu-north-1'  # use the region you are mapped to
-student_id = "24188516"  # use your student ID
-bucket = '24188516-lab8'  # use <studentid-lab8> as your bucket name
+region = 'eu-north-1'  # use the region us are mapped to
+student_id = "24188516"  # use our student ID
+bucket = '24188516-lab8'  # use <studentid-lab8> as our bucket name
 ```
 ### 2. Create an S3 Bucket
 
@@ -728,7 +727,7 @@ model_data  =  model_data.replace({True: 1, False: 0})
 ```
 
 ### 4. Running the Notebook
-After making the necessary changes to the notebook, you can execute the notebook by navigating to the **Run** menu and selecting **Run All Cells/ Run Selected Cells**.
+After making the necessary changes to the notebook, us can execute the notebook by navigating to the **Run** menu and selecting **Run All Cells/ Run Selected Cells**.
 
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-4.png)
 
@@ -786,12 +785,12 @@ import boto3
 import numpy as np
 import pandas as pd
 
-region = 'eu-north-1'  # Set your AWS region
+region = 'eu-north-1'  # Set our AWS region
 smclient = boto3.Session(region_name=region).client("sagemaker")
 iam = boto3.client('iam', region_name=region)
 sagemaker_role = iam.get_role(RoleName='SageMakerRole')['Role']['Arn']
-student_id = "24188516"  # Use your student ID
-bucket = '24188516-lab8'  # Use your student ID for bucket name
+student_id = "24188516"  # Use our student ID
+bucket = '24188516-lab8'  # Use our student ID for bucket name
 prefix = f"sagemaker/{student_id}-hpo-xgboost-dm"
 
 # Create an S3 bucket and folder
@@ -950,7 +949,7 @@ training_job_definition = {
 -   **`create_hyper_parameter_tuning_job()`**: Launches the tuning job on SageMaker to optimize model performance.
 
 ### 5. Monitor Hyperparameter Tuning Job
-After launching the hyperparameter tuning job, you can monitor its progress in the AWS console.
+After launching the hyperparameter tuning job, us can monitor its progress in the AWS console.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-8.png)
 
 
@@ -1013,7 +1012,7 @@ for text in texts:
 ```
 #### Code Explanation
 -   **`client = boto3.client('comprehend', region_name=REGION)`**:
-    -   Creates an AWS Comprehend client in the specified region (`ap-southeast-2`), allowing you to make requests to the AWS Comprehend service.
+    -   Creates an AWS Comprehend client in the specified region (`ap-southeast-2`), allowing us to make requests to the AWS Comprehend service.
 -   **`response = client.detect_dominant_language(Text=text)`**:
     -   Calls the `detect_dominant_language` API to detect the dominant language in the provided text.
 -   **`lang = response['Languages'][0]`**:
@@ -1222,7 +1221,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMwODgxMDYzOCwxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbMTU5MzM5MTA4MCwxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
