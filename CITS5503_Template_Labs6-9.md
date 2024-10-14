@@ -556,18 +556,26 @@ Host 24188516-vm-1
 This configuration allows Fabric to connect to the EC2 instance without needing to specify credentials on every connection.
 ![enter image description here](http://127.0.0.1/assets/lab7-3.png)
 
-### 
-Rely on the fabric code below to connect to you instance. this will look up the host file, find the connection configuration from the host 24188516-vm-1 and made a connection. We can see that the terminal will output "Linux" from c.run('uname -s') to verify that we have established a connection and able to perform commands on the instance. For some reason the source virtual environment doesn't work in the next command run, so we will source it again before running the real command in each c.run().
+
+### Test Fabric Connection
+We will use the following Fabric code to establish a connection to the EC2 instance. Fabric looks up the host file and uses the connection configuration for `24188516-vm-1`. After establishing the connection, we will run a simple command to verify it.
+
+The command `c.run('uname -s')` will return "Linux" as output, confirming that the connection is successful and commands can be executed on the instance. Due to some issues with persisting the sourced virtual environment across multiple `c.run()` commands, we will re-source the environment each time before running further commands.
 ```
 python3
->>> from fabric import Connection
->>> c = Connection('24188516-vm-1')
->>> result = c.run('uname -s')
->>>
-```
+	>>> from fabric import Connection
+	>>> c = Connection('24188516-vm-1')
+	>>> result = c.run('uname -s')
+Linux
+``` 
+
+#### Key Points:
+-   **Fabric Connection**: Uses the SSH configuration to connect to the EC2 instance using the alias `24188516-vm-1`.
+-   **Command Execution**: The `uname -s` command confirms the operating system on the instance is Linux.
+
 ![enter image description here](http://127.0.0.1/assets/lab7-4.png)
 
-### Use Fabric for automation
+### Automation for creating Django App
 We will bscially convert the command lines we use in lab6 to fabric by wrapping with c.run(). For admin priviledges command, we will convert them to c.sudo() instead. As you can see, some commands will use "-y" for automatically answering yes to the prompt because we are automating. We would use echo for editing, when we create our Dajango poll app. To retain the $placeholder in our nginx configuration  files, we would use file IO to write a separate file and replace the default configuration file.
 
 Write a python script where you first need to automate the setup of a Python 3 virtual environment, nginx and a Django app within the EC2 instance you just created. Then, you should run the Django development server on port 8000 in the background.
@@ -663,11 +671,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTc1MjQ4NTY3NiwxNjkxMjgzNDUzLDEwOD
-MwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4
-LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
-g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
-NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LD
-E1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQz
-MjkwMzEwOF19
+eyJoaXN0b3J5IjpbLTE5ODc2NjM2MDQsMTY5MTI4MzQ1MywxMD
+gzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYxNjk2
+OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLTEyMj
+A4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3NDMz
+OTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3OTMxOS
+wxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgzNjk0NjksLTE0
+MzI5MDMxMDhdfQ==
 -->
