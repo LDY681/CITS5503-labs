@@ -561,11 +561,7 @@ def install_prerequisites(c):
     # Update and upgrade system packages
     c.sudo('apt-get update -y')
     c.sudo('apt-get upgrade -y')
-
-    # Install Python 3 virtual environment package
     c.sudo('apt-get install python3-venv -y')
-
-    # Install Nginx
     c.sudo('apt install nginx -y')
 
 def set_virtual_env(c):
@@ -573,23 +569,25 @@ def set_virtual_env(c):
     c.sudo(f'mkdir -p {PROJECT_DIR}')
     # Grant permissions to user
     c.sudo(f'chown -R ubuntu:ubuntu {PROJECT_DIR}')
+    # Create env and source env
     c.run(f'cd {PROJECT_DIR} && python3 -m venv myvenv')
     c.run(f'cd {PROJECT_DIR} && source myvenv/bin/activate && pip install django')
 
 def setup_django_app(c):
-    # Start a new Django project and app within the virtual environment
+    # Need to cd and source env again
     c.run(f'cd {PROJECT_DIR} && source myvenv/bin/activate && django-admin startproject lab .')
     c.run(f'cd {PROJECT_DIR} && source myvenv/bin/activate && python3 manage.py startapp polls')
 
-    # Modify the Django project settings and URLs
+    # Polls app
     c.run(f'echo "from django.http import HttpResponse" > {PROJECT_DIR}/polls/views.py')
     c.run(f'echo "def index(request): return HttpResponse(\'Hello, world.\')" >> {PROJECT_DIR}/polls/views.py')
-
+    
+	# Admin app
     c.run(f'echo "from django.urls import path\nfrom . import views\nurlpatterns = [path(\'\', views.index, name=\'index\')]" > {PROJECT_DIR}/polls/urls.py')
     c.run(f'echo "from django.urls import include, path\nfrom django.contrib import admin\nurlpatterns = [path(\'polls/\', include(\'polls.urls\')), path(\'admin/\', admin.site.urls)]" > {PROJECT_DIR}/lab/urls.py')
 
 def configure_nginx(c):
-    # Properly handle the Nginx configuration using a temporary file to avoid echo issues
+    # Double $ to e
     nginx_config = '''
     server {
       listen 80 default_server;
@@ -1202,7 +1200,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg2NjUyMTUwLDExOTU2NTE3MTAsLTYxMj
+eyJoaXN0b3J5IjpbNDQyNTkwODEzLDExOTU2NTE3MTAsLTYxMj
 g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
 MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
 A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
