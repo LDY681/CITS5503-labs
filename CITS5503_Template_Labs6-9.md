@@ -1125,7 +1125,7 @@ In this task, we will leverage AWS Rekognition to analyze image for **Label Reco
 
 ### Step1: Setting up instances and Uploading Images
 #### Workflow
-1.  **Create the Bucket/Rekognition Client**: First, we create an S3 bucket and rekognition clien using `boto3` with a unique bucket name that follows the format `24188516-lab9` in the region `eu-north-1`.
+1.  **Create the Bucket/Rekognition Client**: First, we create an S3 bucket and rekognition client using `boto3` in the region `eu-north-1`. The bucket has a unique bucket name that follows the format `24188516-lab9`
 2.  **Upload Images**: After the bucket is created, we upload the four images (`urban.jpg`, `beach.jpg`, `faces.jpg`, `text.jpg`) to this S3 bucket for AWS Rekognition to analyze.
 
 ```
@@ -1229,7 +1229,7 @@ if  __name__  ==  "__main__":
 4.  **Text Extraction (`detect_text`)**:
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4NTkwMzIzNywtNjEyODUwNDEwLC0yMD
+eyJoaXN0b3J5IjpbLTMyOTM3Mzg5NiwtNjEyODUwNDEwLC0yMD
 YyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQxNDgzNywtMTU1MzQx
 NDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1MywxMDgzMDM1MTEsMT
 QyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYxNjk2OCwxMTQwMjkw
