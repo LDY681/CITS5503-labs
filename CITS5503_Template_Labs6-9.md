@@ -673,10 +673,7 @@ pip install ipykernel
 
 ![enter image description here](http://127.0.0.1/assets/lab8-2.png)
 
-
-
-## Code to Change
-
+## Modify `labAI.ipynb`
 In this section, we will modify the provided code within the Jupyter notebook to make it work in our environment.
 
 ### 1. Modify Region, Student ID, and Bucket Name
@@ -687,8 +684,7 @@ student_id = "24188516"  # use our student ID
 bucket = '24188516-lab8'  # use <studentid-lab8> as our bucket name
 ```
 ### 2. Create an S3 Bucket
-
-We will also create an S3 bucket to store the training and testing datasets. Here, we use the `boto3` library to create a bucket in the specified region and add an object with the prefix to organize the data properly.
+We will also create an S3 bucket to store the training and testing datasets. Here, we use the `boto3` library to create a bucket in the specified region `eu-north-1` and add an object with the prefix for our folder destination.
 ```
 s3 = boto3.client('s3', region_name=region)
 bucket_config = {'LocationConstraint': region}
@@ -696,7 +692,7 @@ s3.create_bucket(Bucket=bucket, CreateBucketConfiguration=bucket_config)  # Crea
 s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder object with the prefix
 ```
 
-### 3. Convert True/False to 1/0
+### 3. Convert N
 Because our tunning job can't handle non-numerical values, we will traverse the model_data and convert all datas to numeric ones.
 ```
 # Change True/False to 1/0
@@ -1198,11 +1194,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MjM4MTY2NTgsMTE5NTY1MTcxMCwtNj
-EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
-NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
-wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
-Njk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLT
-EyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3
-NDMzOTddfQ==
+eyJoaXN0b3J5IjpbODU2Mzg0NDQxLDExOTU2NTE3MTAsLTYxMj
+g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
+MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
+A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
+NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMj
+IwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQz
+Mzk3XX0=
 -->
