@@ -1,10 +1,7 @@
 ﻿<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
-
   <h2>Labs 6-9</h2>
-  
-  <p>Student ID: [Student ID]24188516</p>
-  <p>Student Name: [First and Surname]Dayu Liu</p>
-
+  <p>Student ID: 24188516</p>
+  <p>Student Name: Dayu Liu</p>
 </div>
 
 # Lab 6
@@ -1217,11 +1214,11 @@ if  __name__  ==  "__main__":
     -   OCR scan and extract text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTg2NTIxMjM3MSwtMzg3OTk4MDMzLDExOT
-U2NTE3MTAsLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjEx
-MTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LD
-E2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2
-OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNT
-IwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2
-OTk4XX0=
+eyJoaXN0b3J5IjpbLTk2MjIxNDY2MywxODY1MjEyMzcxLC0zOD
+c5OTgwMzMsMTE5NTY1MTcxMCwtNjEyODUwNDEwLC0yMDYyNDQw
+NzQ4LDQwNjUyMTExNywtMTU1MzQxNDgzNywtMTU1MzQxNDgzNy
+wyNzQ0MzgxMzksMTY5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1
+MDU3MiwtODUwMjY5NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5LD
+U2MzY4NDE0MCw1MjA5MTI2NjYsLTEyMjA4OTc4OTksNDg4ODY4
+ODgwXX0=
 -->
