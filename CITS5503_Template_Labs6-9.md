@@ -714,7 +714,7 @@ pip install ipykernel
 
 ## Code to Change
 
-In this section, we will modify certain constant variables in the pre-written code within the Jupyter notebook. This ensures that we create our own environment for the SageMaker job.
+In this section, we will modify pre-written code within the Jupyter notebook to make it work in our ev
 
 ### 1. Modify Region, Student ID, and Bucket Name
 
@@ -883,19 +883,17 @@ boto3.Session().resource("s3").Bucket(bucket).Object(
 -   **`split()`**: Splits data into training, validation, and test sets.
 -   **`upload_file()`**: Uploads the prepared CSV files to S3 for SageMaker to use in training.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-6.png)
+![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-7.png)
 
 ### 4. Set Up Hyperparameter Tuning Job
 Next, we'll configure and launch a hyperparameter tuning job using SageMaker's XGBoost algorithm.
 
 #### Workflow
 1.  **Configure Hyperparameters**:
-    
     -   Define the range of hyperparameters (e.g., `eta`, `max_depth`) for tuning.
 2.  **Specify Training Job**:
-    
     -   Configure the input data, algorithm, and resources for the training job.
 3.  **Launch Hyperparameter Tuning**:
-    
     -   Start the tuning job to find the optimal model parameters.
 ```
 from time import gmtime, strftime, sleep
@@ -957,7 +955,7 @@ training_job_definition = {
 
 ### 5. Monitor Hyperparameter Tuning Job
 After launching the hyperparameter tuning job, you can monitor its progress in the AWS console.
-
+![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-8.png)
 
 
 <div style="page-break-after: always;"></div>
@@ -965,7 +963,7 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ3MDA1NjgwMSw0MDY1MjExMTcsLTE1NT
+eyJoaXN0b3J5IjpbMTMzNzE1MjkzNiw0MDY1MjExMTcsLTE1NT
 M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
 NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
 Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
