@@ -751,7 +751,8 @@ Read the dataset into a Pandas data frame and answer the following two questions
 #1. Which variables in the dataset are categorical? Give at least four variables.
 #2. Which variables in the dataset are numerical? Give at least four variables.
 ```
-#1:
+After printing and inspecting the dataframe, we can get the following conclusions:
+#1: Categorical Variables: **Job**, 
 
 ```
 
@@ -972,11 +973,11 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTQ2NDUxNzY4LDQwNjUyMTExNywtMTU1Mz
-QxNDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1
-MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2Nj
-YxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYs
-LTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NT
-g3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3
-OTMxOV19
+eyJoaXN0b3J5IjpbLTI2MDY0MTQ1MCw0MDY1MjExMTcsLTE1NT
+M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
+NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
+Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
+LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOT
+U4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1
+NzkzMTldfQ==
 -->
