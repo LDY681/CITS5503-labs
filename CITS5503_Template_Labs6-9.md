@@ -783,16 +783,15 @@ We will prepare the dataset for training by converting categorical data to binar
 
 
 #### Workflow
-1.  **Load and Process Data**:
-    -   Load the dataset into Pandas for analysis.
-    -   Add indicator columns to capture specific conditions.
+1. **Load and Process Data**: 
+	- Load the dataset into Pandas and create new indicator columns for specific variables.
 2.  **Convert to Dummy Variables**:
-    -   Convert categorical variables into binary indicators using `pd.get_dummies()`.
+    -   Convert categorical variables into sets of indicators using `pd.get_dummies()`.
 3.  **Remove Unnecessary Columns**:
     -   Drop economic variables and duration from the dataset to avoid bias in future predictions.
 4.  **Fix Non-Numeric Data**:
     -   Replace `True/False` values with `1/0` to ensure all data is numeric.
-5.  **Split Data**:
+5.  **Split Train/Validation/Test Data**:
     -   Split the dataset into training (70%), validation (20%), and test (10%) datasets for model training and evaluation.
 6.  **Save Split Datasets as CSV Files**:
     -   Save each split as a CSV file, removing headers and adjusting the first column to be the target variable.
@@ -1199,7 +1198,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMDA2MzY1MjUsLTM4Nzk5ODAzMywxMT
+eyJoaXN0b3J5IjpbLTE5Nzc2MzgzOTYsLTM4Nzk5ODAzMywxMT
 k1NjUxNzEwLC02MTI4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIx
 MTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOS
 wxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAy
