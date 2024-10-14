@@ -861,13 +861,17 @@ We can see that the dataset have been created and uploaded to our designated dir
 ### 4. Set Up Hyperparameter Tuning Job
 Next, we'll configure and launch a hyperparameter tuning job using SageMaker's XGBoost algorithm.
 
+
 #### Workflow
 1.  **Configure Hyperparameters**:
-    -   Define the range of hyperparameters (e.g., `eta`, `max_depth`) for tuning.
+    -   Define a set of hyperparameter ranges that will be tuned using SageMaker. These include parameters like `eta` (learning rate), `min_child_weight`, `alpha` and `max_depth`.
+    -   Set the resource limits and specify that the objective is to maximize the area under the curve (AUC) for validation data.
 2.  **Specify Training Job**:
-    -   Configure the input data, algorithm, and resources for the training job.
+    -   Specify the training algorithm (XGBoost), input data (from S3), and the resource attr(instance type, count, and storage) for the training job.
+    -   Set a stopping condition to ensure the training job doesn't run indefinitely and define static hyperparameters like `eval_metric` and `objective`.
 3.  **Launch Hyperparameter Tuning**:
-    -   Start the tuning job to find the optimal model parameters.
+    -   Use the SageMaker API to launch the hyperparameter tuning job, which will train multiple models and return the best one based on the defined metric (`validation:auc`).
+
 ```
 from time import gmtime, strftime, sleep
 from sagemaker.image_uris import retrieve
@@ -1199,7 +1203,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NDg0NTk1MTEsLTM4Nzk5ODAzMywxMT
+eyJoaXN0b3J5IjpbLTIwOTM4ODkzNzcsLTM4Nzk5ODAzMywxMT
 k1NjUxNzEwLC02MTI4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIx
 MTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOS
 wxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAy
