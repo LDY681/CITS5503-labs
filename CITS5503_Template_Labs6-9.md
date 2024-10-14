@@ -748,13 +748,12 @@ After making the necessary changes to the notebook, you can execute the notebook
 
 ## Dataset Q&A
 Read the dataset into a Pandas data frame and answer the following two questions:
-# 1. Which variables in the dataset are categorical? Give at least four variables.
-#2. Which variables in the dataset are numerical? Give at least four variables.
+	#1. Which variables in the dataset are categorical? Give at least four variables.
+	#2. Which variables in the dataset are numerical? Give at least four variables.
 ```
 After printing and inspecting the dataframe, we can get the following conclusions:
-#1: Categorical Variables: Job, Martial, Education, Contact
-#2: Numerical Variables: Age, Duration, Nr.employed, Euribor3m 
-
+#1: Categorical Variables: job, martial, education, contact
+#2: Numerical Variables: age, duration, nr.employed, euribor3m 
 ```
 
 ## AI training
@@ -974,7 +973,7 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1ODY5MzgwNjQsNDA2NTIxMTE3LC0xNT
+eyJoaXN0b3J5IjpbLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNT
 UzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgz
 NDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNj
 Y2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2
