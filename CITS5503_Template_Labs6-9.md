@@ -708,14 +708,13 @@ Read the dataset into a Pandas data frame and answer the following two questions
 	#1. Which variables in the dataset are categorical? Give at least four variables.
 	#2. Which variables in the dataset are numerical? Give at least four variables.
 ```
-After printing and inspecting the dataframe, we can get the following conclusions:
+After inspecting the dataframe, we can get the following conclusions:
 #1: Categorical Variables: job, martial, education, contact
 #2: Numerical Variables: age, duration, nr.employed, euribor3m 
 ```
 
-## AI training
-
-This section demonstrates how to set up an end-to-end machine learning pipeline using Amazon SageMaker. We'll cover steps for installing the necessary libraries, preparing data, and running a hyperparameter tuning job using XGBoost. The final objective is to use SageMaker for training a model on the Bank Marketing dataset.
+## AI Training
+In this section, we will set up a tuning job using Amazon SageMaker. Steps involve installing the necessary libraries, preparing data, and running a hyperparameter tuning job using XGBoost. The final objective is to use SageMaker for training a model on the Bank Marketing dataset.
 
 ### 1. Install Required Libraries
 
@@ -1193,11 +1192,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyNzI2NzYyOCwxMTk1NjUxNzEwLC02MT
-I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
-ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
-EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
-OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
-IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
-MzM5N119
+eyJoaXN0b3J5IjpbLTExNzExNjEwNTUsMTE5NTY1MTcxMCwtNj
+EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
+NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
+wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
+Njk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLT
+EyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3
+NDMzOTddfQ==
 -->
