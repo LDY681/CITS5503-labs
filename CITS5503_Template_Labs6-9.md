@@ -861,7 +861,6 @@ We can see that the dataset have been created and uploaded to our designated dir
 ### 4. Set Up Hyperparameter Tuning Job
 Next, we'll configure and launch a hyperparameter tuning job using SageMaker's XGBoost algorithm.
 
-
 #### Workflow
 1.  **Configure Hyperparameters**:
     -   Define a set of hyperparameter ranges that will be tuned using SageMaker. These include parameters like `eta` (learning rate), `min_child_weight`, `alpha` and `max_depth`.
@@ -948,7 +947,7 @@ After launching the hyperparameter tuning job, we can monitor its progress in th
 <div style="page-break-after: always;"></div>
 
 # Lab 9
-## AWS Comprehend
+## [1] AWS Comprehend
 In this task, we will leverage AWS Comprehend to analyze text for language detection, sentiment detection, entity detection, key phrase detection and syntax detection.
 
 ### Step 1. Client Setup & Language Detection
@@ -963,7 +962,7 @@ We'll start by using AWS Comprehend's `detect_dominant_language` method to ident
 3.  **Map Language Codes to Language Names**:
     -   Use a dictionary to map language codes (such as `'en'`, `'fr'`, `'es'`, `'it'`) to their corresponding language names (English, French, Spanish, Italian).
 4.  **Extract Confidence and Print Results**:
-    -   Extract the confidence level in target language and print the language name along with its confidence percentage.
+    -   Extract the confidence level in target language and print the language name along with its confidence level.
 ```
 import boto3
 
@@ -1002,17 +1001,17 @@ texts = [
 for text in texts:
     detect_language(text)
 ```
-#### Code Explanation
+> #### Code Breakdown
 -   **`client = boto3.client('comprehend', region_name=REGION)`**:
     -   Creates an AWS Comprehend client in the specified region (`ap-southeast-2`), allowing us to make requests to the AWS Comprehend service.
 -   **`response = client.detect_dominant_language(Text=text)`**:
     -   Calls the `detect_dominant_language` API to detect the dominant language in the provided text.
 -   **`lang = response['Languages'][0]`**:
     -   Extracts the first (most confident) language from the list of detected languages.
--   **`language_map = {...}`**:
-    -   A dictionary that maps language codes to human-readable language names. If the detected language is in the map, it prints the corresponding language name (e.g., `'en'` -> `'English'`). Otherwise, it defaults to printing the language code.
+-   **`language_map = {}`**:
+    -   A dictionary that maps language codes to language names. If the detected language is in the map, it prints the corresponding language name (e.g., `'en'` -> `'English'`). Otherwise, it defaults to printing the language code.
 -   **`confidence = round(lang['Score'] * 100, 2)`**:
-    -   Extracts the confidence score, multiplies it by 100 to convert it to a percentage, and rounds it to two decimal places.
+    -   Extracts the confidence score, convert it to a percentage, and rounds it to two decimal places.
 
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-1.png)
 
@@ -1213,7 +1212,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE4NDY0MTM2NywtMzg3OTk4MDMzLDExOT
+eyJoaXN0b3J5IjpbMTY5MjI5MDc2MCwtMzg3OTk4MDMzLDExOT
 U2NTE3MTAsLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjEx
 MTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LD
 E2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2
