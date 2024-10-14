@@ -974,8 +974,9 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 ## AWS Comprehend
 In this task, we will leverage AWS Comprehend to analyze text for language detection, sentiment detection, entity detection, key phrase detection and syntax detection.
 
-### 1. Language Detection
+### Step 1. Language Detection
 We'll start by using AWS Comprehend's `detect_dominant_language` method to identify the language in given texts and display the confidence of the prediction.
+
 #### Workflow
 1.  **Set Up AWS Comprehend Client**:
     -   Create an AWS Comprehend client using `boto3` with a specific region (`ap-southeast-2` in this case).
@@ -1048,19 +1049,47 @@ for text in texts:
 
 This script can now be tested with different texts in English, Spanish, French, and Italian, and the result will show the detected language with a confidence percentage.
 
-### Step 2: Sentiment Analysis
-
+### Step 2: Sentiment Detection
 Sentiment analysis determines if a text expresses positive, negative, neutral, or mixed sentiment.
+```
+def detect_sentiment(text, language_code='en'):
+    response = client.detect_sentiment(Text=text, LanguageCode=language_code)
+    sentiment = response['Sentiment']
+    sentiment_scores = response['SentimentScore']
+    
+    print(f"Sentiment: {sentiment} with scores: {sentiment_scores}")
 
-1.  **Call `detect_sentiment` API**: Pass the text to the Comprehend API to detect sentiment.
-2.  **Process Response**: Extract the sentiment type and confidence scores.
-3.  **Print the Result**: Print the sentiment and associated confidence level.
+# Test sentiment detection with the same texts
+for text in texts:
+    detect_sentiment(text)
+```
+### Code Explanation:
+
+1.  **`client.detect_sentiment()`**: Calls AWS Comprehend to detect the sentiment of the input text.
+2.  **`response['Sentiment']`**: Extracts the detected sentiment (Positive, Negative, Neutral, or Mixed).
+3.  **`response['SentimentScore']`**: Retrieves the confidence scores for each sentiment type.
+
+### Step 3: Entity Detection
+Entities are key elements or items (e.g., persons, organizations) found in text.
+```
+def detect_entities(text, language_code='en'):
+    response = client.detect_entities(Text=text, LanguageCode=language_code)
+    entities = response['Entities']
+    
+    for entity in entities:
+        print(f"Entity: {entity['Text']}, Type: {entity['Type']}, Confidence: {round(entity['Score']*100, 2)}%")
+
+# Test entity detection
+for text in texts:
+    detect_entities(text)
+
+```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1NjEwNjk2MiwtMjA2MjQ0MDc0OCw0MD
-Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
-MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
-g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
-NDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOT
-YzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0
-ODQwNTJdfQ==
+eyJoaXN0b3J5IjpbLTE1NjgxNDc3MTUsLTIwNjI0NDA3NDgsND
+A2NTIxMTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQz
+ODEzOSwxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC
+04NTAyNjk1NTgsNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0
+MTQwLDUyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLT
+k2MzA4Njk5OCwtMTk1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQx
+NDg0MDUyXX0=
 -->
