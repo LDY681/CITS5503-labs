@@ -713,29 +713,7 @@ pip install ipykernel
 
 
 ## Jupiter Notebook Job description
-Install libraries:
 
-1.  **Install SageMaker via Jupyter Notebook**:
-    
-    diff
-    
-    Copy code
-    
-    `!pip install sagemaker` 
-    
-    This command installs the `sagemaker` package, which provides APIs for creating and managing SageMaker resources like training jobs, models, and endpoints.
-    
-2.  **Install Pandas and Numpy via Jupyter Notebook**:
-    
-    diff
-    
-    Copy code
-    
-    `!pip install pandas
-    !pip install numpy` 
-    
-    -   **Pandas**: Used for data manipulation and analysis.
-    -   **Numpy**: Used for numerical computing, such as handling arrays and matrices efficiently.
 
 ## Fine-tuning Jupiter Notebook
 In the notebook, we already have pre-written code, here we need to chanage constant variables to make sure we create our own environement for the job. In the nest step, I will explain the code in the Jupiter notebook
@@ -755,11 +733,11 @@ After changing the code, we can run the notebook by `Run` menu.
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjEzOTUzMzkyMSwtMTU1MzQxNDgzNywyNz
-Q0MzgxMzksMTY5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3
-MiwtODUwMjY5NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2Mz
-Y4NDE0MCw1MjA5MTI2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgw
-LC05NjMwODY5OTgsLTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMT
-M0MTQ4NDA1MiwtMjExNjU3OTMxOSwxNTkwNzA4MDksLTE1NDAz
-NjYzODZdfQ==
+eyJoaXN0b3J5IjpbLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMj
+c0NDM4MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1
+NzIsLTg1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1Nj
+M2ODQxNDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4
+MCwtOTYzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LD
+EzNDE0ODQwNTIsLTIxMTY1NzkzMTksMTU5MDcwODA5LC0xNTQw
+MzY2Mzg2XX0=
 -->
