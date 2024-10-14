@@ -702,12 +702,14 @@ pip install ipykernel
 ![enter image description here](http://127.0.0.1/assets/lab8-2.png)
 1. **Install ipykernel**: - This package allows Jupyter to communicate with the Python interpreter. 
 
+
+
 <div style="page-break-after: always;"></div>
 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjc4ODk0NDYsMjc0NDM4MTM5LDE2OT
+eyJoaXN0b3J5IjpbLTE2MzY1NTIyNjYsMjc0NDM4MTM5LDE2OT
 EyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1
 OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOT
 EyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4
