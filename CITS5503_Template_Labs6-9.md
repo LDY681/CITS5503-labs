@@ -576,14 +576,37 @@ Linux
 ![enter image description here](http://127.0.0.1/assets/lab7-4.png)
 
 ### Automation for creating Django App
-We will bscially convert the command lines we use in lab6 to fabric by wrapping with c.run(). For admin priviledges command, we will convert them to c.sudo() instead. As you can see, some commands will use "-y" for automatically answering yes to the prompt because we are automating. We would use echo for editing, when we create our Dajango poll app. To retain the $placeholder in our nginx configuration  files, we would use file IO to write a separate file and replace the default configuration file.
+### Automation for Creating Django App
 
-Write a python script where you first need to automate the setup of a Python 3 virtual environment, nginx and a Django app within the EC2 instance you just created. Then, you should run the Django development server on port 8000 in the background.
-This is the code down below;
-```
+In this section, we will automate the process of setting up a Python virtual environment, configuring Nginx, and creating a Django app within the EC2 instance using Fabric. The commands from **Lab 6** will be converted to Fabric's `c.run()` for regular commands and `c.sudo()` for commands requiring admin privileges. Additionally, file editing will be handled using `echo` and proper file I/O for Nginx configuration to avoid issues with `$` placeholders.
+
+### Workflow:
+
+1. **Install Prerequisites**:
+   - Update and upgrade system packages.
+   - Install the Python virtual environment package (`python3-venv`).
+   - Install Nginx web server.
+   
+2. **Set Up Virtual Environment**:
+   - Create a project directory and assign necessary permissions.
+   - Set up a virtual environment within the project directory and install Django.
+
+3. **Create Django Project and App**:
+   - Start a new Django project and app (`polls`) inside the virtual environment.
+   - Modify the views, URLs, and settings to display "Hello, world" from the `polls` app.
+
+4. **Configure Nginx**:
+   - Write a new Nginx configuration file to act as a reverse proxy, forwarding traffic from port 80 to the Django app running on port 8000.
+
+5. **Run Django Server**:
+   - Run the Django development server in the background, ensuring the app is accessible on port 8000.
+
+Here is the script that automates these steps:
+
+```python
 from fabric import Connection
 
-# Constants
+
 EC2_INSTANCE_NAME = '24188516-vm-1'
 PROJECT_DIR = '/opt/wwc/mysites/lab'
 
@@ -626,8 +649,8 @@ def configure_nginx(c):
       listen [::]:80 default_server;
 
       location / {
-        proxy_set_header X-Forwarded-Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-Host $$host;
+        proxy_set_header X-Real-IP $$remote_addr;
 
         proxy_pass http://127.0.0.1:8000;
       }
@@ -656,13 +679,8 @@ if __name__ == "__main__":
     setup_django_app(conn)
     configure_nginx(conn)
     run_django_server(conn)
-```
 
-![enter image description here](http://127.0.0.1/assets/lab7-5.png)
 
-From your local OS environment, access the URL: `http://<ip address of your EC2 instance>/polls/`, and output what you've got. 
-![enter image description here](http://127.0.0.1/assets/lab7-6.png)
-![enter image description here](http://127.0.0.1/assets/lab7-7.png)
 
 <div style="page-break-after: always;"></div>
 
@@ -673,11 +691,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1Njk2NzkxLDE2OTEyODM0NTMsMTA4Mz
-AzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5Njgs
-MTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMjIwOD
-k3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQzMzk3
-LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1NzkzMTksMT
-U5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMDk4MzY5NDY5LC0xNDMy
-OTAzMTA4XX0=
+eyJoaXN0b3J5IjpbMTc2NTEyNDAyMiwxNjkxMjgzNDUzLDEwOD
+MwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4
+LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
+g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
+NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LD
+E1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQz
+MjkwMzEwOF19
 -->
