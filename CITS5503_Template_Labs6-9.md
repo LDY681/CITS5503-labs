@@ -206,10 +206,8 @@ python3 manage.py startapp polls
    - **`pip install django`**: Installs Django into the virtual environment.
 3. **Start a New Django Project**:
    - **`django-admin startproject lab`**: Uses `django-admin` to create a new Django project named `lab` in the current directory. This generates necessary project files like `manage.py` and a folder structure to build the web application.
-4. **Navigate to the Project Directory**:
-   - **`cd lab`**: Moves into the project directory to begin working with the Django project files.
-5. **Create a New Django App**:
-   - **`python3 manage.py startapp polls`**: Uses Django's `manage.py` utility to create a new app called `polls`. The app will have its own views, models, and URLs, encapsulated within the `lab` project.
+4. **Create a New Django App**:
+   - **`python3 manage.py startapp polls`**: Uses Django's `manage.py` utility to create a new app called `polls`. We can see that the `polls` app will have its own views, models, and URLs.
 
 ![enter image description here](http://127.0.0.1/assets/lab6-6.png)
 ![enter image description here](http://127.0.0.1/assets/lab6-7.png)
@@ -1217,11 +1215,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNDk3NTk0MDMsMTE5NTY1MTcxMCwtNj
-EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
-NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
-wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
-Njk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLT
-EyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3
-NDMzOTddfQ==
+eyJoaXN0b3J5IjpbMTA3NDc3MDIwOSwxMTk1NjUxNzEwLC02MT
+I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
+ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
+EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
+OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
+IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
+MzM5N119
 -->
