@@ -500,13 +500,13 @@ Host 24188516-vm-1
 	IdentityFile /home/liudayubob/cits5503/lab7/24188516-key-lab7.pem
 ``` 
 #### Key Parameters:
-1.  **`Host 24188516-vm-1`**: Defines the alias for our EC2 instance, which will be used when establishing a Fabric connection.
-2.  **`Hostname`**: Specifies the public IP address (in this case, `16.170.252.129`) of our EC2 instance.
-3.  **`User ubuntu`**: The default username for EC2 instances based on our Ubuntu AMI image.
-4.  **`IdentityFile`**: The path to our private key file (generated during instance creation) for password-less authentication.
+1.  **`Host`**: Defines the alias for our EC2 instance, which will be used when calling the Fabric connection function.
+2.  **`Hostname`**: Specifies the public IP address (in this case, `16.171.206.115`) of our EC2 instance.
+3.  **`User ubuntu`**: The default username for EC2 instances based on the Ubuntu AMI image.
+4.  **`IdentityFile`**: The path to our private key file (generated during instance creation) for authentication.
 5.  **`UserKnownHostsFile /dev/null` and `StrictHostKeyChecking no`**: These disable SSH host key checking, preventing the need for manual approval when connecting.
 
-This configuration allows Fabric to connect to the EC2 instance without needing to specify credentials on every connection.
+By creating a host configuration, we can use Fabric to connect to the EC2 instance without needing to specify credentials on every connection.
 ![enter image description here](http://127.0.0.1/assets/lab7-3.png)
 
 
@@ -1200,11 +1200,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4MzIyNjk3NiwxMTk1NjUxNzEwLC02MT
-I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
-ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
-EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
-OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
-IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
-MzM5N119
+eyJoaXN0b3J5IjpbLTEwMzE5NzA0OTcsMTE5NTY1MTcxMCwtNj
+EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
+NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
+wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
+Njk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLT
+EyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3
+NDMzOTddfQ==
 -->
