@@ -987,12 +987,50 @@ We'll start by using AWS Comprehend's `detect_dominant_language` method to ident
     -   Use a dictionary to map language codes (such as `'en'`, `'fr'`, `'es'`, `'it'`) to their corresponding language names (English, French, Spanish, Italian).
 4.  **Calculate Confidence and Print Results**:
     -   Round the confidence score to two decimal places and print the language name along with the confidence percentage.
+```
+import boto3
+
+# AWS Comprehend client
+REGION = "ap-southeast-2"  # Specify the AWS region
+client = boto3.client('comprehend', region_name=REGION)
+
+def detect_language(text):
+    # Detect the dominant language in the provided text
+    response = client.detect_dominant_language(Text=text)
+    lang = response['Languages'][0]  # We only use the first detected language
+
+    # Language code for mapping
+    language_map = {
+        'en': 'English',
+        'es': 'Spanish',
+        'fr': 'French',
+        'it': 'Italian',
+    }
+
+    # Convert results to message
+    lang_code = lang['LanguageCode']
+    confidence = round(lang['Score'] * 100, 2)
+    language_name = language_map.get(lang_code, lang_code)  # Get the language name from the map
+    print(f"{language_name} detected with {confidence}% confidence")
+
+# Test with various texts in different languages
+texts = [
+    "The French Revolution was a period of social and political upheaval in France.",
+    "El Quijote es la obra más conocida de Miguel de Cervantes Saavedra.",
+    "Moi je n'étais rien Et voilà qu'aujourd'hui Je suis le gardien Du sommeil de ses nuits.",
+    "L'amor che move il sole e l'altre stelle."
+]
+
+# Loop through the texts and detect the language
+for text in texts:
+    detect_language(text)
+ ```
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg4ODQ2NTk4LC0yMDYyNDQwNzQ4LDQwNj
-UyMTExNywtMTU1MzQxNDgzNywtMTU1MzQxNDgzNywyNzQ0Mzgx
-MzksMTY5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtOD
-UwMjY5NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0
-MCw1MjA5MTI2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05Nj
-MwODY5OTgsLTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4
-NDA1Ml19
+eyJoaXN0b3J5IjpbMTIyMDIwMTM4NCwtMjA2MjQ0MDc0OCw0MD
+Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
+MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
+g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
+NDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOT
+YzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0
+ODQwNTJdfQ==
 -->
