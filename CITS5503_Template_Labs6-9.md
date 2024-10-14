@@ -150,17 +150,7 @@ print(f"{public_ip_address}\n")
 ![enter image description here](http://127.0.0.1/assets/lab6-1.png)
 ![enter image description here](http://127.0.0.1/assets/lab6-2.png)
 
-### [2[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [2] Install the Python 3 virtual environment package. 
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [3] Access a directory 
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [24] Install the Python 3 virtual environment package
+### [2] Install the Python 3 virtual environment package
 In this step, we will run the following commands to install virtual environment package and grant sudo permissions to bash operations.
 
 ```
@@ -515,46 +505,182 @@ We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalance
 <div style="page-break-after: always;"></div>
 
 # Lab 7
-### Install and configure Fabric 
-The easiest way to install fabric is to:
-
+### Create EC2 Instance
+In the first step, we use our script from **Lab 6** to create a new EC2 instance. This is done by running the following command in our local Ubuntu machine:
 ```
-pip install fabric
+python3 createInstance.py
 ```
+This script automates the creation of the EC2 instance with the required configuration for SSH access and HTTP access. After the instance is successfully created, we retrieve the public IP address.
 
-You will need to create a config file in ~/.ssh with the contents:
+![enter image description here](http://127.0.0.1/assets/lab7-1.png)
 
+### Install Fabric
+In this step, we install the **Fabric** package, which is used for automating SSH-based tasks such as managing remote servers.
+`pip install fabric` 
+#### Key Parameters:
+-   **`fabric`**: Installs the Fabric package, enabling us to automate remote server management and deployment tasks.
+
+![enter image description here](http://127.0.0.1/assets/lab7-2.png)
+
+
+### Configure Fabric
+To enable Fabric to connect to your EC2 instance, we need to configure an SSH connection by creating a config file at `~/.ssh/config`. This configuration file stores connection details such as the host, IP address, and identity file. Use the following command to open the config file for editing:
 ```
-Host <your EC2 instance name>
-	Hostname <your EC2 instance public IPv4 DNS>
+Host 24188516-vm-1
+	Hostname 16.171.206.115
 	User ubuntu
 	UserKnownHostsFile /dev/null
 	StrictHostKeyChecking no
 	PasswordAuthentication no
-	IdentityFile <path to your private key>
-```
+	IdentityFile /home/liudayubob/cits5503/lab7/24188516-key-lab7.pem
+``` 
+#### Key Parameters:
+1.  **`Host 24188516-vm-1`**: Defines the alias for your EC2 instance, which will be used when establishing a Fabric connection.
+2.  **`Hostname`**: Specifies the public IP address (in this case, `16.170.252.129`) of your EC2 instance.
+3.  **`User ubuntu`**: The default username for EC2 instances based on our Ubuntu AMI image.
+4.  **`IdentityFile`**: The path to your private key file (generated during instance creation) for password-less authentication.
+5.  **`UserKnownHostsFile /dev/null` and `StrictHostKeyChecking no`**: These disable SSH host key checking, preventing the need for manual approval when connecting.
 
-Replace `<your EC2 instance name>` and `<your EC2 instance public IPv4 DNS>` above with your real ones.
+This configuration allows Fabric to connect to the EC2 instance without needing to specify credentials on every connection.
+![enter image description here](http://127.0.0.1/assets/lab7-3.png)
 
-Rely on the fabric code below to connect to you instance.
 
+### Test Fabric Connection
+We will use the following Fabric code to establish a connection to the EC2 instance. Fabric looks up the host file and uses the connection configuration for `24188516-vm-1`. After establishing the connection, we will run a simple command to verify it.
+
+The command `c.run('uname -s')` will return "Linux" as output, confirming that the connection is successful and commands can be executed on the instance. 
 ```
 python3
->>> from fabric import Connection
->>> c = Connection('<your EC2 instance name>')
->>> result = c.run('uname -s')
+	>>> from fabric import Connection
+	>>> c = Connection('24188516-vm-1')
+	>>> result = c.run('uname -s')
 Linux
->>>
+``` 
+
+#### Key Points:
+-   **Fabric Connection**: Uses the SSH configuration to connect to the EC2 instance using the alias `24188516-vm-1`.
+-   **Command Execution**: The `uname -s` command confirms the operating system on the remote instance is Linux.
+
+![enter image description here](http://127.0.0.1/assets/lab7-4.png)
+
+### Automation for creating Django App
+
+In this section, we will automate the process of setting up a Python virtual environment, configuring Nginx, and creating a Django app within the EC2 instance using Fabric. The commands from **Lab 6** will be converted to Fabric's `c.run()` for regular commands and `c.sudo()` for commands requiring admin privileges. Additionally, file editing will be handled using `echo`. We will use file I/O to write Nginx configuration to avoid issues with `$` placeholders. Due to the fact that each  `c.run()` command is runned isolately, to persist the sourced virtual environment, we will re-source the environment each time before running further commands.
+
+### Workflow:
+1. **Install Prerequisites**:
+   - Update and upgrade system packages.
+   - Install the Python virtual environment package (`python3-venv`).
+   - Install Nginx web server.
+2. **Set Up Virtual Environment**:
+   - Create a project directory and assign necessary permissions.
+   - Set up a virtual environment within the project directory and install Django.
+3. **Create Django Project and App**:
+   - Start a new Django project and app (`polls`) inside the virtual environment.
+   - Modify the views, URLs, and settings to display "Hello, world" from the `polls` app.
+4. **Configure Nginx**:
+   - Write a new Nginx configuration file to act as a reverse proxy, forwarding traffic from port 80 to the Django app running on port 8000.
+5. **Run Django Server**:
+   - Run the Django development server in the background, ensuring the app is accessible on port 8000.
+
+Here is the script that automates these steps:
+```python
+from fabric import Connection
+
+EC2_INSTANCE_NAME = '24188516-vm-1'
+PROJECT_DIR = '/opt/wwc/mysites/lab'
+
+def install_prerequisites(c):
+    # Update and upgrade system packages
+    c.sudo('apt-get update -y')
+    c.sudo('apt-get upgrade -y')
+
+    # Install Python 3 virtual environment package
+    c.sudo('apt-get install python3-venv -y')
+
+    # Install Nginx
+    c.sudo('apt install nginx -y')
+
+def set_virtual_env(c):
+    # Create project directory and navigate to it
+    c.sudo(f'mkdir -p {PROJECT_DIR}')
+    # Ensure permissions for accessing project directory
+    c.sudo(f'chown -R ubuntu:ubuntu {PROJECT_DIR}')
+    c.run(f'cd {PROJECT_DIR} && python3 -m venv myvenv')
+    c.run(f'cd {PROJECT_DIR} && source myvenv/bin/activate && pip install django')
+
+def setup_django_app(c):
+    # Start a new Django project and app within the virtual environment
+    c.run(f'cd {PROJECT_DIR} && source myvenv/bin/activate && django-admin startproject lab .')
+    c.run(f'cd {PROJECT_DIR} && source myvenv/bin/activate && python3 manage.py startapp polls')
+
+    # Modify the Django project settings and URLs
+    c.run(f'echo "from django.http import HttpResponse" > {PROJECT_DIR}/polls/views.py')
+    c.run(f'echo "def index(request): return HttpResponse(\'Hello, world.\')" >> {PROJECT_DIR}/polls/views.py')
+
+    c.run(f'echo "from django.urls import path\nfrom . import views\nurlpatterns = [path(\'\', views.index, name=\'index\')]" > {PROJECT_DIR}/polls/urls.py')
+    c.run(f'echo "from django.urls import include, path\nfrom django.contrib import admin\nurlpatterns = [path(\'polls/\', include(\'polls.urls\')), path(\'admin/\', admin.site.urls)]" > {PROJECT_DIR}/lab/urls.py')
+
+def configure_nginx(c):
+    # Properly handle the Nginx configuration using a temporary file to avoid echo issues
+    nginx_config = '''
+    server {
+      listen 80 default_server;
+      listen [::]:80 default_server;
+
+      location / {
+        proxy_set_header X-Forwarded-Host $$host;
+        proxy_set_header X-Real-IP $$remote_addr;
+
+        proxy_pass http://127.0.0.1:8000;
+      }
+    }
+    '''
+    
+    # Write the configuration to a temp file and move it into place
+    with open("nginx_temp.conf", "w") as f:
+        f.write(nginx_config)
+    
+    c.put("nginx_temp.conf", "/tmp/nginx_temp.conf")
+    c.sudo('mv /tmp/nginx_temp.conf /etc/nginx/sites-enabled/default')
+    
+    # Restart Nginx to apply changes
+    c.sudo('service nginx restart')
+
+def run_django_server(c):
+    # Start Django development server in the background
+    c.run(f'cd {PROJECT_DIR} && source myvenv/bin/activate && python3 manage.py runserver 8000', pty=False)
+
+if __name__ == "__main__":
+    conn = Connection(EC2_INSTANCE_NAME)
+
+    install_prerequisites(conn)
+    set_virtual_env(conn)
+    setup_django_app(conn)
+    configure_nginx(conn)
+    run_django_server(conn)
 ```
-
-### Use Fabric for automation
-
-Write a python script where you first need to automate the setup of a Python 3 virtual environment, nginx and a Django app within the EC2 instance you just created. Then, you should run the Django development server on port 8000 in the background.
-
-From your local OS environment, access the URL: `http://<ip address of your EC2 instance>/polls/`, and output what you've got. 
-
-**NOTE**:  this python script basically needs you to convert instructions (in `Set up an EC2 instance` and `Set up Django inside the created EC2 instance`) in Lab 6 to Fabric commands. The documentation for Fabric is [here](http://docs.fabfile.org/en/2.0/).
-
+### Code Explanation:
+1.  **Install Prerequisites**:
+    -   **`apt-get update`** and **`apt-get upgrade`**: Updates and upgrades system packages.
+    -   **`apt-get install python3-venv`**: Installs Python 3's virtual environment tool.
+    -   **`apt install nginx`**: Installs the Nginx web server for handling HTTP traffic.
+2.  **Set Virtual Environment**:
+    -   **`mkdir -p`**: Creates the project directory to store our virtual environment settings and django app.
+    -   **`python3 -m venv myvenv`**: Creates a virtual environment.
+    -   **`pip install django`**: Installs Django in the virtual environment.
+3.  **Setup Django App**:
+    -   **`django-admin startproject lab`**: Creates the Django project.
+    -   **`python3 manage.py startapp polls`**: Creates the `polls` app.
+    -   **`echo XXX`**: Writes the `views.py`, `urls.py`, and `lab/urls.py` with proper Django routes for displaying "Hello, world."
+4.  **Configure Nginx**:
+    -   **Nginx config file**: Writes a configuration file to forward requests to Django on port 8000.
+    -   **`service nginx restart`**: Restarts Nginx to apply the changes.
+5.  **Run Django Server**:
+    -   **`manage.py runserver`**: Runs the Django development server on port 8000.
+![enter image description here](http://127.0.0.1/assets/lab7-5.png)
+![enter image description here](http://127.0.0.1/assets/lab7-6.png)
+![enter image description here](http://127.0.0.1/assets/lab7-7.png)
 <div style="page-break-after: always;"></div>
 
 # Lab 8
@@ -564,11 +690,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMT
-M0MTQ4NDA1MiwtMjExNjU3OTMxOSwxNTkwNzA4MDksLTE1NDAz
-NjYzODYsLTEwOTgzNjk0NjksLTE0MzI5MDMxMDgsLTM3NDI5Mz
-Y2NywtMTc2ODc1NjgzMywtMTk0MjU0MTI3NywxODUxOTY0NDg4
-LC0xNjc1ODM5Nzc1LC0xODI3NDI4NDc1LC0xNzcwOTY3NjQzLD
-E4NzM5MDMyNDUsMTkyNjkxNDI0OCwxOTI2OTE0MjQ4LDE5MTIy
-MTczODcsLTc0NTEyMTc0Ml19
+eyJoaXN0b3J5IjpbMjc0NDM4MTM5LDE2OTEyODM0NTMsMTA4Mz
+AzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5Njgs
+MTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMjIwOD
+k3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQzMzk3
+LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1NzkzMTksMT
+U5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMDk4MzY5NDY5LC0xNDMy
+OTAzMTA4XX0=
 -->
