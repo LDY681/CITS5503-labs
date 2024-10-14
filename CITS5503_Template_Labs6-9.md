@@ -684,17 +684,35 @@ if __name__ == "__main__":
 <div style="page-break-after: always;"></div>
 
 # Lab 8
+The aim of this lab is to write a program that will:
+1.  Use jupyter notebooks and pandas to explore a dataset.
+2.  Use boto3 and sagemaker to create training and hyperparameter optimization jobs, two important steps in every machine learning project.
+3.  After a job is learned SageMaker allows to deploy models in EC2 instances. However, this is out of the scope for this lab.
 
+## Install and run jupyter notebooks
+In this step, we will install Jupyter Notebooks, and launch it to interact with a dataset using Pandas. To begin, install the Jupyter Notebook package and run it using the following commands:
+```
+pip install notebook
+jupyter notebook
+```
+
+## Install ipykernel
+
+It can be installed using pip:
+
+```
+pip install ipykernel
+```
 <div style="page-break-after: always;"></div>
 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjc0NDM4MTM5LDE2OTEyODM0NTMsMTA4Mz
-AzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5Njgs
-MTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMjIwOD
-k3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQzMzk3
-LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1NzkzMTksMT
-U5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMDk4MzY5NDY5LC0xNDMy
-OTAzMTA4XX0=
+eyJoaXN0b3J5IjpbMTA2ODQzNjgwOSwyNzQ0MzgxMzksMTY5MT
+I4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4
+LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MT
+I2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgs
+LTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMj
+ExNjU3OTMxOSwxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgz
+Njk0NjldfQ==
 -->
