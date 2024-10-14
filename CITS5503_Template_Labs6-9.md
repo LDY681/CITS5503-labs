@@ -470,8 +470,8 @@ Now we can access its url with path `/polls/` to see if the mapping works proper
 <div style="page-break-after: always;"></div>
 
 # Lab 7
-### Create EC2 Instance
-In the first step, we use our script from **Lab 6** to create a new EC2 instance. We will not elaborate on the code base beforunning the following command in our local Ubuntu machine:
+### [1] Create EC2 Instance
+In the first step, we use our script from **Lab 6** to create a new EC2 instance. We will not elaborate on the code base because it's already covered in previous lab. Run the following command in our local Ubuntu machine:
 ```
 python3 createinstance.py
 ```
@@ -479,7 +479,7 @@ This script automates the creation of the EC2 instance with the required configu
 
 ![enter image description here](http://127.0.0.1/assets/lab7-1.png)
 
-### Install Fabric
+### [2] Install Fabric
 In this step, we install the **Fabric** package, which is used for automating SSH-based tasks such as managing remote servers.
 `pip install fabric` 
 #### Key Parameters:
@@ -488,8 +488,8 @@ In this step, we install the **Fabric** package, which is used for automating SS
 ![enter image description here](http://127.0.0.1/assets/lab7-2.png)
 
 
-### Configure Fabric
-To enable Fabric to connect to our EC2 instance, we need to configure an SSH connection by creating a config file at `~/.ssh/config`. This configuration file stores connection details such as the host, IP address, and identity file. Use the following command to open the config file for editing:
+### [3] Configure Fabric
+To enable Fabric to connect to our EC2 instance, we need to configure an SSH connection by creating a config file at `~/.ssh/config`. This configuration file stores connection details such as the host, IP address, and identity file. Use `vi ~/.ssh/config` to open the config file and edit as following:
 ```
 Host 24188516-vm-1
 	Hostname 16.171.206.115
@@ -1200,11 +1200,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0MjU0Mjc4NDcsMTE5NTY1MTcxMCwtNj
-EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
-NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
-wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
-Njk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLT
-EyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3
-NDMzOTddfQ==
+eyJoaXN0b3J5IjpbMTQ4MzIyNjk3NiwxMTk1NjUxNzEwLC02MT
+I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
+ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
+EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
+OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
+IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
+MzM5N119
 -->
