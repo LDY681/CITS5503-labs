@@ -230,20 +230,18 @@ Once the commands are executed, Django creates the following structure for our p
   - **`tests.py`**: Houses unit tests for the app.
   - **`views.py`**: Where request-handling functions and classes are defined.
 
-The files created by Django provide a boilerplate for developing the project. As we progress, we will work on these files to build the application and understand their specific roles and functionalities.
+The files created by Django provide a boilerplate for developing the project. In the later part, we will work on the poll files to build a simple `"Hello, World"` page.
 
 
 ### [6] Install Nginx
-
 To install the Nginx web server, run the following command:
-
 ```bash
 apt install nginx
 ```
 #### Key Parameters:
--   **`install nginx`**: Downloads and installs the `nginx` package from the repository, including all necessary dependencies.
+-   **`nginx`**: Installs the `nginx` package from the repository.
 
-This command sets up the Nginx web server, which can be used as a reverse proxy, load balancer, or HTTP cache for our applications.
+This command sets up the Nginx web server, which can be used as a reverse proxy for our applications.
 ![enter image description here](http://127.0.0.1/assets/lab6-8.png)
 
 ### [7] Configure nginx
@@ -1215,11 +1213,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEwNDA3NzU1MzQsMTE5NTY1MTcxMCwtNj
-EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
-NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
-wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
-Njk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLT
-EyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3
-NDMzOTddfQ==
+eyJoaXN0b3J5IjpbLTg4ODc3MTQzMCwxMTk1NjUxNzEwLC02MT
+I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
+ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
+EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
+OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
+IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
+MzM5N119
 -->
