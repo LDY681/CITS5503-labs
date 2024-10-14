@@ -1009,7 +1009,7 @@ for text in texts:
 -   **`lang = response['Languages'][0]`**:
     -   Extracts the first (most confident) language from the list of detected languages.
 -   **`language_map = {}`**:
-    -   A dictionary that maps language codes to language names. If the detected language is in the map, it prints the corresponding language name (e.g., `'en'` -> `'English'`). Otherwise, it defaults to printing the language code.
+    -   A dictionary that maps language codes to language names. It prints the corresponding language name (e.g., `'en'` -> `'English'`). 
 -   **`confidence = round(lang['Score'] * 100, 2)`**:
     -   Extracts the confidence score, convert it to a percentage, and rounds it to two decimal places.
 
@@ -1029,7 +1029,7 @@ def detect_sentiment(text, language_code='en'):
 for text in texts:
     detect_sentiment(text)
 ```
-### Code Explanation:
+> ### Code Breakdown:
 1.  **`client.detect_sentiment()`**: Calls AWS Comprehend to detect the sentiment of the input text.
 2.  **`response['Sentiment']`**: Extracts the detected sentiment (Positive, Negative, Neutral, or Mixed).
 3.  **`response['SentimentScore']`**: Retrieves the confidence scores for each sentiment type.
@@ -1212,7 +1212,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY5MjI5MDc2MCwtMzg3OTk4MDMzLDExOT
+eyJoaXN0b3J5IjpbMTg4MzE3OTk3MywtMzg3OTk4MDMzLDExOT
 U2NTE3MTAsLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjEx
 MTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LD
 E2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2
