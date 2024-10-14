@@ -816,23 +816,20 @@ s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder in S3
 -   **`put_object()`**: Creates a folder inside the S3 bucket for storing data.
 -   **`!wget`** and **`!unzip`**: Downloads and unzips the dataset.
 
-### 3. Data Preparation and Processing
+![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-5.png)
+![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-9.png)
 
+### 3. Data Preparation and Processing
 We will prepare the dataset for training by converting categorical data to binary indicators and splitting the data into training, validation, and test sets.
 
 #### Workflow
-
 1.  **Load and Process Data**:
-    
     -   Load the dataset into Pandas and create new indicator columns for specific variables.
 2.  **Convert to Dummy Variables**:
-    
     -   Convert categorical variables into binary columns using `pd.get_dummies()`.
 3.  **Split Data**:
-    
     -   Split the data into training (70%), validation (20%), and test (10%) datasets.
 4.  **Fix Non-Numeric Data**:
-    
     -   Replace `True/False` values with `1/0` to avoid non-numeric errors in SageMaker.
 ```
 # Load dataset into Pandas
@@ -881,18 +878,16 @@ boto3.Session().resource("s3").Bucket(bucket).Object(
 
 ``` 
 #### Code Explanation:
-
 -   **`get_dummies()`**: Converts categorical variables into dummy (binary) variables.
 -   **`np.where()`**: Adds indicator columns based on conditions (e.g., whether a customer was previously contacted).
 -   **`split()`**: Splits data into training, validation, and test sets.
 -   **`upload_file()`**: Uploads the prepared CSV files to S3 for SageMaker to use in training.
+![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-6.png)
 
 ### 4. Set Up Hyperparameter Tuning Job
-
 Next, we'll configure and launch a hyperparameter tuning job using SageMaker's XGBoost algorithm.
 
 #### Workflow
-
 1.  **Configure Hyperparameters**:
     
     -   Define the range of hyperparameters (e.g., `eta`, `max_depth`) for tuning.
@@ -970,7 +965,7 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTczNTkyMjQxMSw0MDY1MjExMTcsLTE1NT
+eyJoaXN0b3J5IjpbMTQ3MDA1NjgwMSw0MDY1MjExMTcsLTE1NT
 M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
 NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
 Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
