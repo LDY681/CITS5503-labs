@@ -520,14 +520,11 @@ In this step, we install the **Fabric** package, which is used for automating SS
 #### Key Parameters:
 -   **`fabric`**: Installs the Fabric package, enabling us to automate remote server management and deployment tasks.
 
-This command installs the Fabric package, preparing our environment for remote connections and task automation.
 ![enter image description here](http://127.0.0.1/assets/lab7-2.png)
 
 
 ### Configure Fabric
 To enable Fabric to connect to your EC2 instance, we need to configure an SSH connection by creating a config file at `~/.ssh/config`. This configuration file stores connection details such as the host, IP address, and identity file. Use the following command to open the config file for editing:
-
-`vi ~/.ssh/config` 
 ```
 Host 24188516-vm-1
 	Hostname 16.171.206.115
@@ -537,11 +534,10 @@ Host 24188516-vm-1
 	PasswordAuthentication no
 	IdentityFile /home/liudayubob/cits5503/lab7/24188516-key-lab7.pem
 ``` 
-
 #### Key Parameters:
 1.  **`Host 24188516-vm-1`**: Defines the alias for your EC2 instance, which will be used when establishing a Fabric connection.
 2.  **`Hostname`**: Specifies the public IP address (in this case, `16.170.252.129`) of your EC2 instance.
-3.  **`User ubuntu`**: The default username for EC2 instances based on Ubuntu AMIs.
+3.  **`User ubuntu`**: The default username for EC2 instances based on our Ubuntu AMI image.
 4.  **`IdentityFile`**: The path to your private key file (generated during instance creation) for password-less authentication.
 5.  **`UserKnownHostsFile /dev/null` and `StrictHostKeyChecking no`**: These disable SSH host key checking, preventing the need for manual approval when connecting.
 
@@ -702,7 +698,7 @@ if __name__ == "__main__":
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTU3MDMzMjg2NywxNjkxMjgzNDUzLDEwOD
+eyJoaXN0b3J5IjpbLTE4NzU2Njk3MywxNjkxMjgzNDUzLDEwOD
 MwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4
 LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
 g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
