@@ -1136,20 +1136,21 @@ REGION = "ap-southeast-2"
 STUDENT_ID = "24188516"
 BUCKET_NAME = f"{STUDENT_ID}-lab9"
 
-# Initialize S3 client
+# Initialize S3 client & Rekognition client
 s3 = boto3.client('s3', region_name=REGION)
-
-# Create the S3 bucket
-bucket_config = {'LocationConstraint': REGION}
-s3.create_bucket(Bucket=BUCKET_NAME, CreateBucketConfiguration=bucket_config)
 
 # List of images to upload
 images = ['urban.jpg', 'beach.jpg', 'faces.jpg', 'text.jpg']
 
-# Upload images to the bucket
-for image in images:
-    s3.upload_file(image, BUCKET_NAME, image)
-print(f"Images uploaded to {BUCKET_NAME}")
+def upload_images():
+    # Create the S3 bucket
+    bucket_config = {'LocationConstraint': REGION}
+    s3.create_bucket(Bucket=BUCKET_NAME, CreateBucketConfiguration=bucket_config)
+
+    # Upload images to the bucket
+    for image in images:
+        s3.upload_file(image, BUCKET_NAME, image)
+    print(f"Images uploaded to {BUCKET_NAME}")
 ```
 ### Code Explanation:
 
@@ -1213,6 +1214,10 @@ for image in images:
         facial_analysis(image)
     if image == 'text.jpg':
         text_extraction(image)
+
+if  __name__  ==  "__main__":
+	upload_images()
+	run_analyses()
 ```
 ### Code Explanation:
 1.  **Label Recognition (`detect_labels`)**:
@@ -1224,11 +1229,11 @@ for image in images:
 4.  **Text Extraction (`detect_text`)**:
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MD
-Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
-MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
-g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
-NDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOT
-YzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0
-ODQwNTJdfQ==
+eyJoaXN0b3J5IjpbNTY2Mjk3NjA1LC02MTI4NTA0MTAsLTIwNj
+I0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0
+ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLDEwODMwMzUxMSwxND
+I5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4LDExNDAyOTA3
+NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0OD
+g4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5NywtMjA4MDU3
+ODAzOV19
 -->
