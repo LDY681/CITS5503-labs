@@ -520,8 +520,6 @@ Here's the output from the script:
 
 In this step, we install the **Fabric** package, which is used for automating SSH-based tasks such as managing remote servers.
 
-Copy code
-
 `pip install fabric` 
 
 #### Key Parameters:
@@ -654,7 +652,7 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MTU0MjQ5NCwxNjkxMjgzNDUzLDEwOD
+eyJoaXN0b3J5IjpbLTkzOTQ1NzM4MCwxNjkxMjgzNDUzLDEwOD
 MwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4
 LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
 g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
