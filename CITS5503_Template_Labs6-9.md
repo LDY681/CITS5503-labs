@@ -538,7 +538,7 @@ python3
 ![enter image description here](http://127.0.0.1/assets/lab7-4.png)
 
 ### Use Fabric for automation
-We will bscially convert the command lines we use in lab6 to fabric by wrapping with c.run(). For admin priviledges command, we will convert them to c.sudo() instead. As you can see, some commands will use "-y" for automatically answering yes to the prompt because we are automating. We would use echo for editing, when we create our Dajango poll app and configuration nginx files
+We will bscially convert the command lines we use in lab6 to fabric by wrapping with c.run(). For admin priviledges command, we will convert them to c.sudo() instead. As you can see, some commands will use "-y" for automatically answering yes to the prompt because we are automating. We would use echo for editing, when we create our Dajango poll app. To retain the $placeholder in our nginx configuration  files, we would use file IO to write a separate file and replace the default configuration file.
 
 Write a python script where you first need to automate the setup of a Python 3 virtual environment, nginx and a Django app within the EC2 instance you just created. Then, you should run the Django development server on port 8000 in the background.
 This is the code down below;
@@ -631,11 +631,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2Nj
-YxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYs
-LTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NT
-g3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3
-OTMxOSwxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgzNjk0Nj
-ksLTE0MzI5MDMxMDgsLTM3NDI5MzY2NywtMTc2ODc1NjgzMywt
-MTk0MjU0MTI3N119
+eyJoaXN0b3J5IjpbMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MD
+I2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAs
+NTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMD
+g2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQw
+NTIsLTIxMTY1NzkzMTksMTU5MDcwODA5LC0xNTQwMzY2Mzg2LC
+0xMDk4MzY5NDY5LC0xNDMyOTAzMTA4LC0zNzQyOTM2NjcsLTE3
+Njg3NTY4MzNdfQ==
 -->
