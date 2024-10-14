@@ -711,10 +711,6 @@ pip install ipykernel
 ![enter image description here](http://127.0.0.1/assets/lab8-2.png)
 1. **Install ipykernel**: - This package allows Jupyter to communicate with the Python interpreter. 
 
-
-## Jupiter Notebook Job description
-
-
 ## Fine-tuning Jupiter Notebook
 In the notebook, we already have pre-written code, here we need to chanage constant variables to make sure we create our own environement for the job. In the nest step, I will explain the code in the Jupiter notebook
 ```
@@ -732,11 +728,11 @@ After changing the code, we can run the notebook by `Run` menu.
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDA2NTIxMTE3LC0xNTUzNDE0ODM3LC0xNT
-UzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLDEwODMwMzUx
-MSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4LDExND
-AyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMDg5Nzg5
-OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5NywtMj
-A4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LDE1OTA3
-MDgwOV19
+eyJoaXN0b3J5IjpbMTI0NjY4MjA5MCw0MDY1MjExMTcsLTE1NT
+M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
+NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
+Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
+LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOT
+U4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1
+NzkzMTldfQ==
 -->
