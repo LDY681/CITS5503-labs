@@ -519,13 +519,12 @@ We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalance
 In the first step, we will use our script from lab6 to create a new instance first, by running "python3 createInstance.py" in our local Ubuntu machine. 
 
 ### Install and configure Fabric 
-
-
+First, we will install fabric by:
 ```
 pip install fabric
 ```
 
-You will need to create a config file in ~/.ssh with the contents:
+You will need to create a config file in ~/.ssh with the contents, by `vi ~/.ssh/config`
 
 ```
 Host <your EC2 instance name>
@@ -567,11 +566,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NT
-g3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3
-OTMxOSwxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgzNjk0Nj
-ksLTE0MzI5MDMxMDgsLTM3NDI5MzY2NywtMTc2ODc1NjgzMywt
-MTk0MjU0MTI3NywxODUxOTY0NDg4LC0xNjc1ODM5Nzc1LC0xOD
-I3NDI4NDc1LC0xNzcwOTY3NjQzLDE4NzM5MDMyNDUsMTkyNjkx
-NDI0OCwxOTI2OTE0MjQ4XX0=
+eyJoaXN0b3J5IjpbLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05Nj
+MwODY5OTgsLTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4
+NDA1MiwtMjExNjU3OTMxOSwxNTkwNzA4MDksLTE1NDAzNjYzOD
+YsLTEwOTgzNjk0NjksLTE0MzI5MDMxMDgsLTM3NDI5MzY2Nywt
+MTc2ODc1NjgzMywtMTk0MjU0MTI3NywxODUxOTY0NDg4LC0xNj
+c1ODM5Nzc1LC0xODI3NDI4NDc1LC0xNzcwOTY3NjQzLDE4NzM5
+MDMyNDUsMTkyNjkxNDI0OF19
 -->
