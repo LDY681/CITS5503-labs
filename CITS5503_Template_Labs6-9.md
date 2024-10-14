@@ -294,7 +294,8 @@ We can now access the web app via `http://13.61.7.212`.
 ![enter image description here](http://127.0.0.1/assets/lab6-9.png)
 
 ## Set up Django App
-In this step, we will modify the Django App to display a simple "Hello, World" message when visiting `/polls` page and display the admin interface when vist
+In this step, we will modify the Django App to display a simple "Hello, World" message when visiting the `/polls` route and display the admin interface when visiting `/admin` page.
+
 ### [1] Edit `polls/view.py`
 In `polls/views.py`, create a view that returns a simple HTTP response "Hello World":
 ```
@@ -331,7 +332,7 @@ urlpatterns = [
 -   **`include('polls.urls')`**: Includes the `polls` app's URL configurations under the path `polls/`.
 -   **`admin.site.urls`**: Sets up the admin interface under the path `admin/`.
 
-### [2] Run the web server again
+### [2] Restart the web server
 Now we can apply the changes and restart the server to see the changes.
 ```
 python3 manage.py runserver 8000
@@ -342,9 +343,9 @@ python3 manage.py runserver 8000
 -   **`runserver 8000`**: Specifies the port on which the server will listen for requests. In this case, it’s  **8000**.
 
 ### [3] Access the EC2 instance
-Access the polls index page with `Hello,World` message by visiting `http://13.61.7.212/polls/`. Access the built-in admin module by visiting `http://13.61.7.212/admin/`
-![enter image description here](http://127.0.0.1/assets/lab6-10.png)
+We can access the polls index page with `Hello,World` message by visiting `http://13.61.7.212/polls/`. ![enter image description here](http://127.0.0.1/assets/lab6-10.png)
 
+We can access the built-in admin module by visiting `http://13.61.7.212/admin/`
 ![enter image description here](http://127.0.0.1/assets/lab6-11.png)
 
 ## Set up an ALB
@@ -1205,11 +1206,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTczNzI1MzcyNSwxMTk1NjUxNzEwLC02MT
-I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
-ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
-EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
-OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
-IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
-MzM5N119
+eyJoaXN0b3J5IjpbLTE4NDE1NDE1MzYsMTE5NTY1MTcxMCwtNj
+EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
+NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
+wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
+Njk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLT
+EyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3
+NDMzOTddfQ==
 -->
