@@ -790,9 +790,9 @@ We will prepare the dataset for training by converting categorical data to binar
 3.  **Remove Unnecessary Columns**:
     -   Drop economic variables and duration from the dataset to avoid bias in future predictions.
 4.  **Fix Non-Numeric Data**:
-    -   Replace `True/False` values with `1/0` to ensure all data is numeric.
+    -   Replace `True/False` values with `1/0` to avoid non-numeric errors in SageMaker.
 5.  **Split Train/Validation/Test Data**:
-    -   Split the dataset into training (70%), validation (20%), and test (10%) datasets for model training and evaluation.
+    -   Split the data into training (70%), validation (20%), and test (10%) datasets.
 6.  **Save Split Datasets as CSV Files**:
     -   Save each split as a CSV file, removing headers and adjusting the first column to be the target variable.
 7.  **Upload the Datasets to S3**:
@@ -844,16 +844,17 @@ boto3.Session().resource("s3").Bucket(bucket).Object(
 ).upload_file("validation.csv")
 ``` 
 > #### Code Breakdown:
-1.  **`pd.read_csv()`**: Reads the dataset into a Pandas DataFrame from the given file.
-2.  **`np.where()`**: Adds indicator columns based on specific conditions (e.g., checking if a customer was previously contacted).
-3.  **`pd.get_dummies()`**: Converts categorical variables into dummy variables, making them suitable for machine learning models.
-4.  **`model_data.drop()`**: Removes unnecessary columns that could introduce bias or noise into the model.
-5.  **`model_data.replace()`**: Replaces `True/False` values with `1/0` to avoid non-numeric errors during SageMaker training.
-6.  **`np.split()`**: Randomly splits the dataset into training, validation, and test sets based on specified proportions.
-7.  **`pd.concat()`**: Combines the target column (`y_yes`) with the remaining feature columns and saves them as CSV files for each split.
-8.  **`os.path.join()`**: Combines the bucket name and the prefix to create the correct path for uploading files to S3.
-9.  **`upload_file()`**: Uploads the prepared training and validation CSV files to the specified S3 bucket for SageMaker to use during training.
+- **`pd.read_csv()`**: Reads the dataset into a Pandas DataFrame from the given file.
+- **`np.where()`**: Adds indicator columns based on specific conditions (e.g., checking if a customer was previously contacted).
+- **`pd.get_dummies()`**: Converts categorical variables into dummy variables, making them suitable for machine learning models.
+- **`model_data.drop()`**: Removes unnecessary columns that could introduce bias or noise into the model.
+- **`model_data.replace()`**: Replaces `True/False` values with `1/0` to avoid non-numeric errors during SageMaker training.
+- **`np.split()`**: Randomly splits the dataset into training, validation, and test sets based on specified proportions.
+- **`pd.concat()`**: Combines the target column (`y_yes`) with the remaining feature columns and saves them as CSV files for each split.
+- **`os.path.join()`**: Combines the bucket name and the prefix to create the correct path for uploading files to S3.
+- **`Object.upload_file()`**: Uploads the prepared training and validation CSV files to the specified S3 bucket to use during training.
 
+We can
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-6.png)
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-7.png)
 
@@ -1198,7 +1199,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Nzc2MzgzOTYsLTM4Nzk5ODAzMywxMT
+eyJoaXN0b3J5IjpbLTE2MDkyODU0MzMsLTM4Nzk5ODAzMywxMT
 k1NjUxNzEwLC02MTI4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIx
 MTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOS
 wxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAy
