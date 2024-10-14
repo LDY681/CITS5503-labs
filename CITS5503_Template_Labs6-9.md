@@ -266,17 +266,16 @@ server {
 - **`proxy_pass http://127.0.0.1:8000;`**: Forwards incoming traffic to `http://127.0.0.1:8000`, where our Django application is running. This allows Nginx to act as a reverse proxy, handling requests and passing them to our Django server.
 
 This configuration ensures that all incoming traffic to our server's port **80** is passed to the Django app running locally on port **8000**.
-![enter image description here](http://127.0.0.1/assets/lab6-9.png)
+
 ### [8] Restart nginx
 To apply our new configuration, we need to restart the Nginx service, run the following command:
 ```
 service nginx restart
 ```
 #### Key Parameters:
-
 -   **`service`**: Manages system services.
 -   **`nginx`**: Specifies the Nginx service to be managed.
--   **`restart`**: Restarts the Nginx service, stopping it if running and then starting it again to apply any configuration changes.
+-   **`restart`**: Restarts the Nginx service, stopping smf then starting it again to apply configuration changes.
 
 This command ensures that any updates or changes made to the Nginx configuration are applied.
 
@@ -288,8 +287,7 @@ In the app directory `/opt/wwc/mysites/lab`, run the following command to start 
 python3 manage.py runserver 8000
 ```
 #### Key Parameters:
-
--   **`runserver`**: Starts the Django development server.
+-   **`manage.py runserver`**: Starts the Django development server.
 -   **`8000`**: Specifies the port on which the server will listen for requests. In this case, it's **8000**.
 
 We can now access the web app via `http://13.61.7.212:8000`.
@@ -1206,7 +1204,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY2NzIxNDU5MywxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbMTk5OTM3NTMzMiwxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
