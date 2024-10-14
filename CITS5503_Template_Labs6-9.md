@@ -718,8 +718,6 @@ In ``LabAI.ipynb``, we will set up a tuning job using Amazon SageMaker. Steps in
 
 ### 1. Install Required Libraries
 To begin, we need to install several essential libraries such as SageMaker, Pandas, and Numpy for machine learning and data processing.
-
-#### Workflow
 1.  **Install SageMaker**:
     -   SageMaker is required to create and manage training jobs, models, and endpoints in AWS.
 2.  **Install Pandas and Numpy**:
@@ -734,19 +732,14 @@ To begin, we need to install several essential libraries such as SageMaker, Pand
 ```
 
 ### 2. Prepare SageMaker Session and S3 Bucket
-
 We need to set up a SageMaker session, IAM role, and S3 bucket to store the training data.
 
 #### Workflow
-
 1.  **Set up SageMaker Session**:
-    
     -   Initialize the SageMaker and IAM clients, set the region, and get the ARN of the SageMaker role.
 2.  **Create an S3 Bucket**:
-    
     -   Create an S3 bucket to store training data.
 3.  **Download Dataset**:
-    
     -   Download and unzip the Bank Marketing dataset from UCI ML repository.
 ```
 import sagemaker
@@ -772,14 +765,14 @@ s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder in S3
 !wget -N https://archive.ics.uci.edu/ml/machine-learning-databases/00222/bank-additional.zip
 !unzip -o bank-additional.zip
 ```
-#### Code Explanation:
-
+> #### Code Breakdown:
 -   **`sagemaker.Session()`**: Initializes a SageMaker session to interact with AWS SageMaker services.
 -   **`boto3.client('s3')`**: Creates an S3 client to interact with S3 services.
 -   **`create_bucket()`**: Creates an S3 bucket in the specified region.
 -   **`put_object()`**: Creates a folder inside the S3 bucket for storing data.
--   **`!wget`** and **`!unzip`**: Downloads and unzips the dataset.
+-   **`!wget`** and **`!unzip`**: Downloads and unzips the dataset to our local folder.
 
+We
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-5.png)
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab8-9.png)
 
@@ -1190,7 +1183,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTUyNTI1NTAxOSwxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbLTQ0ODM0MDI5MCwxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
