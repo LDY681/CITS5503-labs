@@ -1157,14 +1157,74 @@ print(f"Images uploaded to {BUCKET_NAME}")
 2.  **`create_bucket()`**: Creates an S3 bucket in the specified region, using the student's ID as part of the bucket name.
 3.  **`upload_file()`**: Uploads the specified images to the bucket.
 
-### Workflow: Testing AWS Rekognition for Different Analyses
-
+### Step2: Testing AWS Rekognition for Task Analysis
+#### Workflow
 1.  **Label Recognition**: Recognize objects, scenes, or actions from the uploaded images.
 2.  **Image Moderation**: Check the images for explicit or inappropriate content.
 3.  **Facial Analysis**: Analyze facial attributes in the images, such as emotions, gender, and age.
 4.  **Text Extraction**: Extract and analyze text from the image containing text.
+
+```
+# Initialize Rekognition client
+rekognition = boto3.client('rekognition', region_name=REGION)
+
+def label_recognition(image):
+    response = rekognition.detect_labels(
+        Image={'S3Object': {'Bucket': BUCKET_NAME, 'Name': image}},
+        MaxLabels=10,
+        MinConfidence=70
+    )
+    print(f"Labels detected in {image}:")
+    for label in response['Labels']:
+        print(f"  {label['Name']}: {round(label['Confidence'], 2)}% confidence")
+
+def image_moderation(image):
+    response = rekognition.detect_moderation_labels(
+        Image={'S3Object': {'Bucket': BUCKET_NAME, 'Name': image}},
+        MinConfidence=70
+    )
+    print(f"Moderation labels detected in {image}:")
+    for label in response['ModerationLabels']:
+        print(f"  {label['Name']}: {round(label['Confidence'], 2)}% confidence")
+
+def facial_analysis(image):
+    response = rekognition.detect_faces(
+        Image={'S3Object': {'Bucket': BUCKET_NAME, 'Name': image}},
+        Attributes=['ALL']
+    )
+    print(f"Facial analysis for {image}:")
+    for face in response['FaceDetails']:
+        print(f"  Age range: {face['AgeRange']['Low']} - {face['AgeRange']['High']}")
+        print(f"  Emotions: {', '.join([emotion['Type'] for emotion in face['Emotions'] if emotion['Confidence'] > 50])}")
+
+def text_extraction(image):
+    response = rekognition.detect_text(
+        Image={'S3Object': {'Bucket': BUCKET_NAME, 'Name': image}}
+    )
+    print(f"Text detected in {image}:")
+    for text in response['TextDetections']:
+        print(f"  {text['DetectedText']} (Confidence: {round(text['Confidence'], 2)}%)")
+
+# Run the analyses on each image
+for image in images:
+    label_recognition(image)
+    image_moderation(image)
+    if image == 'faces.jpg':
+        facial_analysis(image)
+    if image == 'text.jpg':
+        text_extraction(image)
+```
+### Code Explanation:
+1.  **Label Recognition (`detect_labels`)**:
+    -   Detects objects, concepts, and actions in the image with confidence levels.
+2.  **Image Moderation (`detect_moderation_labels`)**:
+    -   Detects inappropriate content, such as adult or violent themes.
+3.  **Facial Analysis (`detect_faces`)**:
+    -   Analyzes face details such as age range, emotions, and gender (run only on `faces.jpg`).
+4.  **Text Extraction (`detect_text`)**:
+    -   Extracts text from images that contain written content (run only on `text.jpg`).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA1NzU4MDk1MywtMjA2MjQ0MDc0OCw0MD
+eyJoaXN0b3J5IjpbLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MD
 Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
 MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
 g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
