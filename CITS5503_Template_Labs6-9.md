@@ -571,7 +571,7 @@ def install_prerequisites(c):
 def set_virtual_env(c):
     # Create project directory and navigate to it
     c.sudo(f'mkdir -p {PROJECT_DIR}')
-    # Ensure permissions for accessing project directory
+    # Grant permissions to user
     c.sudo(f'chown -R ubuntu:ubuntu {PROJECT_DIR}')
     c.run(f'cd {PROJECT_DIR} && python3 -m venv myvenv')
     c.run(f'cd {PROJECT_DIR} && source myvenv/bin/activate && pip install django')
@@ -637,7 +637,7 @@ if __name__ == "__main__":
     -   **`python3 -m venv myvenv`**: Creates a virtual environment.
     -   **`pip install django`**: Installs Django in the virtual environment.
 3.  **`Setup_django_app()`**:
-    -   **`django-admin startproject lab`**: Creates the Django project.
+    -   **`django-admin startproject lab`**: Starts the Django project.
     -   **`python3 manage.py startapp polls`**: Creates the `polls` app.
     -   **`echo XXX`**: Writes the `views.py`, `urls.py`, and `lab/urls.py` with proper Django routes for displaying "Hello, world."
 4.  **`Configure_nginx()`**:
@@ -1202,11 +1202,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgwNTIyNDQ4NywxMTk1NjUxNzEwLC02MT
-I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
-ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
-EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
-OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMT
-IyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0
-MzM5N119
+eyJoaXN0b3J5IjpbNDg2NjUyMTUwLDExOTU2NTE3MTAsLTYxMj
+g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
+MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
+A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
+NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMj
+IwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQz
+Mzk3XX0=
 -->
