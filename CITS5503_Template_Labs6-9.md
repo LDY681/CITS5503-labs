@@ -1207,17 +1207,17 @@ if  __name__  ==  "__main__":
 1.  **`rekognition.detect_labels()`**:
     -   Detects objects, concepts, and actions in the image with confidence levels.
    ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-8.png)
-2.  **`rekognition.detect_moderation_labels`**:
+2.  **`rekognition.detect_moderation_labels()`**:
     -   Detects inappropriate content, such as adult or violent themes.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-9.png)
-3.  **Facial Analysis (`detect_faces`)**:
+3.  **`rekognition.detect_faces()`**:
     -   Analyzes face details such as age range, emotions, and gender (run only on `faces.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-10.png)
-4.  **Text Extraction (`detect_text`)**:
+4.  **`rekognition.detect_text()`**:
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQyNzYwNTQxMSwtMzg3OTk4MDMzLDExOT
+eyJoaXN0b3J5IjpbLTU0NjY2MDU1MCwtMzg3OTk4MDMzLDExOT
 U2NTE3MTAsLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjEx
 MTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LD
 E2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2
