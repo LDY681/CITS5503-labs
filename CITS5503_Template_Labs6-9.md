@@ -685,13 +685,10 @@ if __name__ == "__main__":
 
 # Lab 8
 ## Install and run jupyter notebooks
-In this step, we will install Jupyter Notebooks, and launch it to interact with a dataset using Pandas. To begin, install the Jupyter Notebook package and run it using the following commands:
+In this step, we will install Jupyter Notebooks and launch it to interact with a dataset using Pandas. Jupyter Notebooks provide an interactive environment for running Python code and exploring data. Follow these steps: 1. **Install Jupyter Notebook**: - Run the following command to install the Jupyter Notebook package: 
+```bash
+	pip install notebook
 ```
-pip install notebook
-jupyter notebook
-```
-1. **Install Jupyter Notebooks**: First command installs the `notebook` package, which  is for Jupyter Notebooks. 
-2. **Launch Jupyter Notebook**: - Second command starts the Jupyter Notebook server and opens a web interface in your browser, allowing you to create and manage notebooks. After running the above commands, Jupyter Notebook will launch in the browser at ` http://127.0.0.1:8888` by default.
 ![enter image description here](http://127.0.0.1/assets/lab8-1.png)
 
 Now we can see that jupyter server ha launched and we can see `labAI.ipynb` in the file server.
@@ -717,7 +714,7 @@ bucket  =  '24188516-lab8'  # use <studentid-lab8> as your bucket name
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI1NzA2MDg5MSwyNzQ0MzgxMzksMTY5MT
+eyJoaXN0b3J5IjpbLTgwODYyNTkyMywyNzQ0MzgxMzksMTY5MT
 I4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4
 LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MT
 I2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgs
