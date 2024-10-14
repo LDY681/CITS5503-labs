@@ -733,38 +733,29 @@ After changing the code, we can run the notebook by `Run` menu.
 
 This section demonstrates how to set up an end-to-end machine learning pipeline using Amazon SageMaker. We'll cover steps for installing the necessary libraries, preparing data, and running a hyperparameter tuning job using XGBoost. The final objective is to use SageMaker for training a model on the Bank Marketing dataset.
 
-----------
-
 ### 1. Install Required Libraries
 
-In this step, we will install essential Python libraries, such as SageMaker, Pandas, and Numpy.
+To begin, we need to install several essential libraries such as SageMaker, Pandas, and Numpy for machine learning and data processing.
 
-#### 1. **Install SageMaker**:
+#### Workflow
 
--   Use the following command to install the SageMaker SDK, which allows you to create and manage training jobs, models, and endpoints in AWS.
+1.  **Install SageMaker**:
+    -   SageMaker is required to create and manage training jobs, models, and endpoints in AWS.
+2.  **Install Pandas and Numpy**:
+    -   Pandas is used for data manipulation, while Numpy is used for numerical operations.
+```
+# Install SageMaker via Jupyter Notebook
+!pip install sagemaker
 
+# Install Pandas and Numpy via Jupyter Notebook
+!pip install pandas
+!pip install numpy
+```
+#### Code Explanation:
 
-
-`!pip install sagemaker` 
-
--   **`!pip install sagemaker`**: This command installs the `sagemaker` package, which provides APIs for managing SageMaker resources like training jobs, models, and endpoints.
-
-#### 2. **Install Pandas**:
-
--   Pandas is used for data manipulation and analysis. Install it using the command below:
-
-
-
-`!pip install pandas` 
-
-#### 3. **Install Numpy**:
-
--   Numpy is used for numerical operations. Install it using the command below:
-
-
-
-`!pip install numpy`
-
+-   **`!pip install sagemaker`**: Installs the `sagemaker` SDK for AWS machine learning tasks.
+-   **`!pip install pandas`**: Installs Pandas, a library for data manipulation.
+-   **`!pip install numpy`**: Installs Numpy, a library for numerical operations.
 
 
 
@@ -773,11 +764,11 @@ In this step, we will install essential Python libraries, such as SageMaker, Pan
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NTAxNDQ1NTksNDA2NTIxMTE3LC0xNT
-UzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgz
-NDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNj
-Y2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2
-NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMT
-k1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2
-NTc5MzE5XX0=
+eyJoaXN0b3J5IjpbMTExOTQ2NDIwOCw0MDY1MjExMTcsLTE1NT
+M0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0
+NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2Nj
+Y2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2
+LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOT
+U4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1
+NzkzMTldfQ==
 -->
