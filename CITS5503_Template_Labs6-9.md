@@ -1137,8 +1137,10 @@ def upload_images():
 2.  **`create_bucket()`**: Creates an S3 bucket in the specified region, using the student's ID as part of the bucket name.
 3.  **`upload_file()`**: Uploads the specified images to the bucket.
 
-These are the files prepared for the 
+These are the files prepared to be uploaded
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-6.png)
+
+Inspect the S3 bucket interface to verify succesful uploads.
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-7.png)
 
 ### Step2: Testing AWS Rekognition for Task Analysis
@@ -1215,11 +1217,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTE5ODY4ODEsLTM4Nzk5ODAzMywxMT
-k1NjUxNzEwLC02MTI4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIx
-MTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOS
-wxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAy
-Njk1NTgsNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLD
-UyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4
-Njk5OF19
+eyJoaXN0b3J5IjpbLTI0MTM5OTExMCwtMzg3OTk4MDMzLDExOT
+U2NTE3MTAsLTYxMjg1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjEx
+MTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LD
+E2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2
+OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNT
+IwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2
+OTk4XX0=
 -->
