@@ -974,7 +974,7 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 ## AWS Comprehend
 In this task, we will leverage AWS Comprehend to analyze text for language detection, sentiment detection, entity detection, key phrase detection and syntax detection.
 
-### Step 1. Language Detection
+### Step 1. Client Setup & Language Detection
 We'll start by using AWS Comprehend's `detect_dominant_language` method to identify the language in given texts and display the confidence of the prediction.
 
 #### Workflow
@@ -1117,12 +1117,14 @@ for text in texts:
 
 1.  **`client.detect_syntax()`**: Analyzes the text for syntactical elements like nouns, verbs, etc.
 2.  **`response['SyntaxTokens']`**: Extracts each word and its corresponding part of speech.
+
+![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-5.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg5MDk0MDM3MCwtMjA2MjQ0MDc0OCw0MD
-Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
-MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
-g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
-NDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOT
-YzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0
-ODQwNTJdfQ==
+eyJoaXN0b3J5IjpbLTExODYxMDE1NzQsLTIwNjI0NDA3NDgsND
+A2NTIxMTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQz
+ODEzOSwxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC
+04NTAyNjk1NTgsNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0
+MTQwLDUyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLT
+k2MzA4Njk5OCwtMTk1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQx
+NDg0MDUyXX0=
 -->
