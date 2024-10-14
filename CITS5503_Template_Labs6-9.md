@@ -150,17 +150,7 @@ print(f"{public_ip_address}\n")
 ![enter image description here](http://127.0.0.1/assets/lab6-1.png)
 ![enter image description here](http://127.0.0.1/assets/lab6-2.png)
 
-### [2[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [2] Install the Python 3 virtual environment package. 
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [3] Access a directory 
-
-[Refer to the marking rubrics for sufficient step-by-step description.]
-
-### [24] Install the Python 3 virtual environment package
+### [2] Install the Python 3 virtual environment package
 In this step, we will run the following commands to install virtual environment package and grant sudo permissions to bash operations.
 
 ```
@@ -564,11 +554,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
-g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
-NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LD
-E1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQz
-MjkwMzEwOCwtMzc0MjkzNjY3LC0xNzY4NzU2ODMzLC0xOTQyNT
-QxMjc3LDE4NTE5NjQ0ODgsLTE2NzU4Mzk3NzUsLTE4Mjc0Mjg0
-NzUsLTE3NzA5Njc2NDNdfQ==
+eyJoaXN0b3J5IjpbMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOT
+EyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4
+LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLT
+IxMTY1NzkzMTksMTU5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMDk4
+MzY5NDY5LC0xNDMyOTAzMTA4LC0zNzQyOTM2NjcsLTE3Njg3NT
+Y4MzMsLTE5NDI1NDEyNzcsMTg1MTk2NDQ4OCwtMTY3NTgzOTc3
+NSwtMTgyNzQyODQ3NV19
 -->
