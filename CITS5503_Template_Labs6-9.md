@@ -565,31 +565,25 @@ Linux
 
 ### Automation for creating Django App
 
-In this section, we will automate the process of setting up a Python virtual environment, configuring Nginx, and creating a Django app within the EC2 instance using Fabric. The commands from **Lab 6** will be converted to Fabric's `c.run()` for regular commands and `c.sudo()` for commands requiring admin privileges. Additionally, file editing will be handled using `echo`. We will use file I/O to write Nginx configuration to avoid issues with `$` placeholders. Due to some issues with persisting the sourced virtual environment across multiple `c.run()` commands, we will re-source the environment each time before running further commands.
+In this section, we will automate the process of setting up a Python virtual environment, configuring Nginx, and creating a Django app within the EC2 instance using Fabric. The commands from **Lab 6** will be converted to Fabric's `c.run()` for regular commands and `c.sudo()` for commands requiring admin privileges. Additionally, file editing will be handled using `echo`. We will use file I/O to write Nginx configuration to avoid issues with `$` placeholders. Due to the fact that each  `c.run()` command is runned isolately, to persist the sourced virtual environment, we will re-source the environment each time before running further commands.
 
 ### Workflow:
-
 1. **Install Prerequisites**:
    - Update and upgrade system packages.
    - Install the Python virtual environment package (`python3-venv`).
    - Install Nginx web server.
-   
 2. **Set Up Virtual Environment**:
    - Create a project directory and assign necessary permissions.
    - Set up a virtual environment within the project directory and install Django.
-
 3. **Create Django Project and App**:
    - Start a new Django project and app (`polls`) inside the virtual environment.
    - Modify the views, URLs, and settings to display "Hello, world" from the `polls` app.
-
 4. **Configure Nginx**:
    - Write a new Nginx configuration file to act as a reverse proxy, forwarding traffic from port 80 to the Django app running on port 8000.
-
 5. **Run Django Server**:
    - Run the Django development server in the background, ensuring the app is accessible on port 8000.
 
 Here is the script that automates these steps:
-
 ```python
 from fabric import Connection
 
@@ -697,11 +691,11 @@ if __name__ == "__main__":
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDIxNzcxMDU0LDE2OTEyODM0NTMsMTA4Mz
-AzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5Njgs
-MTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMjIwOD
-k3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQzMzk3
-LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1NzkzMTksMT
-U5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMDk4MzY5NDY5LC0xNDMy
-OTAzMTA4XX0=
+eyJoaXN0b3J5IjpbLTQ0MTE0Njg5NCwxNjkxMjgzNDUzLDEwOD
+MwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4
+LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
+g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
+NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LD
+E1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQz
+MjkwMzEwOF19
 -->
