@@ -628,11 +628,11 @@ if __name__ == "__main__":
     run_django_server(fabric)
 ```
 > ### Code Breakdown:
-1.  **Install Prerequisites**:
+1.  **Install_prerequisites()**:
     -   **`apt-get update`** and **`apt-get upgrade`**: Updates and upgrades system packages.
     -   **`apt-get install python3-venv`**: Installs Python 3's virtual environment tool.
     -   **`apt install nginx`**: Installs the Nginx web server for handling HTTP traffic.
-2.  **Set Virtual Environment**:
+2.  **Set_virtual_env()**:
     -   **`mkdir -p`**: Creates the project directory to store our virtual environment settings and django app.
     -   **`python3 -m venv myvenv`**: Creates a virtual environment.
     -   **`pip install django`**: Installs Django in the virtual environment.
@@ -1202,7 +1202,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA0NDE1NTc2OCwxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbMTM5ODc3MjE3OSwxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
