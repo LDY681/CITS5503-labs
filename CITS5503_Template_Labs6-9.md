@@ -925,21 +925,20 @@ training_job_definition = {
 )
 ```  
 > #### Code Breakdown:
-1.  **`tuning_job_name`**: Creates a unique name for the tuning job, which is required for tracking and managing the job on SageMaker.
-2.  **`tuning_job_config`**:
-    -   **`ParameterRanges`**: Defines the range of hyperparameters to be optimized. The ranges for `eta`, `min_child_weight`, and `alpha` (continuous parameters) and `max_depth` (integer parameter) are set.
+1.  **`tuning_job_config = {}`**:
+    -   **`ParameterRanges`**: Defines the range of hyperparameters to be optimized. 
     -   **`ResourceLimits`**: Restricts the number of training jobs to 2, both for maximum jobs and parallel jobs.
     -   **`Strategy`**: Specifies that SageMaker will use Bayesian optimization to explore the hyperparameter space.
     -   **`HyperParameterTuningJobObjective`**: Sets the objective to maximize the area under the ROC curve (AUC) on the validation dataset.
-3.  **`retrieve()`**: Retrieves the latest version of the XGBoost container image from SageMaker for the specified region.
-4.  **`training_job_definition`**:
+2.  **`retrieve()`**: Retrieves the latest version of the XGBoost container image from SageMaker for the specified region.
+3.  **`training_job_definition = {}`**:
     -   **`AlgorithmSpecification`**: Specifies the XGBoost algorithm and the input mode (File-based input).
     -   **`InputDataConfig`**: Specifies the paths in S3 where the training and validation data are stored.
     -   **`OutputDataConfig`**: Defines the S3 location where the training job outputs (such as model artifacts) will be saved.
     -   **`ResourceConfig`**: Configures the compute resources for the training job, including the instance type, instance count, and storage.
     -   **`StoppingCondition`**: Limits the maximum run time of the training job to 12 hours (43,200 seconds).
     -   **`StaticHyperParameters`**: Sets fixed hyperparameters that are not tuned, such as `objective` (binary classification) and `eval_metric` (AUC).
-5.  **`create_hyper_parameter_tuning_job()`**: Launches the tuning job using the defined configuration, which SageMaker will execute to train multiple models, evaluate them, and return the best configuration.
+4.  **`create_hyper_parameter_tuning_job()`**: Launches the tuning job using the defined configuration, which SageMaker will execute to train multiple models, evaluate them, and return the best configuration.
 
 ### 5. Monitor Hyperparameter Tuning Job
 After launching the hyperparameter tuning job, us can monitor its progress in the AWS console.
@@ -1214,7 +1213,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTc5Nzc3MDY1LC0zODc5OTgwMzMsMTE5NT
+eyJoaXN0b3J5IjpbNDgyMDYzMjAzLC0zODc5OTgwMzMsMTE5NT
 Y1MTcxMCwtNjEyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTEx
 NywtMTU1MzQxNDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMT
 Y5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5
