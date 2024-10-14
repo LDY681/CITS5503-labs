@@ -12,34 +12,28 @@
 ## Set up an EC2 instance
 
 ### [1] Create an EC2 micro instance with Ubuntu and SSH into it. 
-In the first step, we will use the  code in lab2 to create a EC2 instance, stored the access private key, printed out the public IP address. Then we will SSH into the instance by providing the IP address and private key.
+In the first step, we will use the code in lab2 to create a EC2 instance, stored the access private key, printed out the public IP address. Then we will SSH into the instance by providing the IP address and private key.
 
 In this step, we create an EC2 instance using the **boto3** Python package instead of AWS CLI commands. While the method names and parameters differ, the outcome is the same as in the previous steps. To differentiate this instance from the previous one, we append `-2` to the **Group name**, **Key name**, and **Instance name**.
 
 The following Python script uses `boto3` to create the EC2 **instance, security group, key pair, and instance tag**:
 
 ### Workflow
-
 1. **Create Security Group**:  
    The script starts by creating a security group (`24188516-sg-1`) using `ec2.create_security_group()`.
-   
 2. **Authorize SSH/HTTP Inbound Rule**:  
    Next, an SSH/HTTP rule is added using `ec2.authorize_security_group_ingress()`. This allows SSH access on port **22** and HTTP access on port **80** from all IP addresses (`0.0.0.0/0`).
-
 3. **Create Key Pair**:  
    A key pair (`24188516-key-lab6`) is generated using `ec2.create_key_pair()`, and the private key is saved locally with restricted access permissions using `os.chmod()` to secure it.
-
 4. **Create EC2 Instance**:  
    The script launches an EC2 instance in the specified security group using `ec2.run_instances()`. The **AMI ID** (`ami-07a0715df72e58928`), **instance type** (`t3.micro`), and **key name** (`24188516-key-lab6`) are provided as parameters.
-
 5. **Tag EC2 Instance**:  
    A name tag (`24188516-vm-1`) is created for the EC2 instance using `ec2.create_tags()`, which helps in identifying the instance easily.
-
 6. **Retrieve Public IP Address**:  
    The public IP address of the newly created EC2 instance is retrieved using `ec2.describe_instances()`.
 
 ```
-# createinstance.py
+# lab6.py
 import boto3 as bt
 import os
 
@@ -113,7 +107,6 @@ public_ip_address = step6_response['Reservations'][0]['Instances'][0]['PublicIpA
 
 print(f"{public_ip_address}\n")
 ```
-
 > ### Code Breakdown
 
 1. **`ec2.create_security_group()`**:
@@ -126,24 +119,19 @@ print(f"{public_ip_address}\n")
      - **`IpProtocol`**: Defines the protocol, here set to `tcp` for SSH access, and `http` for HTTP access.
      - **`FromPort` and `ToPort`**: Set to `22` for the SSH port and `80` for the HTTP port.
      - **`IpRanges`**: Defines the IP range allowed to access the instance. Here, `0.0.0.0/0` allows access from any IP.
-
 3. **`ec2.create_key_pair()`**:
    - **`KeyName`**: Specifies the name of the key pair, here `24188516-key-lab6`,  generates a new key pair and returns the private key.
-
 4. **`file.write()`**:
    - The private key is saved to a `.pem` file using Python’s built-in File library with the `open()` function, and **`os.chmod()`** is used to set the file’s permission to `400` (read-only).
-
 5. **`ec2.run_instances()`**:
    - **`ImageId`**: Specifies the Amazon Machine Image (AMI) ID, in this case, `ami-07a0715df72e58928`, which contains pre-configured software and settings.
    - **`SecurityGroupIds`**: Lists the security group IDs that will be associated with the instance. Here, the security group is `24188516-sg-1`.
    - **`MinCount` and `MaxCount`**: Define how many instances to launch. only one instance will be created in our case.
    - **`InstanceType`**: Defines the type of instance to launch, in this case, `t3.micro`.
    - **`KeyName`**: Specifies the name of the key pair, `24188516-key-lab6`, used for SSH access.
-
 6. **`ec2.create_tags()`**:
    - **`Resources`**: Specifies the resources to tag, in this case, the instance ID.
    - **`Tags`**: Defines the key-value pairs for tagging. Here, the tag key is `Name` and the value is `24188516-vm-lab6`, which labels the instance for easier identification.
-
 7. **`ec2.describe_instances()`**:
    - **`InstanceIds`**: Specifies the instance ID to describe details on.
    
@@ -1236,7 +1224,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTM5MzAzMTMwMSwxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbLTQxMDUxOTQ4OSwxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
