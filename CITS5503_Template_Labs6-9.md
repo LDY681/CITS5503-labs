@@ -1110,8 +1110,12 @@ Syntax detection identifies parts of speech (POS) such as nouns, verbs, adjectiv
 ```
 
 ```
+### Code Explanation:
+
+1.  **`client.detect_syntax()`**: Analyzes the text for syntactical elements like nouns, verbs, etc.
+2.  **`response['SyntaxTokens']`**: Extracts each word and its corresponding part of speech.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTY5NjYyNzk4MiwtMjA2MjQ0MDc0OCw0MD
+eyJoaXN0b3J5IjpbMTE2MzQ1MTQ3OCwtMjA2MjQ0MDc0OCw0MD
 Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
 MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
 g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
