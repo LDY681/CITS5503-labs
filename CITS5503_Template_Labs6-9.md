@@ -151,23 +151,22 @@ sudo bash
 1.  **Update and Upgrade System Packages**:
     -   **`update`**: Updates the package lists for available or new versions of packages and their dependencies.
     -   **`upgrade`**: Upgrades the installed packages to the latest versions.
-2.  **Install `python3-venv`**:
-    -   **`sudo apt-get install python3-venv`**: Installs the `venv` package for Python 3, which is used to create isolated Python environments.
+2.  **Install Virtual Environment**:
+    -   **`install python3-venv`**: Installs the `venv` package for Python 3, which is used to create isolated Python environments.
 3.  **Switch to Superuser Mode**:
-    -   **`sudo bash`**: Elevates the command line session to superuser mode, ensuring all subsequent commands are executed with `sudo` privileges without needing to prepend `sudo` each time. This is helpful when performing multiple operations requiring root access.
+    -   **`sudo bash`**: Elevates the command line session to superuser mode, ensuring all subsequent commands are executed with `sudo` privileges without needing to prepend `sudo` each time. 
   
 ![enter image description here](http://127.0.0.1/assets/lab6-3.png)
 
 ### [3] Access a directory  
-
-Create a directory with a path `/opt/wwc/mysites` and `cd` into the directory.
+Now let's make a directory for our app files, create a directory with a path `/opt/wwc/mysites` and `cd` into the directory.
 ```
 sudo mkdir -p /opt/wwc/mysites
 cd /opt/wwc/mysites
 ```
 
 1. **Create Directories Using `mkdir`**:
-   - **`sudo mkdir -p /opt/wwc/mysites`**: Creates the specified directory path (`/opt/wwc/mysites`). The `-p` option ensures that parent directories are created as needed without error if they already exist.
+   - **` mkdir -p`**: Creates the specified directory path (`/opt/wwc/mysites`). The `-p` option ensures that parent directories are created as needed without error if they already exist.
 
 2. **Navigate to the Created Directory**:
    - **`cd /opt/wwc/mysites`**: Changes the working directory to `/opt/wwc/mysites`. This is the directory where subsequent files or projects will be managed.
@@ -1224,7 +1223,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzY5MjMxODIxLDExOTU2NTE3MTAsLTYxMj
+eyJoaXN0b3J5IjpbMzU2ODI0MTI4LDExOTU2NTE3MTAsLTYxMj
 g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
 MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
 A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
