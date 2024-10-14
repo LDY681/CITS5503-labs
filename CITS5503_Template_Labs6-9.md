@@ -1231,8 +1231,9 @@ if  __name__  ==  "__main__":
     -   Analyzes face details such as age range, emotions, and gender (run only on `faces.jpg`).
 4.  **Text Extraction (`detect_text`)**:
     -   Extracts text from images that contain written content (run only on `text.jpg`).
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA1ODYwNjAzMSwxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbMTQ0NjczMjM0OSwxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
