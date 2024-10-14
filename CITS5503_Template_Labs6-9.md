@@ -1121,8 +1121,11 @@ for text in texts:
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-5.png)
 
 ## AWS Rekognition
+In this task, we will leverage AWS Rekognition to analyze image for **Label Recognition**, **Image Moderation**, **Facial Analysis** and **Extract Text from an image**.
+
+
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzY5OTI3Njc0LC0yMDYyNDQwNzQ4LDQwNj
+eyJoaXN0b3J5IjpbNTA0Nzk4ODM3LC0yMDYyNDQwNzQ4LDQwNj
 UyMTExNywtMTU1MzQxNDgzNywtMTU1MzQxNDgzNywyNzQ0Mzgx
 MzksMTY5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtOD
 UwMjY5NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0
