@@ -508,11 +508,11 @@ We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalance
 ### Create EC2 Instance
 In the first step, we use our script from **Lab 6** to create a new EC2 instance. This is done by running the following command in our local Ubuntu machine:
 ```
- python3 createInstance.py
+	python3 createInstance.py
 ```
-This script automates the creation of the EC2 instance with the required configuration. After the instance is successfully created, we retrieve the public IP address for SSH access and web hosting.
+This script automates the creation of the EC2 instance with the required configuration for SSH access and HTTP hosting. After the instance is successfully created, we retrieve the public IP address.
 
-Here's the public IP address output:
+Here's the output from the script:
 
 ![enter image description here](http://127.0.0.1/assets/lab7-1.png)
 
@@ -640,11 +640,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTQ2NDM5MjkxOSwxNjkxMjgzNDUzLDEwOD
-MwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4
-LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
-g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
-NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LD
-E1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQz
-MjkwMzEwOF19
+eyJoaXN0b3J5IjpbLTE0MzA2NDQ4NTcsMTY5MTI4MzQ1MywxMD
+gzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYxNjk2
+OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLTEyMj
+A4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3NDMz
+OTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3OTMxOS
+wxNTkwNzA4MDksLTE1NDAzNjYzODYsLTEwOTgzNjk0NjksLTE0
+MzI5MDMxMDhdfQ==
 -->
