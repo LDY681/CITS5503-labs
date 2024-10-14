@@ -461,8 +461,10 @@ After the load balancer is initialized and up in action, we can go to AWS consol
 ![enter image description here](http://127.0.0.1/assets/lab6-14.png)
 
 ### [3] Access the DNS address
-We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`, 
+We can get the ALB's DNS name from `print(f"Load Balancer DNS Name: {LoadBalancerDnsName}")`.
 ![enter image description here](http://127.0.0.1/assets/lab6-12.png)
+
+Now we canaccess its url with path `/polls/` to see if the mapping works properly: http://24188516-elb-920225157.eu-north-1.elb.amazonaws.com/polls/
 ![enter image description here](http://127.0.0.1/assets/lab6-13.png)
 
 <div style="page-break-after: always;"></div>
@@ -1198,11 +1200,11 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MDA4NzE3OTcsMTE5NTY1MTcxMCwtNj
-EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
-NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
-wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
-Njk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYsLT
-EyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3
-NDMzOTddfQ==
+eyJoaXN0b3J5IjpbODc2NDk0OTEwLDExOTU2NTE3MTAsLTYxMj
+g1MDQxMCwtMjA2MjQ0MDc0OCw0MDY1MjExMTcsLTE1NTM0MTQ4
+MzcsLTE1NTM0MTQ4MzcsMjc0NDM4MTM5LDE2OTEyODM0NTMsMT
+A4MzAzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5
+NjgsMTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMj
+IwODk3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQz
+Mzk3XX0=
 -->
