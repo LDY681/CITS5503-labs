@@ -649,7 +649,7 @@ Now with the Django App started and the server is online, we can go to `/admin/`
 <div style="page-break-after: always;"></div>
 
 # Lab 8
-## Install and Run Jupyter Notebooks
+## [1] Install and Run Jupyter Notebooks
 In this step, we will install Jupyter Notebooks and use it for AI training. Jupyter Notebooks provide an interactive environment to run Python code on the go.
 
 ```bash
@@ -664,13 +664,15 @@ jupyter notebook
 After running the above commands,  we can see that the Jupyter server has launched, and the `labAI.ipynb` notebook file is visible on the file server interface.
 ![enter image description here](http://127.0.0.1/assets/lab8-3.png)
 
-## Install ipykernel
-In this step, we will install the `ipykernel` package, which enables us to run Python code in Jupyter Notebooks. 
+## [2] Install ipykernel
+In this step, we will install the `ipykernel` package, this is the kernel package for Python coding in Jupyter Notebooks. 
 ```
 pip install ipykernel
 ```
+- **`ipykernel`**: This package allows Jupyter to communicate with the Python interpreter. 
+
 ![enter image description here](http://127.0.0.1/assets/lab8-2.png)
-1. **Install ipykernel**: - This package allows Jupyter to communicate with the Python interpreter. 
+
 
 
 ## Code to Change
@@ -1196,7 +1198,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTcxNDg4NjAsMTE5NTY1MTcxMCwtNj
+eyJoaXN0b3J5IjpbLTE2MjM4MTY2NTgsMTE5NTY1MTcxMCwtNj
 EyODUwNDEwLC0yMDYyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQx
 NDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1My
 wxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYx
