@@ -985,8 +985,8 @@ We'll start by using AWS Comprehend's `detect_dominant_language` method to ident
     -   Extract the most probable language from the response.
 3.  **Map Language Codes to Language Names**:
     -   Use a dictionary to map language codes (such as `'en'`, `'fr'`, `'es'`, `'it'`) to their corresponding language names (English, French, Spanish, Italian).
-4.  **Calculate Confidence and Print Results**:
-    -   Round the confidence score to two decimal places and print the language name along with the confidence percentage.
+4.  **Extract Confidence and Print Results**:
+    -   Extract the confidence level Round the confidence score to two decimal places and print the language name along with the confidence percentage.
 
 ```
 import boto3
@@ -1124,11 +1124,11 @@ for text in texts:
 1.  **`client.detect_syntax()`**: Analyzes the text for syntactical elements like nouns, verbs, etc.
 2.  **`response['SyntaxTokens']`**: Extracts each word and its corresponding part of speech.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU3MDU4MjczMCwtMjA2MjQ0MDc0OCw0MD
-Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
-MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
-g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
-NDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOT
-YzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0
-ODQwNTJdfQ==
+eyJoaXN0b3J5IjpbLTE0MjE0ODUzNTksLTIwNjI0NDA3NDgsND
+A2NTIxMTE3LC0xNTUzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQz
+ODEzOSwxNjkxMjgzNDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC
+04NTAyNjk1NTgsNjY2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0
+MTQwLDUyMDkxMjY2NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLT
+k2MzA4Njk5OCwtMTk1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQx
+NDg0MDUyXX0=
 -->
