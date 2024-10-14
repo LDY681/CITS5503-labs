@@ -617,6 +617,7 @@ if __name__ == "__main__":
     configure_nginx(conn)
     run_django_server(conn)
 ```
+
 From your local OS environment, access the URL: `http://<ip address of your EC2 instance>/polls/`, and output what you've got. 
 
 
@@ -630,7 +631,7 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTU5NTI1MDY4MiwtODUwMjY5NTU4LDY2Nj
+eyJoaXN0b3J5IjpbMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2Nj
 YxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYs
 LTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NT
 g3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3
