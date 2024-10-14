@@ -971,15 +971,29 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 <div style="page-break-after: always;"></div>
 
 # Lab 9
-In this task, we will leverage AWS Comprehend to analyze text for language detection and sentiment analysis. AWS Comprehend is a powerful NLP service that can detect the dominant language, perform sentiment analysis, extract key entities, and much more.
+## AWS Comprehend
+In this task, we will leverage AWS Comprehend to analyze text for language detection, sentiment detection, entity detection, ke. AWS Comprehend is a powerful NLP service that can detect the dominant language, perform sentiment analysis, extract key entities, and much more.
 
+### Language Detection
 We'll start by using AWS Comprehend's `detect_dominant_language` method to identify the language in various pieces of text and display the confidence of the prediction. We will only print the first detected language for simplicity, and ensure that AWS Comprehend is set up in the correct region before proceeding.
+
+#### Language Detection
+
+1.  **Set Up AWS Comprehend Client**:
+    -   Create an AWS Comprehend client using `boto3` with a specific region (`ap-southeast-2` in this case).
+2.  **Detect Dominant Language**:
+    -   For each piece of text, use `client.detect_dominant_language` to detect the language.
+    -   Extract the most probable language from the response.
+3.  **Map Language Codes to Language Names**:
+    -   Use a dictionary to map language codes (such as `'en'`, `'fr'`, `'es'`, `'it'`) to their corresponding language names (English, French, Spanish, Italian).
+4.  **Calculate Confidence and Print Results**:
+    -   Round the confidence score to two decimal places and print the language name along with the confidence percentage.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzMTgxNTcwOCwtMjA2MjQ0MDc0OCw0MD
-Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
-MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
-g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
-NDAsNTIwOTEyNjY2LC0xMjIwODk3ODk5LDQ4ODg2ODg4MCwtOT
-YzMDg2OTk4LC0xOTU4NzQzMzk3LC0yMDgwNTc4MDM5LDEzNDE0
-ODQwNTJdfQ==
+eyJoaXN0b3J5IjpbMTM4NzE3NDc0LC0yMDYyNDQwNzQ4LDQwNj
+UyMTExNywtMTU1MzQxNDgzNywtMTU1MzQxNDgzNywyNzQ0Mzgx
+MzksMTY5MTI4MzQ1MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtOD
+UwMjY5NTU4LDY2NjYxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0
+MCw1MjA5MTI2NjYsLTEyMjA4OTc4OTksNDg4ODY4ODgwLC05Nj
+MwODY5OTgsLTE5NTg3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4
+NDA1Ml19
 -->
