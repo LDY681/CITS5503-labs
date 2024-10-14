@@ -735,7 +735,11 @@ s3.put_object(Bucket=bucket, Key=f"{prefix}/")  # Create a folder object with th
 ```
 
 ### 3. Convert True/False to 1/0
-
+Because our tunning job can't handle non-numerical values, we will traverse the model_data and convert all datas tonumeric ones
+```
+# Change True/False to 1/0
+model_data  =  model_data.replace({True: 1, False: 0})
+```
 
 ### 4. Running the Notebook
 After making the necessary changes to the notebook, you can execute the notebook by navigating to the **Run** menu and selecting **Run All Cells/ Run Selected Cells**.
@@ -971,11 +975,11 @@ After launching the hyperparameter tuning job, you can monitor its progress in t
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDE0OTM1ODM3LDQwNjUyMTExNywtMTU1Mz
-QxNDgzNywtMTU1MzQxNDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1
-MywxMDgzMDM1MTEsMTQyOTQ1MDU3MiwtODUwMjY5NTU4LDY2Nj
-YxNjk2OCwxMTQwMjkwNzU5LDU2MzY4NDE0MCw1MjA5MTI2NjYs
-LTEyMjA4OTc4OTksNDg4ODY4ODgwLC05NjMwODY5OTgsLTE5NT
-g3NDMzOTcsLTIwODA1NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3
-OTMxOV19
+eyJoaXN0b3J5IjpbLTIwODAxMTUyNDQsNDA2NTIxMTE3LC0xNT
+UzNDE0ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgz
+NDUzLDEwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNj
+Y2NjE2OTY4LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2
+NiwtMTIyMDg5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMT
+k1ODc0MzM5NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2
+NTc5MzE5XX0=
 -->
