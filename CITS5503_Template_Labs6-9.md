@@ -674,7 +674,7 @@ pip install ipykernel
 ![enter image description here](http://127.0.0.1/assets/lab8-2.png)
 
 ## Necessary Changes
-In this section, we will modify the provided code within the Jupyter notebook to make it work in our environment.
+In this section, we will modify the provided code `LabAI.ipynb` within the Jupyter notebook to make it work in our environment.
 
 ### 1. Modify Region, Student ID, and Bucket Name
 Let's update the constants for the AWS region, our student ID, and the name of the S3 bucket where the dataset will be stored. This creates a personalized setup for the job.
@@ -713,15 +713,13 @@ After inspecting the dataframe, we can get the following conclusions:
 #2: Numerical Variables: age, duration, nr.employed, euribor3m 
 ```
 
-## `labAI.ipynb` Overview 
-In this section, we will set up a tuning job using Amazon SageMaker. Steps involve installing the necessary libraries, preparing data, and running a hyperparameter tuning job using XGBoost. The final objective is to use SageMaker for training a model on the Bank Marketing dataset.
+## AI Training
+In ``LabAI.ipynb``, we will set up a tuning job using Amazon SageMaker. Steps involve installing the necessary libraries, preparing data, and running a hyperparameter tuning job using XGBoost. The final objective is to use SageMaker for training a model on the Bank Marketing dataset.
 
 ### 1. Install Required Libraries
-
 To begin, we need to install several essential libraries such as SageMaker, Pandas, and Numpy for machine learning and data processing.
 
 #### Workflow
-
 1.  **Install SageMaker**:
     -   SageMaker is required to create and manage training jobs, models, and endpoints in AWS.
 2.  **Install Pandas and Numpy**:
@@ -1192,7 +1190,7 @@ if  __name__  ==  "__main__":
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 ![Jupyter Notebook Running](http://127.0.0.1/assets/lab9-11.png)
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTAwNjI4NzIzNCwxMTk1NjUxNzEwLC02MT
+eyJoaXN0b3J5IjpbMTUyNTI1NTAxOSwxMTk1NjUxNzEwLC02MT
 I4NTA0MTAsLTIwNjI0NDA3NDgsNDA2NTIxMTE3LC0xNTUzNDE0
 ODM3LC0xNTUzNDE0ODM3LDI3NDQzODEzOSwxNjkxMjgzNDUzLD
 EwODMwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2
