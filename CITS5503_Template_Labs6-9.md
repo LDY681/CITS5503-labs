@@ -528,23 +528,21 @@ pip install fabric
 You will need to create a config file in ~/.ssh with the contents, by `vi ~/.ssh/config`. Then we will input our instance name as host key, IP address as host name and our genrated pem key as identifyFile, the user is ubuntu by default because the AMI image is a ubuntu image.
 
 ```
-Host <your EC2 instance name>
-	Hostname <your EC2 instance public IPv4 DNS>
+Host 24188516-vm-1
+	Hostname 16.170.252.129
 	User ubuntu
 	UserKnownHostsFile /dev/null
 	StrictHostKeyChecking no
 	PasswordAuthentication no
-	IdentityFile <path to your private key>
+	IdentityFile /home/liudayubob/cits5503/lab7/24188516-key-lab7.pem
 ```
 
-Replace `<your EC2 instance name>` and `<your EC2 instance public IPv4 DNS>` above with your real ones.
-
-Rely on the fabric code below to connect to you instance.
+Rely on the fabric code below to connect to you instance. this will look up the host file, find the connection configuration from the host 24188516-vm-1 and made a connection.
 
 ```
 python3
 >>> from fabric import Connection
->>> c = Connection('<your EC2 instance name>')
+>>> c = Connection('24188516-vm-1')
 >>> result = c.run('uname -s')
 Linux
 >>>
@@ -567,11 +565,11 @@ From your local OS environment, access the URL: `http://<ip address of your EC2 
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM1MjI4MTAwNSwtMTIyMDg5Nzg5OSw0OD
-g4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5NywtMjA4MDU3
-ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LDE1OTA3MDgwOS
-wtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQzMjkwMzEwOCwt
-Mzc0MjkzNjY3LC0xNzY4NzU2ODMzLC0xOTQyNTQxMjc3LDE4NT
-E5NjQ0ODgsLTE2NzU4Mzk3NzUsLTE4Mjc0Mjg0NzUsLTE3NzA5
-Njc2NDMsMTg3MzkwMzI0NV19
+eyJoaXN0b3J5IjpbLTEwMDIyMjMxMTUsLTEyMjA4OTc4OTksND
+g4ODY4ODgwLC05NjMwODY5OTgsLTE5NTg3NDMzOTcsLTIwODA1
+NzgwMzksMTM0MTQ4NDA1MiwtMjExNjU3OTMxOSwxNTkwNzA4MD
+ksLTE1NDAzNjYzODYsLTEwOTgzNjk0NjksLTE0MzI5MDMxMDgs
+LTM3NDI5MzY2NywtMTc2ODc1NjgzMywtMTk0MjU0MTI3NywxOD
+UxOTY0NDg4LC0xNjc1ODM5Nzc1LC0xODI3NDI4NDc1LC0xNzcw
+OTY3NjQzLDE4NzM5MDMyNDVdfQ==
 -->
