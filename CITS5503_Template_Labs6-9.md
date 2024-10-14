@@ -548,7 +548,7 @@ This configuration allows Fabric to connect to the EC2 instance without needing 
 ### Test Fabric Connection
 We will use the following Fabric code to establish a connection to the EC2 instance. Fabric looks up the host file and uses the connection configuration for `24188516-vm-1`. After establishing the connection, we will run a simple command to verify it.
 
-The command `c.run('uname -s')` will return "Linux" as output, confirming that the connection is successful and commands can be executed on the instance. Due to some issues with persisting the sourced virtual environment across multiple `c.run()` commands, we will re-source the environment each time before running further commands.
+The command `c.run('uname -s')` will return "Linux" as output, confirming that the connection is successful and commands can be executed on the instance. 
 ```
 python3
 	>>> from fabric import Connection
@@ -559,14 +559,13 @@ Linux
 
 #### Key Points:
 -   **Fabric Connection**: Uses the SSH configuration to connect to the EC2 instance using the alias `24188516-vm-1`.
--   **Command Execution**: The `uname -s` command confirms the operating system on the instance is Linux.
+-   **Command Execution**: The `uname -s` command confirms the operating system on the remote instance is Linux.
 
 ![enter image description here](http://127.0.0.1/assets/lab7-4.png)
 
 ### Automation for creating Django App
-### Automation for Creating Django App
 
-In this section, we will automate the process of setting up a Python virtual environment, configuring Nginx, and creating a Django app within the EC2 instance using Fabric. The commands from **Lab 6** will be converted to Fabric's `c.run()` for regular commands and `c.sudo()` for commands requiring admin privileges. Additionally, file editing will be handled using `echo` and proper file I/O for Nginx configuration to avoid issues with `$` placeholders.
+In this section, we will automate the process of setting up a Python virtual environment, configuring Nginx, and creating a Django app within the EC2 instance using Fabric. The commands from **Lab 6** will be converted to Fabric's `c.run()` for regular commands and `c.sudo()` for commands requiring admin privileges. Additionally, file editing will be handled using `echo`. We will use file I/O to write Nginx configuration to avoid issues with `$` placeholders. Due to some issues with persisting the sourced virtual environment across multiple `c.run()` commands, we will re-source the environment each time before running further commands.
 
 ### Workflow:
 
@@ -698,11 +697,11 @@ if __name__ == "__main__":
 # Lab 9
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4NzU2Njk3MywxNjkxMjgzNDUzLDEwOD
-MwMzUxMSwxNDI5NDUwNTcyLC04NTAyNjk1NTgsNjY2NjE2OTY4
-LDExNDAyOTA3NTksNTYzNjg0MTQwLDUyMDkxMjY2NiwtMTIyMD
-g5Nzg5OSw0ODg4Njg4ODAsLTk2MzA4Njk5OCwtMTk1ODc0MzM5
-NywtMjA4MDU3ODAzOSwxMzQxNDg0MDUyLC0yMTE2NTc5MzE5LD
-E1OTA3MDgwOSwtMTU0MDM2NjM4NiwtMTA5ODM2OTQ2OSwtMTQz
-MjkwMzEwOF19
+eyJoaXN0b3J5IjpbNDIxNzcxMDU0LDE2OTEyODM0NTMsMTA4Mz
+AzNTExLDE0Mjk0NTA1NzIsLTg1MDI2OTU1OCw2NjY2MTY5Njgs
+MTE0MDI5MDc1OSw1NjM2ODQxNDAsNTIwOTEyNjY2LC0xMjIwOD
+k3ODk5LDQ4ODg2ODg4MCwtOTYzMDg2OTk4LC0xOTU4NzQzMzk3
+LC0yMDgwNTc4MDM5LDEzNDE0ODQwNTIsLTIxMTY1NzkzMTksMT
+U5MDcwODA5LC0xNTQwMzY2Mzg2LC0xMDk4MzY5NDY5LC0xNDMy
+OTAzMTA4XX0=
 -->
