@@ -1155,7 +1155,7 @@ def upload_images():
 ```
 ### Code Explanation:
 
-1.  **`boto3.client('s3')`**: Initializes the S3 client to interact with the AWS S3 service.
+1.  **`boto3.client()`**: Initializes the client to interact with the AWS S3 service or AWS Rekognition service.
 2.  **`create_bucket()`**: Creates an S3 bucket in the specified region, using the student's ID as part of the bucket name.
 3.  **`upload_file()`**: Uploads the specified images to the bucket.
 
@@ -1229,7 +1229,7 @@ if  __name__  ==  "__main__":
 4.  **Text Extraction (`detect_text`)**:
     -   Extracts text from images that contain written content (run only on `text.jpg`).
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMyOTM3Mzg5NiwtNjEyODUwNDEwLC0yMD
+eyJoaXN0b3J5IjpbMTE5NTY1MTcxMCwtNjEyODUwNDEwLC0yMD
 YyNDQwNzQ4LDQwNjUyMTExNywtMTU1MzQxNDgzNywtMTU1MzQx
 NDgzNywyNzQ0MzgxMzksMTY5MTI4MzQ1MywxMDgzMDM1MTEsMT
 QyOTQ1MDU3MiwtODUwMjY5NTU4LDY2NjYxNjk2OCwxMTQwMjkw
