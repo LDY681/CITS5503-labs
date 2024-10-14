@@ -1108,14 +1108,23 @@ def detect_key_phrases(text, language_code='en'):
 ### Step 5: Syntax Detection
 Syntax detection identifies parts of speech (POS) such as nouns, verbs, adjectives, etc.
 ```
+def detect_syntax(text, language_code='en'):
+    response = client.detect_syntax(Text=text, LanguageCode=language_code)
+    syntax_tokens = response['SyntaxTokens']
+    
+    for token in syntax_tokens:
+        print(f"Word: {token['Text']}, POS: {token['PartOfSpeech']['Tag']} with {round(token['PartOfSpeech']['Score']*100, 2)}% Confidence")
 
+# Test syntax detection
+for text in texts:
+	detect_syntax(text)
 ```
 ### Code Explanation:
 
 1.  **`client.detect_syntax()`**: Analyzes the text for syntactical elements like nouns, verbs, etc.
 2.  **`response['SyntaxTokens']`**: Extracts each word and its corresponding part of speech.
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTE2MzQ1MTQ3OCwtMjA2MjQ0MDc0OCw0MD
+eyJoaXN0b3J5IjpbMTU3MDU4MjczMCwtMjA2MjQ0MDc0OCw0MD
 Y1MjExMTcsLTE1NTM0MTQ4MzcsLTE1NTM0MTQ4MzcsMjc0NDM4
 MTM5LDE2OTEyODM0NTMsMTA4MzAzNTExLDE0Mjk0NTA1NzIsLT
 g1MDI2OTU1OCw2NjY2MTY5NjgsMTE0MDI5MDc1OSw1NjM2ODQx
