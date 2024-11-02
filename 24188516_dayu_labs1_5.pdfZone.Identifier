@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://api.turnitin.com/
+HostUrl=https://api.turnitin.com/api/lti/1p0/redirect/download/orig/2455651690/student?lang=en_us
